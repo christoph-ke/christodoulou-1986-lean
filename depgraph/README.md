@@ -1,0 +1,7 @@
+# Source dependency graphs
+
+These 27 JSON databases preserve the independently reviewed effective nodes, prerequisite edges, alternative routes and coverage inventories of the formalization. Private process records are omitted. Each file is self-contained: node IDs are local to that file, and edges point to prerequisites. Dependencies are conjunctive; an alternative route is sufficient on its own. A route node identifies its owner with `route_for`.
+
+References use the [paper DOI](https://doi.org/10.1007/BF01205930) and printed page numbers, where available. Standard analysis and Mathlib inputs are explicit external leaves. The boolean `source_gap` records exactly whether the reviewed source note marks an argument as absent or incomplete in print and reconstructed for the formalization. This is a statement about the paper, not an unfinished Lean proof. External reference identifiers are preserved verbatim. No paper PDF or transcription is included.
+
+This database describes source topology, not Lean proof status or exact proof-term dependencies. Coverage exclusions describe each database's own scope at extraction time; they do not imply a gap in the final library. For current proof status, build the Lean library and run `python3 scripts/check_axioms.py`. All 198 sealed anchor declarations and their public source correspondences are listed in [anchors.json](anchors.json); its file hashes apply to this release. Earlier private record hashes are not used after comment scrubbing.

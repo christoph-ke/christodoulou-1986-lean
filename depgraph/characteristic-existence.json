@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "title": "characteristic existence",
+  "source": "https://doi.org/10.1007/BF01205930",
+  "semantics": "Edges point to prerequisites; dependencies are conjunctive; one alternative route suffices. Reviewed source topology, not a kernel proof trace.",
+  "conventions": "Carriers, hypotheses, quantifiers and constant scope are recorded per node and in the corresponding Lean declarations.",
+  "roots": [
+    "n0007",
+    "n0006",
+    "n0005",
+    "n0003"
+  ],
+  "standing_assumptions": [],
+  "nodes": [
+    {
+      "id": "n0001",
+      "kind": "definition",
+      "title": "Backward characteristic of (5.1) through the terminal point (u₁, r₁) on [0, u₁] (IsCharacteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "IsCharacteristic takes the proof hH of MemXBall u₀ x H as its argument and passes it to charField"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, ); χ a real function of real time",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞), for each real function χ",
+      "source_conclusion": "IsCharacteristic hH u₁ r₁ χ holds iff χ(u₁) = r₁ and, for every t in [0,u₁], χ has the derivative charField(t, χ(t)) at t within [0,u₁] (one-sided at both endpoints, ): χ is a characteristic of (5.1) dr/du = −½ḡ(u,r) through the terminal point (u₁, r₁) of the physical strip, on the time interval [0,u₁] (the backward characteristic of pp. 349-350 and 354-355, ), with the clamped coefficient charField = −½ḡ . Nothing is asserted outside [0,u₁]; for u₁ = 0 only χ(0) = r₁ is constrained (a within-derivative on a singleton is unconstrained, ). Forward characteristics χ(u; r₀) from u = 0 are not defined",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsCharacteristic",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristic.lean"
+    },
+    {
+      "id": "n0002",
+      "kind": "claim",
+      "title": "Uniqueness: two characteristics through the same terminal point agree on [0, u₁] (IsCharacteristic.eqOn)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "both premises; their first conjuncts give the common terminal value χ(u₁) = r₁ = ψ(u₁)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, ); χ, ψ real functions of real time with IsCharacteristic hH u₁ r₁ χ and IsCharacteristic hH u₁ r₁ ψ",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞), for all real functions χ and ψ that are characteristics through (u₁, r₁)",
+      "source_conclusion": "χ = ψ on [0,u₁] (EqOn χ ψ (Icc 0 u₁)). Reconstructed: [P] speaks of \"the characteristics χ(u;r₁) through r = r₁ at u = u₁\" determined by the ODE and the terminal condition, presupposing uniqueness without proof",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.eqOn",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicEqOn.lean"
+    },
+    {
+      "id": "n0003",
+      "kind": "claim",
+      "title": "Every characteristic through (u₁, r₁) agrees with the canonical curve on [0, u₁] (IsCharacteristic.eqOn_characteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001",
+        "n0006",
+        "n0002",
+        "n0005"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the premise hχ : IsCharacteristic hH u₁ r₁ χ, the receiver of hχ.eqOn"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the conclusion compares χ with characteristic hH u₁ r₁ on [0,u₁]"
+        },
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "hχ.eqOn applied to the second characteristic characteristic hH u₁ r₁ gives EqOn χ (characteristic hH u₁ r₁) (Icc 0 u₁)"
+        },
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "isCharacteristic_characteristic hH u₁ r₁ supplies the second premise of IsCharacteristic.eqOn"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, ); χ a real function of real time with IsCharacteristic hH u₁ r₁ χ",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞), for each real function χ with IsCharacteristic hH u₁ r₁ χ",
+      "source_conclusion": "χ = characteristic hH u₁ r₁ on [0,u₁] (EqOn χ (characteristic hH u₁ r₁) (Icc 0 u₁)). Reconstructed: [P] speaks of \"the characteristics χ(u;r₁) through r = r₁ at u = u₁\", so any solution of the ODE with the terminal condition is the canonical one on [0,u₁]; nothing is asserted outside [0,u₁]",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.eqOn_characteristic",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicEqOnCharacteristic.lean"
+    },
+    {
+      "id": "n0004",
+      "kind": "claim",
+      "title": "Exactly one curve on [0, u₁] whose constant extension is a characteristic through (u₁, r₁) (existsUnique_characteristicOn)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001",
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the property in the ∃! is IsCharacteristic hH u₁ r₁ of the extension"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the property is stated through curveExtension u₁ χ"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞)",
+      "source_conclusion": "there is exactly one real function χ on the time subtype [0,u₁] such that curveExtension u₁ χ is a characteristic through (u₁, r₁) (∃!, ). Reconstructed: the well-definedness of \"the characteristic χ(u;r₁) through r = r₁ at u = u₁\", used as a function on pp. 349-350 and along which (7.20) is integrated",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.existsUnique_characteristicOn",
+      "file": "Christodoulou/Frozen/Bondi/ExistsUniqueCharacteristicOn.lean"
+    },
+    {
+      "id": "n0005",
+      "kind": "claim",
+      "title": "The canonical curve is a characteristic through (u₁, r₁) (isCharacteristic_characteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001",
+        "n0006",
+        "n0007",
+        "n0004",
+        "n0010"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the conclusion is IsCharacteristic hH u₁ r₁ of the canonical curve: the ODE dχ/du = −½ḡ and the condition χ(u₁;r₁) = r₁"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the statement is about characteristic hH u₁ r₁, which unfolds (definitionally) to curveExtension u₁ (characteristicOn hH u₁ r₁)"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "characteristicOn hH u₁ r₁ unfolds (definitionally) to Classical.choose (existsUnique_characteristicOn hH u₁ r₁).exists"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "its existence part (ExistsUnique.exists) is the proof whose choice specification is taken; its predicate is IsCharacteristic hH u₁ r₁ of the extension"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "Classical.choose_spec of that existence proof gives IsCharacteristic hH u₁ r₁ (curveExtension u₁ (Classical.choose …)), which is the goal after unfolding"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞)",
+      "source_conclusion": "IsCharacteristic hH u₁ r₁ (characteristic hH u₁ r₁): the canonical curve satisfies χ(u₁) = r₁ and, for every t in [0,u₁], has the derivative charField(t, χ(t)) at t within [0,u₁] (one-sided at both endpoints, ). Reconstructed: [P] presupposes that \"the characteristic χ(u;r₁) through r = r₁ at u = u₁\" satisfies dχ/du = −½ḡ and χ(u₁;r₁) = r₁",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.isCharacteristic_characteristic",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicCharacteristic.lean"
+    },
+    {
+      "id": "n0006",
+      "kind": "definition",
+      "title": "The characteristic through (u₁, r₁) as a real curve: the constant extension of characteristicOn (characteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0009",
+        "n0008",
+        "n0007"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "characteristic takes the proof hH of MemXBall u₀ x H as its argument and passes it to characteristicOn (hH is a binder of the reconstructed statement; is the target's own locator, the ball itself is item P.7.1/P.348.lemma1.ball)"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the body is curveExtension u₁ applied to the chosen curve on [0,u₁]"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the body extends characteristicOn hH u₁ r₁, the chosen curve on [0,u₁]"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞)",
+      "source_conclusion": "characteristic hH u₁ r₁ : ℝ → ℝ := curveExtension u₁ (characteristicOn hH u₁ r₁): equal to characteristicOn hH u₁ r₁ on [0,u₁], to its value at 0 for t ≤ 0 and to its value at u₁ for t ≥ u₁ . The values outside [0,u₁] are a formal device with no source content. This is the curve χ(u;r₁) through r = r₁ at u = u₁ of pp. 349-350 as a function of real time, with initial radius r₀ := χ(0)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.characteristic",
+      "file": "Christodoulou/Frozen/Bondi/Characteristic.lean"
+    },
+    {
+      "id": "n0007",
+      "kind": "definition",
+      "title": "The characteristic through (u₁, r₁) as a function on the time interval [0, u₁], chosen from the ∃! (characteristicOn)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0009",
+        "n0004",
+        "n0001",
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "characteristicOn takes the proof hH of MemXBall u₀ x H as its argument and passes it to existsUnique_characteristicOn (hH is a binder of the reconstructed statement; is the target's own locator, the ball itself is item P.7.1/P.348.lemma1.ball)"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the body is Classical.choose (existsUnique_characteristicOn hH u₁ r₁).exists; the definition is admitted only after this ∃! was sealed and audited , which makes the choice canonical"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the predicate of the choice, and so the meaning of the chosen curve, is IsCharacteristic hH u₁ r₁ of its extension: the ODE and the terminal condition"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the predicate of the choice is stated through curveExtension u₁ χ, which turns the curve on [0,u₁] into a function of real time"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞)",
+      "source_conclusion": "characteristicOn hH u₁ r₁ : [0,u₁] → ℝ (a real function on the time subtype Icc 0 u₁) := Classical.choose of the existence part of the sealed existsUnique_characteristicOn hH u₁ r₁, i.e. the unique curve χ on [0,u₁] whose constant extension curveExtension u₁ χ is a characteristic through (u₁, r₁) (IsCharacteristic hH u₁ r₁). Because the witness is unique, the value does not depend on Lean's choice function ( choose-after-well-definedness, ). This is the characteristic χ(u;r₁) through r = r₁ at u = u₁ of pp. 349-350 on [0,u₁]; reconstructed as a function: [P] presupposes that the ODE and the terminal condition determine it",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.characteristicOn",
+      "file": "Christodoulou/Frozen/Bondi/CharacteristicOn.lean"
+    },
+    {
+      "id": "n0008",
+      "kind": "definition",
+      "title": "Constant extension of a curve on [0, u₁] to all real times by Set.projIcc (curveExtension, formal device )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "u₀ ≥ 0; u₁ in [0,u₀] (u₁ : Icc 0 u₀); χ a real function on the time interval [0,u₁] (the subtype Icc 0 u₁); t real",
+      "source_quantifiers": "for each u₀ in [0,∞), for each u₁ in [0,u₀], for each real function χ on [0,u₁], for each real t",
+      "source_conclusion": "curveExtension u₁ χ (t) := χ(projIcc 0 u₁ t): equal to χ(0) for t ≤ 0, to χ(t) for t in [0,u₁] and to χ(u₁) for t ≥ u₁. A formal device with no source content : it turns a curve on the time interval into a function of real time, with no ODE content outside [0,u₁] and corners at the endpoints",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.curveExtension",
+      "file": "Christodoulou/Frozen/Bondi/CurveExtension.lean"
+    },
+    {
+      "id": "n0009",
+      "kind": "definition",
+      "title": "Closed ball of radius x in the space X of (7.1) on the strip [0,u₀]×[0,∞) (MemXBall)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (field carrier , reused), with slices H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "MemXBall u₀ x H holds iff (1) for every u in [0,∞) with u ≤ u₀ the slice lift s ↦ H(u, s⁺) is C¹ (ContDiffOn of order 1) on [0,∞), with the derivative at s = 0 one-sided within [0,∞) ; (2) the map (u,r) ↦ ∂_r H(u,r), the derivative within [0,∞) at r of the lift s ↦ H(u⁺, s⁺), is continuous on the closed strip [0,u₀] × [0,∞); (3) for every u ≤ u₀ and every r ≥ 0, (1+r)³ abs(H(u,r)) + (1+r)⁴ abs(∂_r H(u,r)) ≤ x. Fields (1)-(2) are \"continuous and posess a continuous partial derivative with respect to r\" of (7.1) (continuity of H itself is the carrier's); field (3) is ‖H‖_X ≤ x for the printed sum norm (7.1) (U-NORMS), i.e. membership in \"the closed ball of radius x₁ in the space X\" of Lemma 1 with x₁ = x . No evolution equation and no ∂_u H are assumed",
+      "constant_scope": "the radius x is an explicit parameter of the predicate, not existential ; the double sup over u then r of (7.1) is replaced by the equivalent pointwise bound for all u ≤ u₀ and all r ≥ 0",
+      "declaration": "Christodoulou.Bondi.MemXBall",
+      "file": "Christodoulou/Frozen/Bondi/MemXBall.lean"
+    },
+    {
+      "id": "n0010",
+      "kind": "external",
+      "title": "Specification of the choice function: Classical.choose h satisfies the predicate of h",
+      "statement_source": "external:lean-core#Classical.choose_spec",
+      "proof_source": "external:lean-core#Classical.choose_spec",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "α : Sort u (any sort); p a predicate on α; h a proof of ∃ a, p a",
+      "source_quantifiers": "for all α, p, h",
+      "source_conclusion": "p (Classical.choose h)",
+      "constant_scope": "none"
+    }
+  ],
+  "coverage": [
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0001"
+      ],
+      "reason": "dr/du = −½ḡ(u,r) along the incoming light rays: the imported predicate IsCharacteristic ((5.1) with the clamped coefficient on [0,u₁] through a terminal point, -) is the property of the curve chosen by characteristicOn, the conclusion of isCharacteristic_characteristic and the premise of IsCharacteristic.eqOn_characteristic. The coefficient (charField, gBarX) and the regularity steps mapped here in https://doi.org/10.1007/BF01205930 are not consumed by .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(5.2) along the backward curve is the root eq_sub_integral (https://doi.org/10.1007/BF01205930, item P.5.2); the canonical curve inherits it through isCharacteristic_characteristic, but no root states it; the forward χ(u;r₀) is deferred .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "ḡ ≤ g ≤ 1 enters the speed bounds and the integral route of mem_Icc (https://doi.org/10.1007/BF01205930); no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(5.3) is the t = 0 bound of the root mem_Icc (https://doi.org/10.1007/BF01205930, item P.5.3); the canonical curve inherits it through isCharacteristic_characteristic (proposal §4 consumer check), but no root states it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Differentiating (5.2) with respect to r₀ is flow differentiability in the initial point, the later obligation (restated in terminal form, formalization reconstruction §7); no uses it. Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The convergence factor ζ is the later obligation ; no uses it. Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The evolution law Dζ = −(1/2r)(g − ḡ)ζ is part of ; no uses it. Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The initial value ζ(0,r) = 1 and the exponential formula (5.6) are part of . Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "ζ ≤ 1, ζ > 0 for r₁ > 0 and the lower bound (5.7) are part of . Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Ordering of characteristics in the initial radius (r₁ ≥ r₁′ for r₀ > r₀′) and the mean-value form (5.8) are deferred: order and non-crossing and the inequality part of (5.8) are , the mean of ζ is . Strict decrease in time (the root strictAntiOn, https://doi.org/10.1007/BF01205930) is a different statement. Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Concluding remark that the characteristics converge toward the future with convergence factor ζ; part of and . Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The announcement that Theorem 1 is proved through three lemmas; Lemmas 1-3 are later stages. The rest of begins the definition of X (item P.7.1). Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0009"
+      ],
+      "reason": "The space X with norm (7.1) is the source of the sealed MemXBall , imported as a frozen non-root node; it enters only as the argument hH of every statement.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"X is a Banach space normed by ‖ ‖_X\": MemXBall is a predicate, not the normed space; completeness enters with the convergence of the iterates (later stage; ). Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"Here g_n is the g-function corresponding to h_n\": ḡ_n of an X-ball field is gBarX, which enters only inside the body of IsCharacteristic through charField; no node unfolds that body, so the coefficient anchors are not imported (mapped to P.3.12.gBarX in https://doi.org/10.1007/BF01205930). The iteration and (7.2) are later stages.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The 0th iterate h₀(u,r) = h(0,r) belongs to the iteration (later stage); data at u = 0 is not part of any . Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "‖h₀‖_X = d and the data norm d (7.4) belong to the iteration and Lemma 1 (later stage). Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0009"
+      ],
+      "reason": "\"the closed ball of radius x₁ in the space X\" is the sealed MemXBall u₀ x₁ , the binder hH of every statement.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Lemma 1 itself is a later stage; only its ball notion is item P.348.lemma1.ball. Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The equibound (7.60) on ∂h_{n+1}/∂u follows from (7.2) and belongs to Lemmas 1-3 (later stage); the weighted bound derivGBarX_le behind its constant is a not consumed here. Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"h = h̃ ∈ X\": membership of the limit of the iterates in X is the later obligation . Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Uniform convergence of h̄_{n_i}, g_{n_i}, ḡ_{n_i} and their r-derivatives belongs to the proof of Theorem 1 (later stage); no uses it (the joint continuity of ḡ it presupposes is continuous_gBarX, mapped under item P.5.2 in https://doi.org/10.1007/BF01205930 and not imported here). Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0007",
+        "n0006",
+        "n0005",
+        "n0003",
+        "n0001",
+        "n0004",
+        "n0002"
+      ],
+      "reason": "\"The characteristics χ(u;r₁) through r = r₁ at u = u₁\" with dχ/du = −½ḡ and χ(u₁;r₁) = r₁ name one curve per terminal point: characteristicOn chooses it on [0,u₁] from the sealed ∃! , characteristic extends it to ℝ , isCharacteristic_characteristic says it satisfies the ODE and the terminal condition, and IsCharacteristic.eqOn_characteristic says every such curve is it on [0,u₁] (the definite article). The predicate, the ∃! and the uniqueness theorem are imported anchors; existence and the proofs are in https://doi.org/10.1007/BF01205930 The opening clause on (uniform convergence of χ_{n_i}) and the ODEs of the iterates belong to the proof of Theorem 1 (later stage, ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The Lipschitz bound of ḡ is the uniqueness step (https://doi.org/10.1007/BF01205930, item P.349.lipschitz-equibounded); uses the sealed IsCharacteristic.eqOn only through its statement. y_{n_i}, ε_{n_i} belong to the proof of Theorem 1 .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The Gronwall inequality (printed with reversed limits, anomaly , transcriber's note ) and its solution are the corrected (7.76), obligation ; uniqueness here uses Mathlib's ODE uniqueness theorem instead. Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006",
+        "n0008",
+        "n0004"
+      ],
+      "reason": "The solution formula evaluates χ_{n_i}(0;r₁) and integrates along χ_{n_i} as a function of u on [0,u₁]: the characteristic through (u₁, r₁) as a function of real time is characteristic hH u₁ r₁, the constant extension (curveExtension, ) of characteristicOn, and its value at 0 is the initial radius . The formula itself (f_{n_i} defined on p. 354, anomaly ) belongs to the transport problem (7.2) (later stage). The imported ∃! keeps its mapping.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 354)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "ḡ_n(u,r) ≥ g_n(u,0) ≥ exp(−(π/6)x²/(1+u/2)⁶) by (9.7): the uniform lower bound on ḡ is obligation (Sect. 9's u-weighted norm; anomaly , transcriber's note ); not used in ( only ḡ > 0). Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 354)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The equality part r(u) = r₁ + ½∫_u^{u₁} ḡ is the root eq_add_integral (https://doi.org/10.1007/BF01205930); the canonical curve inherits it through isCharacteristic_characteristic, but no root states it. Overlaps item P.354.characteristic-lower-bound on .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 354)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The inequality r(u) ≥ r₁ + ½k(u₁ − u) with k := e^{−(π/6)x²}: needs the lower bound and is deferred (; formalization reconstruction §1, §7). Overlaps item P.354.characteristic-integral on . Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 354)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"We shall now estimate the integral of f_n along the characteristics χ_n\": Sect. 9 estimates (later stage). The definition k := e^{−(π/6)x²} on belongs to item P.354.characteristic-lower-bound. Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006",
+        "n0007",
+        "n0005",
+        "n0004",
+        "n0008"
+      ],
+      "reason": "\"We now integrate the linear equation (7.2) along the characteristics χ_n\" and (7.20): the integration needs one curve through every (u₁, r₁) as a function of u on [0,u₁], namely characteristicOn and its extension characteristic, which is a characteristic by isCharacteristic_characteristic. The formula (7.20) itself (label printed on p. 355, anomaly ) belongs to the transport problem (7.2) (later stage). The imported ∃! and curveExtension keep their mapping (well-definedness of the curve as a function of time, ; curveExtension's STATEMENT_SOURCE is this span).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006"
+      ],
+      "reason": "\"where r₀ := r(0)\": the initial radius is characteristic hH u₁ r₁ 0, the value at 0 of the canonical curve . The bounds and (5.2) in terms of r₀ are roots (https://doi.org/10.1007/BF01205930, item P.355.r0).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: Sect. 9 estimates (later stage). Overlaps item P.355.r0 on . Disposition unchanged from https://doi.org/10.1007/BF01205930; no node uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:lean-core#Classical.choose_spec",
+      "disposition": "NODE",
+      "nodes": [
+        "n0010"
+      ],
+      "reason": "Lean core logic lemma named by the approved route of isCharacteristic_characteristic (formalization reconstruction §8 item 2 (the choice itself: §3 item 5, §4); formalization reconstruction ); not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    }
+  ]
+}

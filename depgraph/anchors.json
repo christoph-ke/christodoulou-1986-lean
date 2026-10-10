@@ -1,0 +1,2185 @@
+{
+  "schema_version": 1,
+  "author": "Christoph Kehle",
+  "source_revision": "89f7e13854ff259c459de7b705fb7ce11ed4e8f2",
+  "anchors": [
+    {
+      "declaration": "Christodoulou.Radial.mean",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Radial/Mean.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.7), p. 342); Paper (centre value, p. 344)"
+      },
+      "sha256": "881d8da554408b7da719abb4fe16c98fe315b090d261ab654d1944ea1911fb72"
+    },
+    {
+      "declaration": "Christodoulou.Radial.mean_zero",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Radial/MeanZero.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 344)"
+      },
+      "sha256": "b4d72092a1c7182bba1283b3b6eb40cfa789f9e370613bc4546fe7622f56c8f3"
+    },
+    {
+      "declaration": "Christodoulou.Radial.mean_eq_integral",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Radial/MeanEqIntegral.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.7), p. 342)"
+      },
+      "sha256": "7e3791b462caea29ce85657d65e5392f85d5656c2c1869f3030747ef439138fb"
+    },
+    {
+      "declaration": "Christodoulou.Radial.continuous_mean",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Radial/ContinuousMean.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 344; continuity reconstructed)"
+      },
+      "sha256": "028c29ddbc28ab095be4d7f4f878cea6204cad4d8a4a9355db869e02c9c3db99"
+    },
+    {
+      "declaration": "Christodoulou.Radial.hasDerivWithinAt_mul_mean",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Radial/HasDerivWithinAtMulMean.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.8), p. 343)"
+      },
+      "sha256": "9f15efac30faf9d18199146735c853181a667150173ce454a2c12a472c4a83b0"
+    },
+    {
+      "declaration": "Christodoulou.Radial.hasDerivAt_mean",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Radial/HasDerivAtMean.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.8), p. 343)"
+      },
+      "sha256": "04ce014f17d63a0fe429867dcb754a30234540a2fd219ee3fa2fad50e1614ab0"
+    },
+    {
+      "declaration": "Christodoulou.Radial.eq_mean_of_hasDerivWithinAt_mul",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Radial/EqMeanOfHasDerivWithinAtMul.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper,32-36 ((3.6), (3.9), p. 343)"
+      },
+      "sha256": "832f65046dfa6956a5e2b3368998d5bbec6a2b6c7b2b2eb3d29b7e109d806cb6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsSlice",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/IsSlice.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 1 data class, p. 348; first two conditions, )"
+      },
+      "sha256": "810753971d45ef2077a0d1ad50bff5930e60e7d173c0a92aec7ef0780616a614"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsDecaySlice",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/IsDecaySlice.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (data class, p. 348; )"
+      },
+      "sha256": "76c11f38c16acf0ac85fd0956eaa5efc4e01c798229b3203dc1da650d4bb6e04"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.integrableOn_tail",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IntegrableOnTail.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.11), p. 343; well-definedness, reconstructed)"
+      },
+      "sha256": "25967e69f3762d528a178031e6e163d894b6cf29def5e742c83b8c2101f81c6d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.g",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/G.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.10)-(3.11), p. 343; defined using integrableOn_tail, )"
+      },
+      "sha256": "7ef0ece9fb2beedd68e46104b58ecc7ab09d9e94439efe44b9ae2753993ec01e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_g",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousG.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.11)-(3.12), p. 343; continuity reconstructed)"
+      },
+      "sha256": "354ca4fe392fb3a3117d0032890a6c1dda077f0a7637e2d6a58a592253a3f0ac"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.g_pos",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/GPos.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.11), p. 343)"
+      },
+      "sha256": "fa42b0af8928743519f7b82f7c08f98c71e01daf65f3a76e082ed6f163cf7f9c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.g_le_one",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/GLeOne.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 346)"
+      },
+      "sha256": "18fc37867b686d3afdb2fb60e32e527b7d4c21ac28f666cafa8ef249812803b5"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.monotone_g",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MonotoneG.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 344)"
+      },
+      "sha256": "e245f1e7ed1ec1f5ed2b9f5e04e51327cd4e394f1a71b5f00be3ddb5ef92af9e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.tendsto_g_atTop",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/TendstoGAtTop.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.2), p. 342) and Paper"
+      },
+      "sha256": "e542cc798a02e4bff306eadd2bc3d94dff470522a8d9dcbc1d5862b2d559ef8c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivAt_g",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtG.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.11), p. 343; derivative reconstructed)"
+      },
+      "sha256": "0b4dcc0b9ba18fab5e2c7a9f1ce8c945936e3cc3cc530143628435b4cdc54393"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gMap",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/GMap.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.12), p. 343; representation of g as a continuous map)"
+      },
+      "sha256": "662d6361a4eb49f753370a45760e82da98464ad1e7a3bab05a19dde58a47d613"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gBar",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/GBar.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.12), p. 343)"
+      },
+      "sha256": "695a99b1f39ea8957e42422158054c8ef33cd9665eb4b1f916f1bf41b17fe87f"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.mass",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/Mass.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.3), p. 344)"
+      },
+      "sha256": "d03c36a10a1e81166ed206cffe10e2e31b48ce3c21d9f94db4d93cfbd861788b"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gBar_le_g",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/GBarLeG.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper and Paper (pp. 344, 346)"
+      },
+      "sha256": "5aeab513ae3ced42e398b11c934099a7ba8dcd80451b23d95a5094126541460d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivAt_deriv_gBar",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtDerivGBar.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 356; )"
+      },
+      "sha256": "48954697d35bd483132e4ee541187869c3e513b09a8d59bb427a964738dc219b"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.mass_nonneg",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MassNonneg.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 344)"
+      },
+      "sha256": "60ead897cbf4881445149e53ff82d8e85da17ae39e2d77ddd6e411409a38c1ba"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.mass_zero",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MassZero.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 344)"
+      },
+      "sha256": "c9f12a4287b5086941f8d33e095de67111be8ea58c1a912762cebe285e67189f"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.mass_lt_half",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MassLtHalf.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 344)"
+      },
+      "sha256": "a7a18598dec9e7df5661e55bf3516286e8ad64d1b46386c6fe5819f73e7d1843"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivAt_mass",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtMass.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.4), p. 344)"
+      },
+      "sha256": "dfff81223b0fa9efb901974236cd584a39cd9f60da35f4976c0e26ab0ec0ee93"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.monotone_mass",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MonotoneMass.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 344)"
+      },
+      "sha256": "e6c81c7b7cecafff7363925ad17064c543c5cd49c6242d862f6ef61770335919"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.mass_eq_integral",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MassEqIntegral.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.5), p. 344)"
+      },
+      "sha256": "2e2e5782e293086ce368dc814a06c639f9ee9fa19952882ad14768fba555210e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.intervalIntegrable_xi",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IntervalIntegrableXi.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.2), p. 344; well-definedness, reconstructed)"
+      },
+      "sha256": "e86868597b3a0de6f20038e7a955d02bed0ecf2c2f86e5eaf33579cc9ff35799"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsClassicalSolution",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolution.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (D and (3.13), p. 343); Paper (p. 348, Theorem 1 and Sect. 7 para. 1); Paper (p. 351, Theorems 2-3); restricted uniformly decaying class"
+      },
+      "sha256": "80e4a5bb2a250982d20f93a28da930f067b96031eef29029f2b98bea440b2d0e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.xi",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/Xi.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.2), p. 344; defined using intervalIntegrable_xi, )"
+      },
+      "sha256": "869f6f5a994900c31416a295343af62cc3f354e1c9e26845421535bf8a78ee0d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivAt_xi",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtXi.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.2), p. 344; FTC form for r > 0, reconstructed)"
+      },
+      "sha256": "2c90ab257ee20774ab6c9306cd1ab3e9815f1c081bd89e15ee0f05028534b44a"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsClassicalSolution.isSlice",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolutionIsSlice.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.13), p. 343); Paper (Theorem 1, p. 348); reconstructed"
+      },
+      "sha256": "e477764a08e91015ef38c5f96798b0ba0590ac11cf240bc71ce82ac5ef8f839d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivAt_mean_curry",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtMeanCurry.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (derivation of D(r hbar), p. 343; (4.1)-(4.2), p. 344); restricted uniformly decaying class (); proof"
+      },
+      "sha256": "9f72a956b4d2252cb775d5861cc7c752ab5183cd9a331ac9580f9743a261f208"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.evolution_mean",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/EvolutionMean.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.1)-(4.2), p. 344, printed form D hbar = xi/(2r)); restricted uniformly decaying class ()"
+      },
+      "sha256": "1fdc597957837329f1b084396e7068b093dc4242296122692cbbd280ebbeacfb"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.MemXBall",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/MemXBall.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.1), p. 348); Paper (Lemma 1, p. 348)"
+      },
+      "sha256": "221c70d599bc88e38a65ecaa1a2b6eec8a130602da5d2ef90b1bdd756b86a3cd"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.MemXBall.isSlice",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MemXBallIsSlice.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.1), p. 348); Paper (Theorem 1 data class, p. 348); reconstructed"
+      },
+      "sha256": "b43a8d3ca3012f5665dd7d83064d8679f8ed031bbc598a2e57ee4e18db053d2d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gX",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/GX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.10)-(3.12), p. 343); time-clamped slice of an X-ball field"
+      },
+      "sha256": "8d99c94f35586d8dd1ee3260c9d88120ec2582c1f29b1b8e2d233814cf0242f0"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gBarX",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/GBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.10)-(3.12), p. 343); Paper ((5.1), p. 345)"
+      },
+      "sha256": "67128ad55d4911234d0bddb1d05b4d3d8bc4068a93f5f707cb1253c629864a09"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.derivGBarX",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/DerivGBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.8), p. 343, applied to g); Paper (p. 346)"
+      },
+      "sha256": "4003803ea5522a7b6d897706da240fe45745a2556427c616078f1abc804717c6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.charField",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/CharField.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1), p. 345)"
+      },
+      "sha256": "63d67bdd7ddd4523c255899a49fd72ba6378c6ef6cd61e7d1e84ac75dd370385"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gX_of_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/GXOfLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "formal strip bridge for gX (); Paper ((3.10)-(3.12), p. 343)"
+      },
+      "sha256": "2898d737bcd9121e665fb2cd37fa6ddf3f02ee250244f9df2a164cf2b03b2e73"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gBarX_of_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/GBarXOfLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "formal strip bridge for gBarX (); Paper ((3.10)-(3.12), p. 343)"
+      },
+      "sha256": "29461ae4da22954c86f601382169e5856db66d9c89205e2b9a5a4d750280235d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.charField_of_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/CharFieldOfLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1), p. 345); strip bridge"
+      },
+      "sha256": "52063a390c3c554bc490e33aba8f7a470acd39276e4a508b2dbe3cc6e236b0e7"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_gBarX",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousGBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1)-(5.8), pp. 345-346); Paper (pp. 349-350); reconstructed"
+      },
+      "sha256": "9e364deca647bf55d2db18adcba2b86fee4392677224635bc5fba483fec4d7e6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gBarX_pos",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/GBarXPos.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 346); reconstructed"
+      },
+      "sha256": "f726974210aa7b74c28d39c01cce99e0536d1dfcba9014ba4eb99cd75d921f61"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.gBarX_le_one",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/GBarXLeOne.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 346, before (5.3))"
+      },
+      "sha256": "4e76cb7dbe7439abba74daca770d194c0a6df5d7ec823f8dbe2a8a54926819d1"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_gBarX",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtGBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.8), p. 343); Paper (p. 346); centre reconstructed"
+      },
+      "sha256": "d448cc9fd1b0233c56ea19c1227b5b90a7e54c9ab0c31cbdb816aefceaff9833"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_derivGBarX",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousDerivGBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 346); Paper (pp. 349-350); reconstructed"
+      },
+      "sha256": "9e798b10b7286d67b139416a92209c4c387c0fcf11742952bbbd6e9cfa25fab4"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.derivGBarX_nonneg",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/DerivGBarXNonneg.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 344, gBar <= g); Paper (p. 346)"
+      },
+      "sha256": "f76a3f2b74bd7d4fc2683fc79bbaea2ac0f1d7882e2b3bcda48dfd09ed33177e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.derivGBarX_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/DerivGBarXLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.60), p. 349); Paper (p. 350); reconstructed"
+      },
+      "sha256": "ea90e595fcc1f9a0da8013a0515e5ec53259a7c59d43a2c30301667177c316ac"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.lipschitzWith_gBarX",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LipschitzWithGBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350, equiboundedness); reconstructed"
+      },
+      "sha256": "fa77bd1fb0a27720d19c93973bae4863a69027bb2434d1917a4c9a706a67c221"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.isPicardLindelof_charField",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsPicardLindelofCharField.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1)-(5.2), pp. 345-346); Paper (p. 350); reconstructed"
+      },
+      "sha256": "7c814bbe09f48093db8a7a2c86e28893da76e4b22d1a6d0a124559fc4905a67b"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1), p. 345); Paper (pp. 349-350, terminal data); Paper (p. 354)"
+      },
+      "sha256": "c9c4ccb9a2d72b418e13ab6112a263bd52c46934a2861cc06c36d4d4dd4c5668"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.curveExtension",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/CurveExtension.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "formal device for the canonical characteristic (); no source content"
+      },
+      "sha256": "55eed0e01268c1aba2858ea03d4f12b4676af8c1f31fafa3f7186f8c18d3f40c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.exists_isCharacteristic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ExistsIsCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1), p. 345); Paper (p. 350); reconstructed"
+      },
+      "sha256": "603a6c9f8c5e46d9b7b8ad3a376a0dafb73e639cee937d83692032b657fd1ae7"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.eqOn",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicEqOn.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350, terminal condition); reconstructed"
+      },
+      "sha256": "722cde4c9f852ebab85b81b4f288aad57dd6710852ad9f9adbc9861b86230de9"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.mem_Icc",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicMemIcc.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.2)-(5.3), p. 346); Paper (p. 354); reconstructed"
+      },
+      "sha256": "8d5b11a200e73656061fa02e10b7b2b0fd7718eb6e3d6ebb1b50be2cab012628"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.eq_add_integral",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicEqAddIntegral.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 354)"
+      },
+      "sha256": "b12fc74ff1c1b90df241a7968d453b52a7f92631feefce7a33141fe8832866da"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.eq_sub_integral",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicEqSubIntegral.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.2), p. 346)"
+      },
+      "sha256": "b8e4edfa751f3c12cbfae728c7c0fb544bb8fed2f531da7e967bfc239ff346c3"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.strictAntiOn",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicStrictAntiOn.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1), p. 345); reconstructed"
+      },
+      "sha256": "a922bfe6bba4384d149c8d326148fd669d809a3b638efbf2e78345940c0fd1b8"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.existsUnique_characteristicOn",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ExistsUniqueCharacteristicOn.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350); Paper ((7.20), p. 355); reconstructed"
+      },
+      "sha256": "6e5948110203eb094af275a9bd0d11e706d75711450c7df325d499697bb461ea"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.characteristicOn",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/CharacteristicOn.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (pp. 349-350, characteristics through (u1, r1)); reconstructed"
+      },
+      "sha256": "dfbaec26abfd8f9abfbe8f87d3fcc5bab037cdd661ba9f4d4de4a570e9cc5bb4"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.characteristic",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/Characteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (pp. 349-350, characteristics through (u1, r1)); reconstructed"
+      },
+      "sha256": "58a91c440154d7c029ef089176bcb64276e4e3e4d15bf3872a20751719edfad7"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.isCharacteristic_characteristic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (pp. 349-350, characteristics through (u1, r1)); reconstructed"
+      },
+      "sha256": "6e0099d6f518fac56dac69ed1966981463fcef2e9df733f4bb9e394212654de8"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.eqOn_characteristic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicEqOnCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (pp. 349-350, characteristics through (u1, r1)); reconstructed"
+      },
+      "sha256": "af3b52f1cbd3b31d00ce78ec7a54492fe4ae320698fe783494f299886524762d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hBarX",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/HBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.7), p. 342); Paper ((7.2), p. 348)"
+      },
+      "sha256": "d8c28036d7ba531d2eab904f802eb9845ad80fc353a753ad623771e6e7493670"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearCoeff",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/LinearCoeff.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.2), p. 348); Paper (p. 354)"
+      },
+      "sha256": "11cfd59318a699073d29f95206b002440e9dd4d2c1517baadfeb000e5cb2c903"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearSource",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/LinearSource.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (f_n, p. 354); Paper (f, p. 351)"
+      },
+      "sha256": "c5d4a34503d0fc479e166aa04191d0169c25b7eccfdc51691cd7b68166876486"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/LinearStep.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.2), p. 348); Paper (p. 350 formula); Paper ((7.20), p. 355)"
+      },
+      "sha256": "c1ae82c6dbcff0761d653e37521d72dc1eb3771a1da587e0e29a791edacd517d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.restrict",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicRestrict.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (pp. 349-350); Paper (p. 355); reconstructed, restriction part"
+      },
+      "sha256": "33a1d29b97e13ca1c08e1b051502bd8e895b63adde72f1e74696a4347572e1cb"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_zero",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepZero.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (data at u = 0, p. 348)"
+      },
+      "sha256": "8914571cff55fde4245b9c6714bc194c5c2766fd3025c8450cfcb118ea607a20"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.linearStep_eq",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicLinearStepEq.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350 formula); Paper ((7.20), p. 355)"
+      },
+      "sha256": "d535ef649c58c50cf31bc87d74053a0207d2e675bd0333649e57d09403226989"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.hasDerivWithinAt_linearStep",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicHasDerivWithinAtLinearStep.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.2), p. 348); reconstructed along characteristics"
+      },
+      "sha256": "c1f15943565fe97ce46ebd06fb9f32273bae1c55e3252bc421c67d10f21814cf"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.linearStep_eq_add_integral",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicLinearStepEqAddIntegral.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.2), p. 348); Paper (cf. p. 351)"
+      },
+      "sha256": "9187a28d24efefd147b3b4e391d2876936af439a57930f9e428051e3f9c92caf"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.eq_linearStep_of_hasDerivWithinAt",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/EqLinearStepOfHasDerivWithinAt.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.2), p. 348); Paper (p. 348); reconstructed"
+      },
+      "sha256": "d5cd9101f62f87154ae5d554e1d4a72bc9821a0f7c5aaa2c03409652b1ce5d30"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.characteristic_sub_mem_Icc",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/CharacteristicSubMemIcc.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.8), p. 346, terminal form); reconstructed Gronwall bound"
+      },
+      "sha256": "2b447764c659a917fa72ac6691256dc0d47e30f14fad8b9dbaa57584b3d842f3"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.characteristic_sub_mem_Icc_of_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/CharacteristicSubMemIccOfLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.3), p. 346); Paper (pp. 349-350); reconstructed"
+      },
+      "sha256": "ca59fa08994fee7648e3382a9603848a8a683e7cc38d0d9179c93a0c1a668b27"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_characteristic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (pp. 349-350); reconstructed"
+      },
+      "sha256": "01811494630b7ea3b6b79d5d0e80d4e71ea0f7e7b0abd45181e203658713a425"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_characteristic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.4)-(5.6), p. 346, terminal form); terminal part"
+      },
+      "sha256": "df73879916bc13777d44704c69a292397def686417757ac107f6c11d7528482d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_exp_integral_linearCoeff",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousExpIntegralLinearCoeff.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.6), p. 346); reconstructed companion"
+      },
+      "sha256": "5af2561d2fcf8fa8caa0a4ad70b744c56f3352204d1bc3d8bd6c5428be07dc9f"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.derivHBarX",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/DerivHBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.8), p. 343); centre value reconstructed ()"
+      },
+      "sha256": "5ddd45b198a8066661823b44192720e66401a538f6da95a07490e5af690ea025"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.deriv2GBarX",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/Deriv2GBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 356, first display); Paper; centre value reconstructed ()"
+      },
+      "sha256": "0dd06438a160a3f9e742296c2e1d3bc4b21b8913a006d3f7dede5cc128bb1b31"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_hBarX",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtHBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.8), p. 343); centre reconstructed"
+      },
+      "sha256": "68ea0dede976d48960692ce75ae41ad920a2cb1d5f0a0eb72e0b731fb217c64d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_derivHBarX",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousDerivHBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((3.8), p. 343); reconstructed"
+      },
+      "sha256": "5dd543969794bcdbe31b90733a51e7a59a0bdf5a7c705aad1af22feff317ee4e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_derivGBarX",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtDerivGBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 356, first display); centre reconstructed"
+      },
+      "sha256": "d2e6b3786e1bbdcd150cf74df76df87f370c5292b1b80fdb16994f013e30a4df"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_deriv2GBarX",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousDeriv2GBarX.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 356); reconstructed"
+      },
+      "sha256": "4b0a6b9acb06bb4c723464ab87ee0240d422d7b134011f70153290acf12f06bf"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_linearSource",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtLinearSource.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 355, last display)"
+      },
+      "sha256": "a486b8557ec3ea6a9dceecd105e6f689be65d1b0f4bf0a0bedac0f8e3b3e7115"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.abs_hBarX_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/AbsHBarXLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.4), p. 352, unweighted; reconstructed)"
+      },
+      "sha256": "7753ab8773979a7085fd133504b237a3c2a910111c10137f74d7403c90c2dafe"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.abs_derivHBarX_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/AbsDerivHBarXLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.6), p. 353, unweighted; reconstructed)"
+      },
+      "sha256": "532c8eda886e4b1110da29dd692b1284096cabcf547cd3cb283f6ced22199b4b"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.abs_deriv2GBarX_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/AbsDeriv2GBarXLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 356, second display, unweighted; reconstructed)"
+      },
+      "sha256": "221bfad0592abc2286f03aece1ef07f006c4aa28b785d94f978fa679659e6086"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.abs_deriv_linearSource_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/AbsDerivLinearSourceLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.17), p. 356, unweighted; reconstructed)"
+      },
+      "sha256": "28e22593b02e8a8a41de59a66adf8716bd06c10414005c480a81de15d3ff4cf6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.derivLinearStep",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/DerivLinearStep.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350, differentiated); Paper ((9.16), p. 355); integrated form as on p. 357 (reconstructed)"
+      },
+      "sha256": "735cac7aba20d457d9a8dac63f7c38f27c001b23646d5ab7f5662e438e1f8dec"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_linearStep",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousLinearStep.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350); reconstructed"
+      },
+      "sha256": "f8bc6f93d9b48382fed5997df01dcbe22893b5f6a6f81415ba6c1c5cab3486ab"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_linearStep",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtLinearStep.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350, differentiated); reconstructed"
+      },
+      "sha256": "25c6ae4e6b7b6bdba79e00896fd5d8a7cafb4158ab70b9effd3afb3d860e9548"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.continuous_derivLinearStep",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousDerivLinearStep.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350); reconstructed"
+      },
+      "sha256": "4742cc1ff43fe84492b9288254db4908279c209f6077198ce3d45adbdc30024c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.hasDerivWithinAt_derivLinearStep",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicHasDerivWithinAtDerivLinearStep.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.16), p. 355)"
+      },
+      "sha256": "20ceb71229081e1ed7d9ae42a957d2f90f5f255db603a0759e7dc9d7c110e834"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.classical_upgrade_of_characteristics",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ClassicalUpgradeOfCharacteristics.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 351, integral to differential sense); reconstructed"
+      },
+      "sha256": "57de21f5ed6370bd1e139aa2b82420b0886eac3fe866ab83011252f22dac1203"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStepMap",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepMap.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350 formula; packaging)"
+      },
+      "sha256": "1ef9797c3d40b1ab56b874e5554ef40b6663f7155dfd16e1c39e1d13174ded8e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStepMap_apply",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepMapApply.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 350 formula; packaging)"
+      },
+      "sha256": "d4a02c75d8a899e71c8ade7066a91ae0ade71b07e2fe3e44ab73b552bf05f1e5"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_classical",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepClassical.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 348, classical solution); Paper (p. 351)"
+      },
+      "sha256": "dcd7b848ff6351234bb1747a33663ae924a3af65c07dfd8096a0ebcf47f5a2dd"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.stepValueBound",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/StepValueBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 1, p. 348); reconstructed (); analogue of (9.15)"
+      },
+      "sha256": "aa31d6565341e2a41a933db6cadf44fe85d672b75ab824b6b33e287b1e313390"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.stepDerivBound",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/StepDerivBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 1, p. 348); reconstructed (); analogue of (9.23)"
+      },
+      "sha256": "cc638b1b22282ccae59c2a6156cf5711703d07f1e096b05de203bd5a9c5536a2"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.stepEta",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/StepEta.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 1, p. 348); reconstructed ()"
+      },
+      "sha256": "8967aa5157f0c0e53b7867a85ab658c4a321ca20e0f66ab52d091b9eba555876"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.constantDataField",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/ConstantDataField.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.3), p. 348)"
+      },
+      "sha256": "697c9050f088d1363c24a72701a7fbc3c4351717ff4547bfb11c4fce84bee446"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.memXBall_constantDataField",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MemXBallConstantDataField.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.3)-(7.4), p. 348)"
+      },
+      "sha256": "12a4e668a1e975096d7871bd72e583c0bd515519cabe1e77e69a4d735c4cff8b"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_value_bound",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepValueBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 1, p. 348); reconstructed ()"
+      },
+      "sha256": "28f32acd27e09a6e52c1d5358a350ac13fc9b4b0a03ab72b178f489c7737eac5"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_deriv_bound",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepDerivBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 1, p. 348); reconstructed ()"
+      },
+      "sha256": "a8ca42112420d56ef9ff7c92811240bbc10b5f870734148b3b5ee40e76bfda21"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.stepEta_pos_and_bound",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/StepEtaPosAndBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 1, p. 348); reconstructed ()"
+      },
+      "sha256": "76d3a286eb041e1b460f419a29cb520c982d18f7c057c5a585815955264c4d70"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStepMap_memXBall",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepMapMemXBall.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 1, p. 348); reconstructed inductive step"
+      },
+      "sha256": "e123bd6a40685ef421b9ac9dcd2e5a984438aac140b05eaca38462309edacbf6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.initial_memXBall",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/InitialMemXBall.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.3), p. 348); Paper (Lemma 1, p. 348)"
+      },
+      "sha256": "43c12fa1077cce2c849852213f99a09dceb92896a15c116ee89631cdc6db1c7d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.xBallIterate",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/XBallIterate.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.2)-(7.3), p. 348)"
+      },
+      "sha256": "3f742b58bac0edf00c9e32917826ad1a24e37b4fd5dfcf5a45d800c1f46e617d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.xBallIterate_rec",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/XBallIterateRec.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.2)-(7.3), p. 348)"
+      },
+      "sha256": "9e28cc223c0a24b6f30b74dea6c58205d414f555a54255e3937cb1b6238e7e3d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.lemma1",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Lemma1.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 1, p. 348); proof unprinted (), reconstructed"
+      },
+      "sha256": "1e0b27d20ce6fe90a47feba2eb37fcb8b329c555641571d65fa4d8deceeeb88c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.stepDelta",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/StepDelta.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 2, p. 349); reconstructed; local analogue of (9.26), Paper"
+      },
+      "sha256": "02097ea1800c9426de99167801e1ae57bda4c2b62507184e8d7d1e3ad8677b2e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.coefficient_y_lipschitz",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/CoefficientYLipschitz.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.28)-(9.34), pp. 358-359); local form, corrected"
+      },
+      "sha256": "bfa4d22b0cededc8082f067a0c46414d4bf104921a588623fd3b6bfa59ca46a6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.stepDelta_pos_and_bound",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/StepDeltaPosAndBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 2, p. 349); reconstructed"
+      },
+      "sha256": "4a6c1337fa2d702cdedcd0401daca609a78892a5dab30c1f5293fb60d3c02266"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_difference_integral",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepDifferenceIntegral.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.27), p. 357) and Paper (p. 360); local form"
+      },
+      "sha256": "f441e01a2fecf58acec049b61c2a71a7ebb7a6ff4024fadd938e29ea61eb8a27"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_y_lipschitz",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepYLipschitz.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.37)-(9.38), pp. 359-360); local form"
+      },
+      "sha256": "697fff36a92e66b28ce638d481cd725adbea6a66aa2ac59b04ad2da4600d5efa"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.lemma2",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Lemma2.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 2, p. 349); proof unprinted (), reconstructed"
+      },
+      "sha256": "ac3ac516380f8c11017ef406ece8a4d27a09ccccec2fcf6c5d3b10432a4d3fa1"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_time_bound",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepTimeBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.60), p. 349)"
+      },
+      "sha256": "eab1c0529883f2a58124a272bd044596828fb64f2e26c9d1fcfda62c9ae964e3"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.xBallIterate_time_bound",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/XBallIterateTimeBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.60), p. 349)"
+      },
+      "sha256": "97cf8c6285b0c3da8ceb52eff6a5b525fa848686d8745b086d5aad53e1fabdad"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.iterate_deriv_uniformEquicontinuousOn",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IterateDerivUniformEquicontinuousOn.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 3 and (7.61), p. 349); sketch (), reconstructed"
+      },
+      "sha256": "34c5083ddcc8b47d12341766d34dbfe393c08aa68f33b038b12edd6c360d913d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.lemma3",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Lemma3.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 3, p. 349)"
+      },
+      "sha256": "37deb72242addd4d20b29cf8cb40db5ea7cdc7fafa134831dbc4bb55038d8a67"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.xBallIterate_limit",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/XBallIterateLimit.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (proof of Theorem 1, p. 349); Paper (p. 351); alternative argument ()"
+      },
+      "sha256": "c8c8be999f89f24284b2d96773866ca666870190de7e49320a21c02700e28623"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.isClassicalSolution_of_linearStepMap_eq",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolutionOfLinearStepMapEq.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 351, integral to differential sense)"
+      },
+      "sha256": "91d5ed7fa66b9d1a89938ddf7dfefd4540c1751e52ba3c8321a6bdb3c2289f3c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem1_of_lt",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem1OfLt.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (proof of Theorem 1, p. 349: u0 < min(eta, delta))"
+      },
+      "sha256": "f24c55868a9f4f1ea7526407d1eb7fcfad63e2e6dc7a3fa73cd76aca767b814e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem1",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem1.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 1, p. 348); formalized by an alternative argument ()"
+      },
+      "sha256": "8f3d4cf26f5a4c307f759bd166f54affce55a5c5cdcd4f434f6b0df9566c1c8f"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.exists_memXBall_of_isClassicalSolution",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ExistsMemXBallOfIsClassicalSolution.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 2, hypotheses, p. 351) and Paper ((7.1), p. 348); reconstructed; global weighted reading (equivalence with uniform tail decay not formalized)"
+      },
+      "sha256": "f80abc4bcda16041fa7a4703cbbd46c63f56e5e3b20825c773b53f2413ba8bc2"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_eq_of_isClassicalSolution",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepEqOfIsClassicalSolution.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 2, p. 351); Paper ((7.2)); reconstructed"
+      },
+      "sha256": "1fdd7d34a94b73d1b3d9e824e8fbdea7ffb767133fe0e0418eefddb1b6b1acbb"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.classical_difference_integral_le",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ClassicalDifferenceIntegralLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (proof sketch of Theorem 2, p. 351, anomaly ); Paper (local (9.27), (9.30)-(9.34)); reconstructed"
+      },
+      "sha256": "824b051a24191d95d5441d73c00285d71adb9dd6aef54bb69ae26f37cf052ff6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem2_of_memXBall",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem2OfMemXBall.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 2, p. 351); reconstructed"
+      },
+      "sha256": "f789cb45745865db0a3a1af61f51bbfcec454a30ea2741175e4b896031bf4858"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem2",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem2.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Sect. 8, Theorem 2, p. 351); hypotheses read under (equivalence with uniform tail decay not formalized)"
+      },
+      "sha256": "b22011f15d6b748d77fbdc7962339a8f38023395679e87a6b01adba7cd4e3262"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.radialDerivative",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/RadialDerivative.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.1), p. 352)"
+      },
+      "sha256": "1984d005ebcb32b52eefd3ca10f2fd4cd3862f6052e6ccff29676023e088fe64"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.primeWeight",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/PrimeWeight.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.1), p. 352)"
+      },
+      "sha256": "e259cba955eba1f1b4c3cc3d761f2adad6d40351659465b6f112c4885c320def"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.MemXPrimeBall",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/MemXPrimeBall.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.1), p. 352)"
+      },
+      "sha256": "a74f6e63c0bcb6cc6b42d477b37e2c7de4de26b08b2cf228c019379845cd5146"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.YPrimeDistLe",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/YPrimeDistLe.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.25), p. 357)"
+      },
+      "sha256": "a5b82de9c2c76e52d219712e2f5b0732423194ae269b5650604d1dfd862b5422"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.InitialBound",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/InitialBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.4), p. 348)"
+      },
+      "sha256": "f79c8d0d1d6ec5c3d594bd752ddca9e58d5514853ad4b5153f8813c9d14fb264"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.initialSize",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/InitialSize.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.4), p. 348)"
+      },
+      "sha256": "82e30ca58ca26b8614632f129cede3706603304ce4962973eaf35cbcc20d7c19"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.smallDataG",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/SmallDataG.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.3), p. 352)"
+      },
+      "sha256": "f90f202d07a460b9afa3a31016b838d72c2f5489f0ede9d8787794207a58ff58"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.contractionFactor",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/ContractionFactor.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.26), p. 357)"
+      },
+      "sha256": "c052a060a2540881bf4be95b0b91ef0d42d8a9c909d5303cf200f8509b976fdd"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.smallDataDelta",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/SmallDataDelta.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (δ, p. 360)"
+      },
+      "sha256": "3566f1632c672bb1bc452bde6e26fb3d5cf927371c95c3ec74c9d9c31a89774d"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.translatedDataField",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/TranslatedDataField.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.2), p. 352)"
+      },
+      "sha256": "819e29776ff61b5764314b5fc4675c2b7f6020e410fa86f29f5434b8432a0714"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.initialSize_characterization",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/InitialSizeCharacterization.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((7.4), p. 348)"
+      },
+      "sha256": "9e3d7f0963264cd04afd84dc5d59dbd0c60bfc5735df625f91deab839a9464c1"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.memXPrimeBall_iff",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MemXPrimeBallIff.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.1), p. 352)"
+      },
+      "sha256": "2e516c26ae2898b33ddbc5826e45186b2f06f25f6b0558f067a5d1203941ff6e"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.existsUnique_contraction_radius",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ExistsUniqueContractionRadius.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (x₁ root of s = 1, p. 357; )"
+      },
+      "sha256": "53ae53ea8a8e8f815b893a9de59b3a6a44f5038dc37d967f338068cabae74e01"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.contractionFactor_strictMonoOn",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ContractionFactorStrictMonoOn.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (s increasing, p. 357)"
+      },
+      "sha256": "9ff8c82af1860214c3267e760e4f9ee370ca85c0fdb214e176ce37d2a443f487"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.smallDataDelta_characterization",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/SmallDataDeltaCharacterization.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (δ, p. 360)"
+      },
+      "sha256": "45e15175e2e208d5ec45f08dfdf46999b5c74c337cc1d77aeb710451174eab84"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.smallDataDelta_pos_and_witness",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/SmallDataDeltaPosAndWitness.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (δ, p. 360)"
+      },
+      "sha256": "904ed9491b704ecea504899ee3f094c5d42398449ae35ec8123e65b8334063df"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.translatedDataField_apply",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/TranslatedDataFieldApply.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.2), p. 352)"
+      },
+      "sha256": "8812a396f42c8245c7877e0eb352410a0b4e56aff5c7515d584105fcf86e1176"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.translatedDataField_memXPrimeBall",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/TranslatedDataFieldMemXPrimeBall.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.2), p. 352)"
+      },
+      "sha256": "4e7df5e6bd3e58bebf76f85e2d119f792979cfef98af6ba766da4710052eb6a3"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_prime_bound",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepPrimeBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.10)-(9.24), pp. 354-357)"
+      },
+      "sha256": "80548aba6d39c98ff6b569cf2f5ebd5c5af37418e66bac4fc98484b491edeceb"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.lemma4",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Lemma4.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper and :106-135 (Lemma 4, pp. 352-357; )"
+      },
+      "sha256": "380b51921787067139c6c5d979cc90f59be3524df0b16d64ff588359ed476e44"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.linearStep_yPrime_lipschitz",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepYPrimeLipschitz.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((9.27)-(9.38), pp. 357-360)"
+      },
+      "sha256": "5011fc600482fe82659d2c33025d35da61291a7316ac94ad6b0bf4974e8c36aa"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.lemma5",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Lemma5.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Lemma 5, pp. 357-360)"
+      },
+      "sha256": "50772da6eae89fc2851cd7fcc4500f6b67a532b447a535d58677e63e7f1644ad"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.translated_iterate_deriv_uniformEquicontinuousOn",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/TranslatedIterateDerivUniformEquicontinuousOn.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 360, 'the argument of Lemma 3')"
+      },
+      "sha256": "4012c60dd5f307343e8af30c0781e5c169143f856bb6d4532aac1b47e2752300"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.primeIterate_limit",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/PrimeIterateLimit.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 360, 'the argument in the proof of Theorem 1'); alternative argument"
+      },
+      "sha256": "693fcb664050d041347390ee347cbdc327ef5d787a361a07fe5f216f0fd15146"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.global_exists_of_G",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/GlobalExistsOfG.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 360)"
+      },
+      "sha256": "a19c11f8ece57ee14333b2f938747ec3eb5a6f2b1b2a9c03776f1a82ec8548b0"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem3_unscaled",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem3Unscaled.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 3, p. 351) and :136-150 (p. 360); unscaled analytic core only ()"
+      },
+      "sha256": "731c918803eb66ae8c2e5186ded0cc049daf7b48e9e3e713cb4abd390b6c31b2"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.radialScale",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/RadialScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 360, h′(0, r) = h(0, ar))"
+      },
+      "sha256": "4646911d4c5fc0b91060a56ccd54f0c7332b8d41579ee81c63e18dcefea0934f"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.fieldScale",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/FieldScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.13), p. 345)"
+      },
+      "sha256": "f8178b502203ed57cb7eef990c51054e4d9f0e563d344a27e5a3c01544c015da"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.scaledInitialSize",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/ScaledInitialSize.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (d₀, p. 351) and :136-168 (p. 360)"
+      },
+      "sha256": "b6179f181dc8ff7f83ad9ce146f2907cd525f8f46ec749be1101fb146cd29d01"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.scaleInvariantSize",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/ScaleInvariantSize.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (d₀, p. 351)"
+      },
+      "sha256": "207b840d9498f87e12ff32ae13471341321e28fee7b86b25ce39b39f39597d95"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.isDecaySlice_radialScale",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsDecaySliceRadialScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 360)"
+      },
+      "sha256": "26f34da3075dec05f3951f3d80649a0f778a907ba4376a396ccf0fb2aa74be9b"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.initialSize_radialScale",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/InitialSizeRadialScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 360, d′)"
+      },
+      "sha256": "8a43781ea7176e6ae8b0541b98396630b26d2abd1ab83982cdc767973ac6fe3c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.scaleInvariantSize_le_initialSize",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ScaleInvariantSizeLeInitialSize.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (d₀, p. 351)"
+      },
+      "sha256": "1fa47078e869489d251a8b367c7d78d6f1db32c7bf80eca3a777d5ded4b131e0"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.exists_scaledInitialSize_lt",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ExistsScaledInitialSizeLt.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 360, 'there exists an a > 0')"
+      },
+      "sha256": "e6a9cf537189d15a90632d3657e037764215ba473e92797003a1df3360b62040"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.scaleInvariantSize_radialScale",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ScaleInvariantSizeRadialScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 352, 'invariant under the scaling group')"
+      },
+      "sha256": "ad02bd1adcb4e0621b71f90c6511c61715c5aab7f32fb1ae5c9d56265f91fe66"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.isClassicalSolution_fieldScale",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolutionFieldScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.13), p. 345)"
+      },
+      "sha256": "6c017d16edca3ce26d939f41bd738faca25d47edd42eca9c5ea9f76236d36666"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.radialDerivative_fieldScale",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/RadialDerivativeFieldScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.13), p. 345) and :136-168 (p. 360)"
+      },
+      "sha256": "a2ee6a573dca1e515ab3ebd85a4ee2e49314d93581324ff34c48f4997099fcb7"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem3_analytic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem3Analytic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 3, p. 351) and :136-168 (p. 360); analytic conclusion only ()"
+      },
+      "sha256": "1e3b8c12cc9f691748883fe74c36d2074c79fafdb4adbf2e8abc44860cecd634"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.bondiMass",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/BondiMass.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (pp. 344–345, lim m(u, r) := M(u))"
+      },
+      "sha256": "dff76280178db65d35df3f96d102287f569f3e1eb612ad8ca5fa2294b34d1752"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.bondiMass_spec",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/BondiMassSpec.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (pp. 344–345, the limit exists; Bondi mass)"
+      },
+      "sha256": "791e07a27a3d014fdf5baa10139774820f5cfa3739b3caf3905cebbf1c94b2bb"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.mass_fieldScale",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MassFieldScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.14), p. 345)"
+      },
+      "sha256": "5f1dc088d7dc414a71443a08eb555c1c79df832ba1d3428a6777648f35c46ac9"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.bondiMass_fieldScale",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/BondiMassFieldScale.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.15), p. 345)"
+      },
+      "sha256": "c7303751a4d2609c48602679494e5a32d8bf8337bb3811866c1336f77af70c15"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.bondiMass_le_of_deriv_bound",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/BondiMassLeOfDerivBound.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 360; direct decay estimate, reconstruction)"
+      },
+      "sha256": "68e23c44c1500f3ba0364e8a8a3999cb83c8e7d3e2c14e077f004d3be6df87fc"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.tendsto_bondiMass_zero_of_decay",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/TendstoBondiMassZeroOfDecay.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (M₁, p. 351) and :136-168 (p. 360)"
+      },
+      "sha256": "8e5741011da77170a030d98a4d971faf665ec02938d823a66100ff73a2d473be"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem3_mass_zero",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem3MassZero.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 3, M₁ = 0, p. 351) and :136-168 (p. 360)"
+      },
+      "sha256": "6f3459ec1e29d675245947fd597a1947693a272e27bfa7e079342913ad9edead"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.tendsto_mul_one_sub_g",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/TendstoMulOneSubG.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (p. 345, at each u, r(1 − g) → 0)"
+      },
+      "sha256": "5f157abbbbdf6ccdfe0f0fdca463a69b0c928971bf2fcd4a1c892725f19809b0"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.bondiMass_eq_integral_one_sub_g",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/BondiMassEqIntegralOneSubG.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.7), p. 345)"
+      },
+      "sha256": "aaaa282a15394b0ba5182ad2f4904c30120c5d380612131e70a58ee421532cc9"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivAt_mass_curry",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtMassCurry.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.6), p. 344, solved for ∂_u m)"
+      },
+      "sha256": "b7bb6c7be05658a070516d9a6451f758d455855264f644f2de919601afff0c2a"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.evolution_mass",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/EvolutionMass.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.6), p. 344, printed D-form)"
+      },
+      "sha256": "d49c94baeef02b67a3e18834e6310e291592ca39cc6f62c18d866f0a3f514bf9"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.antitoneOn_bondiMass",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/AntitoneOnBondiMass.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Bondi's theorem, p. 345)"
+      },
+      "sha256": "66e245cea5316eb801786f8e5cfbc390c8dbc3841965e5680f208513956c07f2"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem3_bondi",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem3Bondi.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 3, p. 351) and Paper (Bondi's theorem)"
+      },
+      "sha256": "fc70cf62d8a166ebbe76fb1a5ed51dbd3150e19bd6bba880542ff4e412fd5ea6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.hasDerivAt_mass_characteristic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtMassCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.6) along the incoming light rays); Paper (p. 345, (5.1)); Paper, p. 344 (Dr = −½ḡ)"
+      },
+      "sha256": "c01cc1e336c69b44063d963b0b575083f2787c95a36f7ba13b59a5cee3e3eefd"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.antitoneOn_mass_characteristic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/AntitoneOnMassCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (m nonincreasing along the incoming light rays); Paper (p. 345, (5.1))"
+      },
+      "sha256": "53291ffccef49a558811389cab51e33c7442504c833b67de7e9ae4ada1faff2a"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsIncomingRay",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/IsIncomingRay.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1), p. 345; χ(u; r₀), p. 346)"
+      },
+      "sha256": "e84df0ab0d292c145ebcb22030552f9b9229f5746a93ccbda1cd2eddbc3bca98"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.reflectedRay",
+      "kind": "definition",
+      "file": "Christodoulou/Frozen/Bondi/ReflectedRay.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paperp. 339 (p. 339, (1.2)); reflection: the author's"
+      },
+      "sha256": "2d9d939f451b78e02d4fe4ef075d3b067b0a7a395723b22e294f7a76ab8428e4"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.valueBound_weighted_iff_printed",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ValueBoundWeightedIffPrinted.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 2, p. 351: O(r⁻³), ∂_r = O(r⁻⁴) uniformly in u); Paper (as r → ∞, p. 348); README"
+      },
+      "sha256": "15821aaf7feecf0c493ee917fa536495c41ec9505e69664786fb7a8577a756c6"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.radialDerivative_weighted_iff_printed",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/RadialDerivativeWeightedIffPrinted.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 2, p. 351: O(r⁻³), ∂_r = O(r⁻⁴) uniformly in u); Paper (as r → ∞, p. 348); README"
+      },
+      "sha256": "2518983a6512ae0152e0a92135caad829107af472330813d227c76c3efc89546"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.printedBound_iff_explicit",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/PrintedBoundIffExplicit.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 2, p. 351: O(r⁻³), ∂_r = O(r⁻⁴) uniformly in u); Paper (as r → ∞, p. 348); README , ; the author's (a) and (b)"
+      },
+      "sha256": "71462f202d3730b167ff6adcbd134a2ff8df1cdfa1239fc033139fcebf8b210b"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.theorem2_printed",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/Theorem2Printed.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 2, p. 351)"
+      },
+      "sha256": "60139e75f1b2f91712f804dee087e9a59977bd463edad3dbc5c1e9a094b961a4"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.exists_memXBall_of_isClassicalSolution_printed",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ExistsMemXBallOfIsClassicalSolutionPrinted.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (Theorem 2, p. 351); Paper ((7.1), p. 348)"
+      },
+      "sha256": "84c5d56b53c5b1dac2da59103ebf9593b1b9616a4d99f202c1370539afb62eee"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.exists_isIncomingRay",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/ExistsIsIncomingRay.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (χ(u; r₀), p. 346); forward flow"
+      },
+      "sha256": "8bc48c48aa4266fbcd125c2cc55674107c93b540f90a9c7bcb293fb0120e2e56"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsIncomingRay.unique",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsIncomingRayUnique.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (χ(u; r₀), p. 346); forward flow"
+      },
+      "sha256": "a9028194d9bcafe7bc90641ac0099f0206744b142ea547ff768941158aec624c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsIncomingRay.isCharacteristic",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsIncomingRayIsCharacteristic.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((5.1)-(5.3), pp. 345-346)"
+      },
+      "sha256": "4f40a0b046c8575b339a8d5b4c1aab4935fbac52b3f4526621addbcbbebc2efc"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.IsIncomingRay.antitoneOn_mass",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/IsIncomingRayAntitoneOnMass.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper (m nonincreasing along the incoming light rays, p. 344); Paper"
+      },
+      "sha256": "097677bdb12e6a19e67e8b42dcfee274f5d2cd96a28e263f5e705daf7760166c"
+    },
+    {
+      "declaration": "Christodoulou.Bondi.monotoneOn_mass_reflectedRay_outgoing",
+      "kind": "theorem",
+      "file": "Christodoulou/Frozen/Bondi/MonotoneOnMassReflectedRayOutgoing.lean",
+      "state": "SEALED",
+      "source": {
+        "doi": "https://doi.org/10.1007/BF01205930",
+        "correspondence": "Paper ((4.4)-(4.5), p. 344); Paperp. 339"
+      },
+      "sha256": "91d3714550ba5c23127bff1b22896935c5d357018c5665e66ddf5f1f16ec91be"
+    }
+  ]
+}

@@ -1,0 +1,3536 @@
+{
+  "schema_version": 1,
+  "title": "mass loss",
+  "source": "https://doi.org/10.1007/BF01205930",
+  "semantics": "Edges point to prerequisites; dependencies are conjunctive; one alternative route suffices. Reviewed source topology, not a kernel proof trace.",
+  "conventions": "Carriers, hypotheses, quantifiers and constant scope are recorded per node and in the corresponding Lean declarations.",
+  "roots": [
+    "n0037",
+    "n0027",
+    "n0015",
+    "n0021",
+    "n0030",
+    "n0048"
+  ],
+  "standing_assumptions": [],
+  "nodes": [
+    {
+      "id": "n0001",
+      "kind": "definition",
+      "title": "The metric function g = exp[−4π ∫_r^∞ (h − h̄)² ds/s] on IsSlice slices, (3.10)–(3.11) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g is defined only on slices h with IsSlice h, passed as the argument hh"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh, and the value does not depend on which hh is supplied . r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "g(r) := exp[−4π ∫_r^∞ (h(s) − h̄(s))² ds/s], the literal body of (3.11), with the integral over the open half-line (r,∞). (3.10) names e^{ν+λ} = g; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g",
+      "file": "Christodoulou/Frozen/Bondi/G.lean"
+    },
+    {
+      "id": "n0002",
+      "kind": "claim",
+      "title": "g is continuous on [0,∞) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the claim concerns the defined g = exp(−4π A)"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "r ↦ g(r) is continuous on [0,∞), one-sided at r = 0. This is reconstructed, not stated in the source. It is needed so that ḡ in (3.12) can be formed in",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.continuous_g",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousG.lean"
+    },
+    {
+      "id": "n0003",
+      "kind": "claim",
+      "title": "g > 0 (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g(r) is exp of the real number −4π A(r)"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "0 < g(r). This is implicit in (3.10)–(3.11): g is an exponential, e^{ν+λ}",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g_pos",
+      "file": "Christodoulou/Frozen/Bondi/GPos.lean"
+    },
+    {
+      "id": "n0004",
+      "kind": "definition",
+      "title": "g(u,r) of (3.11) for fields in the X-ball, at the clamped time min(u,u₀) (gX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0064",
+        "n0065",
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0064",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "gX takes the proof hH of MemXBall u₀ x H as its argument: g_n is the g-function of an element h_n of X"
+        },
+        {
+          "target": "n0065",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the body passes hH.isSlice (min u u₀) (min_le_right u u₀) as the slice-class argument of g , the pattern in which gMap passes continuous_g"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the body is the sealed g of (3.11) applied to the slice H.curry (min u u₀)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "gX(u,r) := g(H(min(u,u₀),·))(r), the sealed g of (3.11) for the slice H.curry (min u u₀), with the slice-class proof MemXBall.isSlice of hH at min(u,u₀) ≤ u₀ . On the strip u ≤ u₀ it is \"the g-function corresponding to h_n\" of (7.2) for h_n = H; for u > u₀ it repeats the slice at u₀ (formal clamp, no source content)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gX",
+      "file": "Christodoulou/Frozen/Bondi/GX.lean"
+    },
+    {
+      "id": "n0005",
+      "kind": "claim",
+      "title": "On the strip, gX is the g of the slice for any slice-class proof (gX_of_le, formal bridge )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004",
+        "n0001",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the left side unfolds to g of the slice H.curry (min u u₀) with the proof hH.isSlice (min u u₀) (min_le_right u u₀)"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the right side is the sealed g of the slice H.curry u with the proof hs"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the premise hs is a proof of IsSlice(H(u,·))"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u in [0,∞) with u ≤ u₀; hs any proof of IsSlice(H(u,·)); r ≥ 0",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞) with u ≤ u₀, for each proof hs of IsSlice(H(u,·)), for each r in [0,∞)",
+      "source_conclusion": "gX(u,r) = g(H(u,·))(r) computed with the given proof hs. A formal bridge with no source content : on the strip it removes the clamp min(u,u₀) = u and the dependence on the slice proof",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gX_of_le",
+      "file": "Christodoulou/Frozen/Bondi/GXOfLe.lean"
+    },
+    {
+      "id": "n0006",
+      "kind": "definition",
+      "title": "ḡ, the radial mean of g, (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0009",
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the mean is taken of the continuous radial function gMap"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the bar in (3.12) is the mean notation of (3.7), \"used throughout\", so ḡ is the sealed mean applied to g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "ḡ(r) := mean(gMap)(r), the mean (3.7) of g: (1/r)∫₀^r g(r')dr' for r > 0 and g(0) at r = 0 . (3.12) names e^{ν−λ} = ḡ; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBar",
+      "file": "Christodoulou/Frozen/Bondi/GBar.lean"
+    },
+    {
+      "id": "n0007",
+      "kind": "definition",
+      "title": "ḡ(u,r) of (3.12) for fields in the X-ball, the coefficient of (5.1), at the clamped time min(u,u₀) (gBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0064"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0064",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "gBarX takes the proof hH of MemXBall u₀ x H as its argument: ḡ_n is formed for an element h_n of X"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "gBarX(u,r) := ḡ(H(min(u,u₀),·))(r), the sealed ḡ = mean of g of (3.12) for the slice H.curry (min u u₀), with the slice-class proof MemXBall.isSlice of hH at min(u,u₀) ≤ u₀ : the coefficient ḡ(u,r) of the characteristic equation (5.1). For u > u₀ it repeats the slice at u₀ (formal clamp, no source content)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBarX",
+      "file": "Christodoulou/Frozen/Bondi/GBarX.lean"
+    },
+    {
+      "id": "n0008",
+      "kind": "claim",
+      "title": "On the strip, gBarX is the ḡ of the slice for any slice-class proof (gBarX_of_le, formal bridge )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0007",
+        "n0006",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the left side unfolds to ḡ of the slice H.curry (min u u₀) with the proof hH.isSlice (min u u₀) (min_le_right u u₀)"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the right side is the sealed ḡ of the slice H.curry u with the proof hs"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the premise hs is a proof of IsSlice(H(u,·))"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u in [0,∞) with u ≤ u₀; hs any proof of IsSlice(H(u,·)); r ≥ 0",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞) with u ≤ u₀, for each proof hs of IsSlice(H(u,·)), for each r in [0,∞)",
+      "source_conclusion": "gBarX(u,r) = ḡ(H(u,·))(r) computed with the given proof hs. A formal bridge with no source content : on the strip it removes the clamp min(u,u₀) = u and the dependence on the slice proof",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBarX_of_le",
+      "file": "Christodoulou/Frozen/Bondi/GBarXOfLe.lean"
+    },
+    {
+      "id": "n0009",
+      "kind": "definition",
+      "title": "gMap: g as a continuous radial function on [0,∞), the representation needed to form ḡ in (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the underlying function of gMap is the defined g of (3.11), whose mean is ḡ"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "gMap is defined only on slices with IsSlice h, and passes hh to g and continuous_g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "gMap is the continuous map [0,∞) → ℝ, r ↦ g(r), i.e. g of (3.11) bundled with its continuity. It adds no source content beyond g; it exists so that the mean ḡ of (3.12) can be formed",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gMap",
+      "file": "Christodoulou/Frozen/Bondi/GMap.lean"
+    },
+    {
+      "id": "n0010",
+      "kind": "definition",
+      "title": "Classical solution of (3.13) on the strip [0,u₀]×[0,∞), restricted uniformly decaying class (IsClassicalSolution)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "field (3) quantifies over proofs of IsSlice for the slice H(u,·), which g and ḡ require as their argument hh"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (p. 339 domain; carrier ), with slices h = H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "IsClassicalSolution u₀ H holds iff (1) the real lift (u,r) ↦ H(u⁺, r⁺) is C¹ (ContDiffOn 1) on the closed strip [0,u₀] × [0,∞), with one-sided derivatives at its edges when u₀ > 0; for u₀ = 0 the set is the half-line {0} × [0,∞) and the field is degenerate (recorded constraint ) (\"classical\" solution of p. 348: a differentiable function whose derivatives are continuous even on r = 0; \"C¹[0,u₀]×[0,∞[\" of Theorem 1; ); (2) there is one constant C, chosen before u and r, with abs(H(u,r)) ≤ C(1 + r)⁻³ for all u ≤ u₀ and all r ≥ 0 (the field form of \"h = O(r⁻³) … uniformly in u\" of Theorems 1 and 2, to which it is bridged by the deferred obligation ; implied by the decay of Theorem 3; ); (3) for every u with 0 < u < u₀, every proof hs of IsSlice h for the slice h = H(u,·), and every r > 0, ∂_u H − ½ ḡ ∂_r H = (g − ḡ)(h − h̄)/(2r) at (u,r), i.e. Dh = (1/2r)(g − ḡ)(h − h̄) with D = ∂_u − ½ ḡ ∂_r, (3.13), both partials being deriv of the real lifts . This is the RESTRICTED uniformly-decaying classical-solution class , NOT the most general classical-solution class of [P]; data at u = 0 is not part of the predicate",
+      "constant_scope": "C in (2) is existential, depends only on H and u₀, and precedes u and r",
+      "declaration": "Christodoulou.Bondi.IsClassicalSolution",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolution.lean"
+    },
+    {
+      "id": "n0011",
+      "kind": "claim",
+      "title": "Normalization g → 1 as r → ∞ (ν + λ → 0, (3.2))",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g = e^{ν+λ} is the formula (3.11), whose exponent is the tail integral from r to ∞"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "g(r) → 1 as r → ∞. This is the asymptotic condition ν + λ → 0 of (3.2), rewritten through (3.10) g = e^{ν+λ}",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.tendsto_g_atTop",
+      "file": "Christodoulou/Frozen/Bondi/TendstoGAtTop.lean"
+    },
+    {
+      "id": "n0012",
+      "kind": "lemma",
+      "title": "Defining formula of the mean for r > 0 (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+          "rationale": "the r > 0 branch of the defined f̄ is exactly the displayed formula (3.7)"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) ; r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "f̄(r) = r⁻¹ ∫₀^r f(s) ds",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean_eq_integral",
+      "file": "Christodoulou/Frozen/Radial/MeanEqIntegral.lean"
+    },
+    {
+      "id": "n0013",
+      "kind": "definition",
+      "title": "Radial mean f̄(r) = r⁻¹∫₀^r f, with centre value f(0) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f is one fixed-u slice of a function of (u,r), regarded as a continuous real function of r on [0,∞) (, ; domain 0 ≤ r < ∞ from p. 339)",
+      "source_quantifiers": "for each continuous f on [0,∞) and each r in [0,∞)",
+      "source_conclusion": "f̄(r) := (1/r)∫₀^r f(r')dr' for r > 0, and f̄(0) := f(0) (centre value, p. 344, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean",
+      "file": "Christodoulou/Frozen/Radial/Mean.lean"
+    },
+    {
+      "id": "n0014",
+      "kind": "lemma",
+      "title": "Second identity of (3.8): ∂_r f̄ = (f − f̄)/r for r > 0 (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the identity concerns the defined f̄"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) ; r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "f̄ has (two-sided) derivative (f(r) − f̄(r))/r at r",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.hasDerivAt_mean",
+      "file": "Christodoulou/Frozen/Radial/HasDerivAtMean.lean"
+    },
+    {
+      "id": "n0015",
+      "kind": "theorem",
+      "title": "(4.6) solved for ∂_u m: at interior points 0 < u < u₀, r > 0, v ↦ m(v, r) has derivative ½ ḡ ∂_r m − (π/g)ξ², with ∂_r m = 2π(ḡ/g)(h − h̄)² from (4.4) (hasDerivAt_mass_curry, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0019",
+        "n0020",
+        "n0018",
+        "n0047",
+        "n0059",
+        "n0060",
+        "n0056",
+        "n0010",
+        "n0006",
+        "n0001",
+        "n0003",
+        "n0013",
+        "n0052",
+        "n0044",
+        "n0081"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "∂_u g(u, r) = g(u, r) T(u, r)"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "∂_u ḡ(u, r) = (1/r)∫₀^r g T"
+        },
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "r ḡ T − ∫₀^r g T = 2π(ḡ²A² − ξ²) turns ∂_u m = (1/(2g))(r ḡ T − ∫₀^r g T) into (π/g)(ḡ²A² − ξ²) = ½ḡ · 2π(ḡ/g)A² − (π/g)ξ²"
+        },
+        {
+          "target": "n0047",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "witness choice: hH and hd (as its hypothesis hderiv) give one x with MemXBall u₀ x H (no ); x is the uniform envelope that #domination, #g-time, #gbar-time, #centre and #flux-identity take as premise"
+        },
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m = (r/2)(1 − ḡ/g) of (4.3) is differentiated in u"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the conclusion writes ∂_r m by (4.4), 2π(ḡ/g)(h − h̄)² (statement-level; )"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ξ of (4.2) in the conclusion"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hH: \"derived directly from the nonlinear evolution equation (3.13)\""
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ in the conclusion (the coefficient of D)"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g in the conclusion"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "division by g in the assembly"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h̄ = mean (H.curry u) in the conclusion"
+        },
+        {
+          "target": "n0052",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hd is stated with radialDerivative"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the slice family hs : ∀ v, IsSlice (H.curry v), the carrier of g, ḡ, ξ and m ( (a))"
+        },
+        {
+          "target": "n0081",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "∂_u(ḡ/g) = (g ∂_u ḡ − ḡ ∂_u g)/g², so ∂_u m = (r/(2g))(ḡ T − (1/r)∫₀^r g T)"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H (the restricted uniformly decaying classical class, ; C¹ on the closed strip up to r = 0, (3.13) at interior points); hs : ∀ v : ℝ≥0, IsSlice (H.curry v) (a slice family for every v, (a); it constrains H beyond u₀, where IsClassicalSolution says nothing; every strip solution has a time-clamped extension satisfying it); C : ℝ with hd : ∀ u ≤ u₀, ∀ r, abs(radialDerivative H u r) ≤ C(1 + r)⁻⁴ (the weighted form of ∂h/∂r = O(r⁻⁴), the form of theorem1's conclusion; its equivalence with the printed uniform O(r⁻⁴) is , OPEN and unused; ); u with 0 < u < u₀ and r with 0 < r (interior points, ). Regularity at the centre is supplied by the class (C¹ up to r = 0), not by an extra hypothesis",
+      "source_quantifiers": "for each u₀, H, hH, hs, C, hd, then for each u with 0 < u < u₀ and each r > 0",
+      "source_conclusion": "HasDerivAt (v ↦ mass (H.curry v⁺) (hs v⁺) r) (½ ḡ(u, r) · 2π(ḡ(u, r)/g(u, r))(H(u, r) − h̄(u, r))² − (π/g(u, r)) ξ(u, r)²) u, with ḡ, g, h̄, ξ those of the slice H.curry u with the proof hs u: (4.6) \"Dm = −(π/g)ξ²\", D = ∂_u − ½ḡ∂_r, solved for ∂_u m with ∂_r m written by (4.4); a genuine two-sided derivative in u . NOT claimed: the endpoints u = 0 and u = u₀ , r = 0 (where the law holds trivially, ), the incoming-rays monotonicity, the derivation from E(n, n) = 0",
+      "constant_scope": "none in the conclusion; the given C enters only hd",
+      "declaration": "Christodoulou.Bondi.hasDerivAt_mass_curry",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtMassCurry.lean"
+    },
+    {
+      "id": "n0016",
+      "kind": "step",
+      "title": "Regularity at the centre: F(r) := r ḡ T − ∫₀^r g T − 2π(ḡ²A² − ξ²) is continuous at r = 0 with F(0) = 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0022",
+        "n0023",
+        "n0010",
+        "n0056",
+        "n0017",
+        "n0019"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0022",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h̄(0) = h(0), so A(u, 0) = 0: \"[f − f̄]_{r=0} = 0\""
+        },
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h̄ is continuous at r = 0, so A(u, ·) is continuous there"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "\"if regularity at the center is assumed\": the slices are C¹ up to r = 0 (field (1)), supplied by the class"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ξ(u, 0) = 0 (the empty interval; the helper xi_zero) and ξ is continuous at 0"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "abs(A) ≤ x r(1 + r)⁻² and abs(g T) bounded, so r ḡ T → 0 and ∫₀^r g T → 0 as r → 0"
+        },
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "T(u, ·) is the tail integral, bounded near r = 0"
+        }
+      ],
+      "source_hypotheses": "u₀; H with hH : IsClassicalSolution u₀ H and hs : ∀ v, IsSlice (H.curry v); x real with MemXBall u₀ x H (conditional premise, discharged at and by n0047); u with 0 < u < u₀",
+      "source_quantifiers": "for each u₀, H, hH, hs, x with MemXBall u₀ x H, each u with 0 < u < u₀",
+      "source_conclusion": "r ↦ F(u, r) is continuous at r = 0 within [0,∞) and F(u, 0) = 0, since A(u, 0) = 0 (h̄(0) = h(0)) and ξ(u, 0) = 0",
+      "constant_scope": "none beyond x"
+    },
+    {
+      "id": "n0017",
+      "kind": "step",
+      "title": "Uniform domination from one X-ball: abs(h − h̄) ≤ x s(1 + s)⁻², abs(∂_r h) ≤ x, abs(∂_u h) ≤ x, abs(∂_u h̄) ≤ x on the strip, hence abs(2A(∂_u h − ∂_u h̄)/s) ≤ 4x²(1 + s)⁻² uniformly in u",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0064",
+        "n0010",
+        "n0055",
+        "n0025",
+        "n0042",
+        "n0003",
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0064",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(1 + s)³ abs(H) + (1 + s)⁴ abs(∂_r H) ≤ x on the strip gives abs(∂_r H) ≤ x and the gap bound abs(A) ≤ x s(1 + s)⁻² (the public helper XCoef.abs_sub_hBarX_le)"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(3.13) ∂_u h = ½ḡ∂_r h + (g − ḡ)A/(2s) at interior points bounds ∂_u H"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(4.1) ∂_u h̄ = ½ḡA/s + ξ/(2s), with abs(ξ) ≤ ∫₀^s abs(A)/t, bounds ∂_u h̄"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ ≤ g in the coefficients of (3.13) and (4.1)"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g ≤ 1, so 0 < ḡ ≤ g ≤ 1 (ḡ > 0: the helper gBar_pos)"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g > 0"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "A = h − h̄ with the sealed mean"
+        }
+      ],
+      "source_hypotheses": "u₀; H with hH : IsClassicalSolution u₀ H and hs : ∀ v, IsSlice (H.curry v); x real with MemXBall u₀ x H (conditional premise, discharged at and by n0047)",
+      "source_quantifiers": "for each u₀, H, hH, hs, x with MemXBall u₀ x H, for each u ≤ u₀ (0 < u < u₀ for the time derivatives) and each s ≥ 0 (s > 0 where divided by s)",
+      "source_conclusion": "with A = h − h̄ on the slice H.curry u: abs(A(u, s)) ≤ x s(1 + s)⁻²; abs(∂_r H(u, s)) ≤ x; abs(∂_u H(u, s)) ≤ x; abs(∂_u h̄(u, s)) ≤ x; abs(2A(∂_u h − ∂_u h̄)(u, s)/s) ≤ 4x²(1 + s)⁻²",
+      "constant_scope": "the bounds depend only on x; uniform in u ≤ u₀ and s"
+    },
+    {
+      "id": "n0018",
+      "kind": "step",
+      "title": "The integrated flux identity: r ḡ T − ∫₀^r g T = 2π(ḡ²A² − ξ²) at interior u and r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0019",
+        "n0016",
+        "n0010",
+        "n0055",
+        "n0057",
+        "n0014",
+        "n0072",
+        "n0083"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "T and its r-derivative ∂_r T = 8πA(∂_u h − ∂_u h̄)/r (the tail integral)"
+        },
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "F is continuous at r = 0 with F(0) = 0: the constant of the mean-value argument is fixed at the centre"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(3.13): ∂_u h = ½ḡ∂_r h + (g − ḡ)A/(2r), substituted in ∂_r(ḡ²A² − ξ²) = 4ḡA(∂_u h − ∂_u h̄)"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(4.1): ∂_u h̄ = ½ḡA/r + ξ/(2r), substituted in the same identity"
+        },
+        {
+          "target": "n0057",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "∂_r ξ = ḡA/r"
+        },
+        {
+          "target": "n0014",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(3.8): ∂_r h̄ = A/r and ∂_r ḡ = (g − ḡ)/r (the mean of h and of g; the helper hasDerivAt_gBar)"
+        },
+        {
+          "target": "n0072",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the r-derivatives of ∫₀^r g T and of the tail integral T"
+        },
+        {
+          "target": "n0083",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "F′ = 0 on (0, r) and F continuous on [0, r] give F(r) = F(0) = 0"
+        }
+      ],
+      "source_hypotheses": "u₀; H with hH : IsClassicalSolution u₀ H and hs : ∀ v, IsSlice (H.curry v); x real with MemXBall u₀ x H (conditional premise, discharged at and by n0047); u with 0 < u < u₀; r > 0",
+      "source_quantifiers": "for each u₀, H, hH, hs, x with MemXBall u₀ x H, each u with 0 < u < u₀, each r > 0",
+      "source_conclusion": "r ḡ(u, r) T(u, r) − ∫₀^r g(u, s) T(u, s) ds = 2π(ḡ(u, r)² A(u, r)² − ξ(u, r)²)",
+      "constant_scope": "none beyond x"
+    },
+    {
+      "id": "n0019",
+      "kind": "step",
+      "title": "Time derivative of g: v ↦ g(v, r) has derivative g(u, r) T(u, r) at interior u, with T(u, r) = −4π∫_r^∞ 2A(∂_u h − ∂_u h̄) ds/s",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0017",
+        "n0001",
+        "n0055",
+        "n0010",
+        "n0078"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the differentiated tail integrand is dominated by 4x²(1 + s)⁻², integrable on (r,∞), uniformly in u"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g = exp(−4π∫_r^∞ A²/s) (3.11), differentiated under the tail integral and through exp (chain rule, routine)"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "∂_u h̄ exists at interior points and enters ∂_u A² = 2A(∂_u h − ∂_u h̄)"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "∂_u h exists at interior points (C¹ on the strip)"
+        },
+        {
+          "target": "n0078",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "differentiation in u under ∫_(r,∞) with the integrable majorant"
+        }
+      ],
+      "source_hypotheses": "u₀; H with hH : IsClassicalSolution u₀ H and hs : ∀ v, IsSlice (H.curry v); x real with MemXBall u₀ x H (conditional premise, discharged at and by n0047); u with 0 < u < u₀; r > 0",
+      "source_quantifiers": "for each u₀, H, hH, hs, x with MemXBall u₀ x H, each u with 0 < u < u₀, each r > 0",
+      "source_conclusion": "HasDerivAt (v ↦ g (H.curry v⁺) (hs v⁺) r) (g(u, r) · T(u, r)) u, T(u, r) := −4π∫_(r,∞) 2A(u, s)(∂_u h − ∂_u h̄)(u, s) ds/s",
+      "constant_scope": "none beyond x"
+    },
+    {
+      "id": "n0020",
+      "kind": "step",
+      "title": "Time derivative of ḡ: v ↦ ḡ(v, r) has derivative (1/r)∫₀^r g T at interior u, r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0019",
+        "n0017",
+        "n0006",
+        "n0009",
+        "n0012",
+        "n0077"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "∂_u g(u, s) = g T at every s in (0, r]"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "abs(g T) ≤ 16πx² uniformly in u and s, the majorant on [0, r]"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ is the mean of gMap (3.12)"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g bundled as a continuous map"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ(r) = r⁻¹∫₀^r g for r > 0"
+        },
+        {
+          "target": "n0077",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "differentiation in u under ∫₀^r"
+        }
+      ],
+      "source_hypotheses": "u₀; H with hH : IsClassicalSolution u₀ H and hs : ∀ v, IsSlice (H.curry v); x real with MemXBall u₀ x H (conditional premise, discharged at and by n0047); u with 0 < u < u₀; r > 0",
+      "source_quantifiers": "for each u₀, H, hH, hs, x with MemXBall u₀ x H, each u with 0 < u < u₀, each r > 0",
+      "source_conclusion": "HasDerivAt (v ↦ gBar (H.curry v⁺) (hs v⁺) r) ((1/r) ∫₀^r g(u, s) T(u, s) ds) u",
+      "constant_scope": "none beyond x"
+    },
+    {
+      "id": "n0021",
+      "kind": "theorem",
+      "title": "(4.6) in the printed form Dm = −(π/g)ξ², D = ∂_u − ½ḡ∂_r, with deriv (evolution_mass, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0015",
+        "n0060",
+        "n0074",
+        "n0059",
+        "n0056",
+        "n0006",
+        "n0001",
+        "n0010",
+        "n0052",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0015",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the u-derivative exists and equals ½ḡ · 2π(ḡ/g)A² − (π/g)ξ²"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "at r > 0 the r-derivative exists and equals 2π(ḡ/g)A² (4.4), so ½ḡ∂_r m cancels the first term of"
+        },
+        {
+          "target": "n0074",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "both derivatives exist, so each deriv takes its value"
+        },
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m of (4.3) on both sides"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ξ of (4.2) on the right side"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the coefficient ½ḡ of D = ∂_u − ½ḡ∂_r"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g on the right side"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hH"
+        },
+        {
+          "target": "n0052",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hd is stated with radialDerivative"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the slice family hs, the carrier of m, ḡ, g and ξ"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H (the restricted uniformly decaying classical class, ; C¹ on the closed strip up to r = 0, (3.13) at interior points); hs : ∀ v : ℝ≥0, IsSlice (H.curry v) (a slice family for every v, (a); it constrains H beyond u₀, where IsClassicalSolution says nothing; every strip solution has a time-clamped extension satisfying it); C : ℝ with hd : ∀ u ≤ u₀, ∀ r, abs(radialDerivative H u r) ≤ C(1 + r)⁻⁴ (the weighted form of ∂h/∂r = O(r⁻⁴), the form of theorem1's conclusion; its equivalence with the printed uniform O(r⁻⁴) is , OPEN and unused; ); u with 0 < u < u₀ and r with 0 < r (interior points, )",
+      "source_quantifiers": "for each u₀, H, hH, hs, C, hd, then for each u with 0 < u < u₀ and each r > 0",
+      "source_conclusion": "deriv (v ↦ m(v⁺, r)) u − ½ ḡ(u, r) · deriv (s ↦ m(u, s⁺)) r = −(π/g(u, r)) ξ(u, r)²: the printed (4.6) \"Dm = −(π/g)ξ²\" with D = ∂_u − ½ḡ∂_r (https://doi.org/10.1007/BF01205930 (p. 343) ), both derivatives written with deriv (as evolution_mean); and (4.4) certify that both derivs are genuine derivatives",
+      "constant_scope": "none in the conclusion; the given C enters only hd",
+      "declaration": "Christodoulou.Bondi.evolution_mass",
+      "file": "Christodoulou/Frozen/Bondi/EvolutionMass.lean"
+    },
+    {
+      "id": "n0022",
+      "kind": "lemma",
+      "title": "Centre value f̄(0) = f(0) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "under the value at r = 0 is the centre branch of the defined f̄"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) (, ; the source requires continuity in r at r = 0)",
+      "source_quantifiers": "for all continuous f on [0,∞)",
+      "source_conclusion": "f̄(0) = f(0) (the value part of [f − f̄]_{r=0} = 0 under ; the limit content is carried by n0023)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean_zero",
+      "file": "Christodoulou/Frozen/Radial/MeanZero.lean"
+    },
+    {
+      "id": "n0023",
+      "kind": "claim",
+      "title": "Continuity of f̄ on [0,∞), including the centre (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the claim concerns the defined function f̄"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) (, ; the source requires continuity in r at r = 0)",
+      "source_quantifiers": "for all continuous f on [0,∞)",
+      "source_conclusion": "f̄ is continuous on [0,∞); in particular f̄(r) → f(0) as r → 0⁺ (reconstructed from [f − f̄]_{r=0} = 0)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.continuous_mean",
+      "file": "Christodoulou/Frozen/Radial/ContinuousMean.lean"
+    },
+    {
+      "id": "n0024",
+      "kind": "claim",
+      "title": "g is a monotonically nondecreasing function of r (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the parenthetical (see (3.11)) points to the defining formula of g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h . The source's \"at each u\" is the fixed slice",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for all r ≤ r' in [0,∞)",
+      "source_conclusion": "g(r) ≤ g(r'), i.e. g is monotone on [0,∞)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.monotone_g",
+      "file": "Christodoulou/Frozen/Bondi/MonotoneG.lean"
+    },
+    {
+      "id": "n0025",
+      "kind": "claim",
+      "title": "ḡ ≤ g",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0006",
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ is the mean of gMap, so the claim is an instance of a statement about means"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "gMap takes the values of g, so the endpoint value gMap(r) is g(r)"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "ḡ(r) ≤ g(r). This is also the lower half of \"ḡ ≤ g ≤ 1 (see (3.11))\" on p. 346",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBar_le_g",
+      "file": "Christodoulou/Frozen/Bondi/GBarLeG.lean"
+    },
+    {
+      "id": "n0026",
+      "kind": "claim",
+      "title": "m vanishes at r = 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0059"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the factor r/2 of (4.3) vanishes at r = 0, whatever the value of ḡ(0)/g(0)"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "m(0) = 0",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.mass_zero",
+      "file": "Christodoulou/Frozen/Bondi/MassZero.lean"
+    },
+    {
+      "id": "n0027",
+      "kind": "theorem",
+      "title": "(4.7) M = ½∫₀^∞ (1 − g) dr, with 1 − g integrable on (0,∞), on every slice of IsSlice (bondiMass_eq_integral_one_sub_g, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0037",
+        "n0029",
+        "n0028",
+        "n0035",
+        "n0034",
+        "n0011",
+        "n0001",
+        "n0044",
+        "n0079"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "\"It then follows\": the boundary term r(1 − g(r)) of the mass identity tends to 0"
+        },
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m(r) = (1/(2g(r)))[∫₀^r (1 − g) − r(1 − g(r))] for every r ≥ 0"
+        },
+        {
+          "target": "n0028",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the first conjunct; it also makes ∫₀^r (1 − g) converge to ∫_(0,∞) (1 − g)"
+        },
+        {
+          "target": "n0035",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m(r) → M as r → ∞ , so M is the limit of the right-hand side of the identity (uniqueness of limits, routine; and one unit, )"
+        },
+        {
+          "target": "n0034",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "M in (4.7) is the Bondi mass bondiMass h hh"
+        },
+        {
+          "target": "n0011",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g(r) → 1, so 1/(2g(r)) → ½"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand 1 − g of (4.7) is g of (3.11)"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the carrier hh : IsSlice h of g and of bondiMass"
+        },
+        {
+          "target": "n0079",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "∫₀^r (1 − g) → ∫_(0,∞) (1 − g) as r → ∞ for the integrable 1 − g"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ), one fixed-u radial slice, with hh : IsSlice h; no M₀ hypothesis (: on IsSlice M₀ < ∞ is automatic, consistent with )",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "IntegrableOn (s ↦ 1 − g h hh s⁺) (Ioi 0) ∧ bondiMass h hh = ½ ∫_(0,∞) (1 − g h hh s⁺) ds: (4.7) \"M = ½∫₀^∞(1 − g) dr\", the Lebesgue integral over (0,∞) standing for the printed improper integral; the integrability conjunct rules out a junk integral",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.bondiMass_eq_integral_one_sub_g",
+      "file": "Christodoulou/Frozen/Bondi/BondiMassEqIntegralOneSubG.lean"
+    },
+    {
+      "id": "n0028",
+      "kind": "step",
+      "title": "1 − g is integrable on (0,∞): bounded on (0, 1], dominated by K s⁻² on (1,∞)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0038",
+        "n0042",
+        "n0003",
+        "n0002",
+        "n0073",
+        "n0080",
+        "n0075",
+        "n0076"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0038",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "0 ≤ 1 − g(s) ≤ K s⁻² on (1,∞)"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "0 ≤ 1 − g"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "1 − g ≤ 1, so 1 − g is bounded on (0, 1]"
+        },
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "continuity, hence measurability, of s ↦ 1 − g(s⁺)"
+        },
+        {
+          "target": "n0073",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "integrability on (0, 1]"
+        },
+        {
+          "target": "n0080",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "s⁻² is integrable on (1,∞)"
+        },
+        {
+          "target": "n0075",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "integrability on (1,∞) by domination by K s⁻²"
+        },
+        {
+          "target": "n0076",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(0,∞) = (0, 1] ∪ (1,∞)"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ) with hh : IsSlice h",
+      "source_quantifiers": "for each h with IsSlice h",
+      "source_conclusion": "IntegrableOn (s ↦ 1 − g h hh s⁺) (Ioi 0)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0029",
+      "kind": "step",
+      "title": "The mass identity m = (1/(2g))[∫₀^r (1 − g) − r(1 − g)] (from (4.3) and rḡ = ∫₀^r g)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0059",
+        "n0006",
+        "n0009",
+        "n0012",
+        "n0003"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m = (r/2)(1 − ḡ/g) = (r/(2g))(g − ḡ), the literal (4.3)"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ is the mean of gMap (3.12)"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g bundled as the continuous map whose mean is ḡ"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "rḡ(r) = ∫₀^r g for r > 0, so r g − r ḡ = ∫₀^r (1 − g) − r(1 − g); at r = 0 both sides vanish (routine)"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "division by g(r) > 0"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ) with hh : IsSlice h; r ≥ 0",
+      "source_quantifiers": "for each h with IsSlice h, for each r ≥ 0",
+      "source_conclusion": "mass h hh r = (1/(2 g(r))) (∫₀^r (1 − g(s⁺)) ds − r (1 − g(r)))",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0030",
+      "kind": "theorem",
+      "title": "Bondi's theorem: M(u) is nonincreasing on [0, u₀] for the class of (antitoneOn_bondiMass, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0015",
+        "n0031",
+        "n0032",
+        "n0033",
+        "n0035",
+        "n0047",
+        "n0070",
+        "n0034",
+        "n0010",
+        "n0052",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0015",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "RECON: the printed edge \"Equation (4.6) implies Bondi's theorem\"; the print gives no argument. Reconstructed route ( (a), ): supplies, at every interior u and every R > 0, the derivative of v ↦ m(v, R), the derivative premise of #comparison"
+        },
+        {
+          "target": "n0031",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "RECON: for 0 ≤ a ≤ b ≤ u₀ and R > 0, m(b, R) − m(a, R) ≤ E(R)(b − a) with E(R) = πx²(1 + R)⁻²"
+        },
+        {
+          "target": "n0032",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "RECON: the derivative given by is ≤ E(R) at every interior u, the bound premise of #comparison"
+        },
+        {
+          "target": "n0033",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "RECON: v ↦ m(v, R) is continuous on [0, u₀], the continuity premise of #comparison (both endpoints included)"
+        },
+        {
+          "target": "n0035",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m(a, R) → M(a) and m(b, R) → M(b) as R → ∞ , while E(R) → 0"
+        },
+        {
+          "target": "n0047",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "witness choice: hH and hd give one x with MemXBall u₀ x H, so that E(R) is uniform in u (the premise of #envelope and #time-continuity)"
+        },
+        {
+          "target": "n0070",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "M(b) = lim m(b, R) ≤ lim (m(a, R) + E(R)(b − a)) = M(a)"
+        },
+        {
+          "target": "n0034",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "M(u) is the Bondi mass of the slice H(u, ·)"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hH"
+        },
+        {
+          "target": "n0052",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hd is stated with radialDerivative"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the slice family hs, the carrier of bondiMass"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H (the restricted uniformly decaying classical class, ; C¹ on the closed strip up to r = 0, (3.13) at interior points); hs : ∀ v : ℝ≥0, IsSlice (H.curry v) (a slice family for every v, (a); it constrains H beyond u₀, where IsClassicalSolution says nothing; every strip solution has a time-clamped extension satisfying it); C : ℝ with hd : ∀ u ≤ u₀, ∀ r, abs(radialDerivative H u r) ≤ C(1 + r)⁻⁴ (the weighted form of ∂h/∂r = O(r⁻⁴), the form of theorem1's conclusion; its equivalence with the printed uniform O(r⁻⁴) is , OPEN and unused; )",
+      "source_quantifiers": "for each u₀, H, hH, hs, C, hd",
+      "source_conclusion": "AntitoneOn (u ↦ bondiMass (H.curry u) (hs u)) (Icc 0 u₀): \"M is a monotonically nonincreasing function of u\", on the closed strip including both endpoints ( (a)); NOT claimed: the derivative form dM/du ≤ 0, the differentiability of M, the mass-loss formula",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.antitoneOn_bondiMass",
+      "file": "Christodoulou/Frozen/Bondi/AntitoneOnBondiMass.lean"
+    },
+    {
+      "id": "n0031",
+      "kind": "step",
+      "title": "The derivative comparison: if v ↦ m(v, R) is continuous on [0, u₀] and its derivative at interior points is ≤ E, then m(b, R) − m(a, R) ≤ E(b − a) for 0 ≤ a ≤ b ≤ u₀",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0066"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0066",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the mean-value inequality on the convex [0, u₀], with the derivative bound at interior points"
+        }
+      ],
+      "source_hypotheses": "u₀; for a fixed R, f(v) := m(v, R) continuous on [0, u₀] with, at every v in (0, u₀), a derivative ≤ E (conditional premises, discharged at by #time-continuity, and #envelope)",
+      "source_quantifiers": "for each u₀, R, E and f with the premises, for each a, b with 0 ≤ a ≤ b ≤ u₀",
+      "source_conclusion": "m(b, R) − m(a, R) ≤ E (b − a)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0032",
+      "kind": "step",
+      "title": "The uniform envelope of ∂_u m: at interior u and R > 0, ½ḡ · 2π(ḡ/g)A² − (π/g)ξ² ≤ E(R) := πx²(1 + R)⁻²",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0017",
+        "n0025",
+        "n0042",
+        "n0003"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "abs(A(u, R)) ≤ x R(1 + R)⁻² ≤ x(1 + R)⁻¹"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ ≤ g, so ḡ²/g ≤ ḡ"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ ≤ g ≤ 1, so πḡ²A²/g ≤ πA²"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g > 0, so the ξ² term −(π/g)ξ² ≤ 0 has a sign"
+        }
+      ],
+      "source_hypotheses": "u₀; H with hH : IsClassicalSolution u₀ H and hs : ∀ v, IsSlice (H.curry v); x real with MemXBall u₀ x H (conditional premise, discharged at and by n0047); u with 0 < u < u₀; R > 0",
+      "source_quantifiers": "for each u₀, H, hH, hs, x with MemXBall u₀ x H, each u with 0 < u < u₀, each R > 0",
+      "source_conclusion": "½ ḡ(u, R) · 2π(ḡ(u, R)/g(u, R)) A(u, R)² − (π/g(u, R)) ξ(u, R)² ≤ π x² (1 + R)⁻²",
+      "constant_scope": "E(R) depends only on x and R, uniform in u"
+    },
+    {
+      "id": "n0033",
+      "kind": "step",
+      "title": "Time continuity of the mass: v ↦ m(v, R) is continuous on [0, u₀] for every R ≥ 0 (through gX and gBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0059",
+        "n0005",
+        "n0008",
+        "n0004",
+        "n0007",
+        "n0063",
+        "n0062",
+        "n0064"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m(v, R) = (R/2)(1 − ḡ(v, R)/g(v, R))"
+        },
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "on the strip g(v, R) = gX(v, R) for the given slice proofs (formal bridge )"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "on the strip ḡ(v, R) = gBarX(v, R) for the given slice proofs (formal bridge )"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "gX, the g of the clamped slice"
+        },
+        {
+          "target": "n0063",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "gX is jointly continuous (the public helper continuous_gX of XBallContinuity, the imported record), so v ↦ gX(v, R) is continuous"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "gBarX, the ḡ of the clamped slice"
+        },
+        {
+          "target": "n0062",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "gBarX is jointly continuous"
+        },
+        {
+          "target": "n0064",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the X-ball membership is the carrier of gX and gBarX"
+        }
+      ],
+      "source_hypotheses": "u₀; H with hH : IsClassicalSolution u₀ H and hs : ∀ v, IsSlice (H.curry v); x real with MemXBall u₀ x H (conditional premise, discharged at and by n0047); R ≥ 0",
+      "source_quantifiers": "for each u₀, H, hH, hs, x with MemXBall u₀ x H, each R ≥ 0",
+      "source_conclusion": "ContinuousOn (v ↦ mass (H.curry v) (hs v) R) (Icc 0 u₀)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0034",
+      "kind": "definition",
+      "title": "The Bondi mass M = lim_{r→∞} m(r) of a slice, written as the supremum of m over r ≥ 0 (bondiMass, ; characterization-backed, one semantic unit with )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0059",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the supremum (the printed limit in r) is taken over the values m(r) of the sealed mass function (4.3)"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the carrier argument hh : IsSlice h, the carrier of mass"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ), one fixed-u radial slice, with hh : IsSlice h (the carrier of mass, ); no M₀ hypothesis",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "bondiMass h hh := sSup (range (r ↦ mass h hh r)) : ℝ; the printed the source passage, at u fixed by the slice; that the supremum is this limit is",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.bondiMass",
+      "file": "Christodoulou/Frozen/Bondi/BondiMass.lean"
+    },
+    {
+      "id": "n0035",
+      "kind": "theorem",
+      "title": "On IsSlice the mass is bounded in r, m(r) → M as r → ∞, and M ≥ 0: the limit exists and the supremum in bondiMass is genuine (bondiMass_spec, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0034",
+        "n0059"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0034",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the limit \":= M(u)\" is identified with the supremum bondiMass h hh ( + one unit, )"
+        },
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the statement is about m(u, r) of (4.3) on the slice"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ) with hh : IsSlice h (h ∈ C¹[0,∞), h = O(r⁻³)); no M₀ < ∞ hypothesis and no use of (4.6)",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "BddAbove (range (mass h hh)) ∧ Tendsto (mass h hh) atTop (𝓝 (bondiMass h hh)) ∧ 0 ≤ bondiMass h hh: \"the limit lim_{r→∞} m(u, r) := M(u) exists\"; the boundedness replaces \"is bounded by M₀\"",
+      "constant_scope": "the bound on m is existential and depends on the slice h ( §2); no uniformity in u is claimed",
+      "declaration": "Christodoulou.Bondi.bondiMass_spec",
+      "file": "Christodoulou/Frozen/Bondi/BondiMassSpec.lean"
+    },
+    {
+      "id": "n0036",
+      "kind": "step",
+      "title": "On IsSlice, h − h̄ = O((1 + r)⁻¹) uniformly on [0,∞): ∃ C′, ∀ r ≥ 0, abs(h(r) − h̄(r)) ≤ C′(1 + r)⁻¹",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0044",
+        "n0013",
+        "n0012",
+        "n0069"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h is continuous and O(r⁻³): bounded on [0,∞), abs(h(s)) ≤ K(1 + s)⁻³ and ∫₀^∞ abs(h) < ∞"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h̄ is the sealed mean, with centre value h(0), bounded by sup abs(h)"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h̄(r) = r⁻¹ ∫₀^r h for r > 0, so abs(h̄(r)) ≤ r⁻¹ ∫₀^∞ abs(h) = O(1/r)"
+        },
+        {
+          "target": "n0069",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the bound abs(∫₀^r h) ≤ ∫₀^r K(1 + s)⁻³ ≤ K/2"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ) with hh : IsSlice h (continuous, C¹ on [0,∞), h = O(r⁻³))",
+      "source_quantifiers": "for each h with IsSlice h, ∃ C′, ∀ r ≥ 0",
+      "source_conclusion": "abs(h(r) − h̄(r)) ≤ C′ (1 + r)⁻¹ for every r ≥ 0, h̄ the sealed mean",
+      "constant_scope": "C′ depends on h"
+    },
+    {
+      "id": "n0037",
+      "kind": "theorem",
+      "title": "At each u, r(1 − g) → 0 as r → ∞: on every slice of IsSlice, r(1 − g(r)) → 0 (tendsto_mul_one_sub_g, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001",
+        "n0044"
+      ],
+      "alternative_routes": [
+        "n0040",
+        "n0039"
+      ],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the statement is about g of (3.11) on the slice"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the carrier hh : IsSlice h of g"
+        },
+        {
+          "target": "n0040",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ALTERNATIVE ARGUMENT : from the O(r⁻³) slice decay, 1 − g = O(r⁻²); the implemented route"
+        },
+        {
+          "target": "n0039",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the printed derivation the source passage, reconstructed on the slice with the finite mass of in place of M₀ < ∞"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ), one fixed-u radial slice, with hh : IsSlice h (\"at each u\" is the per-slice statement at the slice H(u, ·)); no M₀ hypothesis (; on IsSlice M₀ < ∞ is automatic, , )",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "Tendsto (r ↦ r · (1 − g h hh r)) atTop (𝓝 0), r ranging over ℝ≥0: \"r(1 − g) → 0 as r → ∞\"",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.tendsto_mul_one_sub_g",
+      "file": "Christodoulou/Frozen/Bondi/TendstoMulOneSubG.lean"
+    },
+    {
+      "id": "n0038",
+      "kind": "step",
+      "title": "1 − g = O(r⁻²) on IsSlice: ∃ K, ∀ r > 0, 0 ≤ 1 − g(r) ≤ K r⁻²",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0041",
+        "n0036"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "0 ≤ 1 − g(r) ≤ 4π∫_r^∞ (h − h̄)²/s"
+        },
+        {
+          "target": "n0036",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(h − h̄)² ≤ C′²(1 + s)⁻², and ∫_r^∞ C′² ds/(s(1 + s)²) ≤ C′²/(2r²) (elementary integral, routine)"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ) with hh : IsSlice h",
+      "source_quantifiers": "for each h with IsSlice h, ∃ K, ∀ r > 0",
+      "source_conclusion": "0 ≤ 1 − g(r) ≤ K r⁻² for every r > 0",
+      "constant_scope": "K depends on h (K = 2πC′², C′ the constant of the slice decay #gap-decay)"
+    },
+    {
+      "id": "n0039",
+      "kind": "route",
+      "title": "Route 2 of (the printed derivation, reconstructed on the slice): the mass of the slice is finite, so ∫₀^∞ (h − h̄)² < ∞ and 0 ≤ r(1 − g(r)) ≤ 4π∫_r^∞ (h − h̄)² → 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0035",
+        "n0061",
+        "n0024",
+        "n0012",
+        "n0042",
+        "n0003",
+        "n0023",
+        "n0002",
+        "n0069",
+        "n0067",
+        "n0041",
+        "n0082",
+        "n0071"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0035",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "\"The finiteness of M₀\": on the slice m is bounded in r (BddAbove (range m), ), the slice analogue of M₀ < ∞ (; the printed M₀ assumption is EXCLUDED)"
+        },
+        {
+          "target": "n0061",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m(r) = 2π∫₀^r (ḡ/g)(h − h̄)², so the bound on m bounds ∫₀^r (ḡ/g)(h − h̄)² uniformly in r"
+        },
+        {
+          "target": "n0024",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g nondecreasing, so ḡ ≥ g(0) (the mean of a nondecreasing function)"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ(r) = r⁻¹∫₀^r g ≥ g(0) for r > 0 (at r = 0, ḡ(0) = g(0); routine)"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g ≤ 1, so ḡ/g ≥ ḡ ≥ g(0): the weight of (4.5) is bounded below"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g(0) > 0, so ∫₀^r (h − h̄)² ≤ M/(2π g(0)) for every r ≥ 0, a bound uniform in r"
+        },
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h̄ and ḡ (the means of h and of gMap) are continuous on [0,∞), including r = 0, so (h − h̄)² and (ḡ/g)(h − h̄)² are continuous, hence interval integrable on every [0, b]: the premise \"integrable on every (0, b]\" of the integrability criterion and the integrability premises of the comparison"
+        },
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g is continuous (and positive), so the weight ḡ/g is continuous on [0,∞)"
+        },
+        {
+          "target": "n0069",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g(0)(h − h̄)² ≤ (ḡ/g)(h − h̄)² on [0, r], so g(0)∫₀^r (h − h̄)² ≤ ∫₀^r (ḡ/g)(h − h̄)² = m(r)/(2π) ≤ M/(2π)"
+        },
+        {
+          "target": "n0067",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the partial integrals of the continuous (h − h̄)² ≥ 0 are bounded uniformly in r, so (h − h̄)² is integrable on (0,∞): ∫₀^∞ (h − h̄)² < ∞ (the printed \"via ∫A² < ∞\", )"
+        },
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "1 − g(r) ≤ 4π∫_r^∞ (h − h̄)²/s and r/s ≤ 1 for s ≥ r: 0 ≤ r(1 − g(r)) ≤ 4π∫_r^∞ (h − h̄)²"
+        },
+        {
+          "target": "n0082",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the tail ∫_r^∞ (h − h̄)² of the convergent integral tends to 0"
+        },
+        {
+          "target": "n0071",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "squeeze between 0 and 4π∫_r^∞ (h − h̄)² → 0"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ) with hh : IsSlice h",
+      "source_quantifiers": "for each h with IsSlice h",
+      "source_conclusion": "Tendsto (r ↦ r(1 − g h hh r)) atTop (𝓝 0), the conclusion of",
+      "constant_scope": "none",
+      "route_for": "n0037"
+    },
+    {
+      "id": "n0040",
+      "kind": "route",
+      "title": "Route 1 of (ALTERNATIVE ARGUMENT, implemented; ): from the slice decay, 0 ≤ r(1 − g(r)) ≤ K/r → 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0038",
+        "n0071"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0038",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "0 ≤ 1 − g(r) ≤ K r⁻² for r > 0, hence 0 ≤ r(1 − g(r)) ≤ K/r"
+        },
+        {
+          "target": "n0071",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "squeeze between 0 and K/r → 0 (the decay of K/r is routine)"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ) with hh : IsSlice h",
+      "source_quantifiers": "for each h with IsSlice h",
+      "source_conclusion": "Tendsto (r ↦ r(1 − g h hh r)) atTop (𝓝 0), the conclusion of",
+      "constant_scope": "K of #decay-rate depends on h",
+      "route_for": "n0037"
+    },
+    {
+      "id": "n0041",
+      "kind": "step",
+      "title": "The tail bound of g: 0 ≤ 1 − g(r) ≤ 4π∫_r^∞ (h − h̄)² ds/s on IsSlice",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001",
+        "n0042",
+        "n0068"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g(r) = exp(−y) with y = 4π∫_r^∞ (h − h̄)²/s ≥ 0, the literal (3.11)"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "g ≤ 1 gives the lower bound 0 ≤ 1 − g"
+        },
+        {
+          "target": "n0068",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "at x = −y: 1 − y ≤ exp(−y), i.e. 1 − g ≤ y"
+        }
+      ],
+      "source_hypotheses": "h : C(ℝ≥0, ℝ) with hh : IsSlice h; r ≥ 0",
+      "source_quantifiers": "for each h with IsSlice h, for each r ≥ 0",
+      "source_conclusion": "0 ≤ 1 − g(r) ≤ 4π ∫_(r,∞) (h(s) − h̄(s))²/s ds",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0042",
+      "kind": "claim",
+      "title": "g ≤ 1 (the upper half of ḡ ≤ g ≤ 1, p. 346)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "the parenthetical (see (3.11)) points to the defining formula of g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "g(r) ≤ 1. The source writes \"ḡ ≤ g ≤ 1 (see (3.11))\"; only the g ≤ 1 part is in this anchor, and ḡ ≤ g belongs to",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g_le_one",
+      "file": "Christodoulou/Frozen/Bondi/GLeOne.lean"
+    },
+    {
+      "id": "n0043",
+      "kind": "definition",
+      "title": "Theorem-1 data class IsDecaySlice: IsSlice and ∂h/∂r = O(r⁻⁴)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the data class is the conjunction of the slice class (first two Theorem 1 conditions) and the O(r⁻⁴) bound on ∂h/∂r"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsDecaySlice h holds iff IsSlice h and ∂h/∂r(r) = O(r⁻⁴) as r → ∞; under",
+      "constant_scope": "none (the O-constant and threshold are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsDecaySlice",
+      "file": "Christodoulou/Frozen/Bondi/IsDecaySlice.lean"
+    },
+    {
+      "id": "n0044",
+      "kind": "definition",
+      "title": "Slice class IsSlice: h in C¹[0,∞) with h = O(r⁻³) as r → ∞ (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsSlice h holds iff (i) h ∈ C¹[0,∞[ (derivative at r = 0 one-sided within [0,∞), ) and (ii) h(r) = O(r⁻³) as r → ∞; the first two conditions of the Theorem 1 data class ; the condition on ∂h/∂r is not included",
+      "constant_scope": "none (the O-constant and threshold in (ii) are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsSlice",
+      "file": "Christodoulou/Frozen/Bondi/IsSlice.lean"
+    },
+    {
+      "id": "n0045",
+      "kind": "definition",
+      "title": "d₀ := inf_{a>0} sup_{r ≥ 0} {(1 + r/a)³ abs(h(0, r)) + (1 + r/a)⁴ abs(a ∂_r h(0, r))}: the iInf of the scale-a sizes over the positive scales (scaleInvariantSize, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0046",
+        "n0043"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the body is the iInf of scaledInitialSize a a.2 data hdata over the positive scales"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata : IsDecaySlice data, passed to scaledInitialSize"
+        }
+      ],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data",
+      "source_quantifiers": "for each data with hdata",
+      "source_conclusion": "scaleInvariantSize data hdata := ⨅ a : {a : ℝ≥0 // 0 < a}, scaledInitialSize a a.2 data hdata, the printed d₀ (p. 351)",
+      "constant_scope": "none (depends on the data only)",
+      "declaration": "Christodoulou.Bondi.scaleInvariantSize",
+      "file": "Christodoulou/Frozen/Bondi/ScaleInvariantSize.lean"
+    },
+    {
+      "id": "n0046",
+      "kind": "definition",
+      "title": "The scale-a weighted size inside d₀, literal: sup_{r ≥ 0} {(1 + r/a)³ abs(h(0, r)) + (1 + r/a)⁴ abs(a ∂_r h(0, r))} for a > 0 on the carrier IsDecaySlice (scaledInitialSize, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0043"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder _hdata : IsDecaySlice data (the finite-data carrier; unused in the body)"
+        }
+      ],
+      "source_hypotheses": "a : ℝ≥0 with _ha : 0 < a (the source domain a > 0 carried as a binder, ); data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data (the carrier of initialSize, )",
+      "source_quantifiers": "for each a with ha, each data with hdata",
+      "source_conclusion": "scaledInitialSize a ha data hdata := sSup (range (r ↦ (1 + r/a)³ abs(data r) + (1 + r/a)⁴ abs(a · data′(r)))), data′(r) := derivWithin (z ↦ data(z⁺)) (Ici 0) r, one-sided at r = 0 : the inner sup_{r ≥ 0} of d₀ (p. 351) and of p. 360 ,",
+      "constant_scope": "none (depends on a and the data only)",
+      "declaration": "Christodoulou.Bondi.scaledInitialSize",
+      "file": "Christodoulou/Frozen/Bondi/ScaledInitialSize.lean"
+    },
+    {
+      "id": "n0047",
+      "kind": "claim",
+      "title": "A classical solution with a uniform weighted O(r⁻⁴) bound on its radial derivative lies in some X-ball (exists_memXBall_of_isClassicalSolution, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0010",
+        "n0064"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the premise hH: field (1) gives the C¹ slices and the joint continuity of ∂_r H, field (2) the value bound C(1 + r)⁻³ (\"h₁, h₂ = O(r⁻³) uniformly in u\")"
+        },
+        {
+          "target": "n0064",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the conclusion MemXBall u₀ x H, with its three clauses (C¹ slices, joint continuity, the (7.1) sum bound)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H (: C¹ on the closed strip, one constant with abs(H) ≤ C(1 + r)⁻³ for u ≤ u₀, (3.13) at interior points); hderiv : ∃ C real, ∀ u ≤ u₀, ∀ r ≥ 0, abs(derivWithin (s ↦ H(u, s⁺)) (Ici 0) r) ≤ C(1 + r)⁻⁴ (the global weighted reading of \"∂h/∂r = O(r⁻⁴) uniformly in u\"; verbatim the last clause of theorem1)",
+      "source_quantifiers": "for each u₀ in [0,∞), each continuous H with hH, and hderiv",
+      "source_conclusion": "∃ x real, MemXBall u₀ x H: the slices H(u, ·), u ≤ u₀, are C¹ on [0,∞), the radial within-derivative is jointly continuous on [0,u₀] × [0,∞), and (1 + r)³ abs(H) + (1 + r)⁴ abs(∂_r H) ≤ x on the strip ((7.1), the hypotheses of Theorem 2 as an X-ball membership)",
+      "constant_scope": "x is existential and depends on H (the route takes x := C + D, C of IsClassicalSolution, D of hderiv); independent per solution",
+      "declaration": "Christodoulou.Bondi.exists_memXBall_of_isClassicalSolution",
+      "file": "Christodoulou/Frozen/Bondi/ExistsMemXBallOfIsClassicalSolution.lean"
+    },
+    {
+      "id": "n0048",
+      "kind": "theorem",
+      "title": "Theorem 3 (p. 351), analytic conclusion with M₁ = 0, together with Bondi's theorem for the global solution: M is nonincreasing on [0,∞) and tends to 0 (theorem3_bondi, , the )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0030",
+        "n0050",
+        "n0049",
+        "n0034",
+        "n0045",
+        "n0043",
+        "n0010",
+        "n0052",
+        "n0054",
+        "n0053",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0030",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "applied on [0, T] for every T, with hH := IsClassicalSolution T H, the global slice family hs and hd from #weighted-bound; AntitoneOn on every Icc 0 T gives Antitone on ℝ≥0 (routine)"
+        },
+        {
+          "target": "n0050",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the solution H with δ, x₁, C and hs of the sealed theorem3_mass_zero ; its conclusions, including M₁ = 0, are restated"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the decay conjunct gives hd on every strip [0, T]"
+        },
+        {
+          "target": "n0034",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "M(u) in the conclusion is the Bondi mass of H(u, ·)"
+        },
+        {
+          "target": "n0045",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the hypothesis d₀ < δ is about scaleInvariantSize"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata : IsDecaySlice data"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the conclusion IsClassicalSolution T H for every T"
+        },
+        {
+          "target": "n0052",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the decay of ∂_r H is stated with radialDerivative"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the statement names δ = smallDataDelta x₁"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the statement names contractionFactor x₁ = 1"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the conclusion ∃ hs : ∀ u, IsSlice (H.curry u)"
+        }
+      ],
+      "source_hypotheses": "none at the outer level (a closed statement); inside: data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data (the source passage) and scaleInvariantSize data hdata < δ (the printed d₀ < δ)",
+      "source_quantifiers": "∃ δ, 0 < δ ∧ (∃ x₁ : ℝ≥0, 0 < x₁ ∧ contractionFactor x₁ = 1 ∧ δ = smallDataDelta x₁) ∧ ∀ data, ∀ hdata, scaleInvariantSize data hdata < δ → ∃ H, … ∃ C, … ∃ hs : ∀ u, IsSlice (H.curry u), …; δ is chosen before the data, H, C and hs after",
+      "source_conclusion": "∃ H : C(ℝ≥0 × ℝ≥0, ℝ), (∀ T, IsClassicalSolution T H) ∧ (∀ r, H(0, r) = data r) ∧ (∃ C, ∀ u r, abs(H(u, r)) ≤ C(1 + u + r)^{−3} ∧ abs(radialDerivative H u r) ≤ C(1 + u + r)^{−4}) ∧ ∃ hs : ∀ u, IsSlice (H.curry u), Antitone (u ↦ bondiMass (H.curry u) (hs u)) ∧ Tendsto (u ↦ bondiMass (H.curry u) (hs u)) atTop (𝓝 0): the conclusion of theorem3_mass_zero plus Bondi's theorem (\"M is a monotonically nonincreasing function of u\", the paper ) on [0,∞) for the global solution ; NOT claimed: the future timelike and null geodesic completeness (DEFERRED), uniqueness, X′ membership of H, the differentiability of M, dM/du ≤ 0",
+      "constant_scope": "δ = smallDataDelta x₁ is absolute, the same δ and x₁ as theorem3_mass_zero and theorem3_analytic ; C is existential and chosen after the data; one hs carries both the Antitone and the limit conjunct",
+      "declaration": "Christodoulou.Bondi.theorem3_bondi",
+      "file": "Christodoulou/Frozen/Bondi/Theorem3Bondi.lean"
+    },
+    {
+      "id": "n0049",
+      "kind": "step",
+      "title": "The global decay gives the strip hypothesis hd on every [0, T]: C ≥ 0 and abs(∂_r H(u, r)) ≤ C(1 + r)⁻⁴ for u ≤ T",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0052"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0052",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the bound is stated with radialDerivative; C(1 + u + r)⁻⁴ ≤ C(1 + r)⁻⁴ for u ≥ 0 and C ≥ 0 (C ≥ 0 from abs(H(0, 0)) ≤ C; routine)"
+        }
+      ],
+      "source_hypotheses": "H : C(ℝ≥0 × ℝ≥0, ℝ) and C real with ∀ u r, abs(H(u, r)) ≤ C(1 + u + r)⁻³ ∧ abs(radialDerivative H u r) ≤ C(1 + u + r)⁻⁴; T ≥ 0",
+      "source_quantifiers": "for each H, C with the decay bounds, for each T ≥ 0",
+      "source_conclusion": "0 ≤ C ∧ ∀ u ≤ T, ∀ r, abs(radialDerivative H u r) ≤ C(1 + r)⁻⁴",
+      "constant_scope": "the same C for every T"
+    },
+    {
+      "id": "n0050",
+      "kind": "theorem",
+      "title": "Theorem 3 (p. 351), analytic conclusion WITH M₁ = 0: under d₀ < δ there is a global classical solution taking the data, with the printed decay, whose Bondi mass tends to 0 as u → ∞ (theorem3_mass_zero, , the )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0034",
+        "n0045",
+        "n0043",
+        "n0010",
+        "n0052",
+        "n0054",
+        "n0053",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0034",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "M(u) in the conclusion is the Bondi mass of H(u, ·)"
+        },
+        {
+          "target": "n0045",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the hypothesis d₀ < δ is about scaleInvariantSize"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata : IsDecaySlice data"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the conclusion IsClassicalSolution T H for every T"
+        },
+        {
+          "target": "n0052",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the decay of ∂_r H is stated with radialDerivative"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the statement names δ = smallDataDelta x₁"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the statement names contractionFactor x₁ = 1"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the conclusion ∃ hs : ∀ u, IsSlice (H.curry u)"
+        }
+      ],
+      "source_hypotheses": "none at the outer level (a closed statement); inside: data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data (the source passage) and scaleInvariantSize data hdata < δ (the printed d₀ < δ)",
+      "source_quantifiers": "∃ δ, 0 < δ ∧ (∃ x₁ : ℝ≥0, 0 < x₁ ∧ contractionFactor x₁ = 1 ∧ δ = smallDataDelta x₁) ∧ ∀ data, ∀ hdata, scaleInvariantSize data hdata < δ → ∃ H, … ∃ C, … ∃ hs : ∀ u, IsSlice (H.curry u), …; δ is chosen before the data, H, C and hs after",
+      "source_conclusion": "∃ H : C(ℝ≥0 × ℝ≥0, ℝ), (∀ T, IsClassicalSolution T H) ∧ (∀ r, H(0, r) = data r) ∧ (∃ C, ∀ u r, abs(H(u, r)) ≤ C(1 + u + r)^{−3} ∧ abs(radialDerivative H u r) ≤ C(1 + u + r)^{−4}) ∧ ∃ hs : ∀ u, IsSlice (H.curry u), Tendsto (u ↦ bondiMass (H.curry u) (hs u)) atTop (𝓝 0): the conclusion of theorem3_analytic plus \"M₁ := lim_{u→∞} M(u) = 0\" ; NOT claimed: the future timelike and null geodesic completeness (DEFERRED, ), uniqueness, (4.6), dM/du ≤ 0, (4.7)",
+      "constant_scope": "δ = smallDataDelta x₁ is absolute, the same δ and x₁ as theorem3_analytic ; C is existential and chosen after the data, as in theorem3_analytic",
+      "declaration": "Christodoulou.Bondi.theorem3_mass_zero",
+      "file": "Christodoulou/Frozen/Bondi/Theorem3MassZero.lean"
+    },
+    {
+      "id": "n0051",
+      "kind": "definition",
+      "title": "The function G of (9.3) (smallDataG, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "x a real number (the source restricts to x ≥ 0; the formula is total)",
+      "source_quantifiers": "for each real x",
+      "source_conclusion": "smallDataG x := x/(2 + (π/6)x²) · [e^{−(4π/3)x²} − (π/8)x²(2 + (π/6)x²)] (literal (9.3))",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.smallDataG",
+      "file": "Christodoulou/Frozen/Bondi/SmallDataG.lean"
+    },
+    {
+      "id": "n0052",
+      "kind": "definition",
+      "title": "The radial derivative ∂_r H(u, r) of a field, within [0,∞) (radialDerivative, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "H : C(ℝ≥0 × ℝ≥0, ℝ), a continuous real function of (u, r) on the quadrant (carrier ); u, r in [0,∞)",
+      "source_quantifiers": "for each continuous H and each u, r ≥ 0",
+      "source_conclusion": "radialDerivative H u r := derivWithin (z ↦ H(u, z⁺)) (Ici 0) r: the partial derivative ∂h/∂r of (9.1), one-sided within [0,∞) at the centre r = 0 (as in MemXBall, ); a total function (its value carries no differentiability claim)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.radialDerivative",
+      "file": "Christodoulou/Frozen/Bondi/RadialDerivative.lean"
+    },
+    {
+      "id": "n0053",
+      "kind": "definition",
+      "title": "The contraction factor s of (9.26) (contractionFactor, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 357)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "x a real number (the source restricts to x ≥ 0; the formula is total)",
+      "source_quantifiers": "for each real x",
+      "source_conclusion": "contractionFactor x := (π/3)x²(37/6 + 2πx²) e^{(5π/9)x²} (literal (9.26))",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.contractionFactor",
+      "file": "Christodoulou/Frozen/Bondi/ContractionFactor.lean"
+    },
+    {
+      "id": "n0054",
+      "kind": "definition",
+      "title": "δ(x₁) := sup G([0, x₁]) of the proof of Theorem 3 (smallDataDelta, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0051"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0051",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the supremum is of G over [0, x₁]"
+        }
+      ],
+      "source_hypotheses": "x₁ in [0,∞) (any nonnegative radius; the root theorem3_unscaled of takes the root of s = 1)",
+      "source_quantifiers": "for each x₁ ≥ 0",
+      "source_conclusion": "smallDataDelta x₁ := sSup (G '' [0, x₁]); the printed max_{x ∈ [0,x₁]} G(x), an attained maximum by Z9C",
+      "constant_scope": "none (depends on x₁ only)",
+      "declaration": "Christodoulou.Bondi.smallDataDelta",
+      "file": "Christodoulou/Frozen/Bondi/SmallDataDelta.lean"
+    },
+    {
+      "id": "n0055",
+      "kind": "theorem",
+      "title": "(4.1) solved for ∂_u h̄: ∂_u h̄ = ½ ḡ (h − h̄)/r + ξ/(2r) at interior points (hasDerivAt_mean_curry)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0010",
+        "n0044",
+        "n0006",
+        "n0013",
+        "n0056"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the premise hH: (4.1) is asserted for solutions of (3.13), \"assuming regularity at the center\", which field (1) (C¹ up to r = 0) supplies"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the premise hs, passed as the argument of ḡ and ξ"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the conclusion contains ḡ, from D = ∂_u − ½ḡ∂_r"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the claim concerns the mean h̄ of each slice"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the right side of (4.1) is ξ/(2r), with ξ of (4.2)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H is a continuous real function of (u,r) on [0,∞) × [0,∞) with IsClassicalSolution u₀ H, the restricted uniformly decaying class ; 0 < u < u₀ (interior point, ); hs is a proof of IsSlice for the slice h = H(u,·), passed to ḡ and ξ ; r > 0",
+      "source_quantifiers": "for each u₀ in [0,∞), for each continuous H on [0,∞) × [0,∞) with IsClassicalSolution u₀ H, for each u with 0 < u < u₀, for each proof hs of IsSlice(H(u,·)), for each r in [0,∞) with r > 0",
+      "source_conclusion": "v ↦ h̄(v⁺, r), the mean at r of the slice H(v⁺,·), has (two-sided) derivative ½ ḡ(r)·(h(r) − h̄(r))/r + ξ(r)/(2r) at u, where h = H(u,·) and ḡ, ξ are those of h with the proof hs. This is (4.1), D h̄ = ξ/(2r) with D = ∂_u − ½ḡ∂_r and ξ of (4.2), solved for ∂_u h̄ with ∂_r h̄ = (h − h̄)/r of (3.8)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivAt_mean_curry",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtMeanCurry.lean"
+    },
+    {
+      "id": "n0056",
+      "kind": "definition",
+      "title": "ξ = ∫₀^r ḡ(h − h̄) ds/s on IsSlice slices, (4.2) (xi)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0044",
+        "n0006",
+        "n0013",
+        "n0058"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ξ is defined only on slices h with IsSlice h, passed as the argument hh to ḡ"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand of (4.2) contains ḡ of (3.12)"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand of (4.2) contains the defined mean h̄"
+        },
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "(4.2) is meaningful only because its integrand is interval integrable on [0, r] (an interval integral of a non-integrable function is 0 in Lean); ( pattern) makes intervalIntegrable_xi and xi one semantic unit, with xi admitted after the sealed and audited theorem"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh, and the value does not depend on which hh is supplied . r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "ξ(r) := ∫₀^r ḡ(s⁺)(h(s⁺) − h̄(s⁺))/s ds, the literal body of (4.2) written as an interval integral over [0, r] of the real lifts . At s = 0 Lean's 1/0 = 0 affects one null point",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.xi",
+      "file": "Christodoulou/Frozen/Bondi/Xi.lean"
+    },
+    {
+      "id": "n0057",
+      "kind": "claim",
+      "title": "For r > 0, dξ/dr = ḡ(h − h̄)/r (hasDerivAt_xi)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0056",
+        "n0044",
+        "n0006",
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the claim concerns the defined ξ, through its real lift"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the premise IsSlice h of the statement, passed as hh to ξ and ḡ"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the derivative value contains ḡ(r)"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the derivative value contains h̄(r)"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h , passed as hh; r > 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞) with r > 0",
+      "source_conclusion": "the real lift s ↦ ξ(s⁺) has (two-sided) derivative ḡ(r)(h(r) − h̄(r))/r at r (the FTC form of (4.2); reconstructed, not stated in the source)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivAt_xi",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtXi.lean"
+    },
+    {
+      "id": "n0058",
+      "kind": "claim",
+      "title": "Well-definedness of (4.2): ḡ(h − h̄)/s is interval integrable on [0, r]",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0044",
+        "n0006",
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the premise IsSlice h of the statement, passed as hh to ḡ"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand of (4.2) contains the defined ḡ of (3.12)"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand of (4.2) contains the defined mean h̄"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice, a continuous real function of r on [0,∞), in the slice class IsSlice: C¹[0,∞[ and h = O(r⁻³) as r → ∞ (carrier ); the carrier is restricted through the proof argument hh ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "s ↦ ḡ(s⁺)(h(s⁺) − h̄(s⁺))/s is interval integrable on [0, r], so ξ(r) = ∫₀^r ḡ(h − h̄) dr/r in (4.2) is a convergent integral (reconstructed; not stated in the source). At s = 0 Lean's 1/0 = 0 affects one null point",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.intervalIntegrable_xi",
+      "file": "Christodoulou/Frozen/Bondi/IntervalIntegrableXi.lean"
+    },
+    {
+      "id": "n0059",
+      "kind": "definition",
+      "title": "The mass function m = (r/2)(1 − ḡ/g), (4.3)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0006",
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the numerator of the quotient in (4.3) is ḡ"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the denominator of the quotient in (4.3) is g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "m(r) := (r/2)(1 − ḡ(r)/g(r)), the literal body of (4.3)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.mass",
+      "file": "Christodoulou/Frozen/Bondi/Mass.lean"
+    },
+    {
+      "id": "n0060",
+      "kind": "display",
+      "title": "(4.4): ∂m/∂r = 2π(ḡ/g)(h − h̄)² for r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0059",
+        "n0003"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the lift of m unfolds to s ↦ (s⁺/2)(1 − ḡ(s⁺)/g(s⁺))"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the algebra (1/2)(1 − ḡ/g) − (1/2)(g − ḡ)/g + 2π ḡ(h − h̄)²/g = 2π(ḡ/g)(h − h̄)² cancels g(r) ≠ 0"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r > 0. The derivative is two-sided and taken only at r > 0 (endpoint convention, )",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞) with r > 0",
+      "source_conclusion": "the real lift s ↦ m(s⁺) has derivative 2π (ḡ(r)/g(r)) (h(r) − h̄(r))² at r",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivAt_mass",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtMass.lean"
+    },
+    {
+      "id": "n0061",
+      "kind": "display",
+      "title": "(4.5): m = 2π∫₀^r (ḡ/g)(h − h̄)² dr",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0060",
+        "n0026"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "at every s in (0,r) the lift of m has derivative 2π(ḡ(s)/g(s))(h(s) − h̄(s))², which is 2π times the integrand because s⁺ = s"
+        },
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the FTC gives m(r) − m(0), and m(0) = 0"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "m(r) = 2π ∫₀^r (ḡ(s⁺)/g(s⁺)) (h(s⁺) − h̄(s⁺))² ds, an interval integral from 0 to r",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.mass_eq_integral",
+      "file": "Christodoulou/Frozen/Bondi/MassEqIntegral.lean"
+    },
+    {
+      "id": "n0062",
+      "kind": "claim",
+      "title": "Joint continuity of ḡ(u,r) on the quadrant, including the centre and the time endpoints (continuous_gBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0007"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "gBarX(u,r) is ḡ(r) of the slice h_v at v = min(u,u₀)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H",
+      "source_conclusion": "(u,r) ↦ gBarX(u,r) is continuous on [0,∞) × [0,∞) (product topology), in particular jointly continuous on the closed strip [0,u₀] × [0,∞). Reconstructed: [P] never states it; it is presupposed by (5.1)-(5.2) and by the uniform convergence of ḡ_{n_i} on p. 349",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.continuous_gBarX",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousGBarX.lean"
+    },
+    {
+      "id": "n0063",
+      "kind": "step",
+      "title": "Joint continuity of g(u,r) on the quadrant (approved helper continuous_gX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004",
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "gX(u,r) is g(r) of the slice h_v at v = min(u,u₀)"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g(r) = exp(−4π T(u,r)) with T the tail integral of (3.11)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H",
+      "source_conclusion": "(u,r) ↦ gX(u,r) is continuous on [0,∞) × [0,∞), including the centre and the time endpoints",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0064",
+      "kind": "definition",
+      "title": "Closed ball of radius x in the space X of (7.1) on the strip [0,u₀]×[0,∞) (MemXBall)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (field carrier , reused), with slices H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "MemXBall u₀ x H holds iff (1) for every u in [0,∞) with u ≤ u₀ the slice lift s ↦ H(u, s⁺) is C¹ (ContDiffOn of order 1) on [0,∞), with the derivative at s = 0 one-sided within [0,∞) ; (2) the map (u,r) ↦ ∂_r H(u,r), the derivative within [0,∞) at r of the lift s ↦ H(u⁺, s⁺), is continuous on the closed strip [0,u₀] × [0,∞); (3) for every u ≤ u₀ and every r ≥ 0, (1+r)³ abs(H(u,r)) + (1+r)⁴ abs(∂_r H(u,r)) ≤ x. Fields (1)-(2) are \"continuous and posess a continuous partial derivative with respect to r\" of (7.1) (continuity of H itself is the carrier's); field (3) is ‖H‖_X ≤ x for the printed sum norm (7.1) (U-NORMS), i.e. membership in \"the closed ball of radius x₁ in the space X\" of Lemma 1 with x₁ = x . No evolution equation and no ∂_u H are assumed",
+      "constant_scope": "the radius x is an explicit parameter of the predicate, not existential ; the double sup over u then r of (7.1) is replaced by the equivalent pointwise bound for all u ≤ u₀ and all r ≥ 0",
+      "declaration": "Christodoulou.Bondi.MemXBall",
+      "file": "Christodoulou/Frozen/Bondi/MemXBall.lean"
+    },
+    {
+      "id": "n0065",
+      "kind": "claim",
+      "title": "Each slice H(u,·), u ≤ u₀, of a field in the X-ball of radius x is in IsSlice (MemXBall.isSlice)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0064",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0064",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the premise hH; its field (1) at u ≤ u₀ is verbatim the C¹[0,∞[ conjunct of IsSlice, since the slice lift s ↦ (H.curry u)(s⁺) is definitionally s ↦ H(u, s⁺)"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the conclusion is IsSlice of the slice, i.e. its C¹ and O(r⁻³) conjuncts (class printed at https://doi.org/10.1007/BF01205930 (p. 348))"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number; H is a continuous real function of (u,r) on [0,∞) × [0,∞) with MemXBall u₀ x H ; u ≤ u₀",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with MemXBall u₀ x H, for each u in [0,∞) with u ≤ u₀",
+      "source_conclusion": "IsSlice(H(u,·)): the slice h = H(u,·) (H.curry u) is C¹[0,∞[ (one-sided derivative at r = 0, ) and h = O(r⁻³) as r → ∞. Reconstructed: [P] never states that the elements of X have slices in a slice class",
+      "constant_scope": "none in the statement (the O-constant and threshold of IsSlice are existential per slice and may a priori depend on u); the proof's witness is the radius x, which does not depend on u (see #slice-decay)",
+      "declaration": "Christodoulou.Bondi.MemXBall.isSlice",
+      "file": "Christodoulou/Frozen/Bondi/MemXBallIsSlice.lean"
+    },
+    {
+      "id": "n0066",
+      "kind": "external",
+      "title": "The mean-value inequality with a derivative upper bound on a convex set",
+      "statement_source": "external:mathlib#Convex.image_sub_le_mul_sub_of_deriv_le",
+      "proof_source": "external:mathlib#Convex.image_sub_le_mul_sub_of_deriv_le",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "D ⊆ ℝ convex; f continuous on D and differentiable on the interior of D; deriv f ≤ C on the interior of D",
+      "source_quantifiers": "for all D, f, C, for all x, y in D with x ≤ y",
+      "source_conclusion": "f y − f x ≤ C (y − x)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0067",
+      "kind": "external",
+      "title": "Uniformly bounded partial integrals give integrability on a half-line",
+      "statement_source": "external:mathlib#MeasureTheory.integrableOn_Ioi_of_intervalIntegral_norm_bounded",
+      "proof_source": "external:mathlib#MeasureTheory.integrableOn_Ioi_of_intervalIntegral_norm_bounded",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f : ℝ → E; a, I real; b : ι → ℝ with b → ∞ along a filter l; f integrable on every (a, b i]; eventually along l, ∫_a^{b i} ‖f‖ ≤ I",
+      "source_quantifiers": "for all f, a, I, l, b",
+      "source_conclusion": "f is integrable on (a,∞)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0068",
+      "kind": "external",
+      "title": "The tangent-line bound of the exponential",
+      "statement_source": "external:mathlib#Real.add_one_le_exp",
+      "proof_source": "external:mathlib#Real.add_one_le_exp",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "x a real number",
+      "source_quantifiers": "for every real x",
+      "source_conclusion": "x + 1 ≤ exp(x)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0069",
+      "kind": "external",
+      "title": "Monotonicity of the interval integral",
+      "statement_source": "external:mathlib#intervalIntegral.integral_mono_on",
+      "proof_source": "external:mathlib#intervalIntegral.integral_mono_on",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a ≤ b; f, g interval integrable on [a,b]; f ≤ g on [a,b]",
+      "source_quantifiers": "for all a, b, f, g",
+      "source_conclusion": "∫_a^b f ≤ ∫_a^b g",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0070",
+      "kind": "external",
+      "title": "Limits preserve a non-strict inequality",
+      "statement_source": "external:mathlib#le_of_tendsto_of_tendsto",
+      "proof_source": "external:mathlib#le_of_tendsto_of_tendsto",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "order-closed topology; f → a and g → b along a nontrivial filter; f ≤ g eventually",
+      "source_quantifiers": "for all f, g, a, b",
+      "source_conclusion": "a ≤ b",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0071",
+      "kind": "external",
+      "title": "The squeeze theorem",
+      "statement_source": "external:mathlib#tendsto_of_tendsto_of_tendsto_of_le_of_le",
+      "proof_source": "external:mathlib#tendsto_of_tendsto_of_tendsto_of_le_of_le",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g → a and h → a along a filter; g ≤ f ≤ h",
+      "source_quantifiers": "for all functions f, g, h, a filter and a limit a",
+      "source_conclusion": "f → a",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0072",
+      "kind": "external",
+      "title": "Fundamental theorem of calculus for a continuous integrand",
+      "statement_source": "external:standard-analysis#FTC-continuous-integrand",
+      "proof_source": "external:standard-analysis#FTC-continuous-integrand",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g integrable on bounded subintervals of [0,∞) and continuous at r (within [0,∞))",
+      "source_quantifiers": "for all g, for all r ≥ 0",
+      "source_conclusion": "s ↦ ∫₀^s g has derivative g(r) at r within [0,∞) (right derivative at r = 0)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0073",
+      "kind": "external",
+      "title": "Bounded measurable functions are integrable on sets of finite measure",
+      "statement_source": "external:standard-analysis#bounded-integrable-finite-measure",
+      "proof_source": "external:standard-analysis#bounded-integrable-finite-measure",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "S measurable with finite Lebesgue measure; g measurable on S; abs(g) ≤ M on S",
+      "source_quantifiers": "for all S, for all g, for all real M",
+      "source_conclusion": "g is integrable on S",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0074",
+      "kind": "external",
+      "title": "A derivative that exists is the value of deriv",
+      "statement_source": "external:standard-analysis#deriv-of-hasDerivAt",
+      "proof_source": "external:standard-analysis#deriv-of-hasDerivAt",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F has derivative a at x",
+      "source_quantifiers": "for all F, for all real x, a",
+      "source_conclusion": "deriv F (x) = a",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0075",
+      "kind": "external",
+      "title": "A measurable function dominated by an integrable function is integrable",
+      "statement_source": "external:standard-analysis#integrable-of-dominated",
+      "proof_source": "external:standard-analysis#integrable-of-dominated",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g measurable on S; G integrable on S; abs(g) ≤ G a.e. on S",
+      "source_quantifiers": "for all measurable S, for all g, G",
+      "source_conclusion": "g is integrable on S",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0076",
+      "kind": "external",
+      "title": "Integrability on two sets gives integrability on their union",
+      "statement_source": "external:standard-analysis#integrable-union",
+      "proof_source": "external:standard-analysis#integrable-union",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g integrable on A; g integrable on B",
+      "source_quantifiers": "for all measurable A, B, for all g",
+      "source_conclusion": "g is integrable on A ∪ B",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0077",
+      "kind": "external",
+      "title": "Differentiation under the integral sign with a dominated derivative",
+      "statement_source": "external:standard-analysis#leibniz-dominated",
+      "proof_source": "external:standard-analysis#leibniz-dominated",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a ≤ b; x₀ real, δ > 0; for every x with abs(x − x₀) < δ, s ↦ F(x, s) is measurable on [a, b]; F(x₀, ·) is integrable on [a, b]; for every s in [a, b] and every such x, x ↦ F(x, s) has derivative F′(x, s) at x; s ↦ F′(x₀, s) is measurable on [a, b]; abs(F′(x, s)) ≤ K for all such x and s",
+      "source_quantifiers": "for all a ≤ b, for all F, F′, x₀, δ > 0, K",
+      "source_conclusion": "x ↦ ∫_a^b F(x, s) ds has derivative ∫_a^b F′(x₀, s) ds at x₀",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0078",
+      "kind": "external",
+      "title": "Differentiation under a tail integral ∫_(r,∞) with an integrable dominating derivative",
+      "statement_source": "external:standard-analysis#leibniz-dominated-tail",
+      "proof_source": "external:standard-analysis#leibniz-dominated-tail",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "x₀ real, δ > 0; for every x with abs(x − x₀) < δ, s ↦ F(x, s) is measurable and F(x₀, ·) is integrable on (r,∞); x ↦ F(x, s) has derivative F′(x, s) at every such x for a.e. s; abs(F′(x, s)) ≤ G(s) with G integrable on (r,∞)",
+      "source_quantifiers": "for all r, F, F′, G, x₀, δ > 0",
+      "source_conclusion": "x ↦ ∫_(r,∞) F(x, s) ds has derivative ∫_(r,∞) F′(x₀, s) ds at x₀",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0079",
+      "kind": "external",
+      "title": "Partial integrals converge to the improper integral",
+      "statement_source": "external:standard-analysis#partial-integral-tendsto",
+      "proof_source": "external:standard-analysis#partial-integral-tendsto",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "G integrable on (a,∞)",
+      "source_quantifiers": "for all G, for all real a",
+      "source_conclusion": "∫_a^r G → ∫_(a,∞) G as r → ∞ (dominated or monotone convergence)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0080",
+      "kind": "external",
+      "title": "s^(−p) is integrable on [a,∞) for a > 0 and p > 1",
+      "statement_source": "external:standard-analysis#power-integrable-at-infinity",
+      "proof_source": "external:standard-analysis#power-integrable-at-infinity",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a > 0; p > 1",
+      "source_quantifiers": "for all a > 0, for all p > 1",
+      "source_conclusion": "s ↦ s^(−p) is integrable on [a,∞), hence on (a,∞)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0081",
+      "kind": "external",
+      "title": "Quotient rule for derivatives",
+      "statement_source": "external:standard-analysis#quotient-rule",
+      "proof_source": "external:standard-analysis#quotient-rule",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F has derivative a at x; H has derivative b at x; H(x) ≠ 0",
+      "source_quantifiers": "for all F, H, x, a, b",
+      "source_conclusion": "F/H has derivative (a H(x) − F(x) b)/H(x)² at x",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0082",
+      "kind": "external",
+      "title": "The tail of a convergent improper integral tends to 0",
+      "statement_source": "external:standard-analysis#tail-of-convergent-integral",
+      "proof_source": "external:standard-analysis#tail-of-convergent-integral",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "G ≥ 0 integrable on (0,∞)",
+      "source_quantifiers": "for all G",
+      "source_conclusion": "∫_(r,∞) G → 0 as r → ∞",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0083",
+      "kind": "external",
+      "title": "A continuous function with zero derivative inside an interval is constant",
+      "statement_source": "external:standard-analysis#zero-derivative-constant",
+      "proof_source": "external:standard-analysis#zero-derivative-constant",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a ≤ b; F continuous on [a, b]; F has derivative 0 at every point of (a, b)",
+      "source_quantifiers": "for all a ≤ b, for all F",
+      "source_conclusion": "F(b) = F(a) (mean value theorem)",
+      "constant_scope": "none"
+    }
+  ],
+  "coverage": [
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0059",
+        "n0006",
+        "n0009",
+        "n0001",
+        "n0013"
+      ],
+      "reason": "(4.3) m = (r/2)(1 − ḡ/g), repeated from https://doi.org/10.1007/BF01205930 (p. 344): the imported sealed mass with its body edges (ḡ, gMap, g, the mean); differentiated in u by , the subject of , #mass-identity and #time-continuity.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0025"
+      ],
+      "reason": "the source passage: the imported gBar_le_g; used in #domination of and #envelope of .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"Therefore m is nonnegative\": formalized and sealed in (mass_nonneg, https://doi.org/10.1007/BF01205930); consumed by no (only inside the cut proof of ), so not a node here. Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0026"
+      ],
+      "reason": "\"Also, m vanishes at r = 0\": the imported mass_zero, kept as the proof edge of the imported (4.5) (route 2 of ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"and m < r/2 for r > 0\": formalized and sealed in (mass_lt_half); consumed by no . Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0060"
+      ],
+      "reason": "(4.4) ∂m/∂r = 2π(ḡ/g)(h − h̄)²: the imported hasDerivAt_mass; statement-level in (∂_r m), consumed by .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"Thus m is a monotonically nondecreasing function of r at each u\": formalized and sealed in (monotone_mass); consumed only inside the cut proof of (https://doi.org/10.1007/BF01205930), not by a . Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0061"
+      ],
+      "reason": "(4.5) m = 2π∫₀^r (ḡ/g)(h − h̄)² dr: the imported mass_eq_integral; route 2 of (the printed derivation of r(1 − g) → 0).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: physical interpretation, no mathematical content (the missing \"has\" is transcriber's note ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: E(n, n) = 0 and the first display of (4.6) as a DERIVATION ROUTE of (4.6): NOT formalized, OPEN . The Einstein equations, the metric (1.1) and the vector field n are not formalized; (4.6) itself is formalized by the direct route from (3.13) (item P.344.4.6-derivation).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0015",
+        "n0021",
+        "n0056",
+        "n0058"
+      ],
+      "reason": "(4.6) Dm = −(π/g)ξ²: (solved for ∂_u m, HasDerivAt) and (the printed D-form with deriv), , at interior points , for the class of and (a). FORMALIZED.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0015",
+        "n0017",
+        "n0019",
+        "n0020",
+        "n0016",
+        "n0018",
+        "n0055",
+        "n0047",
+        "n0064",
+        "n0010",
+        "n0003",
+        "n0042",
+        "n0014",
+        "n0057",
+        "n0081",
+        "n0078",
+        "n0077",
+        "n0072",
+        "n0083"
+      ],
+      "reason": "the source passage: the direct route of (proposal §3, ), reconstructed by the SOURCE_GAP steps #domination, #g-time, #gbar-time, #centre (regularity at the centre, supplied by the class, ) and #flux-identity, with the X-ball witness of exists_memXBall_of_isClassicalSolution ( unused). FORMALIZED.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"It implies that m is monotonically nonincreasing along the incoming light rays\": NOT formalized, OPEN : it needs the characteristic curves of D for a general classical solution and the joint differentiability of m. Not used: Bondi's theorem is proved by the derivative-comparison route (, (a)).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "assumption",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: M₀ AS AN ASSUMPTION IS REPLACED by the characterization (on IsSlice the limit exists automatically); not a standing assumption and not a node; the printed assumption stays OPEN as a printed hypothesis that is not formalized. Its role in r(1 − g) → 0 is taken by in route 2 of .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"and is bounded by M₀\": the printed bound of m(u, ·) by M₀ needs (4.6) integrated in u along the incoming rays; NOT formalized, OPEN; replaced by the slice-decay bound of (https://doi.org/10.1007/BF01205930).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0034",
+        "n0035"
+      ],
+      "reason": "the source passage: the imported (bondiMass) with its characterization (one semantic unit, ), consumed by , , and route 2 of ; their proofs are in https://doi.org/10.1007/BF01205930",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0034"
+      ],
+      "reason": "the source passage: the name of .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "citation",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"first introduced in [4]\" (Bondi): historical citation; no mathematical input is consumed.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0030",
+        "n0032",
+        "n0033",
+        "n0031",
+        "n0048",
+        "n0049",
+        "n0004",
+        "n0007",
+        "n0005",
+        "n0008",
+        "n0063",
+        "n0062",
+        "n0065",
+        "n0066",
+        "n0070"
+      ],
+      "reason": "the source passage: on [0, u₀] (AntitoneOn, (a)), RECON: the print gives no argument; the derivative-comparison route (#envelope, #time-continuity, #comparison) is a reconstruction from (4.6) ; carries it to the global Theorem-3 solution on [0, ∞) (, through #weighted-bound). FORMALIZED in the order form.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\", dM/du ≤ 0\": the derivative form of Bondi's theorem: NOT formalized, OPEN ( (a), ): the differentiability of M and the mass-loss formula dM/du = −πξ(u, ∞)² (not printed) are not claimed; states the order form only.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: exposition; (4.6) itself is item P.344.4.6.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0037",
+        "n0040",
+        "n0039",
+        "n0041",
+        "n0038",
+        "n0036",
+        "n0024",
+        "n0012",
+        "n0068",
+        "n0067",
+        "n0082",
+        "n0071",
+        "n0069",
+        "n0023",
+        "n0002"
+      ],
+      "reason": "the source passage: on the slice class, with two ROUTES: route 1 (ALTERNATIVE ARGUMENT from the slice decay, implemented, ) and route 2 (the printed derivation from finite mass, reconstructed with in place of M₀ < ∞). FORMALIZED.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0027",
+        "n0029",
+        "n0028",
+        "n0011",
+        "n0002",
+        "n0079",
+        "n0073",
+        "n0080",
+        "n0075",
+        "n0076"
+      ],
+      "reason": "the source passage (4.7): on the slice class with the integrability of 1 − g , from , the mass identity and . FORMALIZED.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The curvature components (4.8)-(4.12), introduced by the sentence that follows the transcribed passage (transcriber's note ): NOT formalized, OPEN (; no curvature or metric (1.1) is formalized).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0021"
+      ],
+      "reason": "D = ∂/∂u − ½ḡ ∂/∂r: not a Lean definition; written out in the printed form (deriv in u minus ½ḡ times deriv in r), as in evolution_mean (package ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: geometric interpretation (metric (1.1)-(1.2) not formalized); not consumed. The incoming-rays statement for m is EXCLUDED and OPEN (item P.344.incoming-rays).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0010"
+      ],
+      "reason": "the source passage (3.13): the imported IsClassicalSolution (field (3)), the hypothesis of - and the conclusion of ; consumed by #domination, #g-time, #centre and #flux-identity. The reduction from (2.19) was not formalized in earlier packages and is not consumed.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0015",
+        "n0018"
+      ],
+      "reason": "the source passage: the \"previous discussion\" invoked at the paper ; applied to m by (the direct route) and its flux identity.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0055"
+      ],
+      "reason": "the source passage: the printed derivation of (4.1), re-inventoried (corpus of https://doi.org/10.1007/BF01205930); its nodes are there; it enters through the imported hasDerivAt_mean_curry.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0055"
+      ],
+      "reason": "\"and Dr = −½ḡ\": part of the printed derivation of (4.1), re-inventoried; through the imported hasDerivAt_mean_curry.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0022",
+        "n0023",
+        "n0016"
+      ],
+      "reason": "the source passage: the imported mean_zero and continuous_mean; reused for (4.6) at #centre of (A(0) = 0; regularity at the centre supplied by the class, ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0055"
+      ],
+      "reason": "(4.1) Dh̄ = ξ/(2r): the imported hasDerivAt_mean_curry (solved for ∂_u h̄), consumed by #domination, #g-time and #flux-identity of . (The printed form evolution_mean is not consumed.)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0056",
+        "n0058",
+        "n0057"
+      ],
+      "reason": "(4.2) ξ = ∫₀^r ḡ(h − h̄) dr/r: the imported xi with its well-definedness and r-derivative; ξ is in the conclusions of and ; ∂_r ξ enters #flux-identity.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Duplicate transcription of https://doi.org/10.1007/BF01205930 (E(n, n) = 0, the first display, \"by virtue of (4.1)\"): EXCLUDED and OPEN as item P.344.Enn .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0015",
+        "n0021"
+      ],
+      "reason": "Duplicate transcription of (4.6) (https://doi.org/10.1007/BF01205930 ): and , as item P.344.4.6.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0015"
+      ],
+      "reason": "Duplicate transcription of https://doi.org/10.1007/BF01205930 (the direct derivation from (3.13) with regularity at the centre): and its steps, as item P.344.4.6-derivation.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Duplicate transcription of https://doi.org/10.1007/BF01205930 (m nonincreasing along the incoming light rays): NOT formalized, OPEN, as item P.344.incoming-rays .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "assumption",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Duplicate transcription of https://doi.org/10.1007/BF01205930 (the M₀ assumption; the omission […] is completed in https://doi.org/10.1007/BF01205930): REPLACED , as item P.345.-assumption.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0048",
+        "n0050",
+        "n0043",
+        "n0044"
+      ],
+      "reason": "the source passage: the data class IsDecaySlice of (as of theorem3_mass_zero).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0045",
+        "n0046"
+      ],
+      "reason": "d₀ := inf_{a>0} sup_{r≥0} {…}: the imported scaleInvariantSize with its body edge scaledInitialSize; in the hypothesis of .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0048",
+        "n0050",
+        "n0010",
+        "n0054",
+        "n0053",
+        "n0051"
+      ],
+      "reason": "the source passage: restates the conclusion of theorem3_mass_zero with the same δ = smallDataDelta x₁ . FORMALIZED (/10).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0048",
+        "n0050",
+        "n0052",
+        "n0049"
+      ],
+      "reason": "abs(h(u, r)) ≤ C(1 + u + r)⁻³, abs(∂h/∂r(u, r)) ≤ C(1 + u + r)⁻⁴: restated in from theorem3_mass_zero; its derivative half gives the strip hypothesis hd of on every [0, T] (#weighted-bound).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"The corresponding spacetime is timelike and null geodesically complete toward the future\": NOT formalized, OPEN, explicitly DEFERRED (, ; no metric (1.1), no geodesics; not proved in the paper).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0048",
+        "n0050",
+        "n0034"
+      ],
+      "reason": "\"and M₁ := lim_{u→∞} M(u) = 0\": restated in from theorem3_mass_zero , with the same slice family hs that carries Bondi's theorem.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#leibniz-dominated-tail",
+      "disposition": "NODE",
+      "nodes": [
+        "n0078"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Convex.image_sub_le_mul_sub_of_deriv_le",
+      "disposition": "NODE",
+      "nodes": [
+        "n0066"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#MeasureTheory.integrableOn_Ioi_of_intervalIntegral_norm_bounded",
+      "disposition": "NODE",
+      "nodes": [
+        "n0067"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#tail-of-convergent-integral",
+      "disposition": "NODE",
+      "nodes": [
+        "n0082"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#tendsto_of_tendsto_of_tendsto_of_le_of_le",
+      "disposition": "NODE",
+      "nodes": [
+        "n0071"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#intervalIntegral.integral_mono_on",
+      "disposition": "NODE",
+      "nodes": [
+        "n0069"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Real.add_one_le_exp",
+      "disposition": "NODE",
+      "nodes": [
+        "n0068"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#partial-integral-tendsto",
+      "disposition": "NODE",
+      "nodes": [
+        "n0079"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#bounded-integrable-finite-measure",
+      "disposition": "NODE",
+      "nodes": [
+        "n0073"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#power-integrable-at-infinity",
+      "disposition": "NODE",
+      "nodes": [
+        "n0080"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#integrable-of-dominated",
+      "disposition": "NODE",
+      "nodes": [
+        "n0075"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#integrable-union",
+      "disposition": "NODE",
+      "nodes": [
+        "n0076"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#leibniz-dominated",
+      "disposition": "NODE",
+      "nodes": [
+        "n0077"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#FTC-continuous-integrand",
+      "disposition": "NODE",
+      "nodes": [
+        "n0072"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#zero-derivative-constant",
+      "disposition": "NODE",
+      "nodes": [
+        "n0083"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#quotient-rule",
+      "disposition": "NODE",
+      "nodes": [
+        "n0081"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#deriv-of-hasDerivAt",
+      "disposition": "NODE",
+      "nodes": [
+        "n0074"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#le_of_tendsto_of_tendsto",
+      "disposition": "NODE",
+      "nodes": [
+        "n0070"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    }
+  ]
+}

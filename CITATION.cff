@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "Please cite this formalization and Christodoulou's original paper."
+type: software
+title: "Christodoulou's self-gravitating scalar field in Lean"
+authors:
+  - family-names: Kehle
+    given-names: Christoph
+license: Apache-2.0
+repository-code: "https://github.com/christoph-ke/christodoulou-1986-lean"
+url: "https://github.com/christoph-ke/christodoulou-1986-lean"
+abstract: >-
+  Lean formalization of analytic results from Christodoulou's 1986 paper,
+  including local existence, uniqueness, small-data global existence with decay,
+  and Bondi mass results for the restricted uniformly decaying classical-solution
+  class. Geodesic completeness is out of scope.
+references:
+  - type: article
+    title: "The problem of a self-gravitating scalar field"
+    authors:
+      - family-names: Christodoulou
+        given-names: Demetrios
+    journal: "Communications in Mathematical Physics"
+    volume: "105"
+    issue: "3"
+    start: "337"
+    end: "361"
+    year: 1986
+    doi: "10.1007/BF01205930"

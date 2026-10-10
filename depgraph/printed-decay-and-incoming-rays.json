@@ -1,0 +1,2417 @@
+{
+  "schema_version": 1,
+  "title": "printed decay and incoming rays",
+  "source": "https://doi.org/10.1007/BF01205930",
+  "semantics": "Edges point to prerequisites; dependencies are conjunctive; one alternative route suffices. Reviewed source topology, not a kernel proof trace.",
+  "conventions": "Carriers, hypotheses, quantifiers and constant scope are recorded per node and in the corresponding Lean declarations.",
+  "roots": [
+    "n0035",
+    "n0031",
+    "n0033",
+    "n0040",
+    "n0042",
+    "n0020",
+    "n0022",
+    "n0026",
+    "n0021",
+    "n0009",
+    "n0013",
+    "n0017"
+  ],
+  "standing_assumptions": [],
+  "nodes": [
+    {
+      "id": "n0001",
+      "kind": "definition",
+      "title": "The metric function g = exp[−4π ∫_r^∞ (h − h̄)² ds/s] on IsSlice slices, (3.10)–(3.11) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0029"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g is defined only on slices h with IsSlice h, passed as the argument hh"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh, and the value does not depend on which hh is supplied . r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "g(r) := exp[−4π ∫_r^∞ (h(s) − h̄(s))² ds/s], the literal body of (3.11), with the integral over the open half-line (r,∞). (3.10) names e^{ν+λ} = g; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g",
+      "file": "Christodoulou/Frozen/Bondi/G.lean"
+    },
+    {
+      "id": "n0002",
+      "kind": "claim",
+      "title": "g > 0 (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g(r) is exp of the real number −4π A(r)"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "0 < g(r). This is implicit in (3.10)–(3.11): g is an exponential, e^{ν+λ}",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g_pos",
+      "file": "Christodoulou/Frozen/Bondi/GPos.lean"
+    },
+    {
+      "id": "n0003",
+      "kind": "definition",
+      "title": "ḡ, the radial mean of g, (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0005",
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the mean is taken of the continuous radial function gMap"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the bar in (3.12) is the mean notation of (3.7), \"used throughout\", so ḡ is the sealed mean applied to g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "ḡ(r) := mean(gMap)(r), the mean (3.7) of g: (1/r)∫₀^r g(r')dr' for r > 0 and g(0) at r = 0 . (3.12) names e^{ν−λ} = ḡ; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBar",
+      "file": "Christodoulou/Frozen/Bondi/GBar.lean"
+    },
+    {
+      "id": "n0004",
+      "kind": "definition",
+      "title": "ḡ(u,r) of (3.12) for fields in the X-ball, the coefficient of (5.1), at the clamped time min(u,u₀) (gBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0049"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "gBarX takes the proof hH of MemXBall u₀ x H as its argument: ḡ_n is formed for an element h_n of X"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "gBarX(u,r) := ḡ(H(min(u,u₀),·))(r), the sealed ḡ = mean of g of (3.12) for the slice H.curry (min u u₀), with the slice-class proof MemXBall.isSlice of hH at min(u,u₀) ≤ u₀ : the coefficient ḡ(u,r) of the characteristic equation (5.1). For u > u₀ it repeats the slice at u₀ (formal clamp, no source content)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBarX",
+      "file": "Christodoulou/Frozen/Bondi/GBarX.lean"
+    },
+    {
+      "id": "n0005",
+      "kind": "definition",
+      "title": "gMap: g as a continuous radial function on [0,∞), the representation needed to form ḡ in (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001",
+        "n0029"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the underlying function of gMap is the defined g of (3.11), whose mean is ḡ"
+        },
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "gMap is defined only on slices with IsSlice h, and passes hh to g and continuous_g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "gMap is the continuous map [0,∞) → ℝ, r ↦ g(r), i.e. g of (3.11) bundled with its continuity. It adds no source content beyond g; it exists so that the mean ḡ of (3.12) can be formed",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gMap",
+      "file": "Christodoulou/Frozen/Bondi/GMap.lean"
+    },
+    {
+      "id": "n0006",
+      "kind": "definition",
+      "title": "Classical solution of (3.13) on the strip [0,u₀]×[0,∞), restricted uniformly decaying class (IsClassicalSolution)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0029"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "field (3) quantifies over proofs of IsSlice for the slice H(u,·), which g and ḡ require as their argument hh"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (p. 339 domain; carrier ), with slices h = H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "IsClassicalSolution u₀ H holds iff (1) the real lift (u,r) ↦ H(u⁺, r⁺) is C¹ (ContDiffOn 1) on the closed strip [0,u₀] × [0,∞), with one-sided derivatives at its edges when u₀ > 0; for u₀ = 0 the set is the half-line {0} × [0,∞) and the field is degenerate (recorded constraint ) (\"classical\" solution of p. 348: a differentiable function whose derivatives are continuous even on r = 0; \"C¹[0,u₀]×[0,∞[\" of Theorem 1; ); (2) there is one constant C, chosen before u and r, with abs(H(u,r)) ≤ C(1 + r)⁻³ for all u ≤ u₀ and all r ≥ 0 (the field form of \"h = O(r⁻³) … uniformly in u\" of Theorems 1 and 2, to which it is bridged by the deferred obligation ; implied by the decay of Theorem 3; ); (3) for every u with 0 < u < u₀, every proof hs of IsSlice h for the slice h = H(u,·), and every r > 0, ∂_u H − ½ ḡ ∂_r H = (g − ḡ)(h − h̄)/(2r) at (u,r), i.e. Dh = (1/2r)(g − ḡ)(h − h̄) with D = ∂_u − ½ ḡ ∂_r, (3.13), both partials being deriv of the real lifts . This is the RESTRICTED uniformly-decaying classical-solution class , NOT the most general classical-solution class of [P]; data at u = 0 is not part of the predicate",
+      "constant_scope": "C in (2) is existential, depends only on H and u₀, and precedes u and r",
+      "declaration": "Christodoulou.Bondi.IsClassicalSolution",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolution.lean"
+    },
+    {
+      "id": "n0007",
+      "kind": "claim",
+      "title": "Each slice H(u,·), u ≤ u₀, of a uniformly decaying classical solution (restricted class, ) is in IsSlice (IsClassicalSolution.isSlice)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0006",
+        "n0029"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the premise hH: the classical-solution class whose slices are taken"
+        },
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the conclusion is IsSlice of the slice, i.e. its C¹ and O(r⁻³) conjuncts"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H is a continuous real function of (u,r) on [0,∞) × [0,∞) with IsClassicalSolution u₀ H, the restricted uniformly decaying class ; u ≤ u₀",
+      "source_quantifiers": "for each u₀ in [0,∞), for each continuous H on [0,∞) × [0,∞) with IsClassicalSolution u₀ H, for each u in [0,∞) with u ≤ u₀",
+      "source_conclusion": "IsSlice(H(u,·)): the slice h = H(u,·) is C¹[0,∞[ (one-sided derivative at r = 0, ) and h = O(r⁻³) as r → ∞. Reconstructed: Theorem 1 asserts for its solution that at each u ∈ [0,u₀] h = O(r⁻³) uniformly in u; the per-slice class membership is not stated",
+      "constant_scope": "none in the statement (the O-constant and threshold of IsSlice are existential per slice and may a priori depend on u); the proof's witness is the constant C of field (2), which depends only on H and u₀ (see #slice-decay)",
+      "declaration": "Christodoulou.Bondi.IsClassicalSolution.isSlice",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolutionIsSlice.lean"
+    },
+    {
+      "id": "n0008",
+      "kind": "definition",
+      "title": "Radial mean f̄(r) = r⁻¹∫₀^r f, with centre value f(0) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f is one fixed-u slice of a function of (u,r), regarded as a continuous real function of r on [0,∞) (, ; domain 0 ≤ r < ∞ from p. 339)",
+      "source_quantifiers": "for each continuous f on [0,∞) and each r in [0,∞)",
+      "source_conclusion": "f̄(r) := (1/r)∫₀^r f(r')dr' for r > 0, and f̄(0) := f(0) (centre value, p. 344, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean",
+      "file": "Christodoulou/Frozen/Radial/Mean.lean"
+    },
+    {
+      "id": "n0009",
+      "kind": "definition",
+      "title": "The ray reflected at the centre, as a set of points (u, r): the incoming part followed, if the ray reaches the centre at u₁, by the outgoing light ray u = u₁, r ≥ 0 (reflectedRay, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0010",
+        "n0011"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+          "rationale": "the second set is the outgoing light ray {u₁} × [0, ∞) issued from the central point (u₁, 0): u is constant on the future light cone of each point of the central world line"
+        },
+        {
+          "target": "n0011",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+          "rationale": "AUTHOR RULING : the union, and the condition χ(u₁) = 0 for the outgoing part"
+        }
+      ],
+      "source_hypotheses": "u₁ : ℝ; χ : ℝ → ℝ, arbitrary (no ray hypothesis)",
+      "source_quantifiers": "for each real u₁ and each real function χ",
+      "source_conclusion": "reflectedRay u₁ χ := {p ∈ ℝ × ℝ | p.1 ∈ [0, u₁] ∧ p.2 = χ(p.1)} ∪ {p | χ(u₁) = 0 ∧ p.1 = u₁ ∧ 0 ≤ p.2}: the incoming part {(u, χ(u)) : 0 ≤ u ≤ u₁} followed, if χ(u₁) = 0 (the ray reaches the centre at u₁), by the outgoing light ray u = u₁, r ≥ 0. If χ(u₁) ≠ 0 (for an incoming ray: it reaches the end u₀ of the strip with χ(u₀) > 0) there is no reflection and no outgoing part (the confirmed reading -Δ m4). Points are pairs (u, r) of reals. No metric, null-geodesic or causal statement",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.reflectedRay",
+      "file": "Christodoulou/Frozen/Bondi/ReflectedRay.lean"
+    },
+    {
+      "id": "n0010",
+      "kind": "step",
+      "title": "The outgoing light rays in Bondi coordinates: the outgoing light ray issued from the central point (u₁, 0) is the half-line u = u₁, r ≥ 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "the Bondi coordinates (u, r) of p. 339 on the quadrant 0 ≤ u, 0 ≤ r; the central world line r = 0; a central point (u₁, 0), u₁ ≥ 0 (geometric setup; the metric (1.1) and the tetrad (1.2) are not formalized)",
+      "source_quantifiers": "for each u₁ ≥ 0",
+      "source_conclusion": "in the coordinates (u, r), the outgoing light ray from (u₁, 0) is {(u₁, r) : r ≥ 0}: u is constant on the future light cone of each point of the central world line , and the integral curves of l = e^{−λ}∂_r are the outgoing light rays , curves u = const along which r increases",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0011",
+      "kind": "step",
+      "title": "AUTHOR (not printed): an incoming ray that reaches the centre at u₁ continues as the outgoing light ray u = u₁, r ≥ 0; a ray that reaches the end of the strip first is not reflected",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0010"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+          "rationale": "the outgoing part is the outgoing light ray from the central point (u₁, 0)"
+        }
+      ],
+      "source_hypotheses": "u₁ real and a curve χ followed on [0, u₁] with χ(u₁) = 0 (for the incoming ray χ(u; r₀) issued at u = 0, IsIncomingRay , u₁ is the first time it reaches the centre r = 0)",
+      "source_quantifiers": "for each such ray",
+      "source_conclusion": "the full ray is the incoming part {(u, χ(u)) : 0 ≤ u ≤ u₁} followed by the outgoing generator {u₁} × [0, ∞) of the future light cone of the central point (u₁, 0) (\"Outgoing cone\"); if χ(u₁) > 0 (u₁ = u₀, the end of the strip) there is no reflection and no outgoing part (-Δ m4, confirmed by the author); no clamped continuation and no mirror r ↦ |χ| is claimed",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0012",
+      "kind": "theorem",
+      "title": "m is monotonically nonincreasing along the incoming light rays: s ↦ m(s, χ(s)) is antitone on [0, u₁] for the characteristic χ through each terminal point (u₁, r₁) of the strip (antitoneOn_mass_characteristic, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0047",
+        "n0049",
+        "n0006",
+        "n0029",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0047",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the hypothesis hχ (the incoming light ray through (u₁, r₁), )"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the hypothesis hX, the carrier of IsCharacteristic"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hH, passed to"
+        },
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the slice family hs, the carrier of m"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m of (4.3) along the ray, the subject of the conclusion"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; x : ℝ; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H (the classical class of : C¹ on the closed strip up to r = 0, (3.13) at interior points) and hX : MemXBall u₀ x H (the X-ball, which contains the weighted bound |∂_r h| ≤ x(1 + r)⁻⁴; its equivalence with the printed O(r⁻⁴) is , OPEN and unused; ); hs : ∀ v : ℝ≥0, IsSlice (H.curry v) (a slice family for every v, as in , (a), ); u₁ : Icc 0 u₀ and r₁ : ℝ≥0 (a terminal point (u₁, r₁) of the strip); χ : ℝ → ℝ with hχ : IsCharacteristic hX u₁ r₁ χ (the backward characteristic of (5.1) dr/du = −½ḡ(u, r) through (u₁, r₁) on [0, u₁], the incoming light ray, )",
+      "source_quantifiers": "for each u₀, x, H, hH, hX, hs, u₁, r₁, χ and hχ",
+      "source_conclusion": "AntitoneOn (s ↦ mass (H.curry s⁺) (hs s⁺) (χ s)⁺) (Icc 0 u₁) (s⁺ := Real.toNNReal s, ): \"m is monotonically nonincreasing along the incoming light rays\", on the whole time interval [0, u₁] of the characteristic through (u₁, r₁), both endpoints included (; u₁ = 0 and r₁ = 0 allowed). The rays are the backward characteristics through the terminal points of the strip (, RECON, #ray-coverage). NOT claimed: forward rays from u = 0 and a global ray flow (the forward flow of ), rays beyond the strip, the corollary m(u₁, r₁) ≤ m(0, χ(0)) ≤ M(0) (a non-frozen helper, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.antitoneOn_mass_characteristic",
+      "file": "Christodoulou/Frozen/Bondi/AntitoneOnMassCharacteristic.lean"
+    },
+    {
+      "id": "n0013",
+      "kind": "theorem",
+      "title": "m is monotonically nonincreasing along the incoming light ray issued at u = 0, up to and including the time it reaches the centre, with m on the strip slices and no slice family beyond the strip (IsIncomingRay.antitoneOn_mass, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0021",
+        "n0014",
+        "n0012",
+        "n0015",
+        "n0020",
+        "n0006",
+        "n0007",
+        "n0049",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "at t = u₁ (u₁ ∈ [0, u₀] by clause (1)): χ is the backward characteristic through the terminal point (u₁, (χ u₁)⁺)"
+        },
+        {
+          "target": "n0014",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "RECON ( (b)): K = the time-clamped extension of H is a classical solution with every slice in IsSlice and lies in the same X-ball, and the characteristic transfers to K"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the sealed applied to K with its slice family, the terminal point (u₁, (χ u₁)⁺) and χ: s ↦ m_K(s, χ(s)) is antitone on [0, u₁]"
+        },
+        {
+          "target": "n0015",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "RECON: the masses of K along the ray are those of the statement, m on H's strip slice at min(s⁺, u₀)"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "the hypothesis hχ: the incoming ray χ(u; r₀) issued at u = 0"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hH (\"the nonlinear evolution equation (3.13)\")"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the strip-slice proofs hH.isSlice (min(s⁺, u₀)) of the statement, the carrier of m ( (b))"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the hypothesis hX, the carrier of IsIncomingRay"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m of (4.3) along the ray, the subject of the conclusion"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; x : ℝ; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H and hX : MemXBall u₀ x H; r₀ : ℝ≥0; u₁ : ℝ; χ : ℝ → ℝ with hχ : IsIncomingRay hX r₀ u₁ χ. No slice family beyond the strip ( (b)): m is taken on the strip slices H.curry (min(s⁺, u₀)) with the proofs hH.isSlice",
+      "source_quantifiers": "for each u₀, x, H, hH, hX, r₀, u₁, χ and hχ",
+      "source_conclusion": "AntitoneOn (s ↦ mass (H.curry (min s⁺ u₀)) (hH.isSlice …) (χ s)⁺) (Icc 0 u₁): \"m is monotonically nonincreasing along the incoming light rays\", along the ray χ(u; r₀) on the whole maximal incoming interval [0, u₁], both endpoints included (r₀ = 0 and a centre time allowed). On [0, u₁] the clamps are the identity (min(s⁺, u₀) = s, (χ s)⁺ = χ(s)). NOT claimed: beyond u₁, beyond u₀, the outgoing part , the flow map r₀ ↦ χ(·; r₀)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsIncomingRay.antitoneOn_mass",
+      "file": "Christodoulou/Frozen/Bondi/IsIncomingRayAntitoneOnMass.lean"
+    },
+    {
+      "id": "n0014",
+      "kind": "step",
+      "title": "The time-clamp bridge: K(u, r) = H(min(u, u₀), r) is a classical solution on the same strip with every slice in IsSlice, lies in the X-ball of the same radius with the same gBarX, and the characteristic of H through (u₁, r₁) is one of K",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0006",
+        "n0007",
+        "n0029",
+        "n0049",
+        "n0004",
+        "n0046",
+        "n0047"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "K is a classical solution on the strip: K agrees with H for u ≤ u₀, where IsClassicalSolution constrains the field"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "every slice of K is a strip slice H.curry (min(v, u₀)) of H, in IsSlice"
+        },
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the slice family of K, ∀ v, IsSlice (K.curry v), the hypothesis hs of"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "MemXBall constrains only u ≤ u₀, where K = H: MemXBall u₀ x K with the same radius"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "gBarX takes the slice at min(u, u₀), the same for K and H"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "charField = −½ gBarX is the same for K and H"
+        },
+        {
+          "target": "n0047",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "IsCharacteristic depends on the field only through charField, so the characteristic of H is one of K"
+        }
+      ],
+      "source_hypotheses": "u₀; x; H with hH : IsClassicalSolution u₀ H and hX : MemXBall u₀ x H; u₁ ∈ [0, u₀]; r₁ ≥ 0; χ with IsCharacteristic hX u₁ r₁ χ",
+      "source_quantifiers": "for each u₀, x, H, hH, hX, u₁, r₁ and χ",
+      "source_conclusion": "with K := clampExt u₀ H: IsClassicalSolution u₀ K; ∀ v, IsSlice (K.curry v) (an all-time slice family hs_K, since K.curry v = H.curry (min(v, u₀))); hK : MemXBall u₀ x K; gBarX for (K, hK) = gBarX for (H, hX); hence IsCharacteristic hK u₁ r₁ χ",
+      "constant_scope": "none (the radius x is the same for K and H)"
+    },
+    {
+      "id": "n0015",
+      "kind": "step",
+      "title": "Mass agreement: K's slice at s⁺ is H's slice at min(s⁺, u₀), so m_K(s, r) = m(H.curry (min s⁺ u₀))(r) for every slice-class proof (proof irrelevance)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0044",
+        "n0007",
+        "n0029"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m = (r/2)(1 − ḡ/g) depends on the slice h and not on the proof of IsSlice h"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the proof on the right side is hH.isSlice at the strip time min(s⁺, u₀)"
+        },
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the proofs on both sides are proofs of IsSlice of the same slice K.curry s⁺ = H.curry (min s⁺ u₀)"
+        }
+      ],
+      "source_hypotheses": "u₀; H with hH : IsClassicalSolution u₀ H; K := clampExt u₀ H with a slice family hs_K; s real; r ≥ 0",
+      "source_quantifiers": "for each u₀, H, hH, hs_K, s and r",
+      "source_conclusion": "mass (K.curry s⁺) (hs_K s⁺) r = mass (H.curry (min s⁺ u₀)) (hH.isSlice (min s⁺ u₀) …) r",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0016",
+      "kind": "claim",
+      "title": "m is a monotonically nondecreasing function of r",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0045"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0045",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "\"Thus\" after (4.4): the lift of m has a derivative at every interior point r > 0"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h . The source's \"at each u\" is the fixed slice",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for all r ≤ r' in [0,∞)",
+      "source_conclusion": "m(r) ≤ m(r'), i.e. m is monotone on [0,∞)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.monotone_mass",
+      "file": "Christodoulou/Frozen/Bondi/MonotoneMass.lean"
+    },
+    {
+      "id": "n0017",
+      "kind": "theorem",
+      "title": "m is nondecreasing in r on the terminal-time section u = u₁ of the reflected ray: the whole outgoing light ray when χ(u₁) = 0 (monotoneOn_mass_reflectedRay_outgoing, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0018",
+        "n0016",
+        "n0009",
+        "n0006",
+        "n0007",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+          "rationale": "on the section p.1 = u₁ the product order compares radii, and the section is {u₁} × [0, ∞), a point or empty"
+        },
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "monotone_mass at the strip slice H.curry (min(u₁⁺, u₀)): m is nondecreasing in r, composed with the monotone r ↦ r⁺"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+          "rationale": "the set of the statement"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the hypothesis hH"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the strip-slice proof hH.isSlice (min(u₁⁺, u₀)), the carrier of m"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "m of (4.3), the subject of the conclusion"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H; u₁ : ℝ; χ : ℝ → ℝ, arbitrary (no ray hypothesis: IsIncomingRay would be analytically redundant, )",
+      "source_quantifiers": "for each u₀, H, hH, u₁ and χ",
+      "source_conclusion": "MonotoneOn (p ↦ mass (H.curry (min p.1⁺ u₀)) (hH.isSlice …) p.2⁺) {p | p ∈ reflectedRay u₁ χ ∧ p.1 = u₁} (product order on ℝ × ℝ): \"m is a monotonically nondecreasing function of r at each u\" ((4.4)-(4.5)) along the outgoing part of the reflected ray; when χ(u₁) = 0 the section is the whole outgoing ray {u₁} × [0, ∞); otherwise it is the single point (u₁, χ(u₁)) (u₁ ≥ 0) or empty (u₁ < 0). For an incoming ray the clamps are the identity there",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.monotoneOn_mass_reflectedRay_outgoing",
+      "file": "Christodoulou/Frozen/Bondi/MonotoneOnMassReflectedRayOutgoing.lean"
+    },
+    {
+      "id": "n0018",
+      "kind": "step",
+      "title": "The terminal-time section of the reflected ray: {p ∈ reflectedRay u₁ χ | p.1 = u₁} is {u₁} × [0, ∞) if χ(u₁) = 0, the point (u₁, χ(u₁)) if χ(u₁) ≠ 0 and u₁ ≥ 0, and empty otherwise; on it p ≤ q iff p.2 ≤ q.2",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+          "rationale": "unfolding the two sets of reflectedRay at p.1 = u₁"
+        }
+      ],
+      "source_hypotheses": "u₁ : ℝ; χ : ℝ → ℝ",
+      "source_quantifiers": "for each u₁ and χ",
+      "source_conclusion": "the description of the section above; for p, q in the section, p ≤ q in the product order iff p.2 ≤ q.2, and then p.2⁺ ≤ q.2⁺",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0019",
+      "kind": "claim",
+      "title": "ḡ(u,r) > 0 for X-ball fields (gBarX_pos)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "gBarX(u,r) is ḡ(r) of the slice at min(u,u₀) with the proof hH.isSlice"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "0 < gBarX(u,r). Reconstructed: the transcribed passages do not state ḡ > 0",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBarX_pos",
+      "file": "Christodoulou/Frozen/Bondi/GBarXPos.lean"
+    },
+    {
+      "id": "n0020",
+      "kind": "definition",
+      "title": "The incoming light ray χ(u; r₀) of (5.1) issued at u = 0 from r = r₀, followed until it reaches the centre or the end of the strip (IsIncomingRay, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0049",
+        "n0046"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "IsIncomingRay takes the proof hH of MemXBall u₀ x H and passes it to charField"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "clause (3): the derivative required at time t is charField(t, χ(t)), the clamped right side −½ḡ(u, r) of (5.1)"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; x : ℝ (no sign premise); H : C(ℝ≥0 × ℝ≥0, ℝ) with a proof hH : MemXBall u₀ x H ; r₀ : ℝ≥0, the initial radius at u = 0; u₁ : ℝ, the end time; χ : ℝ → ℝ, a real function of real time",
+      "source_quantifiers": "for each u₀, x, H, hH, r₀, each real u₁ and each real function χ",
+      "source_conclusion": "IsIncomingRay hH r₀ u₁ χ holds iff (1) u₁ ∈ [0, u₀]; (2) χ(0) = r₀; (3) for every t ∈ [0, u₁], 0 ≤ χ(t) and χ has the derivative charField(t, χ(t)) at t within [0, u₁] (one-sided at both endpoints, ); (4) u₁ = u₀ or χ(u₁) = 0 (maximality: the ray is followed until it reaches the centre, or to the end of the strip; ). On [0, u₁] ⊆ [0, u₀] with χ ≥ 0 the clamped field charField(t, χ(t)) is −½ḡ(t, χ(t)), so χ solves (5.1) dr/du = −½ḡ(u, r) with χ(0) = r₀: \"the characteristic through r = r₀ at u = 0\", χ(u; r₀) of p. 346, i.e. the incoming light ray issued at u = 0 (https://doi.org/10.1007/BF01205930 ). Nothing is asserted outside [0, u₁]; for u₁ = 0 (r₀ = 0 or u₀ = 0) only χ(0) = r₀ is constrained (a within-derivative on a singleton is unconstrained). The predicate contains no continuation past the centre; the reflection is reflectedRay",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsIncomingRay",
+      "file": "Christodoulou/Frozen/Bondi/IsIncomingRay.lean"
+    },
+    {
+      "id": "n0021",
+      "kind": "theorem",
+      "title": "The incoming ray is the sealed backward characteristic through each of its points (t, χ(t)), 0 ≤ t ≤ u₁ (IsIncomingRay.isCharacteristic, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0020",
+        "n0047",
+        "n0060"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the hypothesis hχ: clause (3) gives χ(t) ≥ 0 and the within-[0, u₁] derivatives"
+        },
+        {
+          "target": "n0047",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "\"the incoming light rays are the characteristics of our problem\": the conclusion IsCharacteristic hH t (χ t)⁺ χ, whose terminal condition χ(t) = (χ t)⁺ holds because χ(t) ≥ 0 (toNNReal is the identity there, routine)"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the within-[0, u₁] derivatives restrict to within-[0, t] derivatives, [0, t] ⊆ [0, u₁]"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; x : ℝ; H with hH : MemXBall u₀ x H; r₀ : ℝ≥0; u₁ : ℝ; χ : ℝ → ℝ with hχ : IsIncomingRay hH r₀ u₁ χ; t : Icc 0 u₀ with ht : t ≤ u₁",
+      "source_quantifiers": "for each u₀, x, H, hH, r₀, u₁, χ, hχ, then each t ∈ [0, u₀] with t ≤ u₁",
+      "source_conclusion": "IsCharacteristic hH t (χ t)⁺ χ: χ is the backward characteristic of (5.1) through the terminal point (t, χ(t)) on [0, t] ; (χ t)⁺ = χ(t) since χ ≥ 0 on [0, u₁]. NOT claimed: t > u₁ (false in general)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsIncomingRay.isCharacteristic",
+      "file": "Christodoulou/Frozen/Bondi/IsIncomingRayIsCharacteristic.lean"
+    },
+    {
+      "id": "n0022",
+      "kind": "theorem",
+      "title": "Existence of the incoming ray from every initial radius r₀ ≥ 0 (exists_isIncomingRay, ; forward flow of )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0020",
+        "n0023",
+        "n0025",
+        "n0024",
+        "n0060",
+        "n0058"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "the conclusion is ∃ u₁ χ, IsIncomingRay hH r₀ u₁ χ"
+        },
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the auxiliary solution ψ of (5.1) on [0, u₀] with ψ(0) = r₀ (clamped field, Picard-Lindelöf from t₀ = 0)"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "ψ is strictly decreasing on [0, u₀], the premise of #first-zero"
+        },
+        {
+          "target": "n0024",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "u₁ := t*, the first time ψ reaches r = 0 or u₀: χ := ψ satisfies clauses (1), (2), (4) and χ ≥ 0 on [0, u₁]"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "clause (3): restricting the within-[0, u₀] derivatives of ψ to [0, u₁] ⊆ [0, u₀]"
+        },
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "ψ is continuous on [0, u₀] (from its within-derivatives), the continuity premise of #first-zero"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; x : ℝ; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : MemXBall u₀ x H; r₀ : ℝ≥0",
+      "source_quantifiers": "for each u₀, x, H, hH and r₀",
+      "source_conclusion": "∃ u₁ : ℝ, ∃ χ : ℝ → ℝ, IsIncomingRay hH r₀ u₁ χ: the ray χ(u; r₀) of p. 346 exists, up to the first time it reaches the centre or to u₀",
+      "constant_scope": "none (the witnesses u₁ and χ may depend on u₀, x, H, hH and r₀; the values of χ outside [0, u₁] are not determined)",
+      "declaration": "Christodoulou.Bondi.exists_isIncomingRay",
+      "file": "Christodoulou/Frozen/Bondi/ExistsIsIncomingRay.lean"
+    },
+    {
+      "id": "n0023",
+      "kind": "step",
+      "title": "The auxiliary clamped solution: Picard-Lindelöf for the field charField from t₀ = 0, z₀ = r₀ gives ψ with ψ(0) = r₀ solving ψ′ = charField(t, ψ) within [0, u₀]",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0048",
+        "n0054",
+        "n0046"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0048",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "isPicardLindelof_charField at t₀ = 0 ∈ [0, u₀], z₀ = r₀, ρ = 0: the clamped field satisfies the Picard-Lindelöf hypotheses on [0, u₀]"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "Mathlib existence with initial-ball radius 0: α(0) = r₀ and α′(t) = charField(t, α(t)) within [0, u₀] for every t ∈ [0, u₀]"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the vector field of the ODE is charField, the clamped right side of (5.1)"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; x : ℝ; H with hH : MemXBall u₀ x H; r₀ : ℝ≥0",
+      "source_quantifiers": "for each u₀, x, H, hH and r₀",
+      "source_conclusion": "∃ ψ : ℝ → ℝ, ψ(0) = r₀ ∧ ∀ t ∈ [0, u₀], HasDerivWithinAt ψ (charField(t, ψ(t))) (Icc 0 u₀) t (with the clamped field; where ψ < 0 it is not a ray point and is never asserted)",
+      "constant_scope": "none (ψ depends on u₀, x, H, hH and r₀)"
+    },
+    {
+      "id": "n0024",
+      "kind": "step",
+      "title": "The physical set: {t ∈ [0, u₀] : ψ(t) ≥ 0} = [0, t*], with ψ(t*) = 0 if t* < u₀",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0056"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "if ψ(u₀) < 0 ≤ ψ(0) = r₀, ψ has a zero t* in [0, u₀] (applied to −ψ, or the reversed form intermediate_value_Icc′, since ψ decreases)"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; ψ : ℝ → ℝ continuous and strictly decreasing on [0, u₀] with ψ(0) = r₀ ≥ 0",
+      "source_quantifiers": "for each u₀, ψ and r₀",
+      "source_conclusion": "∃ t* ∈ [0, u₀], {t ∈ [0, u₀] : 0 ≤ ψ(t)} = [0, t*] ∧ (t* = u₀ ∨ ψ(t*) = 0): the first time the ray reaches the centre, or u₀",
+      "constant_scope": "t* depends on ψ and u₀"
+    },
+    {
+      "id": "n0025",
+      "kind": "step",
+      "title": "A solution of ψ′ = charField(t, ψ) within [a, b] is strictly decreasing on [a, b], since charField = −½ḡ < 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0046",
+        "n0019",
+        "n0058",
+        "n0059",
+        "n0061"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "charField(t, z) = −½ gBarX(t⁺, z⁺)"
+        },
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "gBarX > 0, so charField < 0 everywhere"
+        },
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "ψ is continuous on [a, b]"
+        },
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "at interior points of [a, b] the within-derivative is two-sided"
+        },
+        {
+          "target": "n0061",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "continuous on the convex [a, b] with a negative derivative in the interior: strictly decreasing"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; x : ℝ; H with hH : MemXBall u₀ x H; a ≤ b real; ψ : ℝ → ℝ with HasDerivWithinAt ψ (charField(t, ψ(t))) (Icc a b) t for every t ∈ [a, b]",
+      "source_quantifiers": "for each u₀, x, H, hH, a, b and ψ with these derivatives",
+      "source_conclusion": "ψ is strictly decreasing on [a, b]",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0026",
+      "kind": "theorem",
+      "title": "Uniqueness of the incoming ray: the end time is unique and two rays from the same r₀ agree on [0, u₁] (IsIncomingRay.unique, ; forward flow of )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0020",
+        "n0028",
+        "n0027"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "the hypotheses h₁, h₂"
+        },
+        {
+          "target": "n0028",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "χ₁ = χ₂ on [0, min(u₁, u₂)]: the second conjunct once u₁ = u₂"
+        },
+        {
+          "target": "n0027",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "u₁ = u₂: the first conjunct"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; x : ℝ; H with hH : MemXBall u₀ x H; r₀ : ℝ≥0; u₁, u₂ : ℝ; χ₁, χ₂ : ℝ → ℝ with h₁ : IsIncomingRay hH r₀ u₁ χ₁ and h₂ : IsIncomingRay hH r₀ u₂ χ₂ (the same field and the same initial radius)",
+      "source_quantifiers": "for each u₀, x, H, hH, r₀, u₁, u₂, χ₁, χ₂, h₁ and h₂",
+      "source_conclusion": "u₁ = u₂ ∧ EqOn χ₁ χ₂ (Icc 0 u₁): \"the\" characteristic χ(u; r₀) and its end time (the first centre time, or u₀) are well defined",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsIncomingRay.unique",
+      "file": "Christodoulou/Frozen/Bondi/IsIncomingRayUnique.lean"
+    },
+    {
+      "id": "n0027",
+      "kind": "step",
+      "title": "The end time is unique: if u₁ < u₂ then either u₁ = u₀ ≥ u₂ or χ₁(u₁) = 0 = χ₂(u₁) and strict decrease gives χ₂(u₂) < 0; both contradict the hypotheses",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0020",
+        "n0028",
+        "n0025"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "clauses (1) uᵢ ≤ u₀, (3) χ₂ ≥ 0 on [0, u₂] and (4) u₁ = u₀ ∨ χ₁(u₁) = 0"
+        },
+        {
+          "target": "n0028",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "for u₁ < u₂: χ₂(u₁) = χ₁(u₁) = 0"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "χ₂ is strictly decreasing on [0, u₂], so χ₂(u₂) < χ₂(u₁) = 0, contradicting χ₂(u₂) ≥ 0"
+        }
+      ],
+      "source_hypotheses": "u₀; x; H with hH : MemXBall u₀ x H; r₀; h₁ : IsIncomingRay hH r₀ u₁ χ₁; h₂ : IsIncomingRay hH r₀ u₂ χ₂",
+      "source_quantifiers": "for each u₀, x, H, hH, r₀, u₁, u₂, χ₁, χ₂, h₁ and h₂",
+      "source_conclusion": "u₁ = u₂ (by symmetry it suffices to refute u₁ < u₂)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0028",
+      "kind": "step",
+      "title": "ODE uniqueness: two incoming rays from the same r₀ agree on [0, min(u₁, u₂)] (the field is Lipschitz in r, uniformly in u)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0020",
+        "n0046",
+        "n0030",
+        "n0058",
+        "n0060",
+        "n0059",
+        "n0055"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "both curves start at r₀ (clause (2)) and solve χ′ = charField(t, χ) within their intervals (clause (3))"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "charField(t, z) = −½ gBarX(t⁺, z⁺): Lipschitz in z with half the constant of gBarX"
+        },
+        {
+          "target": "n0030",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "lipschitzWith_gBarX: s ↦ gBarX(u, s⁺) is (π/6)x²-Lipschitz on ℝ, uniformly in u"
+        },
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "χ₁ and χ₂ are continuous on [0, min(u₁, u₂)]"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the within-[0, uᵢ] derivatives restrict to within-[0, min(u₁, u₂)] derivatives"
+        },
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "for t ∈ [0, min(u₁, u₂)), [0, min(u₁, u₂)] is a neighbourhood of t within [t, ∞), so the within-[0, min(u₁, u₂)] derivatives are the within-[t, ∞) derivatives that ODE_solution_unique_of_mem_Icc_right requires"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "Mathlib ODE uniqueness with equal initial values at t = 0"
+        }
+      ],
+      "source_hypotheses": "u₀; x; H with hH : MemXBall u₀ x H; r₀; h₁ : IsIncomingRay hH r₀ u₁ χ₁; h₂ : IsIncomingRay hH r₀ u₂ χ₂",
+      "source_quantifiers": "for each u₀, x, H, hH, r₀, u₁, u₂, χ₁, χ₂, h₁ and h₂",
+      "source_conclusion": "EqOn χ₁ χ₂ (Icc 0 (min u₁ u₂))",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0029",
+      "kind": "definition",
+      "title": "Slice class IsSlice: h in C¹[0,∞) with h = O(r⁻³) as r → ∞ (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsSlice h holds iff (i) h ∈ C¹[0,∞[ (derivative at r = 0 one-sided within [0,∞), ) and (ii) h(r) = O(r⁻³) as r → ∞; the first two conditions of the Theorem 1 data class ; the condition on ∂h/∂r is not included",
+      "constant_scope": "none (the O-constant and threshold in (ii) are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsSlice",
+      "file": "Christodoulou/Frozen/Bondi/IsSlice.lean"
+    },
+    {
+      "id": "n0030",
+      "kind": "claim",
+      "title": "ḡ(u,·) is Lipschitz in r with constant (π/6)x², uniformly in u (lipschitzWith_gBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the statement concerns the lift of gBarX(u,·)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞)",
+      "source_conclusion": "the real lift s ↦ gBarX(u, s⁺) is Lipschitz on ℝ with constant Real.toNNReal((π/6)x²) = (π/6)x²: abs(gBarX(u,s⁺) − gBarX(u,t⁺)) ≤ (π/6)x² abs(s − t) for all real s, t. Reconstructed: the bound \"abs(ḡ_{n_i}(u′,χ_{n_i}(u′)) − ḡ_{n_i}(u′,χ(u′))) ≤ a y_{n_i}(u′)\" of p. 350 from \"the equiboundedness of ∂ḡ_{n_i}/∂r\", with a = (π/6)x²",
+      "constant_scope": "the Lipschitz constant (π/6)x² depends only on the radius x, not on u, u₀ or H",
+      "declaration": "Christodoulou.Bondi.lipschitzWith_gBarX",
+      "file": "Christodoulou/Frozen/Bondi/LipschitzWithGBarX.lean"
+    },
+    {
+      "id": "n0031",
+      "kind": "theorem",
+      "title": ": for a classical solution, |∂_r h| ≤ C(1 + r)⁻⁴ on the strip ⇔ ∂_r h = O(r⁻⁴) as r → ∞, uniformly in u (radialDerivative_weighted_iff_printed, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "Formalization reconstruction (the printed source omits this argument).",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0037",
+        "n0032",
+        "n0006",
+        "n0043"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0037",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "RECON : the general strip lemma with f = (u, r) ↦ radialDerivative H u r and n = 4"
+        },
+        {
+          "target": "n0032",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "RECON: \"by continuity of ∂_r h on [0, u₀] × [0, R]\": the continuity premise of the strip lemma, from clause 1 of IsClassicalSolution"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the hypothesis hH (\"classical solutions … in a strip 0 ≤ u ≤ u₀\"), passed to #radial-continuous"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "∂h/∂r of the print is radialDerivative on both sides of the equivalence"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H (the restricted uniformly decaying classical class, )",
+      "source_quantifiers": "for each u₀, H and hH; left side ∃ C, ∀ u ≤ u₀, ∀ r ≥ 0; right side ( (a)) ∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀: C precedes the threshold and u (\"uniformly in u\")",
+      "source_conclusion": "(∃ C, ∀ u ≤ u₀, ∀ r, |radialDerivative H u r| ≤ C(1 + r)⁻⁴) ↔ (∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀, |radialDerivative H u r| ≤ C r⁻⁴): the global weighted bound of (the hypothesis of theorem2 and of exists_memXBall_of_isClassicalSolution, the form of theorem1's conclusion) is equivalent to the printed \"∂h₁/∂r, ∂h₂/∂r = O(r⁻⁴) uniformly in u\" (https://doi.org/10.1007/BF01205930 ), read with \"as r → ∞\" (https://doi.org/10.1007/BF01205930 , ). This is (formalization reconstruction ). NOT claimed: the pointwise reading (d)",
+      "constant_scope": "C on each side is existential and depends on H and u₀; on the printed side it precedes the threshold and u; the two constants are independent",
+      "declaration": "Christodoulou.Bondi.radialDerivative_weighted_iff_printed",
+      "file": "Christodoulou/Frozen/Bondi/RadialDerivativeWeightedIffPrinted.lean"
+    },
+    {
+      "id": "n0032",
+      "kind": "step",
+      "title": "The radial derivative of a classical solution is jointly continuous on the closed strip [0, u₀] × [0, ∞), one-sided at r = 0, including u₀ = 0",
+      "statement_source": "Formalization reconstruction (the printed source omits this argument).",
+      "proof_source": "Formalization reconstruction (the printed source omits this argument).",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0006",
+        "n0043",
+        "n0050",
+        "n0007",
+        "n0057"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "clause 1: the real lift (u, r) ↦ H(u⁺, r⁺) is C¹ on the closed strip"
+        },
+        {
+          "target": "n0043",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "radialDerivative H u r is the derivWithin of z ↦ H(u, z⁺) on [0, ∞), the r-component of the within-derivative of the lift"
+        },
+        {
+          "target": "n0050",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "for u₀ > 0: the strip [0, u₀] × [0, ∞) is a set of unique differentiability, so the fderivWithin of the C¹ lift is continuous there; applied to (0, 1) it gives the radial derivative"
+        },
+        {
+          "target": "n0007",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "for u₀ = 0 the strip is the half-line {0} × [0, ∞): the slice H(0, ·) is in IsSlice, hence C¹ on [0, ∞)"
+        },
+        {
+          "target": "n0057",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "for u₀ = 0: the within-derivative of the C¹ slice is continuous on [0, ∞)"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H",
+      "source_quantifiers": "for each u₀, H and hH",
+      "source_conclusion": "(u, r) ↦ radialDerivative H u r is continuous on {p | p.1 ≤ u₀}",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0033",
+      "kind": "theorem",
+      "title": "The printed tail form (∃ C, eventually in r, uniformly in u; (a)) ⇔ the explicit form with a positive threshold R ( (b)), for every function and every exponent k ∈ ℤ (printedBound_iff_explicit, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "Formalization reconstruction (the printed source omits this argument).",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0034"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0034",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "the filter step: an eventual statement in atTop on ℝ≥0 is one with an explicit threshold, which may be taken positive"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; f : ℝ≥0 → ℝ≥0 → ℝ arbitrary (no continuity); k : ℤ",
+      "source_quantifiers": "for each u₀, f and k; (a) ∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀; (b) ∃ C, ∃ R, 0 < R, ∀ u ≤ u₀, ∀ r ≥ R",
+      "source_conclusion": "(∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀, |f u r| ≤ C r^k) ↔ (∃ C R, 0 < R ∧ ∀ u ≤ u₀, ∀ r, R ≤ r → |f u r| ≤ C r^k): the two readings of \"O(r^k) as r → ∞, uniformly in u\" that the author named (a) and (b) agree, for every exponent, negative or not",
+      "constant_scope": "C on each side is existential; the two existentials are independent in the statement (the reconstruction keeps the same C in both directions); R is existential, positive, and precedes u and r",
+      "declaration": "Christodoulou.Bondi.printedBound_iff_explicit",
+      "file": "Christodoulou/Frozen/Bondi/PrintedBoundIffExplicit.lean"
+    },
+    {
+      "id": "n0034",
+      "kind": "step",
+      "title": "Eventually in atTop on ℝ≥0 ⇔ beyond a threshold; the threshold max(R₀, 1) is positive; the r-power and the coercion ℝ≥0 → ℝ are routine",
+      "statement_source": "Formalization reconstruction (the printed source omits this argument).",
+      "proof_source": "Formalization reconstruction (the printed source omits this argument).",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0051"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0051",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "∀ᶠ r in atTop, P r ↔ ∃ R₀, ∀ r ≥ R₀, P r on the order ℝ≥0; then R := max(R₀, 1) > 0, and conversely R₀ := R⁺"
+        }
+      ],
+      "source_hypotheses": "P : ℝ≥0 → Prop (here P r := ∀ u ≤ u₀, |f u r| ≤ C r^k)",
+      "source_quantifiers": "for each P",
+      "source_conclusion": "(∀ᶠ r in atTop, P r) ↔ ∃ R : ℝ, 0 < R ∧ ∀ r : ℝ≥0, R ≤ r → P r",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0035",
+      "kind": "theorem",
+      "title": "for the value bound: for every continuous field, |h| ≤ C(1 + r)⁻³ on the strip ⇔ h = O(r⁻³) as r → ∞, uniformly in u (valueBound_weighted_iff_printed, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "Formalization reconstruction (the printed source omits this argument).",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0037"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0037",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "RECON : the general strip lemma with f = H (continuous on the quadrant, hence on the strip {p : p.1 ≤ u₀}) and n = 3"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ), any continuous field (no classical-solution hypothesis; )",
+      "source_quantifiers": "for each u₀ and each continuous H; left side ∃ C, ∀ u ≤ u₀, ∀ r ≥ 0; right side (the printed form, (a)) ∃ C, ∀ᶠ r in atTop (on ℝ≥0), ∀ u ≤ u₀: C is chosen before the threshold in r and before u (\"uniformly in u\")",
+      "source_conclusion": "(∃ C, ∀ u ≤ u₀, ∀ r, |H(u, r)| ≤ C(1 + r)⁻³) ↔ (∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀, |H(u, r)| ≤ C r⁻³): the global weighted value bound (the form of clause 2 of IsClassicalSolution, used since ) is equivalent, on the strip, to the printed \"h₁, h₂ = O(r⁻³) … uniformly in u\" of Theorem 2 (https://doi.org/10.1007/BF01205930 ), read with \"as r → ∞\" (Theorem 1, https://doi.org/10.1007/BF01205930 , ). Exponents are integers (zpow); Lean's 0⁻³ = 0 never enters the eventual form. NOT claimed: the pointwise reading (d) \"at each u\" without \"uniformly in u\", strictly weaker",
+      "constant_scope": "C on each side is existential and depends on H and u₀; on the printed side it precedes the threshold and u; the two constants are independent",
+      "declaration": "Christodoulou.Bondi.valueBound_weighted_iff_printed",
+      "file": "Christodoulou/Frozen/Bondi/ValueBoundWeightedIffPrinted.lean"
+    },
+    {
+      "id": "n0036",
+      "kind": "step",
+      "title": "Printed ⇒ weighted: beyond the threshold R = max(R₀, 1) use r⁻ⁿ ≤ 2ⁿ(1 + r)⁻ⁿ; on the compact [0, u₀] × [0, R] f is bounded; D = max(B, 0)(1 + R)ⁿ + max(C, 0)2ⁿ",
+      "statement_source": "Formalization reconstruction (the printed source omits this argument).",
+      "proof_source": "Formalization reconstruction (the printed source omits this argument).",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0052",
+        "n0051"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0052",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "\"by continuity … on [0, u₀] × [0, R]\": f is continuous on the compact rectangle [0, u₀] × [0, R] (inside the strip), so abs(f) ≤ B there"
+        },
+        {
+          "target": "n0051",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "the eventual bound gives a threshold R₀ with the bound for every r ≥ R₀"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; f : ℝ≥0 × ℝ≥0 → ℝ continuous on {p | p.1 ≤ u₀}; n : ℕ; ∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀, |f(u, r)| ≤ C r⁻ⁿ",
+      "source_quantifiers": "for each u₀, f, n and C",
+      "source_conclusion": "∃ D, ∀ u ≤ u₀, ∀ r, |f(u, r)| ≤ D(1 + r)⁻ⁿ, with D = max(B, 0)(1 + R)ⁿ + max(C, 0)2ⁿ, R = max(R₀, 1) for a threshold R₀ of the eventual bound and B a bound of |f| on [0, u₀] × [0, R]",
+      "constant_scope": "D depends on C, the threshold R₀, n and the bound B of f on the compact rectangle (hence on f and u₀)"
+    },
+    {
+      "id": "n0037",
+      "kind": "step",
+      "title": "The general strip lemma: for f continuous on the strip {p | p.1 ≤ u₀} and n ∈ ℕ, the global weighted bound C(1 + r)⁻ⁿ ⇔ the printed C r⁻ⁿ eventually in r, uniformly in u",
+      "statement_source": "Formalization reconstruction (the printed source omits this argument).",
+      "proof_source": "Formalization reconstruction (the printed source omits this argument).",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0038",
+        "n0036"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0038",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "the direction weighted ⇒ printed"
+        },
+        {
+          "target": "n0036",
+          "source": "Formalization reconstruction (the printed source omits this argument).",
+          "rationale": "the direction printed ⇒ weighted, which uses the continuity of f on the strip"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; f : ℝ≥0 × ℝ≥0 → ℝ continuous on {p | p.1 ≤ u₀}; n : ℕ",
+      "source_quantifiers": "for each u₀, f and n; left side ∃ C, ∀ u ≤ u₀, ∀ r; right side ∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀",
+      "source_conclusion": "(∃ C, ∀ u ≤ u₀, ∀ r, |f(u, r)| ≤ C(1 + r)⁻ⁿ) ↔ (∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀, |f(u, r)| ≤ C r⁻ⁿ). The order ∃ C, ∀ᶠ r, ∀ u is essential: the order ∀ u, ∀ᶠ r is strictly weaker (proposal §3, : F(u, r) = r⁻²φ(ur))",
+      "constant_scope": "the constants of the two sides are existential and independent; on the right C precedes the threshold and u"
+    },
+    {
+      "id": "n0038",
+      "kind": "step",
+      "title": "Weighted ⇒ printed: with max C 0 and r ≥ 1, (1 + r)⁻ⁿ ≤ r⁻ⁿ",
+      "statement_source": "Formalization reconstruction (the printed source omits this argument).",
+      "proof_source": "Formalization reconstruction (the printed source omits this argument).",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "u₀ : ℝ≥0; f : ℝ≥0 × ℝ≥0 → ℝ; n : ℕ; ∃ C, ∀ u ≤ u₀, ∀ r, |f(u, r)| ≤ C(1 + r)⁻ⁿ",
+      "source_quantifiers": "for each u₀, f, n and C",
+      "source_conclusion": "∀ r ≥ 1, ∀ u ≤ u₀, |f(u, r)| ≤ max(C, 0) r⁻ⁿ; hence ∃ C′, ∀ᶠ r in atTop, ∀ u ≤ u₀, |f(u, r)| ≤ C′ r⁻ⁿ (no continuity needed)",
+      "constant_scope": "C′ = max(C, 0) depends only on C"
+    },
+    {
+      "id": "n0039",
+      "kind": "claim",
+      "title": "Theorem 2: two classical solutions with equal initial data and radial derivatives O(r⁻⁴) uniformly in u (global weighted form, ) agree on the closed strip u ≤ u₀ (theorem2, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0006",
+        "n0041"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the premises hcH, hcK (\"two classical solutions … in a strip 0 ≤ u ≤ u₀\")"
+        },
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "applied to H with hHderiv and to K with hKderiv: H ∈ X-ball of radius x, K ∈ X-ball of radius y"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0 arbitrary (\"u₀ arbitrary\"); H, K : C(ℝ≥0 × ℝ≥0, ℝ) with hcH : IsClassicalSolution u₀ H and hcK : IsClassicalSolution u₀ K (; the uniform O(r⁻³) is field (2)); hHderiv and hKderiv: ∃ C, ∀ u ≤ u₀, ∀ r, abs(derivWithin (s ↦ H(u, s⁺)) (Ici 0) r) ≤ C(1 + r)⁻⁴, and the same for K, with independent constants (, : the global weighted reading of \"∂h₁/∂r, ∂h₂/∂r = O(r⁻⁴) uniformly in u\", whose equivalence with the printed tail form is NOT formalized); hdata : H(0, r) = K(0, r) for every r ≥ 0 ; no positivity, smallness or common-radius premise",
+      "source_quantifiers": "for each u₀ in [0,∞), each continuous H, K with hcH, hcK, hHderiv, hKderiv and hdata",
+      "source_conclusion": "∀ u ≤ u₀, ∀ r ≥ 0, H(u, r) = K(u, r) (\"h₁ = h₂\" on the closed strip; : equality of the global maps is false, IsClassicalSolution does not constrain u > u₀)",
+      "constant_scope": "none in the conclusion; the two derivative constants are independent existentials of the hypotheses",
+      "declaration": "Christodoulou.Bondi.theorem2",
+      "file": "Christodoulou/Frozen/Bondi/Theorem2.lean"
+    },
+    {
+      "id": "n0040",
+      "kind": "theorem",
+      "title": "Theorem 2 with the printed hypothesis ∂_r h = O(r⁻⁴) as r → ∞, uniformly in u: two classical solutions with equal initial data agree on the closed strip (theorem2_printed, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0031",
+        "n0039",
+        "n0006",
+        "n0043"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0031",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "(.mpr) applied to H with hcH, hHderiv and to K with hcK, hKderiv: the global weighted bounds, which are the hypotheses hHderiv, hKderiv of theorem2 (radialDerivative H u r is by definition the derivWithin (s ↦ H(u, s⁺)) (Ici 0) r of theorem2, routine)"
+        },
+        {
+          "target": "n0039",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the sealed theorem2 with hcH, hcK, the converted bounds and hdata: H = K on the closed strip"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the hypotheses hcH, hcK"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the printed hypotheses are stated with radialDerivative"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0 (\"u₀ arbitrary\"); H, K : C(ℝ≥0 × ℝ≥0, ℝ) with hcH : IsClassicalSolution u₀ H and hcK : IsClassicalSolution u₀ K (\"two classical solutions … in a strip 0 ≤ u ≤ u₀\"; the value bound \"h = O(r⁻³) uniformly in u\" is clause 2 of the class, in the global weighted form, equivalent to the printed form by , ); hHderiv : ∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀, |radialDerivative H u r| ≤ C r⁻⁴ and hKderiv the same for K, with independent constants (the printed derivative hypothesis, (a)); hdata : ∀ r, H(0, r) = K(0, r)",
+      "source_quantifiers": "for each u₀, H, K, hcH, hcK, hHderiv, hKderiv and hdata, then ∀ u ≤ u₀, ∀ r",
+      "source_conclusion": "∀ u ≤ u₀, ∀ r ≥ 0, H(u, r) = K(u, r) (\"h₁ = h₂\" on the closed strip; equality beyond u₀ is not asserted)",
+      "constant_scope": "none in the conclusion; the two derivative constants are independent existentials of the hypotheses",
+      "declaration": "Christodoulou.Bondi.theorem2_printed",
+      "file": "Christodoulou/Frozen/Bondi/Theorem2Printed.lean"
+    },
+    {
+      "id": "n0041",
+      "kind": "claim",
+      "title": "A classical solution with a uniform weighted O(r⁻⁴) bound on its radial derivative lies in some X-ball (exists_memXBall_of_isClassicalSolution, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0006",
+        "n0049"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the premise hH: field (1) gives the C¹ slices and the joint continuity of ∂_r H, field (2) the value bound C(1 + r)⁻³ (\"h₁, h₂ = O(r⁻³) uniformly in u\")"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the conclusion MemXBall u₀ x H, with its three clauses (C¹ slices, joint continuity, the (7.1) sum bound)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H (: C¹ on the closed strip, one constant with abs(H) ≤ C(1 + r)⁻³ for u ≤ u₀, (3.13) at interior points); hderiv : ∃ C real, ∀ u ≤ u₀, ∀ r ≥ 0, abs(derivWithin (s ↦ H(u, s⁺)) (Ici 0) r) ≤ C(1 + r)⁻⁴ (the global weighted reading of \"∂h/∂r = O(r⁻⁴) uniformly in u\"; verbatim the last clause of theorem1)",
+      "source_quantifiers": "for each u₀ in [0,∞), each continuous H with hH, and hderiv",
+      "source_conclusion": "∃ x real, MemXBall u₀ x H: the slices H(u, ·), u ≤ u₀, are C¹ on [0,∞), the radial within-derivative is jointly continuous on [0,u₀] × [0,∞), and (1 + r)³ abs(H) + (1 + r)⁴ abs(∂_r H) ≤ x on the strip ((7.1), the hypotheses of Theorem 2 as an X-ball membership)",
+      "constant_scope": "x is existential and depends on H (the route takes x := C + D, C of IsClassicalSolution, D of hderiv); independent per solution",
+      "declaration": "Christodoulou.Bondi.exists_memXBall_of_isClassicalSolution",
+      "file": "Christodoulou/Frozen/Bondi/ExistsMemXBallOfIsClassicalSolution.lean"
+    },
+    {
+      "id": "n0042",
+      "kind": "theorem",
+      "title": "A classical solution with the printed ∂_r h = O(r⁻⁴), uniformly in u, lies in an X-ball (exists_memXBall_of_isClassicalSolution_printed, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0031",
+        "n0041",
+        "n0006",
+        "n0043",
+        "n0049"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0031",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "(.mpr) with hH and hderiv: the global weighted bound, the hypothesis hderiv of exists_memXBall_of_isClassicalSolution"
+        },
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the sealed exists_memXBall_of_isClassicalSolution with hH and the converted bound"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the hypothesis hH"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the printed hypothesis is stated with radialDerivative"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the conclusion MemXBall u₀ x H"
+        }
+      ],
+      "source_hypotheses": "u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H; hderiv : ∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀, |radialDerivative H u r| ≤ C r⁻⁴ (the printed hypothesis, (a))",
+      "source_quantifiers": "for each u₀, H, hH and hderiv",
+      "source_conclusion": "∃ x, MemXBall u₀ x H: the X-ball hypothesis of the results of available under the printed hypothesis",
+      "constant_scope": "x is existential and depends on H (and u₀)",
+      "declaration": "Christodoulou.Bondi.exists_memXBall_of_isClassicalSolution_printed",
+      "file": "Christodoulou/Frozen/Bondi/ExistsMemXBallOfIsClassicalSolutionPrinted.lean"
+    },
+    {
+      "id": "n0043",
+      "kind": "definition",
+      "title": "The radial derivative ∂_r H(u, r) of a field, within [0,∞) (radialDerivative, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "H : C(ℝ≥0 × ℝ≥0, ℝ), a continuous real function of (u, r) on the quadrant (carrier ); u, r in [0,∞)",
+      "source_quantifiers": "for each continuous H and each u, r ≥ 0",
+      "source_conclusion": "radialDerivative H u r := derivWithin (z ↦ H(u, z⁺)) (Ici 0) r: the partial derivative ∂h/∂r of (9.1), one-sided within [0,∞) at the centre r = 0 (as in MemXBall, ); a total function (its value carries no differentiability claim)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.radialDerivative",
+      "file": "Christodoulou/Frozen/Bondi/RadialDerivative.lean"
+    },
+    {
+      "id": "n0044",
+      "kind": "definition",
+      "title": "The mass function m = (r/2)(1 − ḡ/g), (4.3)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0003",
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the numerator of the quotient in (4.3) is ḡ"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the denominator of the quotient in (4.3) is g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "m(r) := (r/2)(1 − ḡ(r)/g(r)), the literal body of (4.3)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.mass",
+      "file": "Christodoulou/Frozen/Bondi/Mass.lean"
+    },
+    {
+      "id": "n0045",
+      "kind": "display",
+      "title": "(4.4): ∂m/∂r = 2π(ḡ/g)(h − h̄)² for r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0044",
+        "n0002"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the lift of m unfolds to s ↦ (s⁺/2)(1 − ḡ(s⁺)/g(s⁺))"
+        },
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the algebra (1/2)(1 − ḡ/g) − (1/2)(g − ḡ)/g + 2π ḡ(h − h̄)²/g = 2π(ḡ/g)(h − h̄)² cancels g(r) ≠ 0"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r > 0. The derivative is two-sided and taken only at r > 0 (endpoint convention, )",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞) with r > 0",
+      "source_conclusion": "the real lift s ↦ m(s⁺) has derivative 2π (ḡ(r)/g(r)) (h(r) − h̄(r))² at r",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivAt_mass",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtMass.lean"
+    },
+    {
+      "id": "n0046",
+      "kind": "definition",
+      "title": "The characteristic field −½ḡ of (5.1) as a total function of real time and radius (charField)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0049",
+        "n0004"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "charField takes the proof hH of MemXBall u₀ x H as its argument and passes it to gBarX"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the body is −½ times gBarX at the clamped arguments t⁺, z⁺, the right side −½ḡ(u,r) of (5.1)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; t, z real",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each real t and each real z",
+      "source_conclusion": "charField(t,z) := −½·gBarX(t⁺, z⁺), with t⁺ = max(t,0) and z⁺ = max(z,0) (Real.toNNReal): the right side −½ḡ(u,r) of dr/du = −½ḡ(u,r), (5.1), as a total field on ℝ × ℝ ; the time is further clamped to [0,u₀] inside gBarX. On the physical strip 0 ≤ t ≤ u₀, z ≥ 0 it is −½ḡ(t,z) (root n0046.of_le)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.charField",
+      "file": "Christodoulou/Frozen/Bondi/CharField.lean"
+    },
+    {
+      "id": "n0047",
+      "kind": "definition",
+      "title": "Backward characteristic of (5.1) through the terminal point (u₁, r₁) on [0, u₁] (IsCharacteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0049",
+        "n0046"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "IsCharacteristic takes the proof hH of MemXBall u₀ x H as its argument and passes it to charField"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the derivative required at time t is charField(t, χ(t)), the right side −½ḡ(u,r) of (5.1) as a total field"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, ); χ a real function of real time",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞), for each real function χ",
+      "source_conclusion": "IsCharacteristic hH u₁ r₁ χ holds iff χ(u₁) = r₁ and, for every t in [0,u₁], χ has the derivative charField(t, χ(t)) at t within [0,u₁] (one-sided at both endpoints, ): χ is a characteristic of (5.1) dr/du = −½ḡ(u,r) through the terminal point (u₁, r₁) of the physical strip, on the time interval [0,u₁] (the backward characteristic of pp. 349-350 and 354-355, ), with the clamped coefficient charField = −½ḡ . Nothing is asserted outside [0,u₁]; for u₁ = 0 only χ(0) = r₁ is constrained (a within-derivative on a singleton is unconstrained, ). Forward characteristics χ(u; r₀) from u = 0 are not defined",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsCharacteristic",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristic.lean"
+    },
+    {
+      "id": "n0048",
+      "kind": "claim",
+      "title": "The characteristic field −½ḡ satisfies Mathlib's Picard–Lindelöf hypotheses on [0,u₀] (isPicardLindelof_charField)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0046"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the conclusion is an instance of the Mathlib structure with tmin = 0, tmax = u₀; its four field steps are in https://doi.org/10.1007/BF01205930 (truncated here)"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the vector field of the structure is charField, the right side −½ḡ of (5.1)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; t₀ in [0,u₀]; z₀ real; ρ ≥ 0",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each t₀ in [0,u₀], for each real z₀, for each ρ in [0,∞)",
+      "source_conclusion": "IsPicardLindelof charField t₀ z₀ a ρ L K on the time interval [0,u₀], with a = ρ + u₀/2, L = 1/2 and K = Real.toNNReal((π/12)x²): (i) for every t in [0,u₀], charField(t,·) is K-Lipschitz on the closed ball of radius a about z₀; (ii) for every z in that ball, t ↦ charField(t,z) is continuous on [0,u₀]; (iii) abs(charField(t,z)) ≤ 1/2 there; (iv) L·max(u₀ − t₀, t₀ − 0) ≤ a − ρ. Reconstructed : [P] asserts that the characteristics solve (5.1) (p. 345) and, through a terminal point, the ODEs of p. 349; it does not argue their existence",
+      "constant_scope": "a, L and K are explicit: L = 1/2 is absolute, K depends only on x, a only on ρ and u₀; none depends on t₀, z₀ or H",
+      "declaration": "Christodoulou.Bondi.isPicardLindelof_charField",
+      "file": "Christodoulou/Frozen/Bondi/IsPicardLindelofCharField.lean"
+    },
+    {
+      "id": "n0049",
+      "kind": "definition",
+      "title": "Closed ball of radius x in the space X of (7.1) on the strip [0,u₀]×[0,∞) (MemXBall)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (field carrier , reused), with slices H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "MemXBall u₀ x H holds iff (1) for every u in [0,∞) with u ≤ u₀ the slice lift s ↦ H(u, s⁺) is C¹ (ContDiffOn of order 1) on [0,∞), with the derivative at s = 0 one-sided within [0,∞) ; (2) the map (u,r) ↦ ∂_r H(u,r), the derivative within [0,∞) at r of the lift s ↦ H(u⁺, s⁺), is continuous on the closed strip [0,u₀] × [0,∞); (3) for every u ≤ u₀ and every r ≥ 0, (1+r)³ abs(H(u,r)) + (1+r)⁴ abs(∂_r H(u,r)) ≤ x. Fields (1)-(2) are \"continuous and posess a continuous partial derivative with respect to r\" of (7.1) (continuity of H itself is the carrier's); field (3) is ‖H‖_X ≤ x for the printed sum norm (7.1) (U-NORMS), i.e. membership in \"the closed ball of radius x₁ in the space X\" of Lemma 1 with x₁ = x . No evolution equation and no ∂_u H are assumed",
+      "constant_scope": "the radius x is an explicit parameter of the predicate, not existential ; the double sup over u then r of (7.1) is replaced by the equivalent pointwise bound for all u ≤ u₀ and all r ≥ 0",
+      "declaration": "Christodoulou.Bondi.MemXBall",
+      "file": "Christodoulou/Frozen/Bondi/MemXBall.lean"
+    },
+    {
+      "id": "n0050",
+      "kind": "external",
+      "title": "The fderivWithin of a C^n map (1 ≤ n) on a uniquely differentiable set is continuous on it",
+      "statement_source": "external:mathlib#ContDiffOn.continuousOn_fderivWithin",
+      "proof_source": "external:mathlib#ContDiffOn.continuousOn_fderivWithin",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f C^n on s; s UniqueDiffOn; 1 ≤ n",
+      "source_quantifiers": "for all f, s, n",
+      "source_conclusion": "ContinuousOn (fderivWithin 𝕜 f s) s",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0051",
+      "kind": "external",
+      "title": "An eventual property along atTop on a nonempty directed preorder holds beyond some threshold, and conversely",
+      "statement_source": "external:mathlib#Filter.eventually_atTop",
+      "proof_source": "external:mathlib#Filter.eventually_atTop",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "α with [Preorder α] [IsDirectedOrder α] [Nonempty α] (here ℝ≥0); p : α → Prop",
+      "source_quantifiers": "for all α, p",
+      "source_conclusion": "(∀ᶠ x in atTop, p x) ↔ ∃ a, ∀ b, a ≤ b → p b",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0052",
+      "kind": "external",
+      "title": "A function continuous on a compact set is bounded there",
+      "statement_source": "external:mathlib#IsCompact.exists_bound_of_continuousOn",
+      "proof_source": "external:mathlib#IsCompact.exists_bound_of_continuousOn",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "s compact; f continuous on s (values in a seminormed group)",
+      "source_quantifiers": "for all s, f",
+      "source_conclusion": "there is C with ‖f(x)‖ ≤ C for every x in s",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0053",
+      "kind": "external",
+      "title": "Mathlib structure IsPicardLindelof: the hypotheses of the Picard–Lindelöf theorem",
+      "statement_source": "external:mathlib#IsPicardLindelof",
+      "proof_source": "external:mathlib#IsPicardLindelof",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "E a normed additive commutative group (here ℝ); f : ℝ → E → E; tmin, tmax real; t₀ in [tmin, tmax] (hence tmin ≤ tmax); x₀ in E; a, r, L, K in [0,∞)",
+      "source_quantifiers": "for all E, f, tmin, tmax, t₀, x₀, a, r, L, K",
+      "source_conclusion": "IsPicardLindelof f t₀ x₀ a r L K holds iff (lipschitzOnWith) for every t in [tmin, tmax], f t is K-Lipschitz on the closed ball of radius a about x₀; (continuousOn) for every x in that ball, t ↦ f t x is continuous on [tmin, tmax]; (norm_le) ‖f t x‖ ≤ L for t in [tmin, tmax] and x in that ball; (mul_max_le) L·max(tmax − t₀, t₀ − tmin) ≤ a − r",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0054",
+      "kind": "external",
+      "title": "Mathlib IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt₀: a solution through the centre of the initial ball",
+      "statement_source": "external:mathlib#IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt₀",
+      "proof_source": "external:mathlib#IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt₀",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "E a complete normed real vector space (here ℝ); f : ℝ → E → E; tmin, tmax real; t₀ in [tmin, tmax]; x₀ in E; a, L, K in [0,∞); IsPicardLindelof f t₀ x₀ a 0 L K (initial-ball radius 0)",
+      "source_quantifiers": "for all E, f, tmin, tmax, t₀, x₀, a, L, K",
+      "source_conclusion": "there is α : ℝ → E with α(t₀) = x₀ and, for every t in [tmin, tmax], α has the derivative f(t, α(t)) at t within [tmin, tmax]",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0055",
+      "kind": "external",
+      "title": "Uniqueness for ODE solutions with equal initial value",
+      "statement_source": "external:mathlib#ODE_solution_unique_of_mem_Icc_right",
+      "proof_source": "external:mathlib#ODE_solution_unique_of_mem_Icc_right",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "E a normed real space; v : ℝ → E → E; s : ℝ → Set E; K ≥ 0; for every t in [a,b), v(t,·) is K-Lipschitz on s(t); f and g continuous on [a,b]; for every t in [a,b), f and g have the derivatives v(t, f(t)) and v(t, g(t)) within [t,∞), and f(t), g(t) ∈ s(t); f(a) = g(a)",
+      "source_quantifiers": "for all E, v, s, K, a, b, f, g",
+      "source_conclusion": "f = g on [a,b]",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0056",
+      "kind": "external",
+      "title": "Intermediate value theorem on a closed interval",
+      "statement_source": "external:mathlib#intermediate_value_Icc",
+      "proof_source": "external:mathlib#intermediate_value_Icc",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a ≤ b; f continuous on [a,b] (order-topology codomain)",
+      "source_quantifiers": "for all a, b, f",
+      "source_conclusion": "[f(a), f(b)] ⊆ f([a,b])",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0057",
+      "kind": "external",
+      "title": "A C¹ function on [0,∞) is continuous, differentiable in the interior, with continuous within-derivative",
+      "statement_source": "external:standard-analysis#C1-derivWithin-half-line",
+      "proof_source": "external:standard-analysis#C1-derivWithin-half-line",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f : ℝ → ℝ is C¹ (ContDiffOn of order 1) on [0,∞)",
+      "source_quantifiers": "for all f",
+      "source_conclusion": "f is continuous on [0,∞); at every t ≥ 0, f has derivative f′(t) := derivWithin f [0,∞) t within [0,∞), and at every t > 0 this is a two-sided derivative; t ↦ f′(t) is continuous on [0,∞) ([0,∞) is a set of unique differentiability)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0058",
+      "kind": "external",
+      "title": "A function with a within-derivative at every point of a set is continuous on the set",
+      "statement_source": "external:standard-analysis#continuousOn-of-hasDerivWithinAt",
+      "proof_source": "external:standard-analysis#continuousOn-of-hasDerivWithinAt",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f : ℝ → ℝ has a derivative within S at every point of S",
+      "source_quantifiers": "for all f, S",
+      "source_conclusion": "f is continuous on S",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0059",
+      "kind": "external",
+      "title": "A within-derivative transfers to any set of which the original set is a relative neighbourhood",
+      "statement_source": "external:standard-analysis#hasDerivWithinAt-localize",
+      "proof_source": "external:standard-analysis#hasDerivWithinAt-localize",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f : ℝ → ℝ has the derivative f′ at x within S; S is a neighbourhood of x within T (S ∈ 𝓝[T] x)",
+      "source_quantifiers": "for all f, f′, x, S, T",
+      "source_conclusion": "f has the derivative f′ at x within T; in particular, if S is a neighbourhood of x, f has the two-sided derivative f′ at x. For a < t ≤ b, [a,b] is a neighbourhood of t within (−∞, t]; for a < t < b it is a neighbourhood of t",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0060",
+      "kind": "external",
+      "title": "A derivative within a set is a derivative within every subset",
+      "statement_source": "external:standard-analysis#hasDerivWithinAt-mono",
+      "proof_source": "external:standard-analysis#hasDerivWithinAt-mono",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f : ℝ → ℝ has the derivative f′ at x within T; S ⊆ T",
+      "source_quantifiers": "for all f, f′, x, S, T",
+      "source_conclusion": "f has the derivative f′ at x within S",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0061",
+      "kind": "external",
+      "title": "A continuous function with a negative derivative on the interior of a convex set is strictly decreasing there",
+      "statement_source": "external:standard-analysis#strictAnti-of-deriv-neg",
+      "proof_source": "external:standard-analysis#strictAnti-of-deriv-neg",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "D ⊆ ℝ convex; F continuous on D; at every interior point x of D, F has a (two-sided) derivative F′(x) < 0",
+      "source_quantifiers": "for all D, for all F",
+      "source_conclusion": "F is strictly decreasing on D",
+      "constant_scope": "none"
+    }
+  ],
+  "coverage": [
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0040",
+        "n0039",
+        "n0041"
+      ],
+      "reason": "Theorem 2 (the source passage): the root (Theorem 2 with the printed derivative hypothesis), through the imported sealed theorem2 and its X-ball bridge exists_memXBall_of_isClassicalSolution .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0035",
+        "n0037",
+        "n0038",
+        "n0036",
+        "n0006"
+      ],
+      "reason": "the source passage: FORMALIZED as : the global weighted value bound (clause 2 of IsClassicalSolution) ⇔ the printed form (a), for every continuous field, via the strip lemma (RECON).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0031",
+        "n0032",
+        "n0043",
+        "n0033",
+        "n0034",
+        "n0042",
+        "n0049"
+      ],
+      "reason": "\"∂h₁/∂r, ∂h₂/∂r = O(r⁻⁴) uniformly in u\": FORMALIZED as (: the global weighted bound ⇔ the printed form (a), for classical solutions, by the continuity of ∂_r h; RECON), ((a) ⇔ (b), ) and (X-ball membership under the printed hypothesis).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: the printed sketch of Theorem 2, reconstructed and sealed in (closure in https://doi.org/10.1007/BF01205930; the imported theorem2 keeps only its statement-level edges here). Not consumed by a . Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0035",
+        "n0031",
+        "n0033"
+      ],
+      "reason": "the source passage: the phrase that fixes the reading \"as r → ∞\" of Theorem 2's hypotheses; the filter form (a) ∃ C, ∀ᶠ r in atTop, ∀ u ≤ u₀ of , and .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Theorem 1 in printed form (data O(r⁻³), ∂_r O(r⁻⁴) as r → ∞; conclusion \"as r → ∞, uniformly in u\"): NOT claimed (: calls a derivative-tail theorem1_printed natural but optional; not adopted). The sealed theorem1 (global weighted reading, ) is not consumed by a . OPEN as not claimed.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "Formalization reconstruction (the printed source omits this argument).",
+      "disposition": "NODE",
+      "nodes": [
+        "n0035",
+        "n0031",
+        "n0037",
+        "n0036",
+        "n0032"
+      ],
+      "reason": "(the source passage; the author's instruction to keep it recorded as open, formalization reconstruction ): FORMALIZED by and ; its one-sentence argument is the RECON proof source of #strip-equivalence, #printed-to-weighted and #radial-continuous. A project record, not [P]. The README bullet (README.md on 2026-10-10) restates it; it is not cited because the and row R edit that line.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0020",
+        "n0021",
+        "n0047"
+      ],
+      "reason": "the source passage: the incoming ray from u = 0 is a characteristic of (5.1), and through each of its points it is the sealed backward characteristic .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0020",
+        "n0046",
+        "n0004",
+        "n0049",
+        "n0019",
+        "n0025"
+      ],
+      "reason": "\"They satisfy the ordinary differential equation dr/du = −½ḡ(u, r) (5.1)\": clause (3) of IsIncomingRay with the clamped field charField = −½ gBarX on the X-ball ; ḡ > 0 makes the rays move strictly inward (#strict-decrease).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0020",
+        "n0022",
+        "n0026",
+        "n0023",
+        "n0024",
+        "n0028",
+        "n0027",
+        "n0048",
+        "n0030",
+        "n0053"
+      ],
+      "reason": "the source passage: FORMALIZED as IsIncomingRay (, followed until the first centre time or u₀, ), with existence (, Picard-Lindelöf from t₀ = 0, strict decrease, first zero) and uniqueness of the curve and of its end time (, ODE uniqueness with the Lipschitz field); the forward flow of on each strip up to the centre .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: the integral form of the forward ray is not stated in not consumed by any root (the backward integral form is the sealed eq_sub_integral, https://doi.org/10.1007/BF01205930). OPEN as not claimed (part of the flow-map records of ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: formalized and sealed for the backward characteristics (IsCharacteristic.mem_Icc, P.5.3.characteristic.mem_Icc, https://doi.org/10.1007/BF01205930); not consumed by a . Not OPEN. ( is also the statement locator of the imported gBarX_pos.)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The derivative of χ(u₁; r₀) in r₀ and the convergence factor ζ: (5.4)-(5.7), \"Differentiating (5.2) with respect to r₀ … ζ(u₁, r₁) ≥ e^{−u₁/2r₁}\": NOT formalized, OPEN: the regularity of the flow map r₀ ↦ χ(·; r₀), the forward part of .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: the order of the rays, the coverage of the strip and the mean-value comparison through ζ: NOT formalized, OPEN (the flow map of and the forward part of , , ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0044",
+        "n0003",
+        "n0005",
+        "n0001",
+        "n0008",
+        "n0029"
+      ],
+      "reason": "(4.3) m = (r/2)(1 − ḡ/g): the imported sealed mass with its body edges and the slice carrier; the subject of , and #mass-congr.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: formalized and sealed in (gBar_le_g); not consumed by a . Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"Therefore m is nonnegative\": sealed in (mass_nonneg); not consumed here. Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"Also, m vanishes at r = 0\": sealed in (mass_zero); not consumed here ( at a centre time and at r = 0 use only antitonicity and monotonicity). Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"and m < r/2 for r > 0\": sealed in (mass_lt_half); not consumed here. Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0045",
+        "n0002"
+      ],
+      "reason": "(4.4) ∂m/∂r = 2π(ḡ/g)(h − h̄)²: the imported hasDerivAt_mass (with its edge to g > 0), the statement-level edge of monotone_mass.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0016",
+        "n0017",
+        "n0018"
+      ],
+      "reason": "\"Thus m is a monotonically nondecreasing function of r at each u\": the imported sealed monotone_mass, read along the outgoing part u = u₁ of the reflected ray (, with the section computation #section).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(4.5) m = 2π∫₀^r (ḡ/g)(h − h̄)² dr: sealed in (mass_eq_integral); not consumed ( uses monotone_mass; its manifest range cites (4.4)-(4.5) as the printed monotonicity). Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: physical interpretation, no mathematical content (transcriber's note ). Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: NOT formalized, OPEN : the Einstein equations are not formalized.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0012"
+      ],
+      "reason": "(4.6) Dm = −(π/g)ξ²: consumed through the imported , whose cut closure (, (4.6) along the ray, ) is in https://doi.org/10.1007/BF01205930",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: sealed , inside the cut closure of (https://doi.org/10.1007/BF01205930, https://doi.org/10.1007/BF01205930); not consumed directly here. Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0013",
+        "n0012",
+        "n0014",
+        "n0015",
+        "n0021",
+        "n0007",
+        "n0047"
+      ],
+      "reason": "\"It implies that m is monotonically nonincreasing along the incoming light rays\": FORMALIZED along the rays issued at u = 0 as (on the whole incoming interval [0, u₁], up to and including the centre, without a slice family beyond the strip, (b)), through and the sealed applied to the time-clamped extension (RECON).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "assumption",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"We shall assume that lim_{r→∞} m(0, r) := M₀ exists\": REPLACED by bondiMass_spec ; not a standing assumption and not a node; the printed assumption stays OPEN as a printed hypothesis that is not formalized.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: the print-route edge of (, coverage item P.345.M-bound-by- of https://doi.org/10.1007/BF01205930); the forward-ray form m(u₁, χ(u₁; r₀)) ≤ m(0, r₀) is a consequence of not claimed in . Not OPEN as a mathematical gap.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Transcriber's note standing for the untranscribed sentence that introduces the curvature components (4.8)-(4.12): NOT formalized, OPEN (no metric or curvature is formalized; ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The spacetime assumptions of the geometric setup (the future null geodesics through the central points are complete; the area of the group orbits increases along them; r defined by A = 4πr²): not formalized (no metric); no makes a geometric claim. Not OPEN as a . Consumed only as the coordinate setting of #outgoing-rays.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0011",
+        "n0010"
+      ],
+      "reason": "\"(The central world line is the set r = 0.)\": the centre r = 0 at which the incoming ray stops (clause (4) of IsIncomingRay) and is reflected (#reflection, AUTHOR ), and from whose points the outgoing rays issue (#outgoing-rays).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "assumption",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: geometric assumption, not formalized (no metric). Not OPEN as a .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0009",
+        "n0010"
+      ],
+      "reason": "the source passage: the coordinate reading of the outgoing light ray from a central point (u₁, 0) as {u₁} × [0, ∞), the outgoing part of reflectedRay (RECON). The proper-time normalization is not used.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The metric (1.1) ds² = −e^{2ν}du² − 2e^{ν+λ}du dr + r²dΣ², with ν, λ → 0 as r → ∞ (transcriber's note excepted): NOT formalized, OPEN (no metric; hence no null-geodesic statement for the outgoing part; ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: the domain is the carrier of the sealed anchors (the same sentence is https://doi.org/10.1007/BF01205930 (p. 339), covered by https://doi.org/10.1007/BF01205930). Not OPEN. Consumed only as the coordinate setting of #outgoing-rays.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "citation",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: citation and exposition; no mathematical input is consumed. Not OPEN.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The null tetrad (1.2) n = e^{−ν}∂_u − ½e^{−λ}∂_r, l = e^{−λ}∂_r: NOT formalized, OPEN (no metric or tetrad; ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0010",
+        "n0020"
+      ],
+      "reason": "the source passage: the coordinate content is used: the outgoing rays are the curves u = const along which r increases (#outgoing-rays, the outgoing part of reflectedRay), the incoming rays those of n, whose u-parametrization is (5.1) . The null character of n and l is item P.339.outgoing-null-geodesic.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"The vector fields n and l are null\", hence the outgoing part {u₁} × [0, ∞) of reflectedRay is a null geodesic of the metric (1.1): NOT formalized, OPEN (: any geometric statement that the outgoing part is a null geodesic; the metric is not formalized, u = const is the coordinate description of the outgoing rays).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage and the inverse metric (1.3): NOT formalized, OPEN (no metric; ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The printed data hypotheses of Theorem 3 (\"h(0, r) = O(r⁻³) and ∂h/∂r(0, r) = O(r⁻⁴)\"): the printed form of Theorem 3 is NOT claimed (: no wrapper needed for theorem3_*, m5); the sealed theorem3_* are not consumed. OPEN as not claimed.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"The corresponding spacetime is timelike and null geodesically complete toward the future\": NOT formalized, OPEN, explicitly DEFERRED (no metric (1.1), no geodesics; ). Included in this corpus only for this exclusion.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Filter.eventually_atTop",
+      "disposition": "NODE",
+      "nodes": [
+        "n0051"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#IsPicardLindelof",
+      "disposition": "NODE",
+      "nodes": [
+        "n0053"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#IsPicardLindelof.exists_eq_forall_mem_Icc_hasDerivWithinAt₀",
+      "disposition": "NODE",
+      "nodes": [
+        "n0054"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#IsCompact.exists_bound_of_continuousOn",
+      "disposition": "NODE",
+      "nodes": [
+        "n0052"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#ContDiffOn.continuousOn_fderivWithin",
+      "disposition": "NODE",
+      "nodes": [
+        "n0050"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#C1-derivWithin-half-line",
+      "disposition": "NODE",
+      "nodes": [
+        "n0057"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#strictAnti-of-deriv-neg",
+      "disposition": "NODE",
+      "nodes": [
+        "n0061"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#intermediate_value_Icc",
+      "disposition": "NODE",
+      "nodes": [
+        "n0056"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#ODE_solution_unique_of_mem_Icc_right",
+      "disposition": "NODE",
+      "nodes": [
+        "n0055"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#hasDerivWithinAt-mono",
+      "disposition": "NODE",
+      "nodes": [
+        "n0060"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#continuousOn-of-hasDerivWithinAt",
+      "disposition": "NODE",
+      "nodes": [
+        "n0058"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#hasDerivWithinAt-localize",
+      "disposition": "NODE",
+      "nodes": [
+        "n0059"
+      ],
+      "reason": "Mathlib or standard-analysis input of the argument or of an imported anchor (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    }
+  ]
+}

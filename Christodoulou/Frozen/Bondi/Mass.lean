@@ -1,0 +1,24 @@
+/-
+# `Christodoulou.Bondi.mass`
+
+Source: Christodoulou, CMP 105 (1986), 337–361, DOI: https://doi.org/10.1007/BF01205930.
+See `depgraph/anchors.json` for the source correspondence.
+-/
+module
+public import Christodoulou.Frozen.Bondi.GBar
+
+
+
+public section
+
+open Set MeasureTheory Filter Topology Asymptotics Real
+open scoped NNReal
+
+namespace Christodoulou.Bondi
+open Christodoulou.Radial
+
+/-- `m = (r/2)(1 − ḡ/g)`, [P] (4.3). -/
+@[expose] noncomputable def mass (h : C(ℝ≥0, ℝ)) (hh : IsSlice h) (r : ℝ≥0) : ℝ :=
+  (r : ℝ) / 2 * (1 - gBar h hh r / g h hh r)
+
+end Christodoulou.Bondi

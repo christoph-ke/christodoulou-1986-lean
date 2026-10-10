@@ -1,0 +1,1155 @@
+{
+  "schema_version": 1,
+  "title": "classical solution interface",
+  "source": "https://doi.org/10.1007/BF01205930",
+  "semantics": "Edges point to prerequisites; dependencies are conjunctive; one alternative route suffices. Reviewed source topology, not a kernel proof trace.",
+  "conventions": "Carriers, hypotheses, quantifiers and constant scope are recorded per node and in the corresponding Lean declarations.",
+  "roots": [
+    "n0011",
+    "n0006"
+  ],
+  "standing_assumptions": [],
+  "nodes": [
+    {
+      "id": "n0001",
+      "kind": "definition",
+      "title": "The metric function g = exp[−4π ∫_r^∞ (h − h̄)² ds/s] on IsSlice slices, (3.10)–(3.11) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0010",
+        "n0008",
+        "n0003"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g is defined only on slices h with IsSlice h, passed as the argument hh"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the integrand of (3.11) contains the defined mean h̄"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "(3.11) is meaningful only because its improper integral converges; _tail and g one semantic unit, with g admitted after the sealed theorem"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh, and the value does not depend on which hh is supplied . r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "g(r) := exp[−4π ∫_r^∞ (h(s) − h̄(s))² ds/s], the literal body of (3.11), with the integral over the open half-line (r,∞). (3.10) names e^{ν+λ} = g; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g",
+      "file": "Christodoulou/Frozen/Bondi/G.lean"
+    },
+    {
+      "id": "n0002",
+      "kind": "claim",
+      "title": "g is continuous on [0,∞) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the claim concerns the defined g = exp(−4π A)"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "r ↦ g(r) is continuous on [0,∞), one-sided at r = 0. This is reconstructed, not stated in the source. It is needed so that ḡ in (3.12) can be formed in",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.continuous_g",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousG.lean"
+    },
+    {
+      "id": "n0003",
+      "kind": "claim",
+      "title": "Well-definedness of (3.11): (h − h̄)²/s is integrable on (r,∞) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0010",
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the premise IsSlice h of the statement"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the integrand of (3.11) contains the defined mean h̄"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice in the slice class IsSlice: C¹[0,∞[ and h = O(r⁻³) as r → ∞ (carrier ); r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "s ↦ (h(s) − h̄(s))²/s is integrable on (r,∞), so ∫_r^∞ (h − h̄)² dr/r in (3.11) is finite (reconstructed; not stated in the source)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.integrableOn_tail",
+      "file": "Christodoulou/Frozen/Bondi/IntegrableOnTail.lean"
+    },
+    {
+      "id": "n0004",
+      "kind": "definition",
+      "title": "ḡ, the radial mean of g, (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0005",
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the mean is taken of the continuous radial function gMap"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the bar in (3.12) is the mean notation of (3.7), \"used throughout\", so ḡ is the sealed mean applied to g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "ḡ(r) := mean(gMap)(r), the mean (3.7) of g: (1/r)∫₀^r g(r')dr' for r > 0 and g(0) at r = 0 . (3.12) names e^{ν−λ} = ḡ; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBar",
+      "file": "Christodoulou/Frozen/Bondi/GBar.lean"
+    },
+    {
+      "id": "n0005",
+      "kind": "definition",
+      "title": "gMap: g as a continuous radial function on [0,∞), the representation needed to form ḡ in (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001",
+        "n0002",
+        "n0010"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the underlying function of gMap is the defined g of (3.11), whose mean is ḡ"
+        },
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the continuity field of gMap is the sealed continuous_g; this is why gMap is admitted only after continuous_g"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "gMap is defined only on slices with IsSlice h, and passes hh to g and continuous_g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "gMap is the continuous map [0,∞) → ℝ, r ↦ g(r), i.e. g of (3.11) bundled with its continuity. It adds no source content beyond g; it exists so that the mean ḡ of (3.12) can be formed",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gMap",
+      "file": "Christodoulou/Frozen/Bondi/GMap.lean"
+    },
+    {
+      "id": "n0006",
+      "kind": "definition",
+      "title": "Classical solution of (3.13) on the strip [0,u₀]×[0,∞), restricted uniformly decaying class (IsClassicalSolution)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0010",
+        "n0001",
+        "n0004",
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "field (3) quantifies over proofs of IsSlice for the slice H(u,·), which g and ḡ require as their argument hh"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the right side of (3.13) contains g of (3.11)"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "ḡ appears in the operator D = ∂_u − ½ḡ∂_r and on the right side of (3.13)"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the right side of (3.13) contains the mean h̄ of the slice"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (p. 339 domain; carrier ), with slices h = H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "IsClassicalSolution u₀ H holds iff (1) the real lift (u,r) ↦ H(u⁺, r⁺) is C¹ (ContDiffOn 1) on the closed strip [0,u₀] × [0,∞), with one-sided derivatives at its edges when u₀ > 0; for u₀ = 0 the set is the half-line {0} × [0,∞) and the field is degenerate (recorded constraint ) (\"classical\" solution of p. 348: a differentiable function whose derivatives are continuous even on r = 0; \"C¹[0,u₀]×[0,∞[\" of Theorem 1; ); (2) there is one constant C, chosen before u and r, with abs(H(u,r)) ≤ C(1 + r)⁻³ for all u ≤ u₀ and all r ≥ 0 (the field form of \"h = O(r⁻³) … uniformly in u\" of Theorems 1 and 2, to which it is bridged by the deferred obligation ; implied by the decay of Theorem 3; ); (3) for every u with 0 < u < u₀, every proof hs of IsSlice h for the slice h = H(u,·), and every r > 0, ∂_u H − ½ ḡ ∂_r H = (g − ḡ)(h − h̄)/(2r) at (u,r), i.e. Dh = (1/2r)(g − ḡ)(h − h̄) with D = ∂_u − ½ ḡ ∂_r, (3.13), both partials being deriv of the real lifts . This is the RESTRICTED uniformly-decaying classical-solution class , NOT the most general classical-solution class of [P]; data at u = 0 is not part of the predicate",
+      "constant_scope": "C in (2) is existential, depends only on H and u₀, and precedes u and r",
+      "declaration": "Christodoulou.Bondi.IsClassicalSolution",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolution.lean"
+    },
+    {
+      "id": "n0007",
+      "kind": "lemma",
+      "title": "Defining formula of the mean for r > 0 (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+          "rationale": "the r > 0 branch of the defined f̄ is exactly the displayed formula (3.7)"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) ; r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "f̄(r) = r⁻¹ ∫₀^r f(s) ds",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean_eq_integral",
+      "file": "Christodoulou/Frozen/Radial/MeanEqIntegral.lean"
+    },
+    {
+      "id": "n0008",
+      "kind": "definition",
+      "title": "Radial mean f̄(r) = r⁻¹∫₀^r f, with centre value f(0) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f is one fixed-u slice of a function of (u,r), regarded as a continuous real function of r on [0,∞) (, ; domain 0 ≤ r < ∞ from p. 339)",
+      "source_quantifiers": "for each continuous f on [0,∞) and each r in [0,∞)",
+      "source_conclusion": "f̄(r) := (1/r)∫₀^r f(r')dr' for r > 0, and f̄(0) := f(0) (centre value, p. 344, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean",
+      "file": "Christodoulou/Frozen/Radial/Mean.lean"
+    },
+    {
+      "id": "n0009",
+      "kind": "claim",
+      "title": "Continuity of f̄ on [0,∞), including the centre (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the claim concerns the defined function f̄"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) (, ; the source requires continuity in r at r = 0)",
+      "source_quantifiers": "for all continuous f on [0,∞)",
+      "source_conclusion": "f̄ is continuous on [0,∞); in particular f̄(r) → f(0) as r → 0⁺ (reconstructed from [f − f̄]_{r=0} = 0)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.continuous_mean",
+      "file": "Christodoulou/Frozen/Radial/ContinuousMean.lean"
+    },
+    {
+      "id": "n0010",
+      "kind": "definition",
+      "title": "Slice class IsSlice: h in C¹[0,∞) with h = O(r⁻³) as r → ∞ (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsSlice h holds iff (i) h ∈ C¹[0,∞[ (derivative at r = 0 one-sided within [0,∞), ) and (ii) h(r) = O(r⁻³) as r → ∞; the first two conditions of the Theorem 1 data class ; the condition on ∂h/∂r is not included",
+      "constant_scope": "none (the O-constant and threshold in (ii) are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsSlice",
+      "file": "Christodoulou/Frozen/Bondi/IsSlice.lean"
+    },
+    {
+      "id": "n0011",
+      "kind": "claim",
+      "title": "Well-definedness of (4.2): ḡ(h − h̄)/s is interval integrable on [0, r]",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0010",
+        "n0004",
+        "n0008",
+        "n0015",
+        "n0026"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the premise IsSlice h of the statement, passed as hh to ḡ and to the steps that use the C¹ conjunct"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand of (4.2) contains the defined ḡ of (3.12)"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand of (4.2) contains the defined mean h̄"
+        },
+        {
+          "target": "n0015",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand is integrable on (0, r]"
+        },
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "for 0 ≤ r, interval integrability on [0, r] is integrability on (0, r] (the reversed interval is empty); s = 0, where Lean's 1/0 = 0, does not belong to (0, r], and r = 0 gives the empty set"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice, a continuous real function of r on [0,∞), in the slice class IsSlice: C¹[0,∞[ and h = O(r⁻³) as r → ∞ (carrier ); the carrier is restricted through the proof argument hh ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "s ↦ ḡ(s⁺)(h(s⁺) − h̄(s⁺))/s is interval integrable on [0, r], so ξ(r) = ∫₀^r ḡ(h − h̄) dr/r in (4.2) is a convergent integral (reconstructed; not stated in the source). At s = 0 Lean's 1/0 = 0 affects one null point",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.intervalIntegrable_xi",
+      "file": "Christodoulou/Frozen/Bondi/IntervalIntegrableXi.lean"
+    },
+    {
+      "id": "n0012",
+      "kind": "step",
+      "title": "Centre estimate abs(h(s) − h̄(s)) ≤ L·s on (0, r]",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0018",
+        "n0007",
+        "n0023",
+        "n0025"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "for 0 ≤ t ≤ s ≤ r, abs(h(s) − h(t)) ≤ L(s − t) ≤ L·s"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "for s > 0 write h(s) − h̄(s) = s⁻¹ ∫₀^s (h(s) − h(t)) dt"
+        },
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h and the constant h(s) are integrable on [0, s], so the integral splits"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "abs of the integral is at most L·s·s; dividing by s gives L·s"
+        }
+      ],
+      "source_hypotheses": "IsSlice h (only the C¹[0,∞[ conjunct is used); r ≥ 0",
+      "source_quantifiers": "for each h with IsSlice h, for each r in [0,∞), there exists L ≥ 0 such that for all s in (0, r]",
+      "source_conclusion": "abs(h(s) − h̄(s)) ≤ L·s",
+      "constant_scope": "L depends only on h and r (the Lipschitz constant of n0018)"
+    },
+    {
+      "id": "n0013",
+      "kind": "step",
+      "title": "ḡ is bounded on [0, r]",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0014",
+        "n0022"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0014",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ is continuous on [0, r]"
+        },
+        {
+          "target": "n0022",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "a continuous function on the compact interval [0, r] is bounded"
+        }
+      ],
+      "source_hypotheses": "IsSlice h; r ≥ 0",
+      "source_quantifiers": "for each h with IsSlice h, for each r in [0,∞), there exists M ≥ 0 such that for all s in [0, r]",
+      "source_conclusion": "abs(ḡ(s)) ≤ M",
+      "constant_scope": "M depends only on h and r"
+    },
+    {
+      "id": "n0014",
+      "kind": "application",
+      "title": "ḡ is continuous on [0,∞): continuous_mean applied to gMap",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004",
+        "n0005",
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "ḡ is by definition the mean of gMap"
+        },
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "gMap is a continuous map on [0,∞), so it meets the hypothesis of continuous_mean"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "continuity of the mean, applied with f = gMap"
+        }
+      ],
+      "source_hypotheses": "IsSlice h (, passed as hh)",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "r ↦ ḡ(r) is continuous on [0,∞), one-sided at r = 0",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0015",
+      "kind": "step",
+      "title": "The integrand is integrable on (0, r]",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0016",
+        "n0017",
+        "n0024",
+        "n0020"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand is bounded by K on (0, r]"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the integrand is continuous on (0, r], a subset of (0,∞)"
+        },
+        {
+          "target": "n0024",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "continuity on the measurable set (0, r] gives measurability"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "a bounded measurable function on the finite-measure set (0, r] is integrable"
+        }
+      ],
+      "source_hypotheses": "IsSlice h; r ≥ 0",
+      "source_quantifiers": "for each h with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "s ↦ ḡ(s⁺)(h(s⁺) − h̄(s⁺))/s is integrable on (0, r]",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0016",
+      "kind": "step",
+      "title": "The integrand is bounded by M·L on (0, r]",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0012",
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "abs(h(s) − h̄(s))/s ≤ L for s in (0, r], where s⁺ = s"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "abs(ḡ(s)) ≤ M for s in (0, r]"
+        }
+      ],
+      "source_hypotheses": "IsSlice h; r ≥ 0",
+      "source_quantifiers": "for each h with IsSlice h, for each r in [0,∞), there exists K ≥ 0 such that for all s in (0, r]",
+      "source_conclusion": "abs(ḡ(s)(h(s) − h̄(s))/s) ≤ K, with K = M·L",
+      "constant_scope": "K depends only on h and r (M of #gBar-bounded, L of #centre-estimate)"
+    },
+    {
+      "id": "n0017",
+      "kind": "step",
+      "title": "The integrand ḡ(h − h̄)/s is continuous on (0,∞)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0014",
+        "n0009",
+        "n0021"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0014",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the factor ḡ is continuous"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "h̄ is continuous (continuity of the mean, applied with f = h); h is continuous by its carrier"
+        },
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "composition with s ↦ s⁺, difference, product and quotient by s ≠ 0 stay continuous on (0,∞)"
+        }
+      ],
+      "source_hypotheses": "IsSlice h",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "s ↦ ḡ(s⁺)(h(s⁺) − h̄(s⁺))/s is continuous on (0,∞)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0018",
+      "kind": "step",
+      "title": "Lipschitz bound for h on [0, r] from C¹[0,∞[",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0010",
+        "n0019"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the C¹[0,∞[ conjunct restricted to [0, r], with the one-sided derivative at 0 within [0,∞)"
+        },
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "a C¹ function on the compact interval [0, r] has bounded derivative and is Lipschitz there by the mean value inequality"
+        }
+      ],
+      "source_hypotheses": "IsSlice h (only the C¹[0,∞[ conjunct is used); r ≥ 0",
+      "source_quantifiers": "for each h with IsSlice h, for each r in [0,∞), there exists L ≥ 0 such that for all s, t in [0, r]",
+      "source_conclusion": "abs(h(s) − h(t)) ≤ L·abs(s − t), for the real lift s ↦ h(s⁺)",
+      "constant_scope": "L depends only on h and r"
+    },
+    {
+      "id": "n0019",
+      "kind": "external",
+      "title": "A C¹ function on a compact interval is Lipschitz there",
+      "statement_source": "external:standard-analysis#C1-compact-lipschitz",
+      "proof_source": "external:standard-analysis#C1-compact-lipschitz",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f is C¹ on [a,b] (one-sided derivatives at the endpoints, derivative continuous on [a,b])",
+      "source_quantifiers": "for all a ≤ b, for all such f, there exists L ≥ 0 such that for all s, t in [a,b]",
+      "source_conclusion": "abs(f(s) − f(t)) ≤ L·abs(s − t) (extreme value theorem plus mean value inequality)",
+      "constant_scope": "L depends only on f and [a,b]"
+    },
+    {
+      "id": "n0020",
+      "kind": "external",
+      "title": "Bounded measurable functions are integrable on sets of finite measure",
+      "statement_source": "external:standard-analysis#bounded-integrable-finite-measure",
+      "proof_source": "external:standard-analysis#bounded-integrable-finite-measure",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "S measurable with finite Lebesgue measure; g measurable on S; abs(g) ≤ M on S",
+      "source_quantifiers": "for all S, for all g, for all real M",
+      "source_conclusion": "g is integrable on S",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0021",
+      "kind": "external",
+      "title": "Continuity is preserved by arithmetic and composition; s ↦ s⁺ is continuous",
+      "statement_source": "external:standard-analysis#continuous-arith",
+      "proof_source": "external:standard-analysis#continuous-arith",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F, H continuous; for a quotient, H nonvanishing",
+      "source_quantifiers": "for all F, H",
+      "source_conclusion": "F + H, F − H, F·H, F/H and compositions of continuous maps are continuous; s ↦ s⁺ = max(s,0) is continuous from ℝ to [0,∞)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0022",
+      "kind": "external",
+      "title": "A continuous function on a compact interval is bounded",
+      "statement_source": "external:standard-analysis#continuous-compact-bounded",
+      "proof_source": "external:standard-analysis#continuous-compact-bounded",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g continuous on [a,b]",
+      "source_quantifiers": "for all a ≤ b, for all g, there exists M ≥ 0 such that for all s in [a,b]",
+      "source_conclusion": "abs(g(s)) ≤ M (extreme value theorem)",
+      "constant_scope": "M depends only on g and [a,b]"
+    },
+    {
+      "id": "n0023",
+      "kind": "external",
+      "title": "Continuous functions are integrable on compact intervals",
+      "statement_source": "external:standard-analysis#continuous-interval-integrable",
+      "proof_source": "external:standard-analysis#continuous-interval-integrable",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g continuous on [a,b]",
+      "source_quantifiers": "for all a ≤ b, for all g",
+      "source_conclusion": "g is integrable on [a,b]",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0024",
+      "kind": "external",
+      "title": "A function continuous on a measurable set is measurable there",
+      "statement_source": "external:standard-analysis#continuous-on-measurable",
+      "proof_source": "external:standard-analysis#continuous-on-measurable",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "S a measurable subset of ℝ; g continuous on S",
+      "source_quantifiers": "for all S, for all g",
+      "source_conclusion": "g is a.e.-measurable for Lebesgue measure restricted to S",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0025",
+      "kind": "external",
+      "title": "Sup estimate for integrals over an interval",
+      "statement_source": "external:standard-analysis#integral-sup-estimate",
+      "proof_source": "external:standard-analysis#integral-sup-estimate",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g integrable on [a,b]; abs(g(s)) ≤ M for all s in [a,b]",
+      "source_quantifiers": "for all a ≤ b, for all g, for all real M",
+      "source_conclusion": "abs(∫_a^b g) ≤ M·(b − a)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0026",
+      "kind": "external",
+      "title": "Interval integrability on [a,b] is integrability on (a,b]",
+      "statement_source": "external:standard-analysis#interval-integrable-Ioc",
+      "proof_source": "external:standard-analysis#interval-integrable-Ioc",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a ≤ b; f a real function on ℝ",
+      "source_quantifiers": "for all a ≤ b, for all f",
+      "source_conclusion": "f is interval integrable on [a,b] (Lebesgue measure) iff f is integrable on (a,b]; the value of f at the endpoint a is never used, and for a = b the set (a,b] is empty",
+      "constant_scope": "none"
+    }
+  ],
+  "coverage": [
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006"
+      ],
+      "reason": "The operator D = ∂_u − ½ḡ∂_r is not a separate definition ; it is inlined in field (3) of the predicate as deriv in u minus ½ ḡ times deriv in r of the real lifts.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "D = e^ν n (via (1.2)) and its reading as the derivative along incoming light rays use ν and the null vector n, which are not formalized; no proof step of either root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The claim that the wave equation (2.19) becomes (3.13) is the Sect. 2 reduction; the Einstein-equation side is outside the formalization (architecture §1 item 3). The predicate takes (3.13) itself as the equation.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006"
+      ],
+      "reason": "(3.13) is field (3) of IsClassicalSolution, required only at interior points 0 < u < u₀, r > 0 ; edge and centre forms are deferred obligations , .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Equivalence of (3.13) with the Einstein equations under regularity at the centre is outside the formalization (architecture §1 item 3; proposal §2).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Motivational paragraph announcing the derivation of the evolution law of h̄; that law ((4.1), hasDerivAt_mean_curry, evolution_mean) is a later (admission waves 2-3).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The printed derivation of D(r h̄) is the source unit for (4.1), whose gate proves it by the approved reconstructed Φ route . Its last term ½∫₀^r ḡ(h − h̄)dr/r is the integral whose convergence the root n0011 supplies, but the derivation itself is not consumed in .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Dr = −½ḡ is used only in passing from D(r h̄) to D h̄, i.e. in the (4.1) gate.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0009"
+      ],
+      "reason": "Duplicate transcription of the [f − f̄]_{r=0} = 0 (https://doi.org/10.1007/BF01205930 (p. 344)). Continuity of the mean is consumed by for f = gMap and f = h; the remark gives only the limit, so the linear rate is the SOURCE_GAP step n0012. Its use for the boundary terms of D(r h̄) belongs to the (4.1) gate.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The evolution law D h̄ = ξ/2r, assuming regularity at the centre, is the later (hasDerivAt_mean_curry, evolution_mean; , ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0011",
+        "n0018",
+        "n0012",
+        "n0014",
+        "n0013",
+        "n0017",
+        "n0016",
+        "n0015"
+      ],
+      "reason": "covers only the well-definedness of (4.2): convergence of ∫₀^r ḡ(h − h̄)dr/r at r = 0, never stated in [P], reconstructed as SOURCE_GAP steps. The definition ξ itself is admitted after the root is sealed and audited (, pattern); hasDerivAt_xi is .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The evolution law of m, (4.6), and the monotonicity of m along incoming rays are deferred beyond .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The finite initial Bondi mass M₀ belongs to the Bondi-mass round ((4.7); ), not to either root.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006"
+      ],
+      "reason": "Classical solutions in a strip 0 ≤ u ≤ u₀ with h = O(r⁻³) uniformly in u: the strip parameter u₀ and the uniform-decay field (2) . The bridge from the printed big-O form to the field is obligation ; the ∂h/∂r = O(r⁻⁴) decay stays in the theorem statement.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The uniqueness statement of Theorem 2 and the quantity Δ(u) of its proof are a later stage; takes only the solution class.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Global existence for small d₀ is a later stage; d and d₀ are deferred . A global solution is ∀ u₀, IsClassicalSolution u₀ H .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006"
+      ],
+      "reason": "The decay abs(h) ≤ C(1+u+r)⁻³ implies field (2) on every strip ; it is cited as evidence that the uniform field does not narrow Theorem 3. The ∂h/∂r decay is not a field.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The initial value problem setting (data h(0,r) ∈ C¹[0,∞[ of finite Bondi mass, solution for u > 0) belongs to the Theorem 1 stage; data at u = 0 is not part of the predicate .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006"
+      ],
+      "reason": "\"Classical\" solution (a differentiable h(u,r) whose derivatives are continuous even on r = 0 and which satisfies the equation) is fields (1) and (3) of the predicate ; the predicate adds the uniform-decay field (2), so it is the restricted uniformly-decaying class , not this general notion.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The remark that the results generalize to finite M₀ is excluded by narrowing (: g only on IsSlice); recorded in formalization reconstruction §1.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0010"
+      ],
+      "reason": "The C¹[0,∞[ and O(r⁻³) conditions on a slice are the sealed IsSlice , imported as a frozen non-root node; consumed by both roots.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006"
+      ],
+      "reason": "\"classical solution h(u,r) ∈ C¹[0,u₀]×[0,∞[\" with h = O(r⁻³) uniformly in u is fields (1)-(2) of the predicate (, ; bridge ). Data at u = 0 and ∂h/∂r = O(r⁻⁴) stay in the theorem statement.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Local existence (Theorem 1) is a later stage; it must assert u₀ > 0 .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0001",
+        "n0003",
+        "n0002"
+      ],
+      "reason": "Sealed imported as frozen non-root nodes: g appears in (3.13); tail and continuity are its statement-level prerequisites . Not re-extracted.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0005",
+        "n0004"
+      ],
+      "reason": "Sealed imported as frozen non-root nodes: ḡ appears in D, (3.13) and (4.2); gMap is the continuous function whose mean is ḡ.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0008",
+        "n0007"
+      ],
+      "reason": "Sealed imported as frozen non-root nodes: h̄ appears in (3.13) and (4.2); the formula is used for the centre estimate.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0009"
+      ],
+      "reason": "Sealed of the mean, imported as a frozen non-root node and applied to gMap and to h. The centre value ( P.344.center, mean_zero) is not consumed, since the integrability set (0, r] excludes s = 0. also carries the duplicate clause \"and Dr = −½ḡ\", excluded as in item P.344.Dr (used only in the (4.1) gate), and begins the sentence that item P.4.1..",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0006"
+      ],
+      "reason": "The quadrant 0 ≤ u < ∞, 0 ≤ r < ∞ is the PDE carrier C(ℝ≥0 × ℝ≥0, ℝ) of .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#C1-compact-lipschitz",
+      "disposition": "NODE",
+      "nodes": [
+        "n0019"
+      ],
+      "reason": "standard real-analysis input used by a -1 step or root; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#continuous-interval-integrable",
+      "disposition": "NODE",
+      "nodes": [
+        "n0023"
+      ],
+      "reason": "standard real-analysis input used by a -1 step or root; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#integral-sup-estimate",
+      "disposition": "NODE",
+      "nodes": [
+        "n0025"
+      ],
+      "reason": "standard real-analysis input used by a -1 step or root; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#continuous-compact-bounded",
+      "disposition": "NODE",
+      "nodes": [
+        "n0022"
+      ],
+      "reason": "standard real-analysis input used by a -1 step or root; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#continuous-arith",
+      "disposition": "NODE",
+      "nodes": [
+        "n0021"
+      ],
+      "reason": "standard real-analysis input used by a -1 step or root; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#continuous-on-measurable",
+      "disposition": "NODE",
+      "nodes": [
+        "n0024"
+      ],
+      "reason": "standard real-analysis input used by a -1 step or root; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#bounded-integrable-finite-measure",
+      "disposition": "NODE",
+      "nodes": [
+        "n0020"
+      ],
+      "reason": "standard real-analysis input used by a -1 step or root; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#interval-integrable-Ioc",
+      "disposition": "NODE",
+      "nodes": [
+        "n0026"
+      ],
+      "reason": "standard real-analysis input used by a -1 step or root; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(3.2) is the Einstein-equation origin of (3.11); the formalization uses the sealed g of (3.11) ; not consumed by either root.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0001"
+      ],
+      "reason": "(3.10) only names e^{ν+λ} = g; ν, λ are not formalized; g is the sealed imported as a frozen non-root node.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "h = ∂_r(rφ) relates h to the scalar field φ, which is not formalized; h is the primary unknown ; no step uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The derivative identity of the mean (sealed _mean) is used by the Φ route of the (4.1) gate and by hasDerivAt_xi , not by either root.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "φ = h̄ concerns the scalar field φ, which is not formalized.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Duplicate transcription of (4.1) (see item P.4.1, https://doi.org/10.1007/BF01205930 ); later .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "ḡ ≤ g (sealed P.344.gBar.le_g) gives only an upper bound and is not consumed; the bound on ḡ comes from its continuity (proposal §5, correction ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(4.3)–(4.5) and the properties of m are sealed not consumed by either root; m enters only with (4.6), deferred .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Decay assumptions on the initial data h(0,r); data is not part of the predicate . The O(r⁻³) part is the sealed IsSlice and the strip-uniform field (2) of n0006 ; ∂h/∂r = O(r⁻⁴) stays in the theorem statements.",
+      "status": "REVIEWED"
+    }
+  ]
+}

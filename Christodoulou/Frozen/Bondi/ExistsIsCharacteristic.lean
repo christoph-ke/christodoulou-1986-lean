@@ -1,0 +1,32 @@
+/-
+# `Christodoulou.Bondi.exists_isCharacteristic`
+
+Source: Christodoulou, CMP 105 (1986), 337–361, DOI: https://doi.org/10.1007/BF01205930.
+See `depgraph/anchors.json` for the source correspondence.
+-/
+
+module
+public import Christodoulou.Frozen.Bondi.IsCharacteristic
+import Christodoulou.Bondi.Provider.ExistsIsCharacteristic
+
+
+
+public section
+
+open Set MeasureTheory Filter Topology Real
+open scoped NNReal
+
+namespace Christodoulou.Bondi
+open Christodoulou.Radial
+
+/-- Existence of the characteristic through every terminal point of the physical strip. -/
+theorem exists_isCharacteristic {u₀ : ℝ≥0} {x : ℝ} {H : C(ℝ≥0 × ℝ≥0, ℝ)}
+    (hH : MemXBall u₀ x H) (u₁ : Icc (0 : ℝ) u₀) (r₁ : ℝ≥0) :
+    ∃ χ : ℝ → ℝ, IsCharacteristic hH u₁ r₁ χ :=
+-- Proof.
+  by exact Christodoulou.Bondi.Provider.exists_isCharacteristic
+
+
+
+end Christodoulou.Bondi
+

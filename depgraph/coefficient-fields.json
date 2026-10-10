@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "title": "coefficient fields",
+  "source": "https://doi.org/10.1007/BF01205930",
+  "semantics": "Edges point to prerequisites; dependencies are conjunctive; one alternative route suffices. Reviewed source topology, not a kernel proof trace.",
+  "conventions": "Carriers, hypotheses, quantifiers and constant scope are recorded per node and in the corresponding Lean declarations.",
+  "roots": [
+    "n0002",
+    "n0003"
+  ],
+  "standing_assumptions": [],
+  "nodes": [
+    {
+      "id": "n0001",
+      "kind": "definition",
+      "title": "Slice class IsSlice: h in C¹[0,∞) with h = O(r⁻³) as r → ∞ (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsSlice h holds iff (i) h ∈ C¹[0,∞[ (derivative at r = 0 one-sided within [0,∞), ) and (ii) h(r) = O(r⁻³) as r → ∞; the first two conditions of the Theorem 1 data class ; the condition on ∂h/∂r is not included",
+      "constant_scope": "none (the O-constant and threshold in (ii) are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsSlice",
+      "file": "Christodoulou/Frozen/Bondi/IsSlice.lean"
+    },
+    {
+      "id": "n0002",
+      "kind": "definition",
+      "title": "Closed ball of radius x in the space X of (7.1) on the strip [0,u₀]×[0,∞) (MemXBall)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (field carrier , reused), with slices H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "MemXBall u₀ x H holds iff (1) for every u in [0,∞) with u ≤ u₀ the slice lift s ↦ H(u, s⁺) is C¹ (ContDiffOn of order 1) on [0,∞), with the derivative at s = 0 one-sided within [0,∞) ; (2) the map (u,r) ↦ ∂_r H(u,r), the derivative within [0,∞) at r of the lift s ↦ H(u⁺, s⁺), is continuous on the closed strip [0,u₀] × [0,∞); (3) for every u ≤ u₀ and every r ≥ 0, (1+r)³ abs(H(u,r)) + (1+r)⁴ abs(∂_r H(u,r)) ≤ x. Fields (1)-(2) are \"continuous and posess a continuous partial derivative with respect to r\" of (7.1) (continuity of H itself is the carrier's); field (3) is ‖H‖_X ≤ x for the printed sum norm (7.1) (U-NORMS), i.e. membership in \"the closed ball of radius x₁ in the space X\" of Lemma 1 with x₁ = x . No evolution equation and no ∂_u H are assumed",
+      "constant_scope": "the radius x is an explicit parameter of the predicate, not existential ; the double sup over u then r of (7.1) is replaced by the equivalent pointwise bound for all u ≤ u₀ and all r ≥ 0",
+      "declaration": "Christodoulou.Bondi.MemXBall",
+      "file": "Christodoulou/Frozen/Bondi/MemXBall.lean"
+    },
+    {
+      "id": "n0003",
+      "kind": "claim",
+      "title": "Each slice H(u,·), u ≤ u₀, of a field in the X-ball of radius x is in IsSlice (MemXBall.isSlice)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0002",
+        "n0001",
+        "n0004"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the premise hH; its field (1) at u ≤ u₀ is verbatim the C¹[0,∞[ conjunct of IsSlice, since the slice lift s ↦ (H.curry u)(s⁺) is definitionally s ↦ H(u, s⁺)"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the conclusion is IsSlice of the slice, i.e. its C¹ and O(r⁻³) conjuncts (class printed at https://doi.org/10.1007/BF01205930 (p. 348))"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the O(r⁻³) conjunct of IsSlice"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number; H is a continuous real function of (u,r) on [0,∞) × [0,∞) with MemXBall u₀ x H ; u ≤ u₀",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with MemXBall u₀ x H, for each u in [0,∞) with u ≤ u₀",
+      "source_conclusion": "IsSlice(H(u,·)): the slice h = H(u,·) (H.curry u) is C¹[0,∞[ (one-sided derivative at r = 0, ) and h = O(r⁻³) as r → ∞. Reconstructed: [P] never states that the elements of X have slices in a slice class",
+      "constant_scope": "none in the statement (the O-constant and threshold of IsSlice are existential per slice and may a priori depend on u); the proof's witness is the radius x, which does not depend on u (see #slice-decay)",
+      "declaration": "Christodoulou.Bondi.MemXBall.isSlice",
+      "file": "Christodoulou/Frozen/Bondi/MemXBallIsSlice.lean"
+    },
+    {
+      "id": "n0004",
+      "kind": "step",
+      "title": "The slice lift s ↦ H(u, s⁺) is O(s⁻³) as s → ∞, with constant x",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0002",
+        "n0005"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "field (3) at u ≤ u₀ and r = s⁺, dropping the nonnegative derivative term, gives (1+s)³ abs(H(u, s⁺)) ≤ x for s ≥ 0; for s > 0, abs(H(u, s⁺)) = (1+s)⁻³ (1+s)³ abs(H(u, s⁺)) ≤ s⁻³ (1+s)³ abs(H(u, s⁺)) ≤ x s⁻³, using only (1+s)⁻³ ≤ s⁻³ and (1+s)³ abs(H) ≥ 0, so x ≥ 0 is not needed"
+        },
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the bound abs(H(u, s⁺)) ≤ x·abs(s⁻³) for all s > 0, in particular for all large s, gives O(s⁻³) at ∞"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x real; H continuous on [0,∞) × [0,∞) with MemXBall u₀ x H ; u ≤ u₀",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each H with MemXBall u₀ x H, for each u in [0,∞) with u ≤ u₀",
+      "source_conclusion": "abs(H(u, s⁺)) ≤ x s⁻³ for every s > 0, hence (s ↦ H(u, s⁺)) = O(s⁻³) as s → ∞",
+      "constant_scope": "the bound constant is the radius x of the hypothesis, the same for every u ≤ u₀"
+    },
+    {
+      "id": "n0005",
+      "kind": "external",
+      "title": "An eventual bound gives a big-O estimate",
+      "statement_source": "external:standard-analysis#isBigO-of-eventual-bound",
+      "proof_source": "external:standard-analysis#isBigO-of-eventual-bound",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f, φ real functions on ℝ; C real; abs(f(s)) ≤ C·abs(φ(s)) for all sufficiently large s",
+      "source_quantifiers": "for all f, φ, C",
+      "source_conclusion": "f = O(φ) as s → ∞",
+      "constant_scope": "none"
+    }
+  ],
+  "coverage": [
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The characteristic ODE dr/du = −½ḡ(u,r) is the subject of 2 (the clamped field charField and the Picard-Lindelöf capstone, , ); the construction of the characteristics χ is the later obligation . No root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "χ(u;r₀) and its integral form (5.2) are the later obligation ; no root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "ḡ ≤ g ≤ 1 and the bound r₀ ≤ r₁ + ½u₁ belong to (the bound ḡ ≤ 1 for X-ball fields is the anchor gBarX_le_one); no root uses them. Duplicate transcription of item P.346.g-bounds (https://doi.org/10.1007/BF01205930 ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Differentiation of (5.2) with respect to r₀ is flow differentiability in the initial point, the later obligation (not located in the pinned Mathlib after documented searches); no root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The convergence factor ζ is the later obligation ; no root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The evolution law Dζ = −(1/2r)(g − ḡ)ζ is part of ; no root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The initial value ζ(0,r) = 1 and the exponential formula (5.6) are part of ; no root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "ζ ≤ 1, ζ > 0 for r₁ > 0, and the lower bound (5.7) are part of (with the x-independent bound ∂_r ḡ ≤ 1/r, ); no root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Ordering of characteristics and the mean-value form (5.8) of the convergence factor are part of -; no root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Concluding remark that the characteristics converge toward the future with convergence factor ζ; part of , no root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The announcement that Theorem 1 is proved through three lemmas; Lemmas 1-3 are later stages . The rest of begins the definition of X (item P.7.1).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0002",
+        "n0003",
+        "n0004"
+      ],
+      "reason": "The space X of functions on [0,u₀]×[0,∞[ with a continuous r-derivative and finite norm (7.1) is the source of MemXBall : fields (1)-(2) are the regularity, field (3) is the norm bound ‖H‖_X ≤ x for the printed sum norm (U-NORMS). The reconstructed slice-class theorem and its decay step consume field (1) and the H-term of field (3).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"X is a Banach space normed by ‖ ‖_X\": MemXBall is a predicate, not the normed space; completeness enters only with the convergence of the iterates in the proof of Theorem 1 (later stage; ). No root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The iteration method and the linear transport equation (7.2) for h_{n+1}, with g_n, D_n the coefficients of h_n, are a later stage . It motivates the root n0003 (g_n and ḡ_n need IsSlice slices, ), recorded in that root's NOTE, but no root consumes it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The 0th iterate h₀(u,r) = h(0,r) belongs to the iteration (later stage, ); data at u = 0 is not part of any statement .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "‖h₀‖_X = d and the data norm d (7.4) belong to the iteration and Lemma 1 (later stage, ); no root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0002"
+      ],
+      "reason": "\"the closed ball of radius x₁ in the space X\" is MemXBall u₀ x₁ (: explicit radius).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Lemma 1 itself (for x₁ > 2d there is η(x₁; d) such that u₀ < η keeps the iterates in the ball) is a later stage ; only its ball notion is item P.348.lemma1.ball.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The equibound (7.60) on ∂h_{n+1}/∂u follows from (7.2) and the weighted bound on ∂_r ḡ ( anchor derivGBarX_le, ); it belongs to Lemmas 1-3 (later stage). No root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"h = h̃ ∈ X\": membership of the limit of the iterates in X is the later obligation (sum-norm ball of radius x₁); no root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Uniform convergence of h̄_{n_i}, g_{n_i}, ḡ_{n_i} and their r-derivatives belongs to the proof of Theorem 1 (later stage); the coefficient regularity it presupposes is 2. No root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The characteristic ODEs of the iterates and of the limit through (u₁, r₁) belong to and the proof of Theorem 1 (later stages); no root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "y_{n_i}, ε_{n_i} and the Lipschitz estimate from the equiboundedness of ∂ḡ_{n_i}/∂r (the anchor lipschitzWith_gBarX supplies the constant a) belong to the proof of Theorem 1 (later stage); no root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The Gronwall inequality (printed with reversed limits, anomaly , transcriber's note ) and its solution, giving uniform convergence of the characteristics, belong to the proof of Theorem 1 (later stage); no root uses them.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The solution formula for h_{n_i+1} along χ_{n_i} (with f_{n_i} defined on p. 354, anomaly , transcriber's note ) belongs to the transport problem (7.2) (later stage, ); no root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(3.2) is the Einstein-equation origin of (3.11); the formalization uses the sealed g of (3.11) ; not consumed by any root.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(3.10) only names e^{ν+λ} = g; ν, λ are not formalized; g enters through the definition gX, which is admitted after this gate is sealed. No root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The sealed g of (3.11) is not mentioned by MemXBall or MemXBall.isSlice; it enters through the definition gX, whose slice proof is the root n0003. No root consumes g.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The sealed ḡ of (3.12) is not mentioned by either root; it enters through the definition gBarX. No root consumes it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "ḡ ≤ g (sealed P.344.gBar.le_g) is a input (derivGBarX_nonneg, gBarX_le_one); no root uses it.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "ḡ ≤ g ≤ 1 and (5.3): duplicate transcription of item P.5.3 (https://doi.org/10.1007/BF01205930 ); and , not used by any root.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Decay assumptions on the initial data h(0,r); data is not part of any statement . The data norm is d of (7.4) (item P.7.4, later stage).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0001"
+      ],
+      "reason": "The C¹[0,∞[ and O(r⁻³) conditions on a slice are the sealed IsSlice , imported as a frozen non-root node; it is the conclusion of the root n0003.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The classical-solution class with h = O(r⁻³) and ∂h/∂r = O(r⁻⁴) uniformly in u is IsClassicalSolution (, restricted class ) plus the derivative decay; neither is consumed in this gate. The bridge from such solutions to an X-ball is the later obligation , and the printed big-O form is bridged by (later).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "Local existence (Theorem 1) is a later stage; it must assert u₀ > 0 .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The initial value problem setting (data h(0,r) ∈ C¹[0,∞[ of finite Bondi mass, solution for u > 0) belongs to the Theorem 1 stage; data at u = 0 is not part of any statement .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The notion of a classical solution is IsClassicalSolution (, restricted class ); MemXBall assumes no evolution equation , and no root consumes the solution notion.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The remark that the results generalize to finite M₀ is excluded by narrowing (: g only on IsSlice); recorded in formalization reconstruction §1.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(4.3)-(4.5) and the properties of m are sealed not consumed by any root.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The second r-derivative of ḡ (sealed .356.gBar.second, ) is not consumed in this gate; its X-ball form including the centre is the later obligation .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#isBigO-of-eventual-bound",
+      "disposition": "NODE",
+      "nodes": [
+        "n0005"
+      ],
+      "reason": "standard real-analysis input used by a -1 step; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    }
+  ]
+}

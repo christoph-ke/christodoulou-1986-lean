@@ -1,0 +1,19 @@
+name = "Christodoulou"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["Christodoulou"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+weak.linter.style.header = false # Retain the original source layout.
+maxSynthPendingDepth = 3
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "7d6757bc18680044fc0ff6efc8ee20494b408556"
+
+[[lean_lib]]
+name = "Christodoulou"

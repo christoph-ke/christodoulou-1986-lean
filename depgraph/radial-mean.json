@@ -1,0 +1,837 @@
+{
+  "schema_version": 1,
+  "title": "radial mean",
+  "source": "https://doi.org/10.1007/BF01205930",
+  "semantics": "Edges point to prerequisites; dependencies are conjunctive; one alternative route suffices. Reviewed source topology, not a kernel proof trace.",
+  "conventions": "Carriers, hypotheses, quantifiers and constant scope are recorded per node and in the corresponding Lean declarations.",
+  "roots": [
+    "n0002",
+    "n0001",
+    "n0014",
+    "n0015",
+    "n0003",
+    "n0007",
+    "n0010"
+  ],
+  "standing_assumptions": [],
+  "nodes": [
+    {
+      "id": "n0001",
+      "kind": "lemma",
+      "title": "Defining formula of the mean for r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0002"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+          "rationale": "the r > 0 branch of the defined f̄ is exactly the displayed formula (3.7)"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) ; r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "f̄(r) = r⁻¹ ∫₀^r f(s) ds",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean_eq_integral",
+      "file": "Christodoulou/Frozen/Radial/MeanEqIntegral.lean"
+    },
+    {
+      "id": "n0002",
+      "kind": "definition",
+      "title": "Radial mean f̄(r) = r⁻¹∫₀^r f, with centre value f(0)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f is one fixed-u slice of a function of (u,r), regarded as a continuous real function of r on [0,∞) (, ; domain 0 ≤ r < ∞ from p. 339)",
+      "source_quantifiers": "for each continuous f on [0,∞) and each r in [0,∞)",
+      "source_conclusion": "f̄(r) := (1/r)∫₀^r f(r')dr' for r > 0, and f̄(0) := f(0) (centre value, p. 344, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean",
+      "file": "Christodoulou/Frozen/Radial/Mean.lean"
+    },
+    {
+      "id": "n0003",
+      "kind": "lemma",
+      "title": "First identity of (3.8): ∂_r(r f̄) = f",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0002",
+        "n0004",
+        "n0006"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the identity concerns r f̄ for the defined f̄"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the derivative of r ↦ ∫₀^r f within [0,∞) is f(r)"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "on [0,∞), r f̄ coincides with r ↦ ∫₀^r f, so the within-[0,∞) derivative transfers"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞)",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r in [0,∞)",
+      "source_conclusion": "r ↦ r f̄(r) has derivative f(r) at r within [0,∞) (one-sided from the right at r = 0, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.hasDerivWithinAt_mul_mean",
+      "file": "Christodoulou/Frozen/Radial/HasDerivWithinAtMulMean.lean"
+    },
+    {
+      "id": "n0004",
+      "kind": "step",
+      "title": "FTC for r ↦ ∫₀^r f (one-sided at 0)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0005",
+        "n0019"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "supplies the integrability premise of the FTC"
+        },
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "FTC at a point of continuity of the integrand, one-sided at the endpoint 0"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞)",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r ≥ 0",
+      "source_conclusion": "G(r) := ∫₀^r f has derivative f(r) at r within [0,∞) (right-sided at r = 0)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0005",
+      "kind": "step",
+      "title": "The integrand s ↦ f(s) is interval-integrable on [0,r]",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0021"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+          "rationale": "a continuous integrand on a compact interval is integrable, so the integral in (3.7) is a genuine integral"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞)",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r ≥ 0",
+      "source_conclusion": "s ↦ f(s) is integrable on [0,r]",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0006",
+      "kind": "step",
+      "title": "r f̄(r) = ∫₀^r f for all r ≥ 0, including r = 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0002",
+        "n0001",
+        "n0014"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "case r = 0: both sides vanish (0 · f(0) = 0 = ∫₀^0 f)"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "case r > 0: multiply (3.7) by r"
+        },
+        {
+          "target": "n0014",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "case r = 0: 0 · f̄(0) = 0 = ∫₀^0 f, read through the centre value f̄(0) = f(0)"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞)",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r ≥ 0",
+      "source_conclusion": "r · f̄(r) = ∫₀^r f(s) ds",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0007",
+      "kind": "lemma",
+      "title": "Second identity of (3.8): ∂_r f̄ = (f − f̄)/r for r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0002",
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the identity concerns the defined f̄"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the \"or\" in (3.8) rewrites the first identity: f̄ agrees with (s f̄(s))/s on the neighbourhood (0,∞) of r, and (f(r)·r − r f̄(r))/r² = (f(r) − f̄(r))/r"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) ; r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "f̄ has (two-sided) derivative (f(r) − f̄(r))/r at r",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.hasDerivAt_mean",
+      "file": "Christodoulou/Frozen/Radial/HasDerivAtMean.lean"
+    },
+    {
+      "id": "n0008",
+      "kind": "step",
+      "title": "For r > 0 the within-[0,∞) derivative of r f̄ is a two-sided derivative",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0003",
+        "n0023"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the first identity of (3.8) gives the within-[0,∞) derivative"
+        },
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "[0,∞) is a neighbourhood of r > 0, so the within-derivative is a full derivative"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞); r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "r ↦ r f̄(r) has two-sided derivative f(r) at r",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0009",
+      "kind": "step",
+      "title": "Quotient rule for s ↦ (s f̄(s))/s at r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0008",
+        "n0025"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "supplies the numerator's derivative f(r)"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "numerator s f̄(s), denominator s with derivative 1 and value r ≠ 0"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞); r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "s ↦ (s·f̄(s))/s has derivative (f(r)·r − r f̄(r)·1)/r² at r",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0010",
+      "kind": "lemma",
+      "title": "(3.9)-type characterization: ∂_r(rφ) = f on [0,∞) implies φ = f̄",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0002",
+        "n0012",
+        "n0011"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the conclusion compares φ with the defined f̄"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the r > 0 case of φ = f̄"
+        },
+        {
+          "target": "n0011",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the r = 0 case of φ = f̄"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞); φ continuous on [0,∞) ; for every r in [0,∞), r ↦ rφ(r) has derivative f(r) at r within [0,∞), one-sided at r = 0 ((3.6) with h replaced by a general f, per /)",
+      "source_quantifiers": "for all continuous f and φ on [0,∞) such that the derivative hypothesis holds for all r ≥ 0; conclusion for all r ≥ 0",
+      "source_conclusion": "φ(r) = f̄(r) for every r in [0,∞) (as functions, φ = f̄); (3.9) φ = h̄ is the instance f = h",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.eq_mean_of_hasDerivWithinAt_mul",
+      "file": "Christodoulou/Frozen/Radial/EqMeanOfHasDerivWithinAtMul.lean"
+    },
+    {
+      "id": "n0011",
+      "kind": "step",
+      "title": "φ(0) = f̄(0) by continuity of φ and f̄",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0012",
+        "n0015",
+        "n0024"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "φ = f̄ on (0,∞)"
+        },
+        {
+          "target": "n0015",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "f̄ is continuous at 0 (φ is continuous by hypothesis)"
+        },
+        {
+          "target": "n0024",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "two functions continuous at 0 that agree on (0,∞) agree at 0"
+        }
+      ],
+      "source_hypotheses": "f, φ continuous on [0,∞); for all r ≥ 0, r ↦ rφ(r) has derivative f(r) within [0,∞)",
+      "source_quantifiers": "for all continuous f and φ satisfying the hypothesis",
+      "source_conclusion": "φ(0) = f̄(0)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0012",
+      "kind": "step",
+      "title": "φ(r) = f̄(r) for every r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "cancel r ≠ 0 in rφ(r) = r f̄(r)"
+        }
+      ],
+      "source_hypotheses": "f, φ continuous on [0,∞); for all r ≥ 0, r ↦ rφ(r) has derivative f(r) within [0,∞)",
+      "source_quantifiers": "for all continuous f and φ satisfying the hypothesis, for all r > 0",
+      "source_conclusion": "φ(r) = f̄(r)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0013",
+      "kind": "step",
+      "title": "rφ(r) = r f̄(r) on [0,∞) by uniqueness of antiderivatives",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0003",
+        "n0020"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "\"Thus\": r f̄ has the same within-[0,∞) derivative f as rφ"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "two functions on [0,∞) with equal within-derivatives and equal at 0 (both 0) are equal"
+        }
+      ],
+      "source_hypotheses": "f, φ continuous on [0,∞); for all r ≥ 0, r ↦ rφ(r) has derivative f(r) within [0,∞)",
+      "source_quantifiers": "for all continuous f and φ satisfying the hypothesis, for all r ≥ 0",
+      "source_conclusion": "r φ(r) = r f̄(r)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0014",
+      "kind": "lemma",
+      "title": "Centre value f̄(0) = f(0)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0002"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "under the value at r = 0 is the centre branch of the defined f̄"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) (, ; the source requires continuity in r at r = 0)",
+      "source_quantifiers": "for all continuous f on [0,∞)",
+      "source_conclusion": "f̄(0) = f(0) (the value part of [f − f̄]_{r=0} = 0 under ; the limit content is carried by n0015)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean_zero",
+      "file": "Christodoulou/Frozen/Radial/MeanZero.lean"
+    },
+    {
+      "id": "n0015",
+      "kind": "claim",
+      "title": "Continuity of f̄ on [0,∞), including the centre",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0002",
+        "n0017",
+        "n0018"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the claim is about the defined function f̄"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "case r > 0 of the pointwise continuity case split"
+        },
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "case r = 0, which is the content of [f − f̄]_{r=0} = 0"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) (, ; the source requires continuity in r at r = 0)",
+      "source_quantifiers": "for all continuous f on [0,∞)",
+      "source_conclusion": "f̄ is continuous on [0,∞); in particular f̄(r) → f(0) as r → 0⁺ (reconstructed from [f − f̄]_{r=0} = 0)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.continuous_mean",
+      "file": "Christodoulou/Frozen/Radial/ContinuousMean.lean"
+    },
+    {
+      "id": "n0016",
+      "kind": "step",
+      "title": "Centre estimate: |f − f(0)| ≤ M on [0,r] implies |f̄(r) − f(0)| ≤ M",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001",
+        "n0005",
+        "n0022"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "write f̄(r) − f(0) = r⁻¹ ∫₀^r (f(s) − f(0)) ds"
+        },
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "f is integrable on [0,r], hence so is f − f(0) (the constant f(0) is integrable)"
+        },
+        {
+          "target": "n0022",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the absolute value of ∫₀^r (f(s) − f(0)) ds is at most M·r; then divide by r"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞); r > 0; |f(s) − f(0)| ≤ M for all s ∈ [0,r]",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0, for all real M",
+      "source_conclusion": "|f̄(r) − f(0)| ≤ M",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0017",
+      "kind": "step",
+      "title": "f̄ is continuous at every r > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001",
+        "n0004"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "f̄ = r⁻¹ ∫₀^r f on a neighbourhood (0,∞) of r"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "r ↦ ∫₀^r f is differentiable hence continuous; the quotient by r ≠ 0 is continuous"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞); r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "f̄ is continuous at r",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0018",
+      "kind": "step",
+      "title": "f̄(r) → f(0) = f̄(0) as r → 0⁺, so f̄ is continuous at 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0016",
+        "n0014"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "given ε > 0, continuity of f at 0 gives δ > 0 with abs(f(s) − f(0)) ≤ ε on [0,δ); the estimate with M = ε gives abs(f̄(r) − f(0)) ≤ ε for 0 < r < δ"
+        },
+        {
+          "target": "n0014",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the limit f(0) equals the value f̄(0)"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) (the source requires only continuity at r = 0)",
+      "source_quantifiers": "for all continuous f on [0,∞)",
+      "source_conclusion": "f̄ is continuous at r = 0 (within [0,∞))",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0019",
+      "kind": "external",
+      "title": "Fundamental theorem of calculus for a continuous integrand",
+      "statement_source": "external:standard-analysis#FTC-continuous-integrand",
+      "proof_source": "external:standard-analysis#FTC-continuous-integrand",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g integrable on bounded subintervals of [0,∞) and continuous at r (within [0,∞))",
+      "source_quantifiers": "for all g, for all r ≥ 0",
+      "source_conclusion": "s ↦ ∫₀^s g has derivative g(r) at r within [0,∞) (right derivative at r = 0)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0020",
+      "kind": "external",
+      "title": "Uniqueness of antiderivatives on [0,∞)",
+      "statement_source": "external:standard-analysis#antiderivative-uniqueness",
+      "proof_source": "external:standard-analysis#antiderivative-uniqueness",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F, H : [0,∞) → ℝ; at every r ≥ 0, F and H have the same derivative within [0,∞); F(0) = H(0)",
+      "source_quantifiers": "for all F, H",
+      "source_conclusion": "F(r) = H(r) for all r ≥ 0",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0021",
+      "kind": "external",
+      "title": "Continuous functions are integrable on compact intervals",
+      "statement_source": "external:standard-analysis#continuous-interval-integrable",
+      "proof_source": "external:standard-analysis#continuous-interval-integrable",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g continuous on [a,b]",
+      "source_quantifiers": "for all a ≤ b, for all g",
+      "source_conclusion": "g is integrable on [a,b]",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0022",
+      "kind": "external",
+      "title": "Sup bound for an integral",
+      "statement_source": "external:standard-analysis#integral-sup-estimate",
+      "proof_source": "external:standard-analysis#integral-sup-estimate",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g integrable on [a,b]; |g| ≤ M on [a,b]",
+      "source_quantifiers": "for all a ≤ b, for all g, for all M",
+      "source_conclusion": "|∫_a^b g| ≤ M (b − a)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0023",
+      "kind": "external",
+      "title": "Within-derivative at an interior point is a full derivative",
+      "statement_source": "external:standard-analysis#interior-one-sided-derivative",
+      "proof_source": "external:standard-analysis#interior-one-sided-derivative",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F has derivative L at x within a set S; S is a neighbourhood of x",
+      "source_quantifiers": "for all F, S, x, L",
+      "source_conclusion": "F has (two-sided) derivative L at x",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0024",
+      "kind": "external",
+      "title": "Continuous functions agreeing on (0,∞) agree at 0",
+      "statement_source": "external:standard-analysis#limit-uniqueness",
+      "proof_source": "external:standard-analysis#limit-uniqueness",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F, H : [0,∞) → ℝ continuous at 0; F = H on (0,∞)",
+      "source_quantifiers": "for all F, H",
+      "source_conclusion": "F(0) = H(0)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0025",
+      "kind": "external",
+      "title": "Quotient rule for derivatives",
+      "statement_source": "external:standard-analysis#quotient-rule",
+      "proof_source": "external:standard-analysis#quotient-rule",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F has derivative a at x; H has derivative b at x; H(x) ≠ 0",
+      "source_quantifiers": "for all F, H, x, a, b",
+      "source_conclusion": "F/H has derivative (a H(x) − F(x) b)/H(x)² at x",
+      "constant_scope": "none"
+    }
+  ],
+  "coverage": [
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0010"
+      ],
+      "reason": "(3.6) h = ∂_r(rφ) enters as the derivative hypothesis of the (3.9)-type anchor, with h generalized to a continuous f ; no separate node since it is a theorem-local premise.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0002",
+        "n0001"
+      ],
+      "reason": "The definition (with the centre value) and the separate r > 0 formula anchor.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0003",
+        "n0007",
+        "n0005",
+        "n0004",
+        "n0006",
+        "n0008",
+        "n0009"
+      ],
+      "reason": "Split into two independent anchors per (first identity one-sided at 0, second only for r > 0, ); proof steps n0005, #integral-hasDerivWithinAt, #mul-mean-eq-integral, n0008, #quotient-rule.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0010",
+        "n0013",
+        "n0012",
+        "n0011"
+      ],
+      "reason": "General (3.9)-type characterization anchor ; (3.9) itself is the instance f = h. Proof steps n0013, #eq-on-pos, #eq-at-zero.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0014",
+        "n0015",
+        "n0017",
+        "n0016",
+        "n0018"
+      ],
+      "reason": "\"[f − f̄]_{r=0} = 0 for f continuous at r = 0\" split per into the definitional centre value and the reconstructed continuity of f̄ (which carries the limit content); proof steps n0017, #centre-estimate, #continuous-at-zero.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "assumption",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 339)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0002"
+      ],
+      "reason": "The coordinate domain 0 ≤ r < ∞ fixes the carrier [0,∞) for a fixed-u slice ; it enters through the domain of the defined mean and hence every anchor. Recorded as a convention (header CONVENTIONS), not as a standing-assumption node. Time is fixed for this radial-mean graph.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The evolution law D h̄ = ξ/(2r) belongs to Sect. 4 and lies outside this radial-mean graph. It uses D, ḡ, equation (3.13) and centre regularity. This graph uses only the accompanying remark that f − f̄ vanishes at the centre; Dr = −½ḡ and the centre-regularity assumption belong to the excluded evolution-law derivation.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#continuous-interval-integrable",
+      "disposition": "NODE",
+      "nodes": [
+        "n0021"
+      ],
+      "reason": "standard real-analysis input used by a SOURCE_GAP step; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#FTC-continuous-integrand",
+      "disposition": "NODE",
+      "nodes": [
+        "n0019"
+      ],
+      "reason": "standard real-analysis input used by a SOURCE_GAP step; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#integral-sup-estimate",
+      "disposition": "NODE",
+      "nodes": [
+        "n0022"
+      ],
+      "reason": "standard real-analysis input used by a SOURCE_GAP step; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#interior-one-sided-derivative",
+      "disposition": "NODE",
+      "nodes": [
+        "n0023"
+      ],
+      "reason": "standard real-analysis input used by a SOURCE_GAP step; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#quotient-rule",
+      "disposition": "NODE",
+      "nodes": [
+        "n0025"
+      ],
+      "reason": "standard real-analysis input used by a SOURCE_GAP step; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#antiderivative-uniqueness",
+      "disposition": "NODE",
+      "nodes": [
+        "n0020"
+      ],
+      "reason": "standard real-analysis input used by a SOURCE_GAP step; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#limit-uniqueness",
+      "disposition": "NODE",
+      "nodes": [
+        "n0024"
+      ],
+      "reason": "standard real-analysis input used by a SOURCE_GAP step; not cited by [P] (EXTERNAL_POLICY)",
+      "status": "REVIEWED"
+    }
+  ]
+}

@@ -1,0 +1,2471 @@
+{
+  "schema_version": 1,
+  "title": "scaling",
+  "source": "https://doi.org/10.1007/BF01205930",
+  "semantics": "Edges point to prerequisites; dependencies are conjunctive; one alternative route suffices. Reviewed source topology, not a kernel proof trace.",
+  "conventions": "Carriers, hypotheses, quantifiers and constant scope are recorded per node and in the corresponding Lean declarations.",
+  "roots": [
+    "n0042",
+    "n0016",
+    "n0026",
+    "n0021",
+    "n0043",
+    "n0039",
+    "n0022",
+    "n0047",
+    "n0033",
+    "n0008",
+    "n0015",
+    "n0027"
+  ],
+  "standing_assumptions": [],
+  "nodes": [
+    {
+      "id": "n0001",
+      "kind": "definition",
+      "title": "The metric function g = exp[−4π ∫_r^∞ (h − h̄)² ds/s] on IsSlice slices, (3.10)–(3.11) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0020"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g is defined only on slices h with IsSlice h, passed as the argument hh"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh, and the value does not depend on which hh is supplied . r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "g(r) := exp[−4π ∫_r^∞ (h(s) − h̄(s))² ds/s], the literal body of (3.11), with the integral over the open half-line (r,∞). (3.10) names e^{ν+λ} = g; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g",
+      "file": "Christodoulou/Frozen/Bondi/G.lean"
+    },
+    {
+      "id": "n0002",
+      "kind": "definition",
+      "title": "ḡ, the radial mean of g, (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0003",
+        "n0006"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the mean is taken of the continuous radial function gMap"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the bar in (3.12) is the mean notation of (3.7), \"used throughout\", so ḡ is the sealed mean applied to g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "ḡ(r) := mean(gMap)(r), the mean (3.7) of g: (1/r)∫₀^r g(r')dr' for r > 0 and g(0) at r = 0 . (3.12) names e^{ν−λ} = ḡ; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBar",
+      "file": "Christodoulou/Frozen/Bondi/GBar.lean"
+    },
+    {
+      "id": "n0003",
+      "kind": "definition",
+      "title": "gMap: g as a continuous radial function on [0,∞), the representation needed to form ḡ in (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001",
+        "n0020"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the underlying function of gMap is the defined g of (3.11), whose mean is ḡ"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "gMap is defined only on slices with IsSlice h, and passes hh to g and continuous_g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "gMap is the continuous map [0,∞) → ℝ, r ↦ g(r), i.e. g of (3.11) bundled with its continuity. It adds no source content beyond g; it exists so that the mean ḡ of (3.12) can be formed",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gMap",
+      "file": "Christodoulou/Frozen/Bondi/GMap.lean"
+    },
+    {
+      "id": "n0004",
+      "kind": "definition",
+      "title": "Classical solution of (3.13) on the strip [0,u₀]×[0,∞), restricted uniformly decaying class (IsClassicalSolution)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0020"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "field (3) quantifies over proofs of IsSlice for the slice H(u,·), which g and ḡ require as their argument hh"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (p. 339 domain; carrier ), with slices h = H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "IsClassicalSolution u₀ H holds iff (1) the real lift (u,r) ↦ H(u⁺, r⁺) is C¹ (ContDiffOn 1) on the closed strip [0,u₀] × [0,∞), with one-sided derivatives at its edges when u₀ > 0; for u₀ = 0 the set is the half-line {0} × [0,∞) and the field is degenerate (recorded constraint ) (\"classical\" solution of p. 348: a differentiable function whose derivatives are continuous even on r = 0; \"C¹[0,u₀]×[0,∞[\" of Theorem 1; ); (2) there is one constant C, chosen before u and r, with abs(H(u,r)) ≤ C(1 + r)⁻³ for all u ≤ u₀ and all r ≥ 0 (the field form of \"h = O(r⁻³) … uniformly in u\" of Theorems 1 and 2, to which it is bridged by the deferred obligation ; implied by the decay of Theorem 3; ); (3) for every u with 0 < u < u₀, every proof hs of IsSlice h for the slice h = H(u,·), and every r > 0, ∂_u H − ½ ḡ ∂_r H = (g − ḡ)(h − h̄)/(2r) at (u,r), i.e. Dh = (1/2r)(g − ḡ)(h − h̄) with D = ∂_u − ½ ḡ ∂_r, (3.13), both partials being deriv of the real lifts . This is the RESTRICTED uniformly-decaying classical-solution class , NOT the most general classical-solution class of [P]; data at u = 0 is not part of the predicate",
+      "constant_scope": "C in (2) is existential, depends only on H and u₀, and precedes u and r",
+      "declaration": "Christodoulou.Bondi.IsClassicalSolution",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolution.lean"
+    },
+    {
+      "id": "n0005",
+      "kind": "claim",
+      "title": "Each slice H(u,·), u ≤ u₀, of a uniformly decaying classical solution (restricted class, ) is in IsSlice (IsClassicalSolution.isSlice)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004",
+        "n0020"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the premise hH: the classical-solution class whose slices are taken"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the conclusion is IsSlice of the slice, i.e. its C¹ and O(r⁻³) conjuncts"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; H is a continuous real function of (u,r) on [0,∞) × [0,∞) with IsClassicalSolution u₀ H, the restricted uniformly decaying class ; u ≤ u₀",
+      "source_quantifiers": "for each u₀ in [0,∞), for each continuous H on [0,∞) × [0,∞) with IsClassicalSolution u₀ H, for each u in [0,∞) with u ≤ u₀",
+      "source_conclusion": "IsSlice(H(u,·)): the slice h = H(u,·) is C¹[0,∞[ (one-sided derivative at r = 0, ) and h = O(r⁻³) as r → ∞. Reconstructed: Theorem 1 asserts for its solution that at each u ∈ [0,u₀] h = O(r⁻³) uniformly in u; the per-slice class membership is not stated",
+      "constant_scope": "none in the statement (the O-constant and threshold of IsSlice are existential per slice and may a priori depend on u); the proof's witness is the constant C of field (2), which depends only on H and u₀ (see #slice-decay)",
+      "declaration": "Christodoulou.Bondi.IsClassicalSolution.isSlice",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolutionIsSlice.lean"
+    },
+    {
+      "id": "n0006",
+      "kind": "definition",
+      "title": "Radial mean f̄(r) = r⁻¹∫₀^r f, with centre value f(0) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f is one fixed-u slice of a function of (u,r), regarded as a continuous real function of r on [0,∞) (, ; domain 0 ≤ r < ∞ from p. 339)",
+      "source_quantifiers": "for each continuous f on [0,∞) and each r in [0,∞)",
+      "source_conclusion": "f̄(r) := (1/r)∫₀^r f(r')dr' for r > 0, and f̄(0) := f(0) (centre value, p. 344, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean",
+      "file": "Christodoulou/Frozen/Radial/Mean.lean"
+    },
+    {
+      "id": "n0007",
+      "kind": "step",
+      "title": "The mean as an average over [0, 1]: f̄(r) = ∫₀¹ f(rθ) dθ for every r ≥ 0, including the centre",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0006",
+        "n0060"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+          "rationale": "the statement is about the sealed mean f̄"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+          "rationale": "for r > 0, ∫₀^r f(s) ds = r ∫₀¹ f(rθ) dθ"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) ; r ≥ 0",
+      "source_quantifiers": "for each continuous f on [0,∞), for each r in [0,∞)",
+      "source_conclusion": "f̄(r) = ∫₀¹ f((rθ)⁺) dθ, including r = 0, where both sides equal f(0)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0008",
+      "kind": "claim",
+      "title": "Covariance (4.13) for the sealed classical-solution class: a classical solution on [0, b T] scales to the classical solution fieldScale b H on [0, T], b > 0 (isClassicalSolution_fieldScale, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004",
+        "n0016",
+        "n0013"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the hypothesis and the conclusion are the sealed IsClassicalSolution (, the restricted class)"
+        },
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the conclusion is about fieldScale b H"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the strip form at u₀ = b T: IsClassicalSolution (b T / b) (fieldScale b H), and b T / b = T"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; T : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution (b T) H",
+      "source_quantifiers": "for each b with hb, each T, each H with hH",
+      "source_conclusion": "IsClassicalSolution T (fieldScale b H): with b = a⁻¹, the source passage ((4.13)), the strip [0, T/a] of h becoming the strip [0, T] of h′",
+      "constant_scope": "the uniform O(r⁻³) constant C of hH becomes C(1 + b⁻¹)³ (inside IsClassicalSolution, not exported)",
+      "declaration": "Christodoulou.Bondi.isClassicalSolution_fieldScale",
+      "file": "Christodoulou/Frozen/Bondi/IsClassicalSolutionFieldScale.lean"
+    },
+    {
+      "id": "n0009",
+      "kind": "step",
+      "title": "Positive radial scaling preserves cubic decay with an explicit constant: (1 + b r)^{−3} ≤ (1 + b⁻¹)³ (1 + r)^{−3}",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; r : ℝ≥0",
+      "source_quantifiers": "for each b with hb and each r",
+      "source_conclusion": "(1 + b r)^{−3} ≤ (1 + b⁻¹)³ (1 + r)^{−3}",
+      "constant_scope": "the factor (1 + b⁻¹)³ depends only on b"
+    },
+    {
+      "id": "n0010",
+      "kind": "step",
+      "title": "The metric function g commutes with positive radial scaling: g (radialScale b h) r = g h (b r)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0001",
+        "n0020",
+        "n0012",
+        "n0042",
+        "n0051"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "both sides are the sealed g, exp of the tail integral ∫_r^∞ (h − h̄)²/s ds"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the IsSlice premises hh and hs of g"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the mean in the integrand scales"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the integrand of the scaled slice is (h((b s)⁺) − h̄((b s)⁺))²/s"
+        },
+        {
+          "target": "n0051",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the one-dimensional change of variables s ↦ b s on (r, ∞), whose image is (b r, ∞) (XSC.image_scale_Ioi)"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; h : C(ℝ≥0, ℝ) with hh : IsSlice h and hs : IsSlice (radialScale b h); r : ℝ≥0",
+      "source_quantifiers": "for each b, h with the hypotheses and each r",
+      "source_conclusion": "g (radialScale b h) hs r = g h hh (b r): g′(u, r) = g(u/a, r/a) on each slice",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0011",
+      "kind": "step",
+      "title": "The metric map and the metric mean commute with positive radial scaling: gMap (radialScale b h) = radialScale b (gMap h) and ḡ(radialScale b h) r = ḡ h (b r)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0003",
+        "n0002",
+        "n0020",
+        "n0010",
+        "n0012",
+        "n0042"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the first identity is about the sealed gMap"
+        },
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the second identity is about the sealed ḡ := mean (gMap)"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the IsSlice premises hh and hs"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "gMap is g pointwise, so it scales"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "ḡ is the mean of gMap, and the mean commutes with radial scaling"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the right side radialScale b (gMap h hh)"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; h : C(ℝ≥0, ℝ) with hh : IsSlice h and hs : IsSlice (radialScale b h); r : ℝ≥0",
+      "source_quantifiers": "for each b, h with the hypotheses and each r",
+      "source_conclusion": "gMap (radialScale b h) hs = radialScale b (gMap h hh) and gBar (radialScale b h) hs r = gBar h hh (b r): ḡ′(u, r) = ḡ(u/a, r/a) on each slice",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0012",
+      "kind": "step",
+      "title": "The radial mean commutes with radial scaling, including the centre: mean (radialScale b h) r = mean h (b r)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0006",
+        "n0007",
+        "n0042",
+        "n0058"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "both sides are the sealed mean h̄"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "h̄(r) = ∫₀¹ h((rθ)⁺) dθ at every r ≥ 0 (Radial.mean_eq_integral_unitInterval), on both sides"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the integrand radialScale b h ((rθ)⁺) = h((b r θ)⁺)"
+        },
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the two unit-interval integrals agree pointwise"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0; h : C(ℝ≥0, ℝ); r : ℝ≥0",
+      "source_quantifiers": "for each b, h and r",
+      "source_conclusion": "mean (radialScale b h) r = mean h (b r): h̄′(u, r) = h̄(u/a, r/a) on each slice (the first law of p. 345, printed without the prime)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0013",
+      "kind": "step",
+      "title": "Covariance on a strip: IsClassicalSolution u₀ H ⇒ IsClassicalSolution (u₀/b) (fieldScale b H), b > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004",
+        "n0005",
+        "n0016",
+        "n0042",
+        "n0020",
+        "n0046",
+        "n0049",
+        "n0009",
+        "n0014",
+        "n0045",
+        "n0010",
+        "n0011",
+        "n0012",
+        "n0001",
+        "n0002",
+        "n0006"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the three clauses of the sealed IsClassicalSolution (C¹ on the strip, the uniform O(r⁻³) bound, the equation in the interior)"
+        },
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the FROZEN export IsClassicalSolution.isSlice: the slice of H at b u < u₀ is IsSlice, the premise of g and ḡ"
+        },
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the field fieldScale b H and the strip map u ≤ u₀/b ⇔ b u ≤ u₀"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the slice of fieldScale b H at u is radialScale b of the slice of H at b u (XSB.fieldScale_curry)"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the IsSlice slices of the equation clause"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the scaled slice radialScale b (H(b u, ·)) is IsSlice, the premise of g and ḡ of the scaled slice"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "C¹ on the closed strip by composition with the linear map (u, r) ↦ (b u, b r)"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the uniform O(r⁻³) constant C becomes C(1 + b⁻¹)³"
+        },
+        {
+          "target": "n0014",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "∂_u of the scaled field is b · ∂_u H at (b u, b r)"
+        },
+        {
+          "target": "n0045",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "∂_r of the scaled field is b · ∂_r H at (b u, b r) (XSC.deriv_fieldScale_radial, a wrapper of XSB.deriv_radialScale)"
+        },
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "g of the scaled slice at r is g of the slice at b r"
+        },
+        {
+          "target": "n0011",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "ḡ of the scaled slice at r is ḡ of the slice at b r"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "h̄ of the scaled slice at r is h̄ of the slice at b r"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the equation clause of IsClassicalSolution names g of the slices (rewritten by the g law)"
+        },
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the equation clause names ḡ of the slices (rewritten by the ḡ law)"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the equation clause names the mean h̄ of the slices (rewritten by the mean law)"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; u₀ : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ) with hH : IsClassicalSolution u₀ H",
+      "source_quantifiers": "for each b with hb, each u₀, each H with hH",
+      "source_conclusion": "IsClassicalSolution (u₀/b) (fieldScale b H): C¹ on the closed strip [0, u₀/b] × [0,∞), the uniform O(r⁻³) bound with the constant C(1 + b⁻¹)³, and the evolution equation (3.13) for 0 < u < u₀/b, r > 0",
+      "constant_scope": "the uniform constant C(1 + b⁻¹)³"
+    },
+    {
+      "id": "n0014",
+      "kind": "step",
+      "title": "The time derivative of a scaled field acquires the factor b: ∂_v[(fieldScale b H)(v⁺, r)] at u = b · ∂_v[H(v⁺, b r)] at b u",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0016",
+        "n0056"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the field fieldScale b H (v⁺, r) = H((b v)⁺, b r)"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "the derivative of f(b ·) is b f′(b ·)"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0; H : C(ℝ≥0 × ℝ≥0, ℝ); u, r : ℝ≥0",
+      "source_quantifiers": "for each b, H, u and r",
+      "source_conclusion": "deriv (v ↦ fieldScale b H (v⁺, r)) u = b · deriv (v ↦ H(v⁺, b r)) (b u)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0015",
+      "kind": "claim",
+      "title": "The radial derivative scales by b: ∂_r(fieldScale b H)(u, r) = b · ∂_r H(b u, b r), one-sided at the centre (radialDerivative_fieldScale, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0036",
+        "n0016",
+        "n0042",
+        "n0040"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0036",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "both sides are the sealed radialDerivative (the derivWithin of the slice on Ici 0)"
+        },
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the left side is about fieldScale b H"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the slice of fieldScale b H at u is radialScale b of the slice of H at b u (XSB.fieldScale_curry, rfl)"
+        },
+        {
+          "target": "n0040",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the one-sided chain rule at the slice H(b u, ·), including r = 0"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; H : C(ℝ≥0 × ℝ≥0, ℝ); u, r : ℝ≥0",
+      "source_quantifiers": "for each b with hb, each H, each u and r",
+      "source_conclusion": "radialDerivative (fieldScale b H) u r = b · radialDerivative H (b u) (b r)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.radialDerivative_fieldScale",
+      "file": "Christodoulou/Frozen/Bondi/RadialDerivativeFieldScale.lean"
+    },
+    {
+      "id": "n0016",
+      "kind": "definition",
+      "title": "Scaling of a field: (fieldScale b H)(u, r) = H(b u, b r); the (4.13) map h ↦ h(u/a, r/a) is fieldScale a⁻¹ (fieldScale, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "b : ℝ≥0 and H : C(ℝ≥0 × ℝ≥0, ℝ), the field carrier",
+      "source_quantifiers": "for each b and H",
+      "source_conclusion": "fieldScale b H := ⟨(u, r) ↦ H(b u, b r), continuous⟩; (4.13) h′(u, r) = h(u/a, r/a) is fieldScale a⁻¹ h (the multiplicative form, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.fieldScale",
+      "file": "Christodoulou/Frozen/Bondi/FieldScale.lean"
+    },
+    {
+      "id": "n0017",
+      "kind": "definition",
+      "title": "Theorem-1 data class IsDecaySlice: IsSlice and ∂h/∂r = O(r⁻⁴)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0020"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the data class is the conjunction of the slice class (first two Theorem 1 conditions) and the O(r⁻⁴) bound on ∂h/∂r"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsDecaySlice h holds iff IsSlice h and ∂h/∂r(r) = O(r⁻⁴) as r → ∞; under",
+      "constant_scope": "none (the O-constant and threshold are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsDecaySlice",
+      "file": "Christodoulou/Frozen/Bondi/IsDecaySlice.lean"
+    },
+    {
+      "id": "n0018",
+      "kind": "definition",
+      "title": "The exact size d of the data, (7.4), as a supremum on the finite-data carrier IsDecaySlice (initialSize, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0017"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the binder hdata : IsDecaySlice data (the finite-data carrier; unused in the body)"
+        }
+      ],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), the initial slice h(0, ·) with hdata : IsDecaySlice data (C¹ on [0,∞), data = O(r⁻³), ∂_r data = O(r⁻⁴))",
+      "source_quantifiers": "for each continuous data with a proof hdata",
+      "source_conclusion": "initialSize data hdata := sSup (range (r ↦ (1 + r)³ abs(data r) + (1 + r)⁴ abs(data′(r)))), data′(r) := derivWithin (z ↦ data(z⁺)) (Ici 0) r, one-sided at r = 0 ; the exact d of (7.4) (the range is bounded and nonempty on IsDecaySlice, so this is its least upper bound, Z6C)",
+      "constant_scope": "none (d depends on the data only)",
+      "declaration": "Christodoulou.Bondi.initialSize",
+      "file": "Christodoulou/Frozen/Bondi/InitialSize.lean"
+    },
+    {
+      "id": "n0019",
+      "kind": "claim",
+      "title": "Characterization of initialSize: 0 ≤ initialSize data hdata, and InitialBound data d ⟺ initialSize data hdata ≤ d (initialSize_characterization)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0018",
+        "n0017"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the statement is about initialSize data hdata (its body: the sSup of the range)"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the premise hdata, passed to the data-bound step"
+        }
+      ],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), the initial slice h(0, ·) with hdata : IsDecaySlice data",
+      "source_quantifiers": "for each continuous data with hdata; the inner ∀ d over reals",
+      "source_conclusion": "0 ≤ initialSize data hdata ∧ ∀ d, (InitialBound data d ↔ initialSize data hdata ≤ d): the exact d of (7.4) is a nonnegative least upper bound of the weighted data sum",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.initialSize_characterization",
+      "file": "Christodoulou/Frozen/Bondi/InitialSizeCharacterization.lean"
+    },
+    {
+      "id": "n0020",
+      "kind": "definition",
+      "title": "Slice class IsSlice: h in C¹[0,∞) with h = O(r⁻³) as r → ∞ (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsSlice h holds iff (i) h ∈ C¹[0,∞[ (derivative at r = 0 one-sided within [0,∞), ) and (ii) h(r) = O(r⁻³) as r → ∞; the first two conditions of the Theorem 1 data class ; the condition on ∂h/∂r is not included",
+      "constant_scope": "none (the O-constant and threshold in (ii) are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsSlice",
+      "file": "Christodoulou/Frozen/Bondi/IsSlice.lean"
+    },
+    {
+      "id": "n0021",
+      "kind": "definition",
+      "title": "d₀ := inf_{a>0} sup_{r ≥ 0} {(1 + r/a)³ abs(h(0, r)) + (1 + r/a)⁴ abs(a ∂_r h(0, r))}: the iInf of the scale-a sizes over the positive scales (scaleInvariantSize, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0026",
+        "n0017"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the body is the iInf of scaledInitialSize a a.2 data hdata over the positive scales"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata : IsDecaySlice data, passed to scaledInitialSize"
+        }
+      ],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data",
+      "source_quantifiers": "for each data with hdata",
+      "source_conclusion": "scaleInvariantSize data hdata := ⨅ a : {a : ℝ≥0 // 0 < a}, scaledInitialSize a a.2 data hdata, the printed d₀ (p. 351)",
+      "constant_scope": "none (depends on the data only)",
+      "declaration": "Christodoulou.Bondi.scaleInvariantSize",
+      "file": "Christodoulou/Frozen/Bondi/ScaleInvariantSize.lean"
+    },
+    {
+      "id": "n0022",
+      "kind": "claim",
+      "title": "0 ≤ d₀ ≤ d: the scale-invariant size is nonnegative and at most the exact size d of (7.4) (the scale a = 1) (scaleInvariantSize_le_initialSize, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0021",
+        "n0018",
+        "n0017",
+        "n0023",
+        "n0025",
+        "n0024",
+        "n0059",
+        "n0054"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the statement is about scaleInvariantSize (d₀)"
+        },
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the statement compares with the sealed initialSize (d of (7.4))"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata"
+        },
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the index type {a > 0} is nonempty and 0 is a lower bound of the range (the iInf is genuine)"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "every scale-a size is ≥ 0, so le_ciInf gives 0 ≤ d₀"
+        },
+        {
+          "target": "n0024",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the a = 1 term of the infimum is initialSize data hdata"
+        },
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "0 ≤ ⨅ from 0 ≤ every term"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "⨅ ≤ the a = 1 term, bounded below by 0"
+        }
+      ],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data",
+      "source_quantifiers": "for each data with hdata",
+      "source_conclusion": "0 ≤ scaleInvariantSize data hdata ∧ scaleInvariantSize data hdata ≤ initialSize data hdata",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.scaleInvariantSize_le_initialSize",
+      "file": "Christodoulou/Frozen/Bondi/ScaleInvariantSizeLeInitialSize.lean"
+    },
+    {
+      "id": "n0023",
+      "kind": "step",
+      "title": "The carrier of d₀ is never junk: the positive scales are nonempty, the range of the scale-a sizes is nonempty and 0 is a lower bound",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0026",
+        "n0017",
+        "n0025"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the range of scaledInitialSize over the positive scales (the infimand of d₀)"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "every element of the range is ≥ 0"
+        }
+      ],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data",
+      "source_quantifiers": "for each data with hdata",
+      "source_conclusion": "Nonempty {a : ℝ≥0 // 0 < a} ∧ (range (a ↦ scaledInitialSize a a.2 data hdata)).Nonempty ∧ 0 ∈ lowerBounds (range (a ↦ scaledInitialSize a a.2 data hdata))",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0024",
+      "kind": "step",
+      "title": "At the scale a = 1 the scale-a size is the exact size d of (7.4): scaledInitialSize 1 = initialSize",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0026",
+        "n0018",
+        "n0017"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the left side is scaledInitialSize at a = 1 (r/1 = r, 1 · data′ = data′)"
+        },
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the right side is the sealed initialSize, the literal (7.4) supremum"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata"
+        }
+      ],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data",
+      "source_quantifiers": "for each data with hdata",
+      "source_conclusion": "scaledInitialSize 1 zero_lt_one data hdata = initialSize data hdata",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0025",
+      "kind": "step",
+      "title": "Every scale-a size is nonnegative: 0 ≤ scaledInitialSize a ha data hdata",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0026",
+        "n0017",
+        "n0052"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the statement is about scaledInitialSize, an sSup of nonnegative summands"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata"
+        },
+        {
+          "target": "n0052",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the sSup of a set of nonnegative reals is nonnegative (also for the junk value)"
+        }
+      ],
+      "source_hypotheses": "a : ℝ≥0 with ha : 0 < a; data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data",
+      "source_quantifiers": "for each a with ha, each data with hdata",
+      "source_conclusion": "0 ≤ scaledInitialSize a ha data hdata",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0026",
+      "kind": "definition",
+      "title": "The scale-a weighted size inside d₀, literal: sup_{r ≥ 0} {(1 + r/a)³ abs(h(0, r)) + (1 + r/a)⁴ abs(a ∂_r h(0, r))} for a > 0 on the carrier IsDecaySlice (scaledInitialSize, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0017"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder _hdata : IsDecaySlice data (the finite-data carrier; unused in the body)"
+        }
+      ],
+      "source_hypotheses": "a : ℝ≥0 with _ha : 0 < a (the source domain a > 0 carried as a binder, ); data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data (the carrier of initialSize, )",
+      "source_quantifiers": "for each a with ha, each data with hdata",
+      "source_conclusion": "scaledInitialSize a ha data hdata := sSup (range (r ↦ (1 + r/a)³ abs(data r) + (1 + r/a)⁴ abs(a · data′(r)))), data′(r) := derivWithin (z ↦ data(z⁺)) (Ici 0) r, one-sided at r = 0 : the inner sup_{r ≥ 0} of d₀ (p. 351) and of p. 360 ,",
+      "constant_scope": "none (depends on a and the data only)",
+      "declaration": "Christodoulou.Bondi.scaledInitialSize",
+      "file": "Christodoulou/Frozen/Bondi/ScaledInitialSize.lean"
+    },
+    {
+      "id": "n0027",
+      "kind": "claim",
+      "title": "Theorem 3, ANALYTIC conclusion under the printed scale-invariant hypothesis: there is δ = smallDataDelta x₁ > 0 such that data with d₀ < δ have a global classical solution taking the data, with the printed decay C(1 + u + r)⁻³, C(1 + u + r)⁻⁴ (theorem3_analytic, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0030",
+        "n0021",
+        "n0017",
+        "n0004",
+        "n0036",
+        "n0038",
+        "n0037"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0030",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the root's proof destructures the unfrozen helper theorem3_analytic_explicit and takes C := max(8x·max(1, a)³, (16x/a)·max(1, a)⁴)"
+        },
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the hypothesis d₀ < δ is about scaleInvariantSize"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata : IsDecaySlice data"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the conclusion IsClassicalSolution T H for every T"
+        },
+        {
+          "target": "n0036",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the decay of ∂_r H is stated with radialDerivative"
+        },
+        {
+          "target": "n0038",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the statement names δ = smallDataDelta x₁"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the statement names contractionFactor x₁ = 1"
+        }
+      ],
+      "source_hypotheses": "none at the outer level (a closed statement); inside: data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data (the source passage) and scaleInvariantSize data hdata < δ (the printed d₀ < δ)",
+      "source_quantifiers": "∃ δ, 0 < δ ∧ (∃ x₁ : ℝ≥0, 0 < x₁ ∧ contractionFactor x₁ = 1 ∧ δ = smallDataDelta x₁) ∧ ∀ data, ∀ hdata, scaleInvariantSize data hdata < δ → ∃ H, … ∃ C; δ is chosen before the data, H and C after",
+      "source_conclusion": "∃ H : C(ℝ≥0 × ℝ≥0, ℝ), (∀ T, IsClassicalSolution T H) ∧ (∀ r, H(0, r) = data r) ∧ ∃ C, ∀ u r, abs(H(u, r)) ≤ C(1 + u + r)^{−3} ∧ abs(radialDerivative H u r) ≤ C(1 + u + r)^{−4}: the source passage; NOT claimed: M₁ = 0, the future timelike and null geodesic completeness, uniqueness , X′ membership of H",
+      "constant_scope": "δ = smallDataDelta x₁ = max_{[0,x₁]} G is absolute, the same δ as theorem3_unscaled ; C is existential and chosen after the data (it depends on the data through the scale a and the radius x, as the print's unspecified C; question of formalization reconstruction, not the ); in the unfrozen helper C = max(8x·max(1, a)³, (16x/a)·max(1, a)⁴)",
+      "declaration": "Christodoulou.Bondi.theorem3_analytic",
+      "file": "Christodoulou/Frozen/Bondi/Theorem3Analytic.lean"
+    },
+    {
+      "id": "n0028",
+      "kind": "step",
+      "title": "Transfer of the explicit decay to the inverse-scaled field: from abs(H′) ≤ 8x(1 + u + r)⁻³, abs(∂_r H′) ≤ 16x(1 + u + r)⁻⁴ to abs(fieldScale a⁻¹ H′) ≤ 8x·max(1, a)³(1 + u + r)⁻³ and abs(∂_r fieldScale a⁻¹ H′) ≤ (16x/a)·max(1, a)⁴(1 + u + r)⁻⁴",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0016",
+        "n0015",
+        "n0036",
+        "n0029"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the field fieldScale a⁻¹ H′ (u, r) = H′(a⁻¹u, a⁻¹r)"
+        },
+        {
+          "target": "n0015",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the FROZEN export radialDerivative_fieldScale at b = a⁻¹: ∂_r(fieldScale a⁻¹ H′)(u, r) = a⁻¹ ∂_r H′(a⁻¹u, a⁻¹r) (frozen-gate edge decay-transfer → )"
+        },
+        {
+          "target": "n0036",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the hypothesis and the conclusion are stated with radialDerivative"
+        },
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the weights at (a⁻¹u, a⁻¹r) are compared with (1 + u + r) at n = 3 and n = 4"
+        }
+      ],
+      "source_hypotheses": "a : ℝ≥0 with ha : 0 < a; H′ : C(ℝ≥0 × ℝ≥0, ℝ); x real with hx : 0 ≤ x; hdecay : ∀ u r, abs(H′(u, r)) ≤ 8x(1 + u + r)^{−3} ∧ abs(radialDerivative H′ u r) ≤ 16x(1 + u + r)^{−4} (the decay of theorem3_unscaled)",
+      "source_quantifiers": "for each a, H′, x with the hypotheses; then for every u and r",
+      "source_conclusion": "abs(fieldScale a⁻¹ H′ (u, r)) ≤ 8x·max(1, a)³ (1 + u + r)^{−3} ∧ abs(radialDerivative (fieldScale a⁻¹ H′) u r) ≤ (16x/a)·max(1, a)⁴ (1 + u + r)^{−4}: \"This solution has the decay property\" with explicit C",
+      "constant_scope": "the constants 8x·max(1, a)³ and (16x/a)·max(1, a)⁴"
+    },
+    {
+      "id": "n0029",
+      "kind": "step",
+      "title": "The denominator comparison of the inverse scaling: (1 + u/a + r/a)^{−n} ≤ max(1, a)ⁿ (1 + u + r)^{−n}",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a : ℝ≥0 with ha : 0 < a; u, r : ℝ≥0; n : ℕ",
+      "source_quantifiers": "for each a with ha, each u, r and n",
+      "source_conclusion": "(1 + a⁻¹u + a⁻¹r)^{−n} ≤ max(1, a)ⁿ (1 + u + r)^{−n}",
+      "constant_scope": "the factor max(1, a)ⁿ depends only on a and n"
+    },
+    {
+      "id": "n0030",
+      "kind": "step",
+      "title": "Theorem 3 with explicit scale-dependent decay constants (the UNFROZEN helper theorem3_analytic_explicit, ): d₀ < δ ⇒ ∃ a > 0, ∃ x > 0, ∃ H, global classical solution taking the data with abs(H) ≤ 8x·max(1, a)³(1 + u + r)⁻³ and abs(∂_r H) ≤ (16x/a)·max(1, a)⁴(1 + u + r)⁻⁴",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0031",
+        "n0047",
+        "n0043",
+        "n0039",
+        "n0008",
+        "n0016",
+        "n0042",
+        "n0028",
+        "n0021",
+        "n0026",
+        "n0018",
+        "n0017",
+        "n0004",
+        "n0036",
+        "n0038",
+        "n0037"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0031",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the FROZEN export theorem3_unscaled supplies δ, 0 < δ, the x₁ witness and, applied to the scaled data with initialSize < δ, H′, x > 0, ∀ T classical and in X′, the trace and the decay 8x, 16x (the source passage; frozen-gate edge explicit → theorem3_unscaled)"
+        },
+        {
+          "target": "n0047",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the FROZEN export exists_scaledInitialSize_lt: a > 0 with scaledInitialSize a ha data hdata < δ (\"there exists an a > 0 such that …\"; frozen-gate edge explicit → )"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the FROZEN export isDecaySlice_radialScale: hs : IsDecaySlice (radialScale a data), the data class of theorem3_unscaled (frozen-gate edge explicit → )"
+        },
+        {
+          "target": "n0039",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the FROZEN export initialSize_radialScale rewrites initialSize (radialScale a data) hs to the scale-a size, so d′ < δ (\"Thus we have d′ < δ\"; frozen-gate edge explicit → )"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the FROZEN export isClassicalSolution_fieldScale at b = a⁻¹ with (hH′ (a⁻¹T)).1: fieldScale a⁻¹ H′ is classical on [0, T] for every T (the source passage; frozen-gate edge explicit → )"
+        },
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "H := fieldScale a⁻¹ H′, the field h(u, r) = h′(u/a, r/a); its trace H(0, r) = H′(0, a⁻¹r)"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the trace: H′(0, a⁻¹r) = radialScale a data (a⁻¹r) = data(a a⁻¹ r) = data r (\"taking at u = 0 the given data h(0, r)\")"
+        },
+        {
+          "target": "n0028",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the decay of H from the decay 8x, 16x of H′ (\"This solution has the decay property\")"
+        },
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the hypothesis d₀ < δ is about scaleInvariantSize"
+        },
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the scale-a size scaledInitialSize a ha data hdata < δ, the output of and the right side of"
+        },
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "hd : initialSize (radialScale a data) hs < δ, the hypothesis of theorem3_unscaled at the scaled data"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata and the data class of the scaled data"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the conclusion IsClassicalSolution T H for every T"
+        },
+        {
+          "target": "n0036",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the decay of ∂_r H is stated with radialDerivative"
+        },
+        {
+          "target": "n0038",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the statement names δ = smallDataDelta x₁ (inherited from theorem3_unscaled)"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the statement names contractionFactor x₁ = 1 (inherited from theorem3_unscaled)"
+        }
+      ],
+      "source_hypotheses": "none at the outer level; inside: data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data and scaleInvariantSize data hdata < δ",
+      "source_quantifiers": "∃ δ, 0 < δ ∧ (∃ x₁ : ℝ≥0, 0 < x₁ ∧ contractionFactor x₁ = 1 ∧ δ = smallDataDelta x₁) ∧ ∀ data, ∀ hdata, d₀ < δ → ∃ a, 0 < a ∧ ∃ x, 0 < x ∧ ∃ H; δ is chosen before the data",
+      "source_conclusion": "∃ a : ℝ≥0, 0 < a ∧ ∃ x : ℝ, 0 < x ∧ ∃ H : C(ℝ≥0 × ℝ≥0, ℝ), (∀ T, IsClassicalSolution T H) ∧ (∀ r, H(0, r) = data r) ∧ ∀ u r, abs(H(u, r)) ≤ 8x·max(1, a)³ (1 + u + r)^{−3} ∧ abs(radialDerivative H u r) ≤ (16x/a)·max(1, a)⁴ (1 + u + r)^{−4}",
+      "constant_scope": "δ = smallDataDelta x₁ (the δ of theorem3_unscaled, ); a and x existential, chosen after the data; the decay constants 8x·max(1, a)³ and (16x/a)·max(1, a)⁴"
+    },
+    {
+      "id": "n0031",
+      "kind": "claim",
+      "title": "Theorem 3, unscaled analytic core : there is δ = smallDataDelta x₁ > 0 (x₁ the root of s = 1) such that data with initialSize < δ have a global classical solution in X′ taking the data, with the decay 8x(1 + u + r)⁻³ and 16x(1 + u + r)⁻⁴ (theorem3_unscaled)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0038",
+        "n0018",
+        "n0019",
+        "n0037",
+        "n0017",
+        "n0004",
+        "n0036"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0038",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "δ := smallDataDelta x₁ (\"δ := max_{x ∈ [0, x₁]} G(x)\")"
+        },
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the smallness hypothesis is about initialSize data hdata, the exact (7.4) size"
+        },
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the FROZEN export initialSize_characterization: 0 ≤ initialSize (the premise 0 ≤ d of the witness) and InitialBound data (initialSize) (at d = initialSize, le_rfl)"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the statement names contractionFactor x₁ = 1"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the binder hdata : IsDecaySlice data"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the conclusion IsClassicalSolution T H for every T"
+        },
+        {
+          "target": "n0036",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+          "rationale": "the decay of ∂_r H is stated with radialDerivative"
+        }
+      ],
+      "source_hypotheses": "none at the outer level (a closed statement); inside: data : C(ℝ≥0, ℝ) with hdata : IsDecaySlice data (the source passage) and initialSize data hdata < δ (the exact d of (7.4), ; NOT the scale-invariant d₀)",
+      "source_quantifiers": "∃ δ, 0 < δ ∧ (∃ x₁ : ℝ≥0, 0 < x₁ ∧ s(x₁) = 1 ∧ δ = smallDataDelta x₁) ∧ ∀ data, ∀ hdata, initialSize data hdata < δ → ∃ H, ∃ x; δ is chosen before the data, H and x after",
+      "source_conclusion": "∃ H : C(ℝ≥0 × ℝ≥0, ℝ), ∃ x : ℝ, 0 < x ∧ (∀ T, IsClassicalSolution T H ∧ MemXPrimeBall T x H) ∧ (∀ r, H(0, r) = data r) ∧ ∀ u r, abs(H(u, r)) ≤ 8x(1 + u + r)^{−3} ∧ abs(radialDerivative H u r) ≤ 16x(1 + u + r)^{−4}: the source passage with C = 8x and 16x; the geodesic completeness and M₁ = 0 are NOT claimed",
+      "constant_scope": "δ = smallDataDelta x₁ = max_{[0,x₁]} G is absolute (x₁ the unique positive root of s = 1); x is existential and chosen after the data; the statement does not bound it (in the proof, 0 < x < x₁ with initialSize ≤ G(x), so x depends on the data only through initialSize, but x < x₁ is not exported); the decay constants 8x and 16x",
+      "declaration": "Christodoulou.Bondi.theorem3_unscaled",
+      "file": "Christodoulou/Frozen/Bondi/Theorem3Unscaled.lean"
+    },
+    {
+      "id": "n0032",
+      "kind": "definition",
+      "title": "The function G of (9.3) (smallDataG, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "x a real number (the source restricts to x ≥ 0; the formula is total)",
+      "source_quantifiers": "for each real x",
+      "source_conclusion": "smallDataG x := x/(2 + (π/6)x²) · [e^{−(4π/3)x²} − (π/8)x²(2 + (π/6)x²)] (literal (9.3))",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.smallDataG",
+      "file": "Christodoulou/Frozen/Bondi/SmallDataG.lean"
+    },
+    {
+      "id": "n0033",
+      "kind": "claim",
+      "title": "d₀ is invariant under the scaling group: scaleInvariantSize (radialScale b data) = scaleInvariantSize data for b > 0 (scaleInvariantSize_radialScale, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0021",
+        "n0026",
+        "n0042",
+        "n0017",
+        "n0034",
+        "n0050"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "both sides are scaleInvariantSize (d₀)"
+        },
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "scaleInvariantSize is unfolded to the iInf of scaledInitialSize over the positive scales"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "the left side is about radialScale b data"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "the binders hdata and hs"
+        },
+        {
+          "target": "n0034",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "scaledInitialSize a (radialScale b data) = scaledInitialSize (a b) data for every a > 0"
+        },
+        {
+          "target": "n0050",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "the infimum is reindexed along the surjection a ↦ a b of the positive scales (inverse a ↦ a/b)"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data; hs : IsDecaySlice (radialScale b data) (a binder)",
+      "source_quantifiers": "for each b with hb, each data with hdata and hs",
+      "source_conclusion": "scaleInvariantSize (radialScale b data) hs = scaleInvariantSize data hdata: d₀ \"is invariant under the scaling group (see Sect. 4)\"",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.scaleInvariantSize_radialScale",
+      "file": "Christodoulou/Frozen/Bondi/ScaleInvariantSizeRadialScale.lean"
+    },
+    {
+      "id": "n0034",
+      "kind": "step",
+      "title": "Radial scaling composes the scale parameters: scaledInitialSize a (radialScale b data) = scaledInitialSize (a b) data",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0026",
+        "n0042",
+        "n0017",
+        "n0035"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "both sides are scaledInitialSize"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "the left side is about radialScale b data"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "the binders hdata and hs"
+        },
+        {
+          "target": "n0035",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "the ranges coincide summand by summand, reindexed by r ↦ b r and r ↦ r/b"
+        }
+      ],
+      "source_hypotheses": "a, b : ℝ≥0 with ha : 0 < a and hb : 0 < b; data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data; hs : IsDecaySlice (radialScale b data)",
+      "source_quantifiers": "for each a, b with the hypotheses, each data with hdata and hs",
+      "source_conclusion": "scaledInitialSize a ha (radialScale b data) hs = scaledInitialSize (a b) (mul_pos ha hb) data hdata",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0035",
+      "kind": "step",
+      "title": "Composition of the scale-weighted summands: the scale-a summand of h(0, b·) at r is the scale-(a b) summand of h(0, ·) at b r",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0040",
+        "n0042"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0040",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "the derivative term of radialScale b data at r is b · data′(b r)"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "radialScale b data r = data(b r)"
+        }
+      ],
+      "source_hypotheses": "a, b : ℝ≥0 with ha : 0 < a and hb : 0 < b; data : C(ℝ≥0, ℝ); r : ℝ≥0",
+      "source_quantifiers": "for each a, b with the hypotheses, each data and r",
+      "source_conclusion": "(1 + r/a)³ abs(radialScale b data r) + (1 + r/a)⁴ abs(a · derivWithin (radialScale b data ∘ ⁺) (Ici 0) r) = (1 + (b r)/(a b))³ abs(data(b r)) + (1 + (b r)/(a b))⁴ abs((a b) · data′(b r))",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0036",
+      "kind": "definition",
+      "title": "The radial derivative ∂_r H(u, r) of a field, within [0,∞) (radialDerivative, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "H : C(ℝ≥0 × ℝ≥0, ℝ), a continuous real function of (u, r) on the quadrant (carrier ); u, r in [0,∞)",
+      "source_quantifiers": "for each continuous H and each u, r ≥ 0",
+      "source_conclusion": "radialDerivative H u r := derivWithin (z ↦ H(u, z⁺)) (Ici 0) r: the partial derivative ∂h/∂r of (9.1), one-sided within [0,∞) at the centre r = 0 (as in MemXBall, ); a total function (its value carries no differentiability claim)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.radialDerivative",
+      "file": "Christodoulou/Frozen/Bondi/RadialDerivative.lean"
+    },
+    {
+      "id": "n0037",
+      "kind": "definition",
+      "title": "The contraction factor s of (9.26) (contractionFactor, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 357)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "x a real number (the source restricts to x ≥ 0; the formula is total)",
+      "source_quantifiers": "for each real x",
+      "source_conclusion": "contractionFactor x := (π/3)x²(37/6 + 2πx²) e^{(5π/9)x²} (literal (9.26))",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.contractionFactor",
+      "file": "Christodoulou/Frozen/Bondi/ContractionFactor.lean"
+    },
+    {
+      "id": "n0038",
+      "kind": "definition",
+      "title": "δ(x₁) := sup G([0, x₁]) of the proof of Theorem 3 (smallDataDelta, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0032"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0032",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the supremum is of G over [0, x₁]"
+        }
+      ],
+      "source_hypotheses": "x₁ in [0,∞) (any nonnegative radius; the root theorem3_unscaled of takes the root of s = 1)",
+      "source_quantifiers": "for each x₁ ≥ 0",
+      "source_conclusion": "smallDataDelta x₁ := sSup (G '' [0, x₁]); the printed max_{x ∈ [0,x₁]} G(x), an attained maximum by Z9C",
+      "constant_scope": "none (depends on x₁ only)",
+      "declaration": "Christodoulou.Bondi.smallDataDelta",
+      "file": "Christodoulou/Frozen/Bondi/SmallDataDelta.lean"
+    },
+    {
+      "id": "n0039",
+      "kind": "claim",
+      "title": "The p. 360 identity for d′: the exact (7.4) size of h′(0, r) = h(0, ar) is the scale-a size of h(0, ·) (initialSize_radialScale, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0018",
+        "n0026",
+        "n0042",
+        "n0017",
+        "n0041"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the left side is the sealed initialSize of the scaled data (d′ is the (7.4) size of h′)"
+        },
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the right side is scaledInitialSize a ha data hdata"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the scaled data radialScale a data (h′(0, r) = h(0, ar))"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the binders hdata and hs : IsDecaySlice, the carriers of the two sizes"
+        },
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the ranges coincide summand by summand: r ↦ a r and r ↦ r/a (the private XSI.weighted_sup_scale_within, \"the supremum substitutes r → r/a\")"
+        }
+      ],
+      "source_hypotheses": "a : ℝ≥0 with ha : 0 < a; data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data; hs : IsDecaySlice (radialScale a data) (a binder, so the statement does not depend on 's proof term)",
+      "source_quantifiers": "for each a with ha, each data with hdata and hs",
+      "source_conclusion": "initialSize (radialScale a data) hs = scaledInitialSize a ha data hdata: the source passage",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.initialSize_radialScale",
+      "file": "Christodoulou/Frozen/Bondi/InitialSizeRadialScale.lean"
+    },
+    {
+      "id": "n0040",
+      "kind": "step",
+      "title": "One-sided chain rule for the radial scaling, including the centre: derivWithin (radialScale b h ∘ ⁺) (Ici 0) s = b · derivWithin (h ∘ ⁺) (Ici 0) (b s), b > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0042",
+        "n0055",
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the lifted scaled slice radialScale b h (s⁺) = h((b s)⁺)"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "derivWithin of f(b ·) on a set is b times derivWithin of f on the image set"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the image of Ici 0 under s ↦ b s is Ici 0 for b > 0, so the one-sided derivative at r = 0 is preserved"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; h : C(ℝ≥0, ℝ); s : ℝ",
+      "source_quantifiers": "for each b with hb, each h and s",
+      "source_conclusion": "derivWithin (t ↦ radialScale b h (t⁺)) (Ici 0) s = b · derivWithin (t ↦ h(t⁺)) (Ici 0) (b s)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0041",
+      "kind": "step",
+      "title": "The two summand identities of the change of radius: the (7.4) summand of h(0, a·) at r is the scale-a summand of h(0, ·) at a r, and conversely at r/a",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0040",
+        "n0042"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0040",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the derivative term of h′ at r is a · data′(a r)"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "radialScale a data r = data(a r) (XSB.radialScale_apply, rfl)"
+        }
+      ],
+      "source_hypotheses": "a : ℝ≥0 with ha : 0 < a; data : C(ℝ≥0, ℝ); r : ℝ≥0",
+      "source_quantifiers": "for each a with ha, each data and r",
+      "source_conclusion": "(1 + r)³ abs(radialScale a data r) + (1 + r)⁴ abs(derivWithin (radialScale a data ∘ ⁺) (Ici 0) r) = (1 + (a r)/a)³ abs(data(a r)) + (1 + (a r)/a)⁴ abs(a · data′(a r)); and (1 + r/a)³ abs(data r) + (1 + r/a)⁴ abs(a · data′(r)) = (1 + r/a)³ abs(radialScale a data (r/a)) + (1 + r/a)⁴ abs(derivWithin (radialScale a data ∘ ⁺) (Ici 0) (r/a))",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0042",
+      "kind": "definition",
+      "title": "Radial scaling of a slice: (radialScale b h)(r) = h(b r); with b = a it is the rescaled data h′(0, r) = h(0, ar) of p. 360 (radialScale, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "b : ℝ≥0 (any b; positivity is a hypothesis of the consumers, ) and h : C(ℝ≥0, ℝ), the carrier",
+      "source_quantifiers": "for each b and h",
+      "source_conclusion": "radialScale b h := ⟨r ↦ h(b r), continuous⟩ : C(ℝ≥0, ℝ); at b = a, \"h′(0, r) = h(0, ar)\" (p. 360)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.radialScale",
+      "file": "Christodoulou/Frozen/Bondi/RadialScale.lean"
+    },
+    {
+      "id": "n0043",
+      "kind": "claim",
+      "title": "Positive radial scaling preserves the data class: IsDecaySlice data ⇒ IsDecaySlice (radialScale b data) for b > 0 (isDecaySlice_radialScale, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0042",
+        "n0017",
+        "n0046",
+        "n0045",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the statement is about radialScale b data (h′(0, r) = h(0, ar))"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the binder hdata and the conclusion IsDecaySlice"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the first component IsSlice (radialScale b data) (XSB.isSlice_radialScale with hdata.1)"
+        },
+        {
+          "target": "n0045",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the derivative of the lifted scaled slice is s ↦ b · data′((b s)⁺) (XSB.deriv_radialScale)"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the derivative bound O(s⁻⁴) composed with s ↦ b s (XSB.bigO_scale with hdata.2), times the constant b"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data",
+      "source_quantifiers": "for each b with hb, each data with hdata",
+      "source_conclusion": "IsDecaySlice (radialScale b data): h′(0, r) = h(0, br) is again C¹ on [0,∞), O(r⁻³), with ∂_r h′(0, r) = O(r⁻⁴) (admissible data for \"the above\", p. 360)",
+      "constant_scope": "the O-constants change by powers of b (inside IsDecaySlice, not exported)",
+      "declaration": "Christodoulou.Bondi.isDecaySlice_radialScale",
+      "file": "Christodoulou/Frozen/Bondi/IsDecaySliceRadialScale.lean"
+    },
+    {
+      "id": "n0044",
+      "kind": "step",
+      "title": "Positive scaling preserves an O(sⁿ) bound at +∞: f = O(sⁿ) ⇒ f(b s) = O(sⁿ), b > 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0048"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0048",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "hf composed with s ↦ b s, which tends to +∞"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; f : ℝ → ℝ; n : ℤ; hf : f =O[atTop] (s ↦ sⁿ)",
+      "source_quantifiers": "for each b, f, n with the hypotheses",
+      "source_conclusion": "(s ↦ f(b s)) =O[atTop] (s ↦ sⁿ)",
+      "constant_scope": "the O-constant is multiplied by bⁿ"
+    },
+    {
+      "id": "n0045",
+      "kind": "step",
+      "title": "Chain rule for the radial scaling (two-sided derivative of the lifted slice): ∂_s[h((b s)⁺)] = b · ∂_s[h(s⁺)] at b s",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0042",
+        "n0056"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the lifted scaled slice radialScale b h (s⁺) = h((b s)⁺) (XSB.lift_radialScale, Real.toNNReal_mul)"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the derivative of f(b ·) is b f′(b ·) (the factor a of \"a ∂h/∂r\")"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0; h : C(ℝ≥0, ℝ); s : ℝ",
+      "source_quantifiers": "for each b, h and s",
+      "source_conclusion": "deriv (t ↦ radialScale b h (t⁺)) s = b · deriv (t ↦ h(t⁺)) (b s)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0046",
+      "kind": "step",
+      "title": "Positive radial scaling preserves IsSlice: C¹ on [0,∞) and O(r⁻³)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0020",
+        "n0042",
+        "n0049",
+        "n0044"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the hypothesis and the conclusion are the sealed IsSlice (C¹ on [0,∞) and O(r⁻³))"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the conclusion is about radialScale b h, lifted as h((b s)⁺)"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "C¹ on Ici 0 by composition with the linear map s ↦ b s, which maps Ici 0 into Ici 0"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the O(s⁻³) clause composed with s ↦ b s"
+        }
+      ],
+      "source_hypotheses": "b : ℝ≥0 with hb : 0 < b; h : C(ℝ≥0, ℝ) with hh : IsSlice h",
+      "source_quantifiers": "for each b, h with the hypotheses",
+      "source_conclusion": "IsSlice (radialScale b h)",
+      "constant_scope": "the O(r⁻³) constant is multiplied by b⁻³"
+    },
+    {
+      "id": "n0047",
+      "kind": "claim",
+      "title": "If d₀ < δ there is a scale a > 0 whose scale-a size is < δ (exists_scaledInitialSize_lt, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0021",
+        "n0026",
+        "n0017",
+        "n0057"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the hypothesis is scaleInvariantSize data hdata < δ, an iInf over the positive scales"
+        },
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the conclusion is about scaledInitialSize a ha data hdata"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "the binder hdata"
+        },
+        {
+          "target": "n0057",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+          "rationale": "⨅ < δ over the nonempty index {a > 0} (witness ⟨1, zero_lt_one⟩) gives a scale with value < δ"
+        }
+      ],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), the initial slice h(0, ·), with hdata : IsDecaySlice data; δ : ℝ with h : scaleInvariantSize data hdata < δ",
+      "source_quantifiers": "for each data with hdata, each δ with h; then ∃ a, ∃ ha",
+      "source_conclusion": "∃ a : ℝ≥0, ∃ ha : 0 < a, scaledInitialSize a ha data hdata < δ: the source passage",
+      "constant_scope": "a is existential and depends on the data and δ",
+      "declaration": "Christodoulou.Bondi.exists_scaledInitialSize_lt",
+      "file": "Christodoulou/Frozen/Bondi/ExistsScaledInitialSizeLt.lean"
+    },
+    {
+      "id": "n0048",
+      "kind": "external",
+      "title": "A big-O relation composes with a map tending to the filter",
+      "statement_source": "external:mathlib#Asymptotics.IsBigO.comp_tendsto",
+      "proof_source": "external:mathlib#Asymptotics.IsBigO.comp_tendsto",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f =O[l] g; k tends from l′ to l",
+      "source_quantifiers": "for all f, g, k, l and l′",
+      "source_conclusion": "(f ∘ k) =O[l′] (g ∘ k)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0049",
+      "kind": "external",
+      "title": "Composition of C^n maps on sets",
+      "statement_source": "external:mathlib#ContDiffOn.comp",
+      "proof_source": "external:mathlib#ContDiffOn.comp",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g C^n on t; f C^n on s; f maps s into t",
+      "source_quantifiers": "for all g, f, s, t, n",
+      "source_conclusion": "g ∘ f is C^n on s",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0050",
+      "kind": "external",
+      "title": "Reindexing an infimum along a surjection",
+      "statement_source": "external:mathlib#Function.Surjective.iInf_congr",
+      "proof_source": "external:mathlib#Function.Surjective.iInf_congr",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "h : ι → ι′ surjective; f (i) = g (h i) for every i",
+      "source_quantifiers": "for all f, g and h",
+      "source_conclusion": "⨅ i, f i = ⨅ y, g y",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0051",
+      "kind": "external",
+      "title": "One-dimensional change of variables on a measurable set",
+      "statement_source": "external:mathlib#MeasureTheory.integral_image_eq_integral_abs_deriv_smul",
+      "proof_source": "external:mathlib#MeasureTheory.integral_image_eq_integral_abs_deriv_smul",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "s measurable; f has derivative f′ within s at every point of s; f injective on s",
+      "source_quantifiers": "for all s, f, f′ and g",
+      "source_conclusion": "∫ x in f '' s, g x = ∫ x in s, abs(f′ x) • g(f x)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0052",
+      "kind": "external",
+      "title": "The supremum of a set of nonnegative reals is nonnegative",
+      "statement_source": "external:mathlib#Real.sSup_nonneg",
+      "proof_source": "external:mathlib#Real.sSup_nonneg",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "every element of s is ≥ 0",
+      "source_quantifiers": "for all s : Set ℝ",
+      "source_conclusion": "0 ≤ sSup s (also when s is empty or unbounded)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0053",
+      "kind": "external",
+      "title": "The image of a closed right ray under multiplication by a positive constant",
+      "statement_source": "external:mathlib#Set.image_mul_left_Ici",
+      "proof_source": "external:mathlib#Set.image_mul_left_Ici",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "G₀ a group with zero with a partial order and PosMulReflectLT (e.g. ℝ); 0 < a",
+      "source_quantifiers": "for all a and b",
+      "source_conclusion": "(a * ·) '' Ici b = Ici (a * b)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0054",
+      "kind": "external",
+      "title": "The indexed infimum is bounded by each value, for a range bounded below",
+      "statement_source": "external:mathlib#ciInf_le",
+      "proof_source": "external:mathlib#ciInf_le",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a conditionally complete lattice; BddBelow (range f)",
+      "source_quantifiers": "for all f and i",
+      "source_conclusion": "⨅ j, f j ≤ f i",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0055",
+      "kind": "external",
+      "title": "One-sided chain rule for a linear rescaling of the argument",
+      "statement_source": "external:mathlib#derivWithin_comp_mul_left",
+      "proof_source": "external:mathlib#derivWithin_comp_mul_left",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a nontrivially normed field; c a scalar; f a function; s a set",
+      "source_quantifiers": "for all c, f, s and x",
+      "source_conclusion": "derivWithin (y ↦ f(c y)) s x = c • derivWithin f (c • s) (c x)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0056",
+      "kind": "external",
+      "title": "Chain rule for a linear rescaling of the argument",
+      "statement_source": "external:mathlib#deriv_comp_mul_left",
+      "proof_source": "external:mathlib#deriv_comp_mul_left",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a nontrivially normed field; c a scalar; f a function",
+      "source_quantifiers": "for all c, f and x",
+      "source_conclusion": "deriv (y ↦ f(c y)) x = c • deriv f (c x)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0057",
+      "kind": "external",
+      "title": "A strict upper bound on the indexed infimum is beaten by some value",
+      "statement_source": "external:mathlib#exists_lt_of_ciInf_lt",
+      "proof_source": "external:mathlib#exists_lt_of_ciInf_lt",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a conditionally complete linear order; a nonempty index type; ⨅ i, f i < b",
+      "source_quantifiers": "for all f and b",
+      "source_conclusion": "∃ i, f i < b",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0058",
+      "kind": "external",
+      "title": "Interval integrals of functions equal on the interval are equal",
+      "statement_source": "external:mathlib#intervalIntegral.integral_congr",
+      "proof_source": "external:mathlib#intervalIntegral.integral_congr",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f = g on uIcc a b",
+      "source_quantifiers": "for all f, g, a, b, μ",
+      "source_conclusion": "∫_a^b f = ∫_a^b g",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0059",
+      "kind": "external",
+      "title": "A uniform lower bound bounds the indexed infimum",
+      "statement_source": "external:mathlib#le_ciInf",
+      "proof_source": "external:mathlib#le_ciInf",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a conditionally complete lattice; a nonempty index type; c ≤ f i for every i",
+      "source_quantifiers": "for all f and c",
+      "source_conclusion": "c ≤ ⨅ i, f i",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0060",
+      "kind": "external",
+      "title": "Linear change of variables s = rθ in an integral over [0,r]",
+      "statement_source": "external:standard-analysis#integral-linear-substitution",
+      "proof_source": "external:standard-analysis#integral-linear-substitution",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "r > 0; f continuous on [0,r]",
+      "source_quantifiers": "for all r > 0, for all f",
+      "source_conclusion": "∫₀^r f(s) ds = r ∫₀¹ f(rθ) dθ",
+      "constant_scope": "none"
+    }
+  ],
+  "coverage": [
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0008",
+        "n0013",
+        "n0004",
+        "n0005"
+      ],
+      "reason": "the source passage: for the sealed classical class , through the strip covariance.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0016",
+        "n0042"
+      ],
+      "reason": "(4.13) h′(u, r) = h(u/a, r/a): fieldScale a⁻¹ (, multiplicative form); its slices are radialScale.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0012",
+        "n0010",
+        "n0011",
+        "n0007",
+        "n0006",
+        "n0001",
+        "n0003",
+        "n0002",
+        "n0058",
+        "n0060",
+        "n0051"
+      ],
+      "reason": "h̄′(u, r) = h̄(u/a, r/a), ḡ′ = ḡ(u/a, r/a), g′ = g(u/a, r/a) (the first printed without the prime, transcriber's note ): the mean, g and ḡ laws, unfrozen helpers of .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(4.14) m′(u, r) = a m(u/a, r/a): OPEN, (; m is not defined in the formalization). Not formalized.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(4.15) M′(u) = a M(u/a): OPEN, (; the Bondi mass M(u) is not defined). Not formalized.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0027",
+        "n0017",
+        "n0020"
+      ],
+      "reason": "the source passage: the data class IsDecaySlice of theorem3_analytic .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0021",
+        "n0026",
+        "n0023",
+        "n0025",
+        "n0022",
+        "n0024",
+        "n0018",
+        "n0052",
+        "n0059",
+        "n0054"
+      ],
+      "reason": "d₀ := inf_{a>0} sup_{r≥0} {(1 + r/a)³ abs(h(0, r)) + (1 + r/a)⁴ abs(a ∂h/∂r(0, r))}: scaledInitialSize (, the inner sup, literal, a > 0 a binder) and scaleInvariantSize (, the iInf over the positive scales) ; the carrier of the iInf is never junk (the carrier step); 0 ≤ d₀ ≤ d at a = 1 (, , not printed); the never-junk facts of the inner sup (scaledInitialSize_isLUB, scaledInitialSize_eq_sSup) are the non-root XSZ helpers disclosed in the header, audited in Part A.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0027",
+        "n0030",
+        "n0031",
+        "n0004",
+        "n0038",
+        "n0037",
+        "n0032"
+      ],
+      "reason": "the source passage: theorem3_analytic (δ = smallDataDelta x₁ as in theorem3_unscaled, ; ∀ T, IsClassicalSolution T H, ; the trace H(0, r) = data r). FORMALIZED (the analytic conclusion).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0027",
+        "n0028",
+        "n0029",
+        "n0036"
+      ],
+      "reason": "abs(h(u, r)) ≤ C(1 + u + r)⁻³, abs(∂h/∂r(u, r)) ≤ C(1 + u + r)⁻⁴: theorem3_analytic with ∃ C , the explicit constants in the unfrozen helper. FORMALIZED.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"The corresponding spacetime is timelike and null geodesically complete toward the future\": OPEN, deferred (; no spacetime metric or geodesics are formalized; not proved in the paper, transcriber's note ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 351)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "M₁ := lim_{u→∞} M(u) = 0: OPEN, (; the Bondi mass is not defined; not proved in the paper, transcriber's note ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "\"The quantity d₀ is a norm for the initial data\": , STATED, not formalized, OPEN (; the triangle inequality is not evident, an infimum of norms need not be subadditive).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0033",
+        "n0034",
+        "n0035",
+        "n0050"
+      ],
+      "reason": "\"which is invariant under the scaling group (see Sect. 4)\": (, INCLUDED), by reindexing the positive scales a ↦ a b.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0031"
+      ],
+      "reason": "\"The proof of Theorem 3 is based on two lemmas\" (Lemmas 4 and 5): re-inventoried; they enter through the imported theorem3_unscaled (their nodes are in https://doi.org/10.1007/BF01205930 and https://doi.org/10.1007/BF01205930).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0038",
+        "n0032",
+        "n0031"
+      ],
+      "reason": "δ := max_{x ∈ [0, x₁]} G(x): re-inventoried; smallDataDelta x₁, the δ of theorem3_unscaled and of theorem3_analytic .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0031",
+        "n0019"
+      ],
+      "reason": "the source passage: re-inventoried; inside the imported theorem3_unscaled (the witness anchor and its route are in https://doi.org/10.1007/BF01205930 and https://doi.org/10.1007/BF01205930).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0031"
+      ],
+      "reason": "Lemma 4, Lemma 5, \"the argument of Lemma 3\" and \"the argument in the proof of Theorem 1\": re-inventoried; the unscaled analytic core, consumed only through the FROZEN theorem3_unscaled (its nodes are in https://doi.org/10.1007/BF01205930).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "SUPERSEDED, not formalized, OPEN (; of ): the printed Theorem-1 steps (a)-(e) with (7.76) and that \"the argument in the proof of Theorem 1\" invokes; theorem3_unscaled uses the alternative argument (https://doi.org/10.1007/BF01205930).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0031",
+        "n0004"
+      ],
+      "reason": "\"Thus h is a global classical solution\" (for d < δ): re-inventoried; the conclusion ∀ T, IsClassicalSolution T H of theorem3_unscaled (strip gluing through the sealed theorem2_of_memXBall, https://doi.org/10.1007/BF01205930).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "(the between the uniform tail decay of ∂_r h in Theorem 2's hypothesis and the global weighted bound), which the print's global gluing would touch: NOT formalized, OPEN; neither assumed nor used (the gluing uses the X-ball form of Theorem 2, https://doi.org/10.1007/BF01205930).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0027",
+        "n0021",
+        "n0017"
+      ],
+      "reason": "the source passage: the hypothesis scaleInvariantSize data hdata < δ of theorem3_analytic.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0047",
+        "n0026",
+        "n0057"
+      ],
+      "reason": "the source passage: (the scale-a size of ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "definition",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0042",
+        "n0043",
+        "n0046",
+        "n0045",
+        "n0044",
+        "n0056",
+        "n0048",
+        "n0049"
+      ],
+      "reason": "the source passage: radialScale a data ; it is admissible data (, ; implicit in the print).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0039",
+        "n0041",
+        "n0040",
+        "n0018",
+        "n0055",
+        "n0053"
+      ],
+      "reason": "d′ := sup_{r≥0} {(1 + r)³ abs(h′(0, r)) + (1 + r)⁴ abs(∂h′/∂r(0, r))} = sup_{r≥0} {(1 + r/a)³ abs(h(0, r)) + (1 + r/a)⁴ abs(a ∂h/∂r(0, r))}: by the change of radius r ↦ ar with the one-sided chain rule at r = 0 (the second equality printed after a line break, transcriber's note ).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0030"
+      ],
+      "reason": "\"Thus we have d′ < δ\": the rewrite by inside the explicit helper.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0030",
+        "n0031"
+      ],
+      "reason": "the source passage: theorem3_unscaled applied to radialScale a data (with and ) in the explicit helper; the X′ membership of h′ is not carried to H .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0030",
+        "n0008",
+        "n0013",
+        "n0014",
+        "n0009",
+        "n0016",
+        "n0042",
+        "n0056"
+      ],
+      "reason": "the source passage: H := fieldScale a⁻¹ H′, classical on every strip by at b = a⁻¹, with the trace from and , in the explicit helper.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0028",
+        "n0029",
+        "n0015",
+        "n0040",
+        "n0055"
+      ],
+      "reason": "the source passage (∂h printed for ∂h/∂r, transcriber's note ): the decay transfer through and the denominator comparison, C = max(8x·max(1, a)³, (16x/a)·max(1, a)⁴) .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "claim",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 360)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: NOT formalized, OPEN (the geodesic completeness deferred, M₁ = 0 ; transcriber's note : not proved in the paper).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#ContDiffOn.comp",
+      "disposition": "NODE",
+      "nodes": [
+        "n0049"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#intervalIntegral.integral_congr",
+      "disposition": "NODE",
+      "nodes": [
+        "n0058"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#integral-linear-substitution",
+      "disposition": "NODE",
+      "nodes": [
+        "n0060"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#deriv_comp_mul_left",
+      "disposition": "NODE",
+      "nodes": [
+        "n0056"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#derivWithin_comp_mul_left",
+      "disposition": "NODE",
+      "nodes": [
+        "n0055"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Set.image_mul_left_Ici",
+      "disposition": "NODE",
+      "nodes": [
+        "n0053"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Asymptotics.IsBigO.comp_tendsto",
+      "disposition": "NODE",
+      "nodes": [
+        "n0048"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#MeasureTheory.integral_image_eq_integral_abs_deriv_smul",
+      "disposition": "NODE",
+      "nodes": [
+        "n0051"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Real.sSup_nonneg",
+      "disposition": "NODE",
+      "nodes": [
+        "n0052"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#le_ciInf",
+      "disposition": "NODE",
+      "nodes": [
+        "n0059"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#ciInf_le",
+      "disposition": "NODE",
+      "nodes": [
+        "n0054"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#exists_lt_of_ciInf_lt",
+      "disposition": "NODE",
+      "nodes": [
+        "n0057"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Function.Surjective.iInf_congr",
+      "disposition": "NODE",
+      "nodes": [
+        "n0050"
+      ],
+      "reason": "Mathlib input of the (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    }
+  ]
+}

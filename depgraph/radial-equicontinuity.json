@@ -1,0 +1,3321 @@
+{
+  "schema_version": 1,
+  "title": "radial equicontinuity",
+  "source": "https://doi.org/10.1007/BF01205930",
+  "semantics": "Edges point to prerequisites; dependencies are conjunctive; one alternative route suffices. Reviewed source topology, not a kernel proof trace.",
+  "conventions": "Carriers, hypotheses, quantifiers and constant scope are recorded per node and in the corresponding Lean declarations.",
+  "roots": [
+    "n0025",
+    "n0024"
+  ],
+  "standing_assumptions": [],
+  "nodes": [
+    {
+      "id": "n0001",
+      "kind": "definition",
+      "title": "The metric function g = exp[−4π ∫_r^∞ (h − h̄)² ds/s] on IsSlice slices, (3.10)–(3.11) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0023"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g is defined only on slices h with IsSlice h, passed as the argument hh"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh, and the value does not depend on which hh is supplied . r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "g(r) := exp[−4π ∫_r^∞ (h(s) − h̄(s))² ds/s], the literal body of (3.11), with the integral over the open half-line (r,∞). (3.10) names e^{ν+λ} = g; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g",
+      "file": "Christodoulou/Frozen/Bondi/G.lean"
+    },
+    {
+      "id": "n0002",
+      "kind": "claim",
+      "title": "For r > 0, ∂g/∂r = 4π g (h − h̄)²/r (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the claim concerns the lift of the defined g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r > 0. The derivative is two-sided, used only at r > 0 (endpoint convention, )",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞) with r > 0",
+      "source_conclusion": "the real lift s ↦ g(s⁺) has derivative 4π g(r)(h(r) − h̄(r))²/r at r",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivAt_g",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivAtG.lean"
+    },
+    {
+      "id": "n0003",
+      "kind": "claim",
+      "title": "g > 0 (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "g(r) is exp of the real number −4π A(r)"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "0 < g(r). This is implicit in (3.10)–(3.11): g is an exponential, e^{ν+λ}",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g_pos",
+      "file": "Christodoulou/Frozen/Bondi/GPos.lean"
+    },
+    {
+      "id": "n0004",
+      "kind": "definition",
+      "title": "g(u,r) of (3.11) for fields in the X-ball, at the clamped time min(u,u₀) (gX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053",
+        "n0054",
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "gX takes the proof hH of MemXBall u₀ x H as its argument: g_n is the g-function of an element h_n of X"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the body passes hH.isSlice (min u u₀) (min_le_right u u₀) as the slice-class argument of g , the pattern in which gMap passes continuous_g"
+        },
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the body is the sealed g of (3.11) applied to the slice H.curry (min u u₀)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "gX(u,r) := g(H(min(u,u₀),·))(r), the sealed g of (3.11) for the slice H.curry (min u u₀), with the slice-class proof MemXBall.isSlice of hH at min(u,u₀) ≤ u₀ . On the strip u ≤ u₀ it is \"the g-function corresponding to h_n\" of (7.2) for h_n = H; for u > u₀ it repeats the slice at u₀ (formal clamp, no source content)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gX",
+      "file": "Christodoulou/Frozen/Bondi/GX.lean"
+    },
+    {
+      "id": "n0005",
+      "kind": "definition",
+      "title": "ḡ, the radial mean of g, (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0007",
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the mean is taken of the continuous radial function gMap"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the bar in (3.12) is the mean notation of (3.7), \"used throughout\", so ḡ is the sealed mean applied to g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "ḡ(r) := mean(gMap)(r), the mean (3.7) of g: (1/r)∫₀^r g(r')dr' for r > 0 and g(0) at r = 0 . (3.12) names e^{ν−λ} = ḡ; ν and λ themselves are not formalized",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBar",
+      "file": "Christodoulou/Frozen/Bondi/GBar.lean"
+    },
+    {
+      "id": "n0006",
+      "kind": "definition",
+      "title": "ḡ(u,r) of (3.12) for fields in the X-ball, the coefficient of (5.1), at the clamped time min(u,u₀) (gBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "gBarX takes the proof hH of MemXBall u₀ x H as its argument: ḡ_n is formed for an element h_n of X"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "gBarX(u,r) := ḡ(H(min(u,u₀),·))(r), the sealed ḡ = mean of g of (3.12) for the slice H.curry (min u u₀), with the slice-class proof MemXBall.isSlice of hH at min(u,u₀) ≤ u₀ : the coefficient ḡ(u,r) of the characteristic equation (5.1). For u > u₀ it repeats the slice at u₀ (formal clamp, no source content)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gBarX",
+      "file": "Christodoulou/Frozen/Bondi/GBarX.lean"
+    },
+    {
+      "id": "n0007",
+      "kind": "definition",
+      "title": "gMap: g as a continuous radial function on [0,∞), the representation needed to form ḡ in (3.12) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001",
+        "n0023"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the underlying function of gMap is the defined g of (3.11), whose mean is ḡ"
+        },
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "gMap is defined only on slices with IsSlice h, and passes hh to g and continuous_g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞), in the slice class IsSlice (carrier ). The carrier is restricted through the proof argument hh",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h",
+      "source_conclusion": "gMap is the continuous map [0,∞) → ℝ, r ↦ g(r), i.e. g of (3.11) bundled with its continuity. It adds no source content beyond g; it exists so that the mean ḡ of (3.12) can be formed",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.gMap",
+      "file": "Christodoulou/Frozen/Bondi/GMap.lean"
+    },
+    {
+      "id": "n0008",
+      "kind": "definition",
+      "title": "Radial mean f̄(r) = r⁻¹∫₀^r f, with centre value f(0) (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 342)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f is one fixed-u slice of a function of (u,r), regarded as a continuous real function of r on [0,∞) (, ; domain 0 ≤ r < ∞ from p. 339)",
+      "source_quantifiers": "for each continuous f on [0,∞) and each r in [0,∞)",
+      "source_conclusion": "f̄(r) := (1/r)∫₀^r f(r')dr' for r > 0, and f̄(0) := f(0) (centre value, p. 344, )",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.mean",
+      "file": "Christodoulou/Frozen/Radial/Mean.lean"
+    },
+    {
+      "id": "n0009",
+      "kind": "definition",
+      "title": "β := ∂_r h̄ = (h − h̄)/r for r > 0, with the centre value β(0) = ½∂_r h(0) (derivHBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0055"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the binder hH : MemXBall u₀ x H ; the centre branch uses MemXBall's own convention for ∂_r H, the derivative within [0,∞) of the real lift"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the r > 0 branch is (h − h̄)/r with h̄ = hBarX u₀ H u r"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "derivHBarX hH u r := if r = 0 then derivWithin (s ↦ H(min u u₀, s⁺)) (Ici 0) 0 / 2 (half the one-sided ∂_r h(0)) else (H(min u u₀, r) − hBarX u₀ H u r)/r: the right side of (3.8) for f = h, h := H(min(u,u₀), ·), the time-clamped slice , with the continuous extension ½∂_r h(0) at the centre (; not a zero fallback). The derivative characterization is the separate root hasDerivWithinAt_hBarX",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.derivHBarX",
+      "file": "Christodoulou/Frozen/Bondi/DerivHBarX.lean"
+    },
+    {
+      "id": "n0010",
+      "kind": "step",
+      "title": "The representation: β(u, r) = ∫₀¹ t ∂_r h(tr) dt for every r ≥ 0, with β(u, 0) = b/2",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0009",
+        "n0080",
+        "n0066",
+        "n0053",
+        "n0088",
+        "n0011",
+        "n0083",
+        "n0082",
+        "n0055"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "both branches of the definition are unfolded"
+        },
+        {
+          "target": "n0080",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "case r = 0: ∫₀¹ t b dt = b/2, the centre branch"
+        },
+        {
+          "target": "n0066",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "case r > 0: s(h − h̄) has the derivative s ∂_r h(s) at s > 0 and is continuous"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "C¹ slices: the two-sided ∂_r h(s) at s > 0"
+        },
+        {
+          "target": "n0088",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the within-[0,∞) derivative at s > 0 is two-sided"
+        },
+        {
+          "target": "n0011",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "s ↦ s ∂_r h(s) is continuous on [0,r], hence interval integrable"
+        },
+        {
+          "target": "n0083",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "FTC: ∫₀ʳ s ∂_r h(s) ds = r(h(r) − h̄(r))"
+        },
+        {
+          "target": "n0082",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the substitution s = r t turns ∫₀ʳ into r² ∫₀¹ t ∂_r h(rt) dt"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "case r > 0: the branch (h − h̄)/r with h̄ = hBarX"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "derivHBarX hH u r = ∫₀¹ t · derivWithin (s ↦ H(min u u₀, s⁺)) (Ici 0) (r t)⁺ dt",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0011",
+      "kind": "step",
+      "title": "Joint continuity of the clamped ∂_r H: (u, r) ↦ ∂_r H(min(u, u₀), r) on the quadrant",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0069"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the second X-ball clause: ∂_r H is continuous on the closed strip [0,u₀] × [0,∞)"
+        },
+        {
+          "target": "n0069",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "composed with the continuous (u, r) ↦ (min(u,u₀), r), which maps into the strip"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H",
+      "source_conclusion": "(u, r) ↦ derivWithin (s ↦ H(min u u₀, s⁺)) (Ici 0) r is continuous on ℝ≥0 × ℝ≥0",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0012",
+      "kind": "claim",
+      "title": "Joint continuity of β = ∂_r h̄ on the quadrant, including the centre (continuous_derivHBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the statement is about derivHBarX hH"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H",
+      "source_conclusion": "(u, r) ↦ derivHBarX hH u r is continuous on ℝ≥0 × ℝ≥0 (product topology), including r = 0 and u ≥ u₀",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.continuous_derivHBarX",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousDerivHBarX.lean"
+    },
+    {
+      "id": "n0013",
+      "kind": "claim",
+      "title": "h̄ is differentiable in r within [0, ∞) with derivative β at every r ≥ 0, one-sided at the centre (hasDerivWithinAt_hBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0055",
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the differentiated function is s ↦ hBarX u₀ H u s⁺"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the derivative value is derivHBarX hH u r"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "s ↦ hBarX u₀ H u s⁺ (real lift through Real.toNNReal) has the derivative derivHBarX hH u r within [0,∞) at r : (3.8) ∂_r h̄ = (h − h̄)/r for r > 0 and ∂_r h̄(0) = ½∂_r h(0) at the centre; no deriv or derivWithin value in the conclusion",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_hBarX",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtHBarX.lean"
+    },
+    {
+      "id": "n0014",
+      "kind": "lemma",
+      "title": "Second identity of (3.8): ∂_r f̄ = (f − f̄)/r for r > 0 (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the identity concerns the defined f̄"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) ; r > 0",
+      "source_quantifiers": "for all continuous f on [0,∞), for all r > 0",
+      "source_conclusion": "f̄ has (two-sided) derivative (f(r) − f̄(r))/r at r",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.hasDerivAt_mean",
+      "file": "Christodoulou/Frozen/Radial/HasDerivAtMean.lean"
+    },
+    {
+      "id": "n0015",
+      "kind": "claim",
+      "title": "Continuity of f̄ on [0,∞), including the centre (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "the claim concerns the defined function f̄"
+        }
+      ],
+      "source_hypotheses": "f continuous on [0,∞) (, ; the source requires continuity in r at r = 0)",
+      "source_quantifiers": "for all continuous f on [0,∞)",
+      "source_conclusion": "f̄ is continuous on [0,∞); in particular f̄(r) → f(0) as r → 0⁺ (reconstructed from [f − f̄]_{r=0} = 0)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Radial.continuous_mean",
+      "file": "Christodoulou/Frozen/Radial/ContinuousMean.lean"
+    },
+    {
+      "id": "n0016",
+      "kind": "definition",
+      "title": "∂_r ḡ(u,r) = (g − ḡ)/r for r > 0, with the explicit centre value 0 (derivGBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "derivGBarX takes the proof hH of MemXBall u₀ x H as its argument and passes it to gX and gBarX"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "derivGBarX(u,r) := 0 if r = 0, and (gX(u,r) − gBarX(u,r))/r if r > 0: the right side of the second identity of (3.8) applied to f = g, i.e. the ∂ḡ/∂r of p. 346 and the coefficient (g − ḡ)/r of (5.5); the centre value 0 is an explicit branch , not Lean's 1/0 = 0. That it is the radial derivative of ḡ is the separate root P.346.gBarX.deriv",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.derivGBarX",
+      "file": "Christodoulou/Frozen/Bondi/DerivGBarX.lean"
+    },
+    {
+      "id": "n0017",
+      "kind": "claim",
+      "title": "∂_r ḡ ≥ 0: ḡ is nondecreasing in r (derivGBarX_nonneg)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0016"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 344)",
+          "rationale": "0 at r = 0 and (gX(u,r) − gBarX(u,r))/r for r > 0"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "0 ≤ derivGBarX(u,r). Reconstructed from ḡ ≤ g (p. 344); used later for ζ ≤ 1 and (5.8) (p. 346)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.derivGBarX_nonneg",
+      "file": "Christodoulou/Frozen/Bondi/DerivGBarXNonneg.lean"
+    },
+    {
+      "id": "n0018",
+      "kind": "claim",
+      "title": "g ≤ 1 (the upper half of ḡ ≤ g ≤ 1, p. 346)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0001"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0001",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "the parenthetical (see (3.11)) points to the defining formula of g"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u slice with IsSlice h ; r ≥ 0",
+      "source_quantifiers": "for each continuous h on [0,∞) with IsSlice h, for each r in [0,∞)",
+      "source_conclusion": "g(r) ≤ 1. The source writes \"ḡ ≤ g ≤ 1 (see (3.11))\"; only the g ≤ 1 part is in this anchor, and ḡ ≤ g belongs to",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.g_le_one",
+      "file": "Christodoulou/Frozen/Bondi/GLeOne.lean"
+    },
+    {
+      "id": "n0019",
+      "kind": "definition",
+      "title": "Theorem-1 data class IsDecaySlice: IsSlice and ∂h/∂r = O(r⁻⁴)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0023"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the data class is the conjunction of the slice class (first two Theorem 1 conditions) and the O(r⁻⁴) bound on ∂h/∂r"
+        }
+      ],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsDecaySlice h holds iff IsSlice h and ∂h/∂r(r) = O(r⁻⁴) as r → ∞; under",
+      "constant_scope": "none (the O-constant and threshold are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsDecaySlice",
+      "file": "Christodoulou/Frozen/Bondi/IsDecaySlice.lean"
+    },
+    {
+      "id": "n0020",
+      "kind": "definition",
+      "title": "The iterates h_n of (7.2)-(7.3) as a sequence in the X-ball subtype (xBallIterate, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0022",
+        "n0019",
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0022",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the binder hT : u₀ < stepEta x d, passed to"
+        },
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the binder hdata : IsDecaySlice data"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the codomain is the subtype of fields with MemXBall u₀ x"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; d, x real with hd : 0 ≤ d, hx : 2d < x and hT : u₀ < stepEta x d; data : C(ℝ≥0, ℝ) with hdata : IsDecaySlice data (C¹ on [0,∞), data = O(r⁻³), ∂_r data = O(r⁻⁴); ); hbound: (1 + r)³ abs(data r) + (1 + r)⁴ abs(data′(r)) ≤ d for every r ≥ 0, with data′ := derivWithin (s ↦ data(s⁺)) (Ici 0), the one-sided ∂_r data at 0 (the weighted sum of (7.4), d an upper bound of its supremum, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for all real d, x with hd, hx and hT, for each continuous data with proofs hdata of IsDecaySlice data and hbound of the weighted sum bound by d",
+      "source_conclusion": "xBallIterate hd hx hT data hdata hbound : ℕ → {H : C(ℝ≥0 × ℝ≥0, ℝ) // MemXBall u₀ x H} := Nat.rec ⟨constantDataField data, initial_memXBall hd hx data hdata hbound⟩ (fun _ b ↦ ⟨linearStepMap b.property data, linearStepMap_memXBall hd hx hT data hdata hbound b.property⟩): h₀ of (7.3) and h_{n+1} the linear step of h_n with the same data at every step",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.xBallIterate",
+      "file": "Christodoulou/Frozen/Bondi/XBallIterate.lean"
+    },
+    {
+      "id": "n0021",
+      "kind": "claim",
+      "title": "The recursion of the iterates: h₀ = h(0,·), h_{n+1} = linear step of h_n, and h_n(0, r) = data r (xBallIterate_rec, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0020",
+        "n0060",
+        "n0040"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the statement is about xBallIterate; the zero and successor equations hold by its Nat.rec body"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the zero equation and the initial trace at n = 0: constantDataField data (0, r) = data r by its body"
+        },
+        {
+          "target": "n0040",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the successor equation names linearStepMap"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; d, x real with hd : 0 ≤ d, hx : 2d < x and hT : u₀ < stepEta x d; data : C(ℝ≥0, ℝ) with hdata : IsDecaySlice data (C¹ on [0,∞), data = O(r⁻³), ∂_r data = O(r⁻⁴); ); hbound: (1 + r)³ abs(data r) + (1 + r)⁴ abs(data′(r)) ≤ d for every r ≥ 0, with data′ := derivWithin (s ↦ data(s⁺)) (Ici 0), the one-sided ∂_r data at 0 (the weighted sum of (7.4), d an upper bound of its supremum, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for all real d, x with hd, hx and hT, for each continuous data with proofs hdata of IsDecaySlice data and hbound of the weighted sum bound by d; for every n and every r ≥ 0",
+      "source_conclusion": "(xBallIterate … 0).val = constantDataField data; for every n, (xBallIterate … (n + 1)).val = linearStepMap (xBallIterate … n).property data; for every n and r, (xBallIterate … n).val (0, r) = data r: (7.3), the iteration (7.2) and the common data at u = 0",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.xBallIterate_rec",
+      "file": "Christodoulou/Frozen/Bondi/XBallIterateRec.lean"
+    },
+    {
+      "id": "n0022",
+      "kind": "definition",
+      "title": "The explicit time η(x; d) = min(1, (x − 2d)/(2(1 + C*))) of Lemma 1 (stepEta, , )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "x, d real numbers (no sign premises)",
+      "source_quantifiers": "for all real x, d",
+      "source_conclusion": "stepEta x d := min(1, (x − 2d)/(2(1 + C*))) with L = πx²/12, F = πx³/6, B = πx²/2, D = 7πx³/12, M* = e^L(d + F) and C* = e^{2L}(4dL + F + D + B M*): the η = η(x₁; d) of Lemma 1 made explicit as (roadmap §2.5), a literal formula",
+      "constant_scope": "η depends only on x and d (uniform in u₀, the data, the field and n; ); the constants are those of",
+      "declaration": "Christodoulou.Bondi.stepEta",
+      "file": "Christodoulou/Frozen/Bondi/StepEta.lean"
+    },
+    {
+      "id": "n0023",
+      "kind": "definition",
+      "title": "Slice class IsSlice: h in C¹[0,∞) with h = O(r⁻³) as r → ∞ (sealed )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "h is one fixed-u radial slice, a continuous real function of r on [0,∞) ( /; the source writes the u = 0 slice h(0,r))",
+      "source_quantifiers": "for each continuous h on [0,∞)",
+      "source_conclusion": "IsSlice h holds iff (i) h ∈ C¹[0,∞[ (derivative at r = 0 one-sided within [0,∞), ) and (ii) h(r) = O(r⁻³) as r → ∞; the first two conditions of the Theorem 1 data class ; the condition on ∂h/∂r is not included",
+      "constant_scope": "none (the O-constant and threshold in (ii) are existential and depend only on h)",
+      "declaration": "Christodoulou.Bondi.IsSlice",
+      "file": "Christodoulou/Frozen/Bondi/IsSlice.lean"
+    },
+    {
+      "id": "n0024",
+      "kind": "claim",
+      "title": "Lemma 3: the sequence {∂h_n/∂r} of the iterates is equicontinuous on [0,u₀] × [0,∞), jointly in (u, r) (lemma3, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0022",
+        "n0019",
+        "n0020",
+        "n0021",
+        "n0025",
+        "n0078"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0022",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the premise hT : u₀ < stepEta x₁ d, the hypotheses of Lemma 1"
+        },
+        {
+          "target": "n0019",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the premise hdata : IsDecaySlice data, a binder of xBallIterate"
+        },
+        {
+          "target": "n0020",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the statement is about xBallIterate; its subtype properties are the common ball hb of"
+        },
+        {
+          "target": "n0021",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the zero and successor equations discharge hzero and hstep of"
+        },
+        {
+          "target": "n0025",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "applied to h n := (xBallIterate … n).val: uniform equicontinuity on the strip"
+        },
+        {
+          "target": "n0078",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "uniform equicontinuity on a set implies equicontinuity on it"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; d, x₁ real with hd : 0 ≤ d, hx : 2d < x₁ and hT : u₀ < stepEta x₁ d (the hypotheses of Lemma 1); data : C(ℝ≥0, ℝ) with hdata : IsDecaySlice data and hbound: (1 + r)³ abs(data r) + (1 + r)⁴ abs(derivWithin (s ↦ data(s⁺)) (Ici 0) r) ≤ d for every r ≥ 0 (the weighted sum of (7.4), d an upper bound)",
+      "source_quantifiers": "for each u₀ in [0,∞), for all real d, x₁ with hd, hx and hT, for each continuous data with proofs hdata and hbound",
+      "source_conclusion": "EquicontinuousOn (n ↦ (p ↦ derivWithin (s ↦ h_n(p.1⁺, s⁺)) (Ici 0) p.2)) ([0,u₀] × [0,∞)) with h_n := (xBallIterate hd hx hT data hdata hbound n).val: Lemma 3, {∂h_n/∂r} is equicontinuous, jointly in (u, r) and unweighted , about the sealed canonical iterates",
+      "constant_scope": "the modulus may depend on the data ; no smallness beyond u₀ < stepEta x₁ d, no δ of Lemma 2",
+      "declaration": "Christodoulou.Bondi.lemma3",
+      "file": "Christodoulou/Frozen/Bondi/Lemma3.lean"
+    },
+    {
+      "id": "n0025",
+      "kind": "claim",
+      "title": "The radial derivatives of any linear iteration (7.2)-(7.3) in a common X-ball are uniformly equicontinuous on the closed strip, with no smallness (iterate_deriv_uniformEquicontinuousOn, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0060",
+        "n0040",
+        "n0031",
+        "n0033",
+        "n0050",
+        "n0049",
+        "n0048",
+        "n0051",
+        "n0037",
+        "n0087",
+        "n0077"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the binder hb : MemXBall u₀ x (h n), the common ball"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "hzero : h 0 = constantDataField data; n = 0: h₀ is constant in time, so its radial derivative is ∂_r data at every u"
+        },
+        {
+          "target": "n0040",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "hstep : h (n + 1) = linearStepMap (hb n) data"
+        },
+        {
+          "target": "n0031",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the radial part: for every ε there is η, uniform in n and u ≤ u₀, with abs(q_n(u, r) − q_n(u, r′)) < ε/2 for abs(r − r′) < η"
+        },
+        {
+          "target": "n0033",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the time part: along a characteristic of h_n, q_{n+1} is Lipschitz in time with constant 29πx³/24"
+        },
+        {
+          "target": "n0050",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "for u ≤ v and r′, the characteristic χ of h_n through (v, r′)"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "χ is a characteristic through (v, r′)"
+        },
+        {
+          "target": "n0048",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "its first conjunct χ(v) = r′ identifies the end of the time segment"
+        },
+        {
+          "target": "n0051",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "r′ ≤ χ(u) ≤ r′ + (v − u)/2, so abs(χ(u) − r) ≤ (v − u)/2 + abs(r′ − r) < η"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "x ≥ 0 (XEq.x_nonneg of hb 0), so M = 29πx³/24 ≥ 0 and δ = min(η/2, ε/(2(M + 1))) > 0"
+        },
+        {
+          "target": "n0087",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "UniformEquicontinuousOn on the strip is uniform equicontinuity of the restrictions"
+        },
+        {
+          "target": "n0077",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the metric form: ∀ ε > 0, ∃ δ > 0, dist p p′ < δ → ∀ n, dist < ε (sup distance on ℝ × ℝ)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); data : C(ℝ≥0, ℝ) continuous; h : ℕ → C(ℝ≥0 × ℝ≥0, ℝ) with hb : MemXBall u₀ x (h n) for every n (a common ball), hzero : h 0 = constantDataField data and hstep : h (n + 1) = linearStepMap (hb n) data for every n (the exact recursion, ; no data class and no hdata: C¹ data follows from hb 0 and hzero, ; no smallness, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous data and each sequence h with proofs hb, hzero and hstep",
+      "source_conclusion": "UniformEquicontinuousOn (n ↦ (p ↦ derivWithin (s ↦ h n (p.1⁺, s⁺)) (Ici 0) p.2)) ([0,u₀] × [0,∞)): the radial derivatives ∂_r h_n (one-sided at r = 0) are uniformly equicontinuous, jointly in (u, r), on the closed strip including the centre and the time edges",
+      "constant_scope": "the modulus is uniform in n; it may depend on x, u₀ and the particular data (through the uniform continuity of ∂_r data), not only on its size ; no smallness condition",
+      "declaration": "Christodoulou.Bondi.iterate_deriv_uniformEquicontinuousOn",
+      "file": "Christodoulou/Frozen/Bondi/IterateDerivUniformEquicontinuousOn.lean"
+    },
+    {
+      "id": "n0026",
+      "kind": "step",
+      "title": "Centre-safe a_r modulus (AR): abs(½c(r) − ½c(r′)) ≤ (5π²x⁴/6)ρ + (5πx/3)ω",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0045",
+        "n0032",
+        "n0037",
+        "n0003",
+        "n0018",
+        "n0027",
+        "n0012",
+        "n0085",
+        "n0081",
+        "n0054",
+        "n0004",
+        "n0043"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0045",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "½c = −4π ∫₀¹ t² g(rt)β(rt)² dt + 2π g β² at every r ≥ 0 (, XCoef.deriv2GBarX_eq_integral)"
+        },
+        {
+          "target": "n0032",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(g(r) − g(r′)) ≤ πx² ρ"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(β) ≤ x/2 and x ≥ 0"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "g > 0, so abs(g) = g"
+        },
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "g ≤ 1"
+        },
+        {
+          "target": "n0027",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(β(r) − β(r′)) ≤ ω/2, so abs(gβ²(r) − gβ²(r′)) ≤ (πx⁴/4)ρ + (x/2)ω (the private abs_metric_beta_sub_le)"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "β is jointly continuous, so the integrands are integrable"
+        },
+        {
+          "target": "n0085",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the integral term differs by at most ∫₀¹ t² K = K/3"
+        },
+        {
+          "target": "n0081",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "∫₀¹ t² dt = 1/3"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the slice at min(u,u₀) is in IsSlice, the premise of g_pos and g_le_one"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "gX is g of the slice at min(u,u₀), so g_pos and g_le_one give abs(gX) ≤ 1"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "g is jointly continuous (continuous_gX), so gβ² is continuous and the integrands t²·gβ²(rt) are integrable"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u ≤ u₀; ρ, ω real with hq : abs(q(u, r) − q(u, r′)) ≤ ω whenever abs(r − r′) ≤ ρ, where q(u, ·) := derivWithin (s ↦ H(u, s⁺)) (Ici 0) is the radial derivative of the slice (a modulus hypothesis on q); r, r′ in [0,∞) with abs(r − r′) ≤ ρ",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u, ρ, ω, r, r′ as in the hypotheses",
+      "source_conclusion": "abs(½ deriv2GBarX hH u r − ½ deriv2GBarX hH u r′) ≤ (5π²x⁴/6) ρ + (5πx/3) ω, including the centre",
+      "constant_scope": "the constants 5π²x⁴/6 and 5πx/3 depend only on x"
+    },
+    {
+      "id": "n0027",
+      "kind": "step",
+      "title": "Centre-safe β modulus (AR): a radial modulus (ρ, ω) of ∂_r H transfers to β = ∂_r h̄ with ω/2",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0010",
+        "n0053",
+        "n0067",
+        "n0085",
+        "n0080"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0010",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "β(u, r) = ∫₀¹ t q(u, rt) dt for every r ≥ 0 (, XCoef.derivHBarX_eq_integral), no derivative of q"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "q(u, ·) is continuous on [0,∞) (C¹ slices), so the integrands are integrable"
+        },
+        {
+          "target": "n0067",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "derivWithin of a C¹ function on [0,∞) is continuous there"
+        },
+        {
+          "target": "n0085",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(∫₀¹ t (q(rt) − q(r′t))) ≤ ∫₀¹ t ω, since abs(rt − r′t) ≤ abs(r − r′) ≤ ρ"
+        },
+        {
+          "target": "n0080",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "∫₀¹ t dt = ½"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u ≤ u₀; ρ, ω real with hq : abs(q(u, r) − q(u, r′)) ≤ ω whenever abs(r − r′) ≤ ρ, where q(u, ·) := derivWithin (s ↦ H(u, s⁺)) (Ici 0) is the radial derivative of the slice (a modulus hypothesis on q); r, r′ in [0,∞) with abs(r − r′) ≤ ρ",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u, ρ, ω, r, r′ as in the hypotheses",
+      "source_conclusion": "abs(derivHBarX hH u r − derivHBarX hH u r′) ≤ ω/2, including r = 0 or r′ = 0 (q(0) ≠ 0 allowed)",
+      "constant_scope": "the factor ½ = ∫₀¹ t dt"
+    },
+    {
+      "id": "n0028",
+      "kind": "step",
+      "title": "Elapsed-time spreading of backward characteristics: abs(χ_r(s) − χ_{r′}(s)) ≤ e^{L(t−s)} abs(r − r′)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0052",
+        "n0050",
+        "n0037",
+        "n0086",
+        "n0072"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0052",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "∂χ/∂r₁ = exp(∫_s^t a along χ) within [0,∞)"
+        },
+        {
+          "target": "n0050",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the statement is about the canonical characteristics through (t, r) and (t, r′)"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "0 ≤ a ≤ L"
+        },
+        {
+          "target": "n0086",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(∫_s^t a) ≤ L(t − s)"
+        },
+        {
+          "target": "n0072",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the mean value inequality in r₁ on [0,∞) with the derivative bound e^{L(t−s)}"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; t in [0,u₀]; r, r′ in [0,∞); s in [0,t]",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each t, r, r′, s as in the hypotheses",
+      "source_conclusion": "abs(characteristic hH t r s − characteristic hH t r′ s) ≤ exp(πx²/12 · (t − s)) · abs(r − r′)",
+      "constant_scope": "L = πx²/12; the factor depends only on the elapsed time t − s, not on n (no accumulated e^{nLT})"
+    },
+    {
+      "id": "n0029",
+      "kind": "step",
+      "title": "The radial derivative of a slice in the X-ball is uniformly continuous on [0,∞) (decay at infinity)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0067",
+        "n0068"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the slice is C¹ on [0,∞), and (1 + r)⁴ abs(∂_r H) ≤ x gives abs(∂_r H) ≤ x/(1 + r) → 0"
+        },
+        {
+          "target": "n0067",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "∂_r H(u, ·) is continuous on [0,∞)"
+        },
+        {
+          "target": "n0068",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "a continuous function with a limit at infinity (cocompact) is uniformly continuous"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u ≤ u₀",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u ≤ u₀",
+      "source_conclusion": "r ↦ derivWithin (s ↦ H(u, s⁺)) (Ici 0) r is uniformly continuous on ℝ≥0",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0030",
+      "kind": "step",
+      "title": "The exponential-majorant induction (M): e^{Lt}abs(r − r′) ≤ δ implies abs(q_n(t, r) − q_n(t, r′)) ≤ e^{Jt}(ε + δ) for every n",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0034",
+        "n0036",
+        "n0028",
+        "n0050",
+        "n0049",
+        "n0048",
+        "n0051",
+        "n0060",
+        "n0059",
+        "n0040",
+        "n0053",
+        "n0079",
+        "n0074",
+        "n0037"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0034",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "ψ(s) := q_{n+1}(s, χ(s)) − q_{n+1}(s, χ′(s)) along the characteristics of h_n through (t, r) and (t, r′) has ψ′ = F(χ) − F(χ′)"
+        },
+        {
+          "target": "n0036",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(ψ′) ≤ 2L abs(ψ) + Cρ_s + D ω_n(s, ρ_s), with the induction hypothesis as the modulus of q_n at scale ρ_s"
+        },
+        {
+          "target": "n0028",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "ρ_s := abs(χ(s) − χ′(s)) ≤ e^{L(t−s)} abs(r − r′), and e^{Ls}ρ_s ≤ δ, so the hypothesis of step n applies at time s"
+        },
+        {
+          "target": "n0050",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the canonical characteristics of h_n through (t, r) and (t, r′)"
+        },
+        {
+          "target": "n0049",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "they are characteristics of h_n"
+        },
+        {
+          "target": "n0048",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "χ(t) = r and χ′(t) = r′, so ψ(t) is the difference at time t"
+        },
+        {
+          "target": "n0051",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "χ, χ′ ≥ 0 stay in the strip"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "n = 0 and the initial value: q_0(u, ·) = data′ (h₀ constant in time)"
+        },
+        {
+          "target": "n0059",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "h_{n+1}(0, r) = data r, so ψ(0) = data′(χ(0)) − data′(χ′(0)) and abs(ψ(0)) ≤ ε"
+        },
+        {
+          "target": "n0040",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "hstep: h_{n+1} = linearStepMap (hb n) data, the S of the ψ identity, with values linearStep"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the common ball hb, and C¹ data read off hb 0 with hzero"
+        },
+        {
+          "target": "n0079",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the comparison with the strict supersolution B(s) = e^{Js}(ε + δ): abs(ψ′) ≤ 2L abs(ψ) + (C + D)B < B′ when abs(ψ) = B"
+        },
+        {
+          "target": "n0074",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "ψ is continuous on [0,t]"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "x ≥ 0 (XEq.x_nonneg of hb 0), so C ≥ 0 and J ≥ 0, hence e^{Js} ≥ 1 in the initial value and in the comparison"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x real; data : C(ℝ≥0, ℝ) continuous; h : ℕ → C(ℝ≥0 × ℝ≥0, ℝ) with hb : MemXBall u₀ x (h n) for every n (a common ball), hzero : h 0 = constantDataField data and hstep : h (n + 1) = linearStepMap (hb n) data for every n; ε, δ > 0 with hmod : abs(data′(r) − data′(r′)) ≤ ε whenever abs(r − r′) ≤ δ, data′ := derivWithin (s ↦ data(s⁺)) (Ici 0)",
+      "source_quantifiers": "for each u₀, x, for each continuous data and each sequence h with proofs hb, hzero and hstep, for all ε, δ > 0 with hmod; then for every n, t in [0,u₀] and r, r′ ≥ 0",
+      "source_conclusion": "with L := πx²/12, C := 5π²x⁵/3 + 2πx³, D := 27πx²/8, J := 2L + C + D + 1 and q_n(u, r) := derivWithin (z ↦ h n (u, z⁺)) (Ici 0) r: exp(Lt) abs(r − r′) ≤ δ → abs(q_n(t, r) − q_n(t, r′)) ≤ exp(Jt)(ε + δ)",
+      "constant_scope": "J depends only on x; the bound is uniform in n and has no smallness condition on u₀ ; the uses the exponent 2L + C + D + 1 (the + 1 gives the strict comparison) instead of the research's J = 2L + C + D"
+    },
+    {
+      "id": "n0031",
+      "kind": "step",
+      "title": "Radial equicontinuity uniform in n: ∀ ε > 0 ∃ η > 0, abs(r − r′) < η implies abs(q_n(u, r) − q_n(u, r′)) < ε for all n and u ≤ u₀",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0029",
+        "n0060",
+        "n0030",
+        "n0037"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0029",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "data′ = ∂_r h₀(0, ·) is uniformly continuous (h 0 = constantDataField data in the ball)"
+        },
+        {
+          "target": "n0060",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the slice of h₀ at u = 0 is data, so its radial derivative is data′"
+        },
+        {
+          "target": "n0030",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "with e := ε/(4e^{Ju₀}), δ := min(d/2, e) from the data modulus and η := δ/e^{Lu₀}: abs(q_n(u, r) − q_n(u, r′)) ≤ e^{Ju₀}·2e = ε/2 < ε"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "x ≥ 0 (XEq.x_nonneg of hb 0), so J ≥ 0 and e^{Ju} ≤ e^{Ju₀} for u ≤ u₀"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x real; data : C(ℝ≥0, ℝ) continuous; h : ℕ → C(ℝ≥0 × ℝ≥0, ℝ) with hb : MemXBall u₀ x (h n) for every n (a common ball), hzero : h 0 = constantDataField data and hstep : h (n + 1) = linearStepMap (hb n) data for every n",
+      "source_quantifiers": "for each u₀, x, for each continuous data and each sequence h with proofs hb, hzero and hstep; for every ε > 0",
+      "source_conclusion": "∃ η > 0, ∀ n, ∀ u ≤ u₀, ∀ r, r′ ≥ 0, abs(r − r′) < η → abs(q_n(u, r) − q_n(u, r′)) < ε",
+      "constant_scope": "η depends on ε, x, u₀ and the data's modulus; uniform in n and u"
+    },
+    {
+      "id": "n0032",
+      "kind": "step",
+      "title": "Radial Lipschitz bounds of the coefficients: H, h̄, a and g are Lipschitz in r with constants x, x/2, πx²/2 and πx²",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0037",
+        "n0013",
+        "n0047",
+        "n0056",
+        "n0002",
+        "n0004",
+        "n0054",
+        "n0009",
+        "n0003",
+        "n0018",
+        "n0071",
+        "n0072",
+        "n0070",
+        "n0076",
+        "n0043",
+        "n0055",
+        "n0065"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the slices H(u,·), u ≤ u₀, are C¹ on [0,∞), so differentiable within [0,∞)"
+        },
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(∂_r H) ≤ x, abs(β) ≤ x/2, abs(½c) ≤ πx²/2 and x ≥ 0"
+        },
+        {
+          "target": "n0013",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "h̄ has the radial within-derivative β, including the centre"
+        },
+        {
+          "target": "n0047",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "∂_r ḡ has the radial within-derivative c, so a = ½∂_r ḡ has ½c (XCoef.hasDerivWithinAt_linearCoeff_real)"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the body a = ½∂_r ḡ"
+        },
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "for s > 0, ∂_s g = 4π g (h − h̄)²/s = 4π s g β²"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "gX is g of the slice at min(u,u₀)"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the slice is in IsSlice, the premise of hasDerivAt_g"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the body β = (h − h̄)/s for s > 0"
+        },
+        {
+          "target": "n0003",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "0 ≤ g"
+        },
+        {
+          "target": "n0018",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "g ≤ 1, so abs(∂_s g) ≤ 4π s (x/(2(1 + s)²))² ≤ πx²"
+        },
+        {
+          "target": "n0071",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the mean value inequality for H with its derivWithin bound on [0,∞)"
+        },
+        {
+          "target": "n0072",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the mean value inequality for h̄ and a with their within-derivatives on [0,∞)"
+        },
+        {
+          "target": "n0070",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "g is πx²-Lipschitz on (0,∞) from its derivative bound"
+        },
+        {
+          "target": "n0076",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the Lipschitz bound extends to the closure [0,∞) by continuity of g (continuous_gX)"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "g is continuous (continuous_gX), so its Lipschitz bound on (0,∞) extends to the closure [0,∞), including r = 0"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the body h̄ = mean of the slice at min(u,u₀), which identifies (h − h̄)/s = β with the h̄ of hasDerivAt_g"
+        },
+        {
+          "target": "n0065",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(β(s)) ≤ x/(2(1 + s)²), so abs(∂_s g) = 4π s g β² ≤ πx² s/(1 + s)⁴ ≤ πx² (the uniform bound x/2 does not suffice)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u in [0,∞) (u ≤ u₀ for H); r, r′ in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and all r, r′ ≥ 0",
+      "source_conclusion": "abs(H(u, r) − H(u, r′)) ≤ x abs(r − r′) (u ≤ u₀); abs(hBarX u₀ H u r − hBarX u₀ H u r′) ≤ (x/2) abs(r − r′); abs(linearCoeff hH u r − linearCoeff hH u r′) ≤ (πx²/2) abs(r − r′); abs(gX hH u r − gX hH u r′) ≤ πx² abs(r − r′)",
+      "constant_scope": "the constants depend only on x"
+    },
+    {
+      "id": "n0033",
+      "kind": "step",
+      "title": "Time Lipschitz bound along a characteristic: abs(q_S(s, χ(s)) − q_S(s′, χ(s′))) ≤ (29πx³/24) abs(s − s′)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0034",
+        "n0035",
+        "n0072"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0034",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the within-derivative of s ↦ q_S(s, χ(s)) is the transport right side"
+        },
+        {
+          "target": "n0035",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the transport right side is bounded by 29πx³/24"
+        },
+        {
+          "target": "n0072",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the mean value inequality on [0,t]"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; S with hS : MemXBall u₀ x S and hstep : S = linearStepMap hH data, data with hdata C¹; t in [0,u₀], r ≥ 0, χ with IsCharacteristic hH t r χ; s, s′ in [0,t]",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each S, data with hS, hstep, hdata, for all t, r, χ, s, s′ as in the hypotheses",
+      "source_conclusion": "abs(q_S(s⁺, (χ s)⁺) − q_S(s′⁺, (χ s′)⁺)) ≤ (29πx³/24) abs(s − s′)",
+      "constant_scope": "29πx³/24 depends only on x"
+    },
+    {
+      "id": "n0034",
+      "kind": "step",
+      "title": "The ψ identity (PSI): along a characteristic of H, d/ds q_S(s, χ(s)) = 2a q_S + ½c(S − h̄) − aβ for S = linearStepMap hH data",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0063",
+        "n0039",
+        "n0075",
+        "n0040",
+        "n0056",
+        "n0041",
+        "n0055",
+        "n0009",
+        "n0048"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0063",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "(9.16) along every characteristic: dQ/ds = 2aQ + bS + f_r with b = ½c and f_r = −b h̄ − aβ"
+        },
+        {
+          "target": "n0039",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the radial within-derivative of the step is Q = derivLinearStep, so q = Q"
+        },
+        {
+          "target": "n0075",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the derivWithin value of a function with a within-derivative on [0,∞)"
+        },
+        {
+          "target": "n0040",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "S = linearStepMap hH data has the values linearStep hH data (its body)"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "a in the right side"
+        },
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "c in the right side"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "h̄ in the right side"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "β in the right side"
+        },
+        {
+          "target": "n0048",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the premise that χ is a characteristic of H"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; data with hdata C¹ on [0,∞); S with hS : S = linearStepMap hH data; t in [0,u₀], r ≥ 0, χ with IsCharacteristic hH t r χ; s in [0,t]",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each data with hdata, each S with hS, for all t, r, χ, s as in the hypotheses",
+      "source_conclusion": "with q(u, r) := derivWithin (z ↦ S(u, z⁺)) (Ici 0) r, s ↦ q(s⁺, (χ s)⁺) has the derivative 2a q + ½c (S − h̄) − aβ (coefficients of H at (s⁺, (χ s)⁺)) within [0,t] at s: the transport law D_n q_{n+1} = 2a_n q_{n+1} + F_n of proposal §3 (5d), with the actual derivative of the step in place of derivLinearStep",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0035",
+      "kind": "step",
+      "title": "The transport right side is uniformly bounded: abs(2a q_S + ½c(S − h̄) − aβ) ≤ 29πx³/24",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0037"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "a ≤ πx²/12, abs(q_S), abs(S), abs(h̄) ≤ x, abs(½c) ≤ πx²/2, abs(β) ≤ x/2 (S and H in the same ball)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; S continuous with hS : MemXBall u₀ x S; u ≤ u₀; r ≥ 0",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each S with hS, each u ≤ u₀ and each r ≥ 0",
+      "source_conclusion": "abs(2 linearCoeff hH u r · q_S(u, r) + (½ deriv2GBarX hH u r)(S(u, r) − hBarX u₀ H u r) − linearCoeff hH u r · derivHBarX hH u r) ≤ 29πx³/24",
+      "constant_scope": "29πx³/24 = 2(πx²/12)x + (πx²/2)(2x) + (πx²/12)(x/2), depending only on x"
+    },
+    {
+      "id": "n0036",
+      "kind": "step",
+      "title": "The ψ inequality (PI): the transport right side F satisfies abs(F(r) − F(r′)) ≤ 2L abs(q_S(r) − q_S(r′)) + Cρ + Dω",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0037",
+        "n0032",
+        "n0026",
+        "n0027"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0037",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the uniform bounds on a, q_S, ½c, S − h̄ and β"
+        },
+        {
+          "target": "n0032",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the Lipschitz bounds on a, S and h̄"
+        },
+        {
+          "target": "n0026",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the modulus of ½c in terms of (ρ, ω)"
+        },
+        {
+          "target": "n0027",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the modulus of β in terms of (ρ, ω)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; S with hS : MemXBall u₀ x S; u ≤ u₀; ρ, ω real with hq : abs(q(u, r) − q(u, r′)) ≤ ω whenever abs(r − r′) ≤ ρ, where q(u, ·) := derivWithin (s ↦ H(u, s⁺)) (Ici 0) is the radial derivative of the slice (a modulus hypothesis on q); r, r′ in [0,∞) with abs(r − r′) ≤ ρ (the modulus of the input H)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each S with hS, for each u, ρ, ω, r, r′ as in the hypotheses",
+      "source_conclusion": "with F(z) := 2a(z) q_S(u, z) + ½c(z)(S(u, z) − h̄(z)) − a(z)β(z) (coefficients of H at u): abs(F(r) − F(r′)) ≤ 2(πx²/12) abs(q_S(u, r) − q_S(u, r′)) + (5π²x⁵/3 + 2πx³) ρ + (27πx²/8) ω",
+      "constant_scope": "L = πx²/12, C = 5π²x⁵/3 + 2πx³ and D = 27πx²/8 depend only on x"
+    },
+    {
+      "id": "n0037",
+      "kind": "step",
+      "title": "Uniform (unweighted) bounds on the strip: x ≥ 0, abs(H), abs(∂_r H) ≤ x, abs(h̄) ≤ x, abs(β) ≤ x/2, 0 ≤ a ≤ πx²/12, abs(½c) ≤ πx²/2",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0064",
+        "n0065",
+        "n0056",
+        "n0017",
+        "n0061",
+        "n0046"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the sum bound (1 + r)³ abs(H) + (1 + r)⁴ abs(∂_r H) ≤ x, read at (0, 0) for x ≥ 0 and with the weights ≥ 1 dropped"
+        },
+        {
+          "target": "n0064",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(h̄) ≤ x/(1 + r) ≤ x"
+        },
+        {
+          "target": "n0065",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(β) ≤ x/(2(1 + r)²) ≤ x/2"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the body a = ½∂_r ḡ"
+        },
+        {
+          "target": "n0017",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "∂_r ḡ ≥ 0, so a ≥ 0"
+        },
+        {
+          "target": "n0061",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "∂_r ḡ ≤ (π/3)x² r/(1 + r)³ ≤ (π/6)x², so a ≤ πx²/12"
+        },
+        {
+          "target": "n0046",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "abs(c) ≤ πx²/(1 + r)³ ≤ πx², so abs(½c) ≤ πx²/2"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞) (u ≤ u₀ for the slice bounds)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u, r",
+      "source_conclusion": "0 ≤ x; for u ≤ u₀: abs(H(u, r)) ≤ x and abs(derivWithin (s ↦ H(u, s⁺)) (Ici 0) r) ≤ x; for every u: abs(hBarX u₀ H u r) ≤ x, abs(derivHBarX hH u r) ≤ x/2, 0 ≤ linearCoeff hH u r ≤ πx²/12 and abs(½ deriv2GBarX hH u r) ≤ πx²/2, including the centre",
+      "constant_scope": "L = πx²/12 and the constants x, x/2, πx²/2 depend only on x (the weights (1 + r)^k ≥ 1 are dropped)"
+    },
+    {
+      "id": "n0038",
+      "kind": "claim",
+      "title": "The linear step is jointly continuous on the quadrant, for continuous data (continuous_linearStep, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0058",
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+          "rationale": "the statement is about linearStep, and the proof unfolds its body h₀((χ 0)⁺) exp(∫₀^v a) + ∫₀^v exp(∫_s^v a) f"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+          "rationale": "the binder hH : MemXBall u₀ x H"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; data : C(ℝ≥0, ℝ), a continuous function on [0,∞), the data h(0,·) (: continuity only)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each continuous data",
+      "source_conclusion": "(u, r) ↦ linearStep hH data u r is continuous on ℝ≥0 × ℝ≥0 (product topology), on the full quadrant including u ≥ u₀ (time clamp, ) and r = 0: the h_{n+1} of the p. 350 formula is a continuous function, the first requirement of the space X of (7.1)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.continuous_linearStep",
+      "file": "Christodoulou/Frozen/Bondi/ContinuousLinearStep.lean"
+    },
+    {
+      "id": "n0039",
+      "kind": "claim",
+      "title": "The radial derivative of the step within [0,∞) is derivLinearStep, at every r ≥ 0 including the centre (hasDerivWithinAt_linearStep, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0058",
+        "n0062",
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+          "rationale": "the differentiated function is s ↦ linearStep hH data u s⁺"
+        },
+        {
+          "target": "n0062",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+          "rationale": "the derivative value is derivLinearStep hH data hdata u r"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+          "rationale": "the binder hH : MemXBall u₀ x H"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; data : C(ℝ≥0, ℝ) with hdata : ContDiffOn ℝ 1 (s ↦ data(s⁺)) (Ici 0), i.e. C¹ on [0,∞) with the one-sided derivative at 0 (; no decay, no C², no bound); u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each data with a proof hdata of C¹ on [0,∞), for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "s ↦ linearStep hH data u s⁺ (real lift through Real.toNNReal) has the derivative derivLinearStep hH data hdata u r within [0,∞) at r (one-sided at r = 0, ): the p. 350 formula is differentiable in r with derivative Q; no deriv or derivWithin value in the conclusion",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_linearStep",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtLinearStep.lean"
+    },
+    {
+      "id": "n0040",
+      "kind": "definition",
+      "title": "The linear step packaged as a continuous field C(ℝ≥0 × ℝ≥0, ℝ) (linearStepMap, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0038",
+        "n0058",
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0038",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+          "rationale": "the continuity field of the bundled map is the proof term continuous_linearStep hH data"
+        },
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+          "rationale": "the underlying function is (u, r) ↦ linearStep hH data u r"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 350)",
+          "rationale": "the binder hH : MemXBall u₀ x H"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; data : C(ℝ≥0, ℝ), a continuous function on [0,∞), the data h(0,·) (: continuity only)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each continuous data",
+      "source_conclusion": "linearStepMap hH data : C(ℝ≥0 × ℝ≥0, ℝ) := ⟨(u, r) ↦ linearStep hH data u r, continuous_linearStep hH data⟩: h_{n+1} as a field on the carrier, so that it can be the next iterate ; its values are characterized by linearStepMap_apply",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.linearStepMap",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepMap.lean"
+    },
+    {
+      "id": "n0041",
+      "kind": "definition",
+      "title": "c := ∂²_r ḡ = −2∂_r ḡ/r + 4π g β² for r > 0, with the centre value c(0) = (π/3) g(0) (∂_r h(0))² (deriv2GBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the binder hH : MemXBall u₀ x H ; the centre branch uses MemXBall's derivative convention for b"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "deriv2GBarX hH u r := if r = 0 then π/3 · gX hH u 0 · b² else −2 · derivGBarX hH u r / r + 4π · gX hH u r · (derivHBarX hH u r)², with b := derivWithin (s ↦ H(min u u₀, s⁺)) (Ici 0) 0, the one-sided ∂_r h(0): the first display of p. 356 rewritten with ∂_r ḡ = (g − ḡ)/r and (h − h̄)/r = β, and the continuous extension (π/3)g(0)b² at the centre (; not zero in general: the sealed class has no premise b = 0)",
+      "constant_scope": "the centre constant π/3 is absolute (ḡ = g(0) + (π/6)g(0)b²r² + o(r²))",
+      "declaration": "Christodoulou.Bondi.deriv2GBarX",
+      "file": "Christodoulou/Frozen/Bondi/Deriv2GBarX.lean"
+    },
+    {
+      "id": "n0042",
+      "kind": "step",
+      "title": "Radial derivative of g off the centre: for s > 0, ∂_r g(u, s) = 4π s g β²",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0002",
+        "n0054",
+        "n0004",
+        "n0055",
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0002",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the sealed ∂_r g = 4π g (h − h̄)²/r for the slice at r = s⁺ > 0"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the clamped slice H.curry (min u u₀) is a slice (min u u₀ ≤ u₀)"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "gX hH u = g of the clamped slice, unfolded"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "h̄ is the mean of the clamped slice, unfolded"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "for s > 0, (h − h̄)²/s = s β², with β's r ≠ 0 branch"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u in [0,∞); s real with s > 0",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each s > 0",
+      "source_conclusion": "t ↦ gX hH u t⁺ has the derivative 4π s · gX hH u s⁺ · (derivHBarX hH u s⁺)² at s",
+      "constant_scope": "the constant 4π is absolute"
+    },
+    {
+      "id": "n0043",
+      "kind": "step",
+      "title": "Joint continuity of g on the quadrant: (u, r) ↦ gX hH u r",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0004",
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the statement is about gX hH"
+        },
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the X-ball premise (the uniform tail majorant of the helper's proof)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H",
+      "source_conclusion": "(u, r) ↦ gX hH u r is continuous on ℝ≥0 × ℝ≥0",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0044",
+      "kind": "step",
+      "title": "First half of : ∂_r ḡ(u, r) = 4π r M(u, r) with M(u, r) = ∫₀¹ t² g(tr) β(tr)² dt, for every r ≥ 0",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0016",
+        "n0006",
+        "n0005",
+        "n0007",
+        "n0054",
+        "n0042",
+        "n0066",
+        "n0043",
+        "n0012",
+        "n0083",
+        "n0084",
+        "n0004"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "derivGBarX is 0 at r = 0 (both sides vanish) and (g − ḡ)/r for r > 0, unfolded"
+        },
+        {
+          "target": "n0006",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "gBarX hH u = gBar of the clamped slice, unfolded"
+        },
+        {
+          "target": "n0005",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "gBar = mean ∘ gMap, unfolded, so g − ḡ = F − mean F with F := gMap of the slice"
+        },
+        {
+          "target": "n0007",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "gMap of the slice evaluates to g (its values are those of gX)"
+        },
+        {
+          "target": "n0054",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the clamped slice is a slice, the binder of gMap"
+        },
+        {
+          "target": "n0042",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the lift of g has the derivative 4π s g β² at s > 0"
+        },
+        {
+          "target": "n0066",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "for F = gMap: s(g − ḡ) is continuous with the derivative s · 4π s g β² = 4π s² g β² at s > 0"
+        },
+        {
+          "target": "n0043",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the integrand s ↦ 4π s² g β² is continuous (with β), hence interval integrable"
+        },
+        {
+          "target": "n0012",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "β is continuous along the slice, for the integrability of the integrand"
+        },
+        {
+          "target": "n0083",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "FTC: ∫₀ʳ 4π s² g β² ds = r(g(r) − ḡ(r))"
+        },
+        {
+          "target": "n0084",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the substitution s = r t: r ∫₀¹ F(rt) dt = ∫₀ʳ F"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "gX hH u = gMap of the clamped slice pointwise, unfolded"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "derivGBarX hH u r = 4π r · ∫₀¹ t² · gX hH u (r t)⁺ · (derivHBarX hH u (r t)⁺)² dt",
+      "constant_scope": "the constant 4π is absolute"
+    },
+    {
+      "id": "n0045",
+      "kind": "step",
+      "title": "The representation: c(u, r) = −8π M(u, r) + 4π g(u, r) β(u, r)² for every r ≥ 0, including the centre",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0041",
+        "n0044",
+        "n0081",
+        "n0009",
+        "n0004"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "both branches of the definition are unfolded"
+        },
+        {
+          "target": "n0044",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "case r > 0: −2∂_r ḡ/r = −8πM"
+        },
+        {
+          "target": "n0081",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "case r = 0: M(u, 0) = g(u,0)β(u,0)² ∫₀¹ t² dt = g(u,0)β(u,0)²/3"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "case r = 0: β(u, 0) = b/2, so −8π gβ²/3 + 4π gβ² = (4π/3) g b²/4 = (π/3) g b², the centre branch"
+        },
+        {
+          "target": "n0004",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "gX hH u = gMap of the clamped slice pointwise, unfolded"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "deriv2GBarX hH u r = −8π · M(u, r) + 4π · gX hH u r · (derivHBarX hH u r)², with M the metric average of #metric-average",
+      "constant_scope": "the constants 8π and 4π are absolute"
+    },
+    {
+      "id": "n0046",
+      "kind": "claim",
+      "title": "abs(c) ≤ π x²/(1 + r)³, the unweighted analogue of the second display of p. 356 (abs_deriv2GBarX_le)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0041"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the statement bounds deriv2GBarX hH u r; both branches are unfolded"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "abs(deriv2GBarX hH u r) ≤ π x²/(1 + r)³ (: the second display of p. 356 without the u-weights)",
+      "constant_scope": "the constant π is absolute (the same as printed)",
+      "declaration": "Christodoulou.Bondi.abs_deriv2GBarX_le",
+      "file": "Christodoulou/Frozen/Bondi/AbsDeriv2GBarXLe.lean"
+    },
+    {
+      "id": "n0047",
+      "kind": "claim",
+      "title": "∂_r ḡ is differentiable in r within [0, ∞) with derivative c at every r ≥ 0, one-sided at the centre (hasDerivWithinAt_derivGBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0016",
+        "n0041"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the differentiated function is s ↦ derivGBarX hH u s⁺"
+        },
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 356)",
+          "rationale": "the derivative value is deriv2GBarX hH u r"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "s ↦ derivGBarX hH u s⁺ has the derivative deriv2GBarX hH u r within [0,∞) at r : the first display of p. 356 for r > 0 and c(0) = (π/3)g(0)b² at the centre; no second derivative of H is used or assumed",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_derivGBarX",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtDerivGBarX.lean"
+    },
+    {
+      "id": "n0048",
+      "kind": "definition",
+      "title": "Backward characteristic of (5.1) through the terminal point (u₁, r₁) on [0, u₁] (IsCharacteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 345)",
+          "rationale": "IsCharacteristic takes the proof hH of MemXBall u₀ x H as its argument and passes it to charField"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, ); χ a real function of real time",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞), for each real function χ",
+      "source_conclusion": "IsCharacteristic hH u₁ r₁ χ holds iff χ(u₁) = r₁ and, for every t in [0,u₁], χ has the derivative charField(t, χ(t)) at t within [0,u₁] (one-sided at both endpoints, ): χ is a characteristic of (5.1) dr/du = −½ḡ(u,r) through the terminal point (u₁, r₁) of the physical strip, on the time interval [0,u₁] (the backward characteristic of pp. 349-350 and 354-355, ), with the clamped coefficient charField = −½ḡ . Nothing is asserted outside [0,u₁]; for u₁ = 0 only χ(0) = r₁ is constrained (a within-derivative on a singleton is unconstrained, ). Forward characteristics χ(u; r₀) from u = 0 are not defined",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsCharacteristic",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristic.lean"
+    },
+    {
+      "id": "n0049",
+      "kind": "claim",
+      "title": "The canonical curve is a characteristic through (u₁, r₁) (isCharacteristic_characteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0048",
+        "n0050"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0048",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the conclusion is IsCharacteristic hH u₁ r₁ of the canonical curve: the ODE dχ/du = −½ḡ and the condition χ(u₁;r₁) = r₁"
+        },
+        {
+          "target": "n0050",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "the statement is about characteristic hH u₁ r₁, which unfolds (definitionally) to curveExtension u₁ (characteristicOn hH u₁ r₁)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞)",
+      "source_conclusion": "IsCharacteristic hH u₁ r₁ (characteristic hH u₁ r₁): the canonical curve satisfies χ(u₁) = r₁ and, for every t in [0,u₁], has the derivative charField(t, χ(t)) at t within [0,u₁] (one-sided at both endpoints, ). Reconstructed: [P] presupposes that \"the characteristic χ(u;r₁) through r = r₁ at u = u₁\" satisfies dχ/du = −½ḡ and χ(u₁;r₁) = r₁",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.isCharacteristic_characteristic",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicCharacteristic.lean"
+    },
+    {
+      "id": "n0050",
+      "kind": "definition",
+      "title": "The characteristic through (u₁, r₁) as a real curve: the constant extension of characteristicOn (characteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "characteristic takes the proof hH of MemXBall u₀ x H as its argument and passes it to characteristicOn (hH is a binder of the reconstructed statement; is the target's own locator, the ball itself is item P.7.1/P.348.lemma1.ball)"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, )",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞)",
+      "source_conclusion": "characteristic hH u₁ r₁ : ℝ → ℝ := curveExtension u₁ (characteristicOn hH u₁ r₁): equal to characteristicOn hH u₁ r₁ on [0,u₁], to its value at 0 for t ≤ 0 and to its value at u₁ for t ≥ u₁ . The values outside [0,u₁] are a formal device with no source content. This is the curve χ(u;r₁) through r = r₁ at u = u₁ of pp. 349-350 as a function of real time, with initial radius r₀ := χ(0)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.characteristic",
+      "file": "Christodoulou/Frozen/Bondi/Characteristic.lean"
+    },
+    {
+      "id": "n0051",
+      "kind": "claim",
+      "title": "A characteristic stays in the physical domain: r₁ ≤ χ(t) ≤ r₁ + (u₁ − t)/2 on [0, u₁] (IsCharacteristic.mem_Icc)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0048"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0048",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "the premise hχ : IsCharacteristic hH u₁ r₁ χ, consumed by both routes"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (u₁ : Icc 0 u₀, ); r₁ in [0,∞) (r₁ : ℝ≥0, ); χ a real function of real time with IsCharacteristic hH u₁ r₁ χ; t in [0,u₁]",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞), for each real function χ with IsCharacteristic hH u₁ r₁ χ, for each t in [0,u₁]",
+      "source_conclusion": "χ(t) ∈ [r₁, r₁ + (u₁ − t)/2], i.e. r₁ ≤ χ(t) ≤ r₁ + (u₁ − t)/2. At t = 0, with r₀ := χ(0) (, p. 355), the upper bound is (5.3) r₀ ≤ r₁ + ½u₁; the lower bound (in particular χ ≥ 0 on [0,u₁], ) is reconstructed",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.mem_Icc",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicMemIcc.lean"
+    },
+    {
+      "id": "n0052",
+      "kind": "claim",
+      "title": "Differentiability in the terminal radius: ρ ↦ χ(t; u₁, ρ⁺) has the derivative e^{∫_t^{u₁} a} within [0, ∞) at r₁, for t ∈ [0, u₁] (hasDerivWithinAt_characteristic)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0056",
+        "n0050"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "at ρ = r₁ the averaged coefficient α_{r₁,r₁}(s) is ½ derivGBarX hH s⁺ (χ s)⁺ = linearCoeff hH s⁺ (χ s)⁺ (unfolding the body ½ derivGBarX; a θ-integral of a constant)"
+        },
+        {
+          "target": "n0050",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 346)",
+          "rationale": "the differentiated function is ρ ↦ characteristic hH u₁ ρ⁺ t, and the integrand evaluates characteristic hH u₁ r₁"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u₁ in [0,u₀] (Icc 0 u₀); r₁ in [0,∞) (ℝ≥0); t real with t in [0,u₁]",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞), for each t in [0,u₁]",
+      "source_conclusion": "ρ ↦ characteristic hH u₁ ρ⁺ t (real lift through Real.toNNReal) has the derivative exp(∫_t^{u₁} linearCoeff hH s⁺ (χ(s; u₁, r₁))⁺ ds) at r₁ within [0,∞) (one-sided at r₁ = 0, ): ∂χ/∂r₁ = e^{∫_t^{u₁} a} with a = ½∂_r ḡ along the characteristic. At t = 0 it is 1/ζ(u₁, r₁) with ζ given by the formula (5.6); the characterization (5.4) of ζ as ∂χ/∂r₀ (forward flow) is not asserted",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hasDerivWithinAt_characteristic",
+      "file": "Christodoulou/Frozen/Bondi/HasDerivWithinAtCharacteristic.lean"
+    },
+    {
+      "id": "n0053",
+      "kind": "definition",
+      "title": "Closed ball of radius x in the space X of (7.1) on the strip [0,u₀]×[0,∞) (MemXBall)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H is a continuous real function of (u,r) on the quadrant [0,∞) × [0,∞) (field carrier , reused), with slices H(u,·); values of H for u > u₀ are unconstrained",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞)",
+      "source_conclusion": "MemXBall u₀ x H holds iff (1) for every u in [0,∞) with u ≤ u₀ the slice lift s ↦ H(u, s⁺) is C¹ (ContDiffOn of order 1) on [0,∞), with the derivative at s = 0 one-sided within [0,∞) ; (2) the map (u,r) ↦ ∂_r H(u,r), the derivative within [0,∞) at r of the lift s ↦ H(u⁺, s⁺), is continuous on the closed strip [0,u₀] × [0,∞); (3) for every u ≤ u₀ and every r ≥ 0, (1+r)³ abs(H(u,r)) + (1+r)⁴ abs(∂_r H(u,r)) ≤ x. Fields (1)-(2) are \"continuous and posess a continuous partial derivative with respect to r\" of (7.1) (continuity of H itself is the carrier's); field (3) is ‖H‖_X ≤ x for the printed sum norm (7.1) (U-NORMS), i.e. membership in \"the closed ball of radius x₁ in the space X\" of Lemma 1 with x₁ = x . No evolution equation and no ∂_u H are assumed",
+      "constant_scope": "the radius x is an explicit parameter of the predicate, not existential ; the double sup over u then r of (7.1) is replaced by the equivalent pointwise bound for all u ≤ u₀ and all r ≥ 0",
+      "declaration": "Christodoulou.Bondi.MemXBall",
+      "file": "Christodoulou/Frozen/Bondi/MemXBall.lean"
+    },
+    {
+      "id": "n0054",
+      "kind": "claim",
+      "title": "Each slice H(u,·), u ≤ u₀, of a field in the X-ball of radius x is in IsSlice (MemXBall.isSlice)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0023"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the premise hH; its field (1) at u ≤ u₀ is verbatim the C¹[0,∞[ conjunct of IsSlice, since the slice lift s ↦ (H.curry u)(s⁺) is definitionally s ↦ H(u, s⁺)"
+        },
+        {
+          "target": "n0023",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the conclusion is IsSlice of the slice, i.e. its C¹ and O(r⁻³) conjuncts (class printed at https://doi.org/10.1007/BF01205930 (p. 348))"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number; H is a continuous real function of (u,r) on [0,∞) × [0,∞) with MemXBall u₀ x H ; u ≤ u₀",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with MemXBall u₀ x H, for each u in [0,∞) with u ≤ u₀",
+      "source_conclusion": "IsSlice(H(u,·)): the slice h = H(u,·) (H.curry u) is C¹[0,∞[ (one-sided derivative at r = 0, ) and h = O(r⁻³) as r → ∞. Reconstructed: [P] never states that the elements of X have slices in a slice class",
+      "constant_scope": "none in the statement (the O-constant and threshold of IsSlice are existential per slice and may a priori depend on u); the proof's witness is the radius x, which does not depend on u (see #slice-decay)",
+      "declaration": "Christodoulou.Bondi.MemXBall.isSlice",
+      "file": "Christodoulou/Frozen/Bondi/MemXBallIsSlice.lean"
+    },
+    {
+      "id": "n0055",
+      "kind": "definition",
+      "title": "The mean h̄(u, r) of the slice H(u, ·) at the clamped time min(u, u₀), the h̄_n of (7.2) (hBarX)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "u₀ ≥ 0; H a continuous real function of (u,r) on [0,∞) × [0,∞) ; u, r in [0,∞); no X-ball hypothesis",
+      "source_quantifiers": "for each u₀ in [0,∞), for each continuous H on [0,∞) × [0,∞), for each u and r in [0,∞)",
+      "source_conclusion": "hBarX u₀ H u r := mean(H.curry(min(u,u₀)))(r): the (3.7) mean of the slice H(min(u,u₀),·) at r, with the centre value H(min(u,u₀),0) . This is h̄_n of (7.2) for h_n = H (and h̄ of p. 351's f), with the time clamped to [0,u₀] as in gBarX ; for u > u₀ it repeats the slice at u₀ (formal clamp, no source content)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.hBarX",
+      "file": "Christodoulou/Frozen/Bondi/HBarX.lean"
+    },
+    {
+      "id": "n0056",
+      "kind": "definition",
+      "title": "The coefficient a = (1/2r)(g − ḡ) = ½ ∂_r ḡ of (7.2), with centre value 0 (linearCoeff)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053",
+        "n0016"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "linearCoeff takes the proof hH of MemXBall u₀ x H as its argument and passes it to derivGBarX: g_n is the g-function of h_n ∈ X"
+        },
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the body is ½ derivGBarX hH u r: (1/2r)(g_n − ḡ_n) = ½ (g_n − ḡ_n)/r, the r > 0 branch of derivGBarX, with its centre value 0 at r = 0"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "linearCoeff hH u r := ½ · derivGBarX hH u r: the coefficient (1/2r)(g_n − ḡ_n) of (7.2) for h_n = H, written as ½ ∂_r ḡ by the second identity of (3.8) applied to g, with the centre value 0 of derivGBarX (, ; the printed coefficient is singular at r = 0). It is the integrand ½[∂ḡ_{n_i}/∂r] of the exponents of p. 350 and [(1/2r)(g_n − ḡ_n)] of (7.20); the time is clamped through derivGBarX",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.linearCoeff",
+      "file": "Christodoulou/Frozen/Bondi/LinearCoeff.lean"
+    },
+    {
+      "id": "n0057",
+      "kind": "definition",
+      "title": "The source term f = −a h̄ of (7.2): f_n of p. 354 and f of p. 351 (linearSource)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 354)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053",
+        "n0056",
+        "n0055"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 354)",
+          "rationale": "linearSource takes the proof hH of MemXBall u₀ x H as its argument and passes it to linearCoeff"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 354)",
+          "rationale": "the factor −(1/2r)(g_n − ḡ_n) is −linearCoeff hH u r"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 354)",
+          "rationale": "the factor h̄_n is hBarX u₀ H u r"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "linearSource hH u r := −linearCoeff hH u r · hBarX u₀ H u r: f_n := −(1/2r)(g_n − ḡ_n) h̄_n, \"the right-hand side of (7.2)\" (p. 354), for h_n = H; equal to p. 351's f := −½ (∂ḡ/∂r) h̄ . Its centre value is 0 (that of linearCoeff)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.linearSource",
+      "file": "Christodoulou/Frozen/Bondi/LinearSource.lean"
+    },
+    {
+      "id": "n0058",
+      "kind": "definition",
+      "title": "The linear step h_{n+1}: the formula of p. 350 and (7.20) along the canonical characteristic through (min(u, u₀), r) (linearStep)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053",
+        "n0050",
+        "n0056",
+        "n0057"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "linearStep takes the proof hH of MemXBall u₀ x H as its argument: h_{n+1} is formed from h_n ∈ X"
+        },
+        {
+          "target": "n0050",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "\"along the characteristics χ_n\": the body integrates along characteristic hH v r on [0,v] and evaluates it at 0 (r₀ := r(0))"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "the exponent integrands [(1/2r)(g_n − ḡ_n)]_{χ_n} are linearCoeff along the curve"
+        },
+        {
+          "target": "n0057",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "the forcing [f_n]_{χ_n} is linearSource along the curve"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; h₀ a continuous real function on [0,∞) (h₀ : C(ℝ≥0, ℝ), the data h(0,·) at u = 0, not the 0th iterate h₀(u,r) of (7.3); ); u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each continuous h₀ on [0,∞), for each u and r in [0,∞)",
+      "source_conclusion": "with v := min(u,u₀) in [0,u₀] and χ := characteristic hH v r (the canonical characteristic through (v, r), ), linearStep hH h₀ u r := h₀((χ 0)⁺) · exp(∫₀^v a) + ∫₀^v exp(∫_s^v a) · f(s) ds, with a(s) := linearCoeff hH s⁺ (χ s)⁺ and f(s) := linearSource hH s⁺ (χ s)⁺ along χ: the formula for h_{n+1}(u₁,r₁) of p. 350 and (7.20) at (u₁,r₁) = (v,r) with r₀ := χ(0) . It is the characteristic (integral) solution of (7.2) with data h₀ at u = 0, weaker than the classical solution of p. 348 ; a pointwise field ℝ≥0 → ℝ≥0 → ℝ, constant in u beyond u₀",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.linearStep",
+      "file": "Christodoulou/Frozen/Bondi/LinearStep.lean"
+    },
+    {
+      "id": "n0059",
+      "kind": "claim",
+      "title": "The linear step takes the given data at u = 0 (linearStep_zero)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0058"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+          "rationale": "the statement evaluates linearStep at u = 0, where v = min(0,u₀) = 0"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; h₀ a continuous real function on [0,∞) (h₀ : C(ℝ≥0, ℝ), the data h(0,·) at u = 0, not the 0th iterate h₀(u,r) of (7.3); ); r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each continuous h₀ on [0,∞), for each r in [0,∞)",
+      "source_conclusion": "linearStep hH h₀ 0 r = h₀(r): h_{n+1} takes the given data at u = 0",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.linearStep_zero",
+      "file": "Christodoulou/Frozen/Bondi/LinearStepZero.lean"
+    },
+    {
+      "id": "n0060",
+      "kind": "definition",
+      "title": "The 0th iterate h₀(u, r) = h(0, r) as a continuous field (constantDataField, (7.3), )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 348)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "data : C(ℝ≥0, ℝ), a continuous function on [0,∞), the data h(0,·)",
+      "source_quantifiers": "for each continuous data on [0,∞)",
+      "source_conclusion": "constantDataField data : C(ℝ≥0 × ℝ≥0, ℝ) := ⟨(u, r) ↦ data r, continuity of data ∘ snd⟩: (7.3) h₀(u, r) = h(0, r) on the field carrier , constant in u (also for u > u₀)",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.constantDataField",
+      "file": "Christodoulou/Frozen/Bondi/ConstantDataField.lean"
+    },
+    {
+      "id": "n0061",
+      "kind": "claim",
+      "title": "Weighted equibound ∂_r ḡ ≤ (π/3)x² r/(1+r)³ in terms of the X-ball radius (derivGBarX_le)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0016"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0016",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+          "rationale": "at r = 0 both sides are 0; for r > 0 the left side is (gX(u,r) − gBarX(u,r))/r"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u and r in [0,∞)",
+      "source_conclusion": "derivGBarX(u,r) ≤ (π/3) x² r/(1+r)³. Reconstructed : the bound behind the constant ½x₁(1 + (π/3)x₁²) of (7.60) (p. 349) and \"the equiboundedness of ∂ḡ_{n_i}/∂r\" (p. 350); [P] states neither the bound nor its proof",
+      "constant_scope": "the constant π/3 is absolute; the bound depends only on the radius x (through x²), uniformly in u, u₀ and H; no sign premise on x is needed since x² ≥ 0",
+      "declaration": "Christodoulou.Bondi.derivGBarX_le",
+      "file": "Christodoulou/Frozen/Bondi/DerivGBarXLe.lean"
+    },
+    {
+      "id": "n0062",
+      "kind": "definition",
+      "title": "The radial derivative Q of the linear step, the literal integrated formula for C¹ data (derivLinearStep, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+      "proof_source": null,
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [
+        "n0053"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "the binder hH : MemXBall u₀ x H"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; data : C(ℝ≥0, ℝ) with hdata : ContDiffOn ℝ 1 (s ↦ data(s⁺)) (Ici 0), i.e. C¹ on [0,∞) with the one-sided derivative at 0 (; no decay, no C², no bound); u, r in [0,∞)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each data with a proof hdata of C¹ on [0,∞), for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "with v := min(u,u₀) in [0,u₀], χ := characteristic hH v r (the canonical characteristic through (v, r), ), a(s) := linearCoeff hH s⁺ (χ s)⁺, b(s) := ½ deriv2GBarX hH s⁺ (χ s)⁺ (= ∂_r a), f(s) := linearSource hH s⁺ (χ s)⁺, f_r(s) := −b(s) hBarX u₀ H s⁺ (χ s)⁺ − a(s) derivHBarX hH s⁺ (χ s)⁺ (= ∂_r f), S(s) := linearStep hH data s⁺ (χ s)⁺ and A(s) := ∫_s^v a: derivLinearStep hH data hdata u r := data′(χ 0) · exp(2A(0)) + ∫₀^v exp(2A(s)) (b(s) S(s) + f_r(s)) ds, data′ := derivWithin (s ↦ data(s⁺)) (Ici 0): the solution of (9.16) along χ with initial value ∂_r h(0, χ(0)) = data′(χ 0), source f′ = ∂_r f + ½(∂²ḡ/∂r²) h_{n+1} and coefficient (1/r)(g − ḡ) = 2a, integrated as on p. 357 . The derivative characterization is the separate root hasDerivWithinAt_linearStep; hdata is a binder only",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.derivLinearStep",
+      "file": "Christodoulou/Frozen/Bondi/DerivLinearStep.lean"
+    },
+    {
+      "id": "n0063",
+      "kind": "claim",
+      "title": "Transport law (9.16) for Q along every characteristic: dQ/ds = 2aQ + bS + f_r (IsCharacteristic.hasDerivWithinAt_derivLinearStep, )",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0048",
+        "n0062",
+        "n0056",
+        "n0041",
+        "n0058",
+        "n0055",
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0048",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "the premise hχ : IsCharacteristic hH u₁ r₁ χ"
+        },
+        {
+          "target": "n0062",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "the transported quantity is derivLinearStep along χ"
+        },
+        {
+          "target": "n0056",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "the coefficient 2a(t) is 2 linearCoeff along χ"
+        },
+        {
+          "target": "n0041",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "the source term b(t) S(t) and f_r contain ½ deriv2GBarX along χ"
+        },
+        {
+          "target": "n0058",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "the source term b S evaluates linearStep along χ"
+        },
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "f_r contains hBarX along χ"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 355)",
+          "rationale": "f_r contains derivHBarX along χ"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H ; data : C(ℝ≥0, ℝ) with hdata : ContDiffOn ℝ 1 (s ↦ data(s⁺)) (Ici 0), i.e. C¹ on [0,∞) with the one-sided derivative at 0 (; no decay, no C², no bound); u₁ in [0,u₀] and r₁ in [0,∞); χ : ℝ → ℝ with a proof hχ of IsCharacteristic hH u₁ r₁ χ (any characteristic witness, ); t in [0,u₁]",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u₁ in [0,u₀], for each r₁ in [0,∞), for each χ with IsCharacteristic hH u₁ r₁ χ, for each data with a proof hdata of C¹ on [0,∞), for each t in [0,u₁]",
+      "source_conclusion": "s ↦ Q(s) := derivLinearStep hH data hdata s⁺ (χ s)⁺ has the derivative 2a(t) Q(t) + b(t) S(t) + f_r(t) at t within [0,u₁] (one-sided at both endpoints), with a, b, S, f_r along χ: (9.16) D_n(∂_r h_{n+1}) − (1/r)(g_n − ḡ_n) ∂_r h_{n+1} = f′_n with f′_n = ∂_r f_n + ½(∂²ḡ_n/∂r²) h_{n+1}; it does not assert a radial derivative of Q",
+      "constant_scope": "none",
+      "declaration": "Christodoulou.Bondi.IsCharacteristic.hasDerivWithinAt_derivLinearStep",
+      "file": "Christodoulou/Frozen/Bondi/IsCharacteristicHasDerivWithinAtDerivLinearStep.lean"
+    },
+    {
+      "id": "n0064",
+      "kind": "claim",
+      "title": "abs(h̄) ≤ x/(1 + r), the unweighted analogue of (9.4) (abs_hBarX_le)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0055"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0055",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 352)",
+          "rationale": "the statement bounds hBarX u₀ H u r, the mean of the clamped slice"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "abs(hBarX u₀ H u r) ≤ x/(1 + r) (: (9.4) without the u-weights, for the X-ball sum bound instead of the X′ bound (9.1))",
+      "constant_scope": "the constant 1 in x/(1 + r) is absolute",
+      "declaration": "Christodoulou.Bondi.abs_hBarX_le",
+      "file": "Christodoulou/Frozen/Bondi/AbsHBarXLe.lean"
+    },
+    {
+      "id": "n0065",
+      "kind": "claim",
+      "title": "abs(β) ≤ x/(2(1 + r)²), from the unweighted analogue of (9.6) (abs_derivHBarX_le)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 353)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 353)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0053",
+        "n0009"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0053",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 353)",
+          "rationale": "case r = 0: the sum bound at the clamped time min(u,u₀) ≤ u₀ and r = 0 gives abs(b) ≤ x, so abs(b/2) ≤ x/2"
+        },
+        {
+          "target": "n0009",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 353)",
+          "rationale": "the statement bounds derivHBarX hH u r; both branches are unfolded"
+        }
+      ],
+      "source_hypotheses": "u₀ ≥ 0; x a real number (no sign premise); H a continuous real function of (u,r) on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H (; the carrier of both new definitions, ); u, r in [0,∞) (ℝ≥0)",
+      "source_quantifiers": "for each u₀ in [0,∞), for each real x, for each continuous H on [0,∞) × [0,∞) with a proof hH of MemXBall u₀ x H, for each u in [0,∞), for each r in [0,∞)",
+      "source_conclusion": "abs(derivHBarX hH u r) ≤ x/(2(1 + r)²) (: (9.6) divided by r, without the u-weights)",
+      "constant_scope": "the factor 1/2 is absolute",
+      "declaration": "Christodoulou.Bondi.abs_derivHBarX_le",
+      "file": "Christodoulou/Frozen/Bondi/AbsDerivHBarXLe.lean"
+    },
+    {
+      "id": "n0066",
+      "kind": "step",
+      "title": "Derivative of s(f − f̄): it is continuous, and at s > 0 its derivative is s f′(s)",
+      "statement_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "proof_source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+      "topology_status": "REVIEWED",
+      "source_gap": true,
+      "dependencies": [
+        "n0014",
+        "n0073",
+        "n0015",
+        "n0008"
+      ],
+      "alternative_routes": [],
+      "edges": [
+        {
+          "target": "n0014",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "at s > 0 the lift of the mean has the derivative (f(s) − f̄(s))/s"
+        },
+        {
+          "target": "n0073",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "product rule: (t(f − f̄))′ = (f − f̄) + s(d − (f − f̄)/s) = s d"
+        },
+        {
+          "target": "n0015",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "f̄ is continuous on [0,∞), so the function is continuous"
+        },
+        {
+          "target": "n0008",
+          "source": "https://doi.org/10.1007/BF01205930 (printed page 343)",
+          "rationale": "the statement is about Radial.mean"
+        }
+      ],
+      "source_hypotheses": "f : C(ℝ≥0, ℝ); s, d real with s > 0 and s ↦ f(s⁺) having the derivative d at s (second part)",
+      "source_quantifiers": "for each continuous f on [0,∞); for all s > 0 and d as in the hypotheses",
+      "source_conclusion": "t ↦ t(f(t⁺) − mean f t⁺) is continuous on ℝ; if the lift of f has the derivative d at s > 0, this function has the derivative s · d at s",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0067",
+      "kind": "external",
+      "title": "Continuity of the within-derivative of a C^n function",
+      "statement_source": "external:mathlib#ContDiffOn.continuousOn_derivWithin",
+      "proof_source": "external:mathlib#ContDiffOn.continuousOn_derivWithin",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f is C^n on s with 1 ≤ n; s has unique derivatives",
+      "source_quantifiers": "for all f, s, n",
+      "source_conclusion": "x ↦ derivWithin f s x is continuous on s",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0068",
+      "kind": "external",
+      "title": "A continuous function with a limit along the cocompact filter is uniformly continuous",
+      "statement_source": "external:mathlib#Continuous.uniformContinuous_of_tendsto_cocompact",
+      "proof_source": "external:mathlib#Continuous.uniformContinuous_of_tendsto_cocompact",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "α a uniform space, f : α → β continuous with f → x along cocompact α",
+      "source_quantifiers": "for all f, x as in the hypotheses",
+      "source_conclusion": "f is uniformly continuous",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0069",
+      "kind": "external",
+      "title": "Composition of a function continuous on a set with a continuous map into the set",
+      "statement_source": "external:mathlib#ContinuousOn.comp_continuous",
+      "proof_source": "external:mathlib#ContinuousOn.comp_continuous",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "g continuous on s; f continuous; f(x) ∈ s for every x",
+      "source_quantifiers": "for all f, g, s",
+      "source_conclusion": "g ∘ f is continuous",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0070",
+      "kind": "external",
+      "title": "Mean value theorem: a derivative bound C on a convex set gives a C-Lipschitz function",
+      "statement_source": "external:mathlib#Convex.lipschitzOnWith_of_nnnorm_hasDerivWithin_le",
+      "proof_source": "external:mathlib#Convex.lipschitzOnWith_of_nnnorm_hasDerivWithin_le",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "s convex; f has the derivative f′(x) within s at every x in s; ‖f′(x)‖₊ ≤ C on s",
+      "source_quantifiers": "for all s, f, f′, C",
+      "source_conclusion": "f is C-Lipschitz on s",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0071",
+      "kind": "external",
+      "title": "Mean value inequality on a convex set with a bound on derivWithin",
+      "statement_source": "external:mathlib#Convex.norm_image_sub_le_of_norm_derivWithin_le",
+      "proof_source": "external:mathlib#Convex.norm_image_sub_le_of_norm_derivWithin_le",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f differentiable on a convex set s; ‖derivWithin f s x‖ ≤ C on s; x, y ∈ s",
+      "source_quantifiers": "for all f, s, C, x, y as in the hypotheses",
+      "source_conclusion": "‖f y − f x‖ ≤ C ‖y − x‖",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0072",
+      "kind": "external",
+      "title": "Mean value inequality on a convex set",
+      "statement_source": "external:mathlib#Convex.norm_image_sub_le_of_norm_hasDerivWithin_le",
+      "proof_source": "external:mathlib#Convex.norm_image_sub_le_of_norm_hasDerivWithin_le",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "s ⊆ ℝ convex; f has the derivative f′(x) within s at every x in s; abs(f′(x)) ≤ C on s; x, y in s",
+      "source_quantifiers": "for all f, f′, s, C, x, y",
+      "source_conclusion": "abs(f(y) − f(x)) ≤ C abs(y − x)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0073",
+      "kind": "external",
+      "title": "Product rule at a point",
+      "statement_source": "external:mathlib#HasDerivAt.mul",
+      "proof_source": "external:mathlib#HasDerivAt.mul",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "c, d : 𝕜 → 𝔸 (a normed algebra) with derivatives c′ and d′ at x",
+      "source_quantifiers": "for all c, d, c′, d′, x",
+      "source_conclusion": "c · d has the derivative c′ · d(x) + c(x) · d′ at x",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0074",
+      "kind": "external",
+      "title": "A function with a within-derivative at every point of a set is continuous on the set",
+      "statement_source": "external:mathlib#HasDerivWithinAt.continuousOn",
+      "proof_source": "external:mathlib#HasDerivWithinAt.continuousOn",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f has a derivative within s at every point of s",
+      "source_quantifiers": "for all f, s",
+      "source_conclusion": "f is continuous on s",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0075",
+      "kind": "external",
+      "title": "The within-derivative value of a function with a within-derivative",
+      "statement_source": "external:mathlib#HasDerivWithinAt.derivWithin",
+      "proof_source": "external:mathlib#HasDerivWithinAt.derivWithin",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f has the derivative f′ at x within s; s has a unique derivative at x",
+      "source_quantifiers": "for all f, f′, s, x",
+      "source_conclusion": "derivWithin f s x = f′",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0076",
+      "kind": "external",
+      "title": "A Lipschitz bound on a set extends to its closure for a function continuous on the closure",
+      "statement_source": "external:mathlib#LipschitzOnWith.closure",
+      "proof_source": "external:mathlib#LipschitzOnWith.closure",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f K-Lipschitz on s and continuous on the closure of s",
+      "source_quantifiers": "for all f, s, K as in the hypotheses",
+      "source_conclusion": "f is K-Lipschitz on closure s",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0077",
+      "kind": "external",
+      "title": "Metric characterization of uniform equicontinuity",
+      "statement_source": "external:mathlib#Metric.uniformEquicontinuous_iff",
+      "proof_source": "external:mathlib#Metric.uniformEquicontinuous_iff",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "β, α pseudometric spaces; F : ι → β → α",
+      "source_quantifiers": "for all F",
+      "source_conclusion": "UniformEquicontinuous F ↔ ∀ ε > 0, ∃ δ > 0, ∀ x y, dist x y < δ → ∀ i, dist (F i x) (F i y) < ε",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0078",
+      "kind": "external",
+      "title": "Uniform equicontinuity on a set implies equicontinuity on it",
+      "statement_source": "external:mathlib#UniformEquicontinuousOn.equicontinuousOn",
+      "proof_source": "external:mathlib#UniformEquicontinuousOn.equicontinuousOn",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F : ι → β → α uniformly equicontinuous on S",
+      "source_quantifiers": "for all F, S",
+      "source_conclusion": "EquicontinuousOn F S",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0079",
+      "kind": "external",
+      "title": "Comparison with a strict supersolution: a norm bound at a and ‖f′‖ < B′ whenever ‖f‖ = B propagate ‖f‖ ≤ B on [a,b]",
+      "statement_source": "external:mathlib#image_norm_le_of_norm_deriv_right_lt_deriv_boundary",
+      "proof_source": "external:mathlib#image_norm_le_of_norm_deriv_right_lt_deriv_boundary",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f continuous on [a,b] with right derivatives f′ on [a,b); ‖f a‖ ≤ B a; B with derivative B′; ‖f′ x‖ < B′ x whenever ‖f x‖ = B x",
+      "source_quantifiers": "for all f, f′, B, B′, a, b as in the hypotheses",
+      "source_conclusion": "‖f x‖ ≤ B x for every x in [a,b]",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0080",
+      "kind": "external",
+      "title": "The integral of the identity",
+      "statement_source": "external:mathlib#integral_id",
+      "proof_source": "external:mathlib#integral_id",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a, b real",
+      "source_quantifiers": "for all a, b",
+      "source_conclusion": "∫_a^b x dx = (b² − a²)/2",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0081",
+      "kind": "external",
+      "title": "The integral of a natural power",
+      "statement_source": "external:mathlib#integral_pow",
+      "proof_source": "external:mathlib#integral_pow",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a, b real; n a natural number",
+      "source_quantifiers": "for all a, b, n",
+      "source_conclusion": "∫_a^b xⁿ dx = (b^{n+1} − a^{n+1})/(n + 1)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0082",
+      "kind": "external",
+      "title": "Linear substitution in an interval integral",
+      "statement_source": "external:mathlib#intervalIntegral.integral_comp_mul_left",
+      "proof_source": "external:mathlib#intervalIntegral.integral_comp_mul_left",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "c ≠ 0; f : ℝ → E",
+      "source_quantifiers": "for all f, a, b, c",
+      "source_conclusion": "∫_a^b f(c x) dx = c⁻¹ • ∫_{ca}^{cb} f",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0083",
+      "kind": "external",
+      "title": "FTC II on [a, b] with derivatives at the interior points",
+      "statement_source": "external:mathlib#intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le",
+      "proof_source": "external:mathlib#intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "E a complete normed real space; a ≤ b; f continuous on [a,b]; f has the derivative f′(x) at every x in (a,b); f′ interval integrable on [a,b]",
+      "source_quantifiers": "for all E, a, b, f, f′",
+      "source_conclusion": "∫_a^b f′ = f(b) − f(a)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0084",
+      "kind": "external",
+      "title": "Linear substitution in an interval integral, multiplied form",
+      "statement_source": "external:mathlib#intervalIntegral.mul_integral_comp_mul_left",
+      "proof_source": "external:mathlib#intervalIntegral.mul_integral_comp_mul_left",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f : ℝ → ℝ",
+      "source_quantifiers": "for all f, a, b, c",
+      "source_conclusion": "c · ∫_a^b f(c x) dx = ∫_{ca}^{cb} f",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0085",
+      "kind": "external",
+      "title": "The norm of an interval integral is at most the integral of an integrable majorant",
+      "statement_source": "external:mathlib#intervalIntegral.norm_integral_le_of_norm_le",
+      "proof_source": "external:mathlib#intervalIntegral.norm_integral_le_of_norm_le",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "a ≤ b; f : ℝ → E; g : ℝ → ℝ interval integrable on [a,b] with ‖f‖ ≤ g almost everywhere on (a,b]",
+      "source_quantifiers": "for all a ≤ b, f, g as in the hypotheses",
+      "source_conclusion": "‖∫_a^b f‖ ≤ ∫_a^b g",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0086",
+      "kind": "external",
+      "title": "Integral bound by a constant",
+      "statement_source": "external:mathlib#intervalIntegral.norm_integral_le_of_norm_le_const",
+      "proof_source": "external:mathlib#intervalIntegral.norm_integral_le_of_norm_le_const",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "abs(f(x)) ≤ C for x in (a,b] (uIoc a b)",
+      "source_quantifiers": "for all a, b, C, f",
+      "source_conclusion": "abs(∫_a^b f) ≤ C abs(b − a)",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0087",
+      "kind": "external",
+      "title": "Uniform equicontinuity on a set is uniform equicontinuity of the restrictions",
+      "statement_source": "external:mathlib#uniformEquicontinuous_restrict_iff",
+      "proof_source": "external:mathlib#uniformEquicontinuous_restrict_iff",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "F : ι → β → α; S ⊆ β",
+      "source_quantifiers": "for all F, S",
+      "source_conclusion": "UniformEquicontinuous (restrictions of F to S) ↔ UniformEquicontinuousOn F S",
+      "constant_scope": "none"
+    },
+    {
+      "id": "n0088",
+      "kind": "external",
+      "title": "A within-derivative transfers to any set of which the original set is a relative neighbourhood",
+      "statement_source": "external:standard-analysis#hasDerivWithinAt-localize",
+      "proof_source": "external:standard-analysis#hasDerivWithinAt-localize",
+      "topology_status": "REVIEWED",
+      "source_gap": false,
+      "dependencies": [],
+      "alternative_routes": [],
+      "edges": [],
+      "source_hypotheses": "f : ℝ → ℝ has the derivative f′ at x within S; S is a neighbourhood of x within T (S ∈ 𝓝[T] x)",
+      "source_quantifiers": "for all f, f′, x, S, T",
+      "source_conclusion": "f has the derivative f′ at x within T; in particular, if S is a neighbourhood of x, f has the two-sided derivative f′ at x. For a < t ≤ b, [a,b] is a neighbourhood of t within (−∞, t]; for a < t < b it is a neighbourhood of t",
+      "constant_scope": "none"
+    }
+  ],
+  "coverage": [
+    {
+      "kind": "theorem",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0024",
+        "n0025",
+        "n0020",
+        "n0021",
+        "n0022",
+        "n0019",
+        "n0023",
+        "n0078"
+      ],
+      "reason": "Lemma 3, \"The sequence {∂h_n/∂r} is equicontinuous\": for the canonical iterates under the hypotheses of Lemma 1 , from for any bounded iteration ; joint equicontinuity in (u, r) .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0028",
+        "n0052",
+        "n0050",
+        "n0049",
+        "n0051",
+        "n0086",
+        "n0072"
+      ],
+      "reason": "the source passage: the canonical characteristics of h_n and their elapsed-time spreading e^{L(t−s)} (CH).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0034",
+        "n0063",
+        "n0062",
+        "n0039",
+        "n0038",
+        "n0040",
+        "n0058",
+        "n0057",
+        "n0048",
+        "n0075"
+      ],
+      "reason": "(7.61) ψ(u) := ∂_r h_{n+1}(u, χ_n(u; r₁)) − ∂_r h_{n+1}(u, χ_n(u; r₁′)): its derivative along the characteristics is the difference of the transport right sides (the ψ identity from the sealed (9.16) transport law).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0036",
+        "n0030",
+        "n0037",
+        "n0032",
+        "n0027",
+        "n0026",
+        "n0029",
+        "n0079",
+        "n0074",
+        "n0071",
+        "n0070",
+        "n0076",
+        "n0085",
+        "n0067",
+        "n0068",
+        "n0080",
+        "n0081",
+        "n0010",
+        "n0011",
+        "n0066",
+        "n0045",
+        "n0044",
+        "n0042",
+        "n0043",
+        "n0088",
+        "n0083",
+        "n0082",
+        "n0069",
+        "n0073",
+        "n0084",
+        "n0053",
+        "n0054",
+        "n0008",
+        "n0015",
+        "n0014",
+        "n0001",
+        "n0002",
+        "n0003",
+        "n0018",
+        "n0004",
+        "n0007",
+        "n0005",
+        "n0006",
+        "n0016",
+        "n0017",
+        "n0061",
+        "n0047",
+        "n0041",
+        "n0046",
+        "n0055",
+        "n0013",
+        "n0009",
+        "n0012",
+        "n0064",
+        "n0065",
+        "n0056",
+        "n0059",
+        "n0060"
+      ],
+      "reason": "the source passage (the inequality is not printed, anomaly ): the ψ inequality (PI) from the uniform bounds, the radial Lipschitz bounds and the centre-safe moduli of β and a_r (AR, through the , representations), closed by the exponential-majorant induction (M) with the comparison theorem; the data modulus is the uniform continuity of data′.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0031"
+      ],
+      "reason": "\"This establishes the equicontinuity of the sequence {∂h_n/∂r} with respect to r\": radial equicontinuity uniform in n and u ≤ u₀.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0033",
+        "n0035",
+        "n0025",
+        "n0087",
+        "n0077"
+      ],
+      "reason": "the source passage: the transport right side is bounded by 29πx³/24 (the X-ball bounds), so q_{n+1} is Lipschitz in time along characteristics, and with the speed ½ḡ ≤ ½ combines this with the radial part, jointly on the closed strip.",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "the source passage: the proof of Theorem 1 (Lemmas 1-2, and ); outside the package ; the only smallness in the passage, min{η, δ}, belongs to Theorem 1 (δ for the contraction), consistent with .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "NODE",
+      "nodes": [
+        "n0024"
+      ],
+      "reason": "the source passage: the second clause is how Theorem 1 consumes Lemma 3, and it fixes (equicontinuity of ∂_r h_n jointly in (u, r) on the strip, as the Ascoli step needs). The equicontinuity of {h_n} itself (from the X bounds and (7.60)) is part of the proof of Theorem 1, outside the package .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The Ascoli-Arzelà extraction on the compact subsets [0,u₀] × [0,r₀] and the continuity of the limit: the proof of Theorem 1, outside the package ; it determines the meaning of Lemma 3 (equicontinuity on [0,u₀] × [0,∞) restricts to every such compact subset).",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "display",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "The bounds sup (1 + r)³ abs(h̃) ≤ x₁ and sup (1 + r)⁴ abs(∂_r h̃) ≤ x₁ of the limit: Theorem 1, outside the package .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "proof-region",
+      "source": "https://doi.org/10.1007/BF01205930 (printed page 349)",
+      "disposition": "EXCLUDED",
+      "nodes": [],
+      "reason": "h̃ ∈ X, uniform convergence on the strip, the contraction principle in Y and h = h̃: Theorem 1, outside the package .",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Convex.norm_image_sub_le_of_norm_hasDerivWithin_le",
+      "disposition": "NODE",
+      "nodes": [
+        "n0072"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Convex.lipschitzOnWith_of_nnnorm_hasDerivWithin_le",
+      "disposition": "NODE",
+      "nodes": [
+        "n0070"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#intervalIntegral.norm_integral_le_of_norm_le_const",
+      "disposition": "NODE",
+      "nodes": [
+        "n0086"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#intervalIntegral.norm_integral_le_of_norm_le",
+      "disposition": "NODE",
+      "nodes": [
+        "n0085"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#ContDiffOn.continuousOn_derivWithin",
+      "disposition": "NODE",
+      "nodes": [
+        "n0067"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#HasDerivWithinAt.derivWithin",
+      "disposition": "NODE",
+      "nodes": [
+        "n0075"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#HasDerivWithinAt.continuousOn",
+      "disposition": "NODE",
+      "nodes": [
+        "n0074"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#integral_id",
+      "disposition": "NODE",
+      "nodes": [
+        "n0080"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#integral_pow",
+      "disposition": "NODE",
+      "nodes": [
+        "n0081"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:standard-analysis#hasDerivWithinAt-localize",
+      "disposition": "NODE",
+      "nodes": [
+        "n0088"
+      ],
+      "reason": "Standard-analysis input of an imported record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#intervalIntegral.integral_eq_sub_of_hasDerivAt_of_le",
+      "disposition": "NODE",
+      "nodes": [
+        "n0083"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#intervalIntegral.integral_comp_mul_left",
+      "disposition": "NODE",
+      "nodes": [
+        "n0082"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#ContinuousOn.comp_continuous",
+      "disposition": "NODE",
+      "nodes": [
+        "n0069"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#HasDerivAt.mul",
+      "disposition": "NODE",
+      "nodes": [
+        "n0073"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#intervalIntegral.mul_integral_comp_mul_left",
+      "disposition": "NODE",
+      "nodes": [
+        "n0084"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Convex.norm_image_sub_le_of_norm_derivWithin_le",
+      "disposition": "NODE",
+      "nodes": [
+        "n0071"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#LipschitzOnWith.closure",
+      "disposition": "NODE",
+      "nodes": [
+        "n0076"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Continuous.uniformContinuous_of_tendsto_cocompact",
+      "disposition": "NODE",
+      "nodes": [
+        "n0068"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#image_norm_le_of_norm_deriv_right_lt_deriv_boundary",
+      "disposition": "NODE",
+      "nodes": [
+        "n0079"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#uniformEquicontinuous_restrict_iff",
+      "disposition": "NODE",
+      "nodes": [
+        "n0087"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#Metric.uniformEquicontinuous_iff",
+      "disposition": "NODE",
+      "nodes": [
+        "n0077"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    },
+    {
+      "kind": "external",
+      "source": "external:mathlib#UniformEquicontinuousOn.equicontinuousOn",
+      "disposition": "NODE",
+      "nodes": [
+        "n0078"
+      ],
+      "reason": "Mathlib input of the route or of an imported step record (EXTERNAL_POLICY); not cited by [P]",
+      "status": "REVIEWED"
+    }
+  ]
+}
